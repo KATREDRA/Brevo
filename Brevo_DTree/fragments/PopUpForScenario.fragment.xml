@@ -1,0 +1,35 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified">
+	<Popover title="Select Your Scenario" contentWidth="400px" contentHeight="200px" horizontalScrolling="false" showHeader="true"
+		class="sapUiSizeCompact sapContrastPlus" placement="Bottom">
+		<subHeader>
+			<Toolbar>
+				<SearchField liveChange="onScenarioSearch" placeholder="Search By Scenario Name"/>
+			</Toolbar>
+		</subHeader>
+		<content>
+			<Table mode="SingleSelectMaster" selectionChange="onScenarioSelection" items="{/d/results/}">
+				<columns>
+					<Column vAlign="Center"/>
+					<Column hAlign="End" width="10%"/>
+					<Column hAlign="End" width="10%"/>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{ScenName}"/>
+							<Button icon="sap-icon://edit" type="Transparent" press="onScenarioEdit"/>
+							<Button icon="sap-icon://delete" type="Transparent" press="onScenarioDelete"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button icon="sap-icon://add" type="Transparent" enabled="true" press="onAddPress"></Button>
+			</Toolbar>
+		</footer>
+	</Popover>
+</core:FragmentDefinition>

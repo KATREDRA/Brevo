@@ -1,0 +1,5 @@
+{
+    "mongodb":{
+        "connection_String": "mongodb://techvasppadmin:Init2020!@localhost:28017/"
+    }
+}

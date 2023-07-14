@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:suite="sap.suite.ui.commons">
+	<Dialog title="Node Comment" contentHeight="400px" contentWidth="650px" class="sapContrastPlus sapUiSizeCompact">
+		<content class="textAreaClass">
+			<suite:Timeline enableDoubleSided="true" growing="false" groupBy="dateTime" lazyLoading="true" content="{/d/results}" textHeight="automatic"
+				showHeaderBar="false" enableScroll="false" class="timeLineClass">
+				<suite:TimelineItem
+					dateTime="{parts:[{path: 'template'},{path : 'CreatedDate'}], formatter: 'Brevo.BrevoDtree.util.Formatter.commentDateFormatter'}"
+					title="{CreatedBy}" text="{=!${template} ? ${CommentDescription} : null}" class="textClass">
+					<suite:embeddedControl>
+						<VBox>
+							<!--	<RatingIndicator enabled="" id="star" value="" maxValue="5" iconSize="1rem" class="sapUiTinyMargin"/> -->
+							<Text text="{CommentDescription}" visible="{=!${template}}" class="sapUiTinyMargin"/>
+							<TextArea width="100%" value="{CommentDescription}" growing="false" rows="2" visible="{template}" placeholder="Add Comments"
+								valueLiveUpdate="true"/>
+							<Button visible="{template}" tooltip="Post" icon="sap-icon://feeder-arrow" press="NodeComments"/>
+						</VBox>
+					</suite:embeddedControl>
+				</suite:TimelineItem>
+			</suite:Timeline>
+		</content>
+		<endButton>
+			<Button text="Cancel" press="exitfragment"/>
+		</endButton>
+		<beginButton>
+			<Button text="OK" press="exitfragment"/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

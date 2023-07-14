@@ -1,0 +1,33 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="inhance.userManagementSecurity.controller.usersMaster" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="catId" title="Users" showNavButton="true" navButtonPress="onNavBack">
+		<subHeader>
+			<Toolbar>
+				<SearchField liveChange="onSearch" width="100%"/>
+			</Toolbar>
+		</subHeader>
+		<content>
+			<List items="{path:'usersList>/', templateSharable:'true'}" id="itemlistId" class="deptObjListItemClass" mode="SingleSelectMaster"
+				selectionChange="handleUsersListPress">
+				<items>
+					<ObjectListItem title="{usersList>firstname} {usersList>lastname}" type="Active" press="onListItemPress" number="{usersList>_id}">
+						<!--<firstStatus>
+							<ObjectStatus text="{License}" state="{path:'License',formatter:'.formatter.getUserStatus'}"/>
+						</firstStatus>-->
+						<attributes>
+							<!--<ObjectAttribute text="Group: {Group/groupName}"/>-->
+							<!--<ObjectAttribute text="Role: {usersList>typevalue}"/>-->
+						</attributes>
+					</ObjectListItem>
+				</items>
+			</List>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button id="addid" press="handleAddNewCutsomer" text="Add Users" iconFirst="true" icon="sap-icon://add"/>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

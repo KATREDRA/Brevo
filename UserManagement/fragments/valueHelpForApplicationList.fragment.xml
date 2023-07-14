@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+	<SelectDialog title="Select Applications" liveChange="handleAppListSearch" confirm="handleConfirmAppList" growingThreshold="20"
+		cancel="handleCloseAppList" items="{applications>/}" multiSelect="true" rememberSelections="false">
+		<StandardListItem title="{applications>name}" description="{applications>description}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

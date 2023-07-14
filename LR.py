@@ -1,0 +1,121 @@
+import pandas as pd
+import numpy as np
+import json
+from pyspark.sql import SparkSession
+from pymongo import MongoClient
+from sklearn.linear_model import LinearRegression
+
+def getTableData(table, collDet, select, filtr, my_spark):
+    # select = select.upper()
+    select = select.split(",")
+    sql = "SELECT "
+    grpby = []
+    i=0
+    for val in select:
+        
+        for col in collDet['COLUMN_DET']:	
+            if col['COLUMN_NAME'].upper() == val.upper() and col['TYPE'] == "MEASURE":
+                if i>0:
+                    sql = sql+","
+                sql =  sql = sql + col['AGGREGATIONTYPE'].upper()+"("+col['COLUMN_NAME']+")"+" AS "+val.upper()
+                i = i+1
+            elif col['COLUMN_NAME'].upper() == val.upper():
+                grpby.append(val.upper())
+    if filtr != "undefined":
+        sql = sql + " FROM "+"_".join(table.split(" "))+" WHERE "+filtr.upper()+" GROUP BY "
+    else:
+        sql = sql + " FROM "+"_".join(table.split(" "))+" GROUP BY "
+    i=0
+    for val in grpby:
+        if i>0:
+            sql = sql+","
+        sql = sql + val.upper()
+        i = i+1
+    print(sql)
+    df = my_spark.read.format("com.mongodb.spark.sql.DefaultSource").load()
+    df.createOrReplaceTempView("_".join(table.split(" ")))
+    data = my_spark.sql(sql)
+    data = data.toPandas()
+    return data
+
+def getColumnDetails(table):
+    mongoClient = MongoClient("mongodb://localhost:27017/")
+    db = mongoClient["fileuploader"]
+    col = db['CollectionDetails']
+    col_Det = col.find_one({'TABLENAME':"_".join(table.split(" "))})
+    return col_Det
+
+def getValue(table, select, filtr, my_spark):
+    select = select.split(",")
+    sql = "SELECT "
+    i=0
+    for val in select:
+        if i>0:
+            sql = sql+","
+        sql =  sql = sql +"AVG("+val.upper()+")"+" AS "+val.upper()
+        i = i+1
+    if filtr != "undefined":
+        sql = sql + " FROM "+"_".join(table.split(" "))+" WHERE "+filtr.upper()
+    else:
+        sql = sql + " FROM "+"_".join(table.split(" "))
+    print(sql)
+    df = my_spark.read.format("com.mongodb.spark.sql.DefaultSource").load()
+    df.createOrReplaceTempView("_".join(table.split(" ")))
+    data = my_spark.sql(sql)
+    data = data.toPandas()
+    return data
+	
+def main():
+    table = "3200 QReport" 
+    select = "VAT_Amount,CoCD,Boxes,Periodicity,Reporting_Period"
+    filtr = "undefined"
+    my_spark = SparkSession \
+        .builder \
+        .appName("LR") \
+        .config("spark.mongodb.input.uri", "mongodb://localhost:27017/fileuploader."+"_".join(table.split(" "))) \
+        .config("spark.mongodb.output.uri", "mongodb://localhost:27017/fileuploader."+"_".join(table.split(" "))) \
+        .getOrCreate()
+    tableDet = getColumnDetails(table)
+    data = getTableData(table, tableDet, select, filtr, my_spark)
+    test_data = getValue(table, "CoCD",filtr, my_spark)
+    X = data.iloc[:,1:]
+    Y = data.iloc[:,0:1]
+    regressor = LinearRegression()
+    regressor.fit(X, Y)
+    B0 = regressor.intercept_
+    coefficients = regressor.coef_
+    coeff_df = pd.DataFrame(regressor.coef_, X.columns, columns=['Coefficient'])  
+    print(coeff_df['Coefficient'][0])
+    result = {
+        "id":"Node1",
+        "intercept" : regressor.intercept_,
+        "title" : "Measure",
+        "children":[],
+        "name":select.split(",")[0].upper(),
+        "value":regressor.predict(test_data)[0][0]
+    }
+    i=0
+    select = ["CoCD"]
+    print(test_data['COCD'][0])
+    for val in select:
+        result["children"].append({
+            "name":val,
+            "co_val":coeff_df['Coefficient'][i],
+            "isHidden":False,
+            "isLocked":False,
+            "selected":False,
+            "nodecomments":[],
+             "value":test_data[val.upper()][0]
+        })
+    i=0
+    # for i in range(len(test_data)):
+        
+    # for val in test_data:
+        # for child in result["children"]:
+            # print(val)
+            # child["value"] = val
+    print(result)
+    
+if __name__ == '__main__':
+    main()
+

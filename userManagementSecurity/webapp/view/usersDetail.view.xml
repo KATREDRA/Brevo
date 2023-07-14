@@ -1,0 +1,221 @@
+<mvc:View controllerName="inhance.userManagementSecurity.controller.usersDetail" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core" xmlns:semantic="sap.f.semantic" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" height="100%"
+	xmlns:suite="sap.suite.ui.commons">
+	<semantic:SemanticPage id="detailPage" showFooter="true" class="detailPageClass">
+		<semantic:titleHeading>
+			<Title text="User Details"/>
+		</semantic:titleHeading>
+		<semantic:headerContent>
+			<ObjectHeader class="objHedaerClass" title="{usersList>firstname} {usersList>lastname}" number="{usersList>_id}">
+				<statuses>
+					<ObjectStatus text="{License}" state="{path:'License',formatter:'.formatter.getUserStatus'}"/>
+				</statuses>
+				<attributes id="id24">
+					<!--<ObjectAttribute title="User Id" text="{UserId}"/>-->
+					<ObjectAttribute title="E-mail" text="{usersList>user_emailid}"/>
+					<ObjectAttribute title="Phone" text="{usersList>contactnumber}"/>
+				</attributes>
+			</ObjectHeader>
+		</semantic:headerContent>
+		<semantic:content>
+			<IconTabBar id="itb1" selectedKey="key3" upperCase="false" class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter text="General Info" icon="sap-icon://business-card" class="tabWidthClass">
+						<l:VerticalLayout id="containerLayout" width="100%">
+							<l:BlockLayout id="BlockLayout" background="Dashboard">
+								<l:BlockLayoutRow >
+									<l:BlockLayoutCell width="2" title="General">
+										<f:SimpleForm editable="false" layout="ResponsiveGridLayout" title="" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="4"
+											adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+											singleContainerFullSize="false" visible="true" class="removeTitle">
+											<f:content>
+												<core:Title text=""/>
+												<Label text="Name"/>
+												<!--<Text text="{CreatedBy}"></Text>-->
+												<Text text="{usersList>firstname} {usersList>lastname}"></Text>
+												<Label text="User Id"/>
+												<Text text="{usersList>_id}"/>
+												<!--<Label text="Description"/>
+												<Text text="{Description}"></Text>-->
+												<Label text="Role"/>
+												<Text text="{usersList>typevalue}"></Text>
+												<core:Title text=""/>
+												<Label text="Email-ID"/>
+												<Text text="{usersList>user_emailid}"></Text>
+												<Label text="Contact"/>
+												<Text text="{usersList>contactnumber}"></Text>
+											</f:content>
+										</f:SimpleForm>
+									</l:BlockLayoutCell>
+								</l:BlockLayoutRow>
+							</l:BlockLayout>
+						</l:VerticalLayout>
+					</IconTabFilter>
+					<!--	<IconTabFilter text="Groups" icon="sap-icon://group">
+						<Table items="{path:'/PartnersSet'}" id="PartiesTableId">
+							<headerToolbar>
+								<Toolbar design="Transparent">
+									<ToolbarSpacer/>
+									<Button type="Transparent" id="addPartiesButton" icon="sap-icon://add" press="handleAddPartiesInvolved" visible="{=${detailView>/userRole}}"/>
+								</Toolbar>
+							</headerToolbar>
+							<columns>
+								<Column width="4em">
+									<Text text=""/>
+								</Column>
+								<Column>
+									<Text text="Parties Involved"/>
+								</Column>
+								<Column >
+									<Text text="Partner ID"/>
+								</Column>
+								<Column >
+									<Text text="Name"/>
+								</Column>
+								<Column >
+									<Text text="E-Mail Id"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem id="cloumnListItemId" type="Inactive" press="handlePartiesInvolvedPress">
+									<cells>
+										<Button type="Transparent" icon="sap-icon://delete"
+											visible="{parts:['detailView>/userRole','Description'],formatter:'EEO_CM_INQURIES.Formatter.Formatter.partnersDeleteAction'}"
+											press="onDeletePartyPress"/>
+										<Text text="{Description}"/>
+										<Text text="{PartnerNo}"/>
+										<Text text="{NameFirst} {NameLast}"/>
+										<Link text="{SmtpAddr}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</IconTabFilter>-->
+					<IconTabFilter text="Assign Access" icon="sap-icon://history">
+						<IconTabBar id="idIconTabBarNoIcons" class="sapUiResponsiveContentPadding">
+							<items>
+								<IconTabFilter text="Dashboard">
+									<Table items="{path:'/'}" id="pagesAccessId" mode="MultiSelect">
+										<headerToolbar>
+											<Toolbar design="Transparent">
+												<ToolbarSpacer/>
+												<Button type="Transparent" id="addAccessId" icon="sap-icon://add" press="handleAddPagesAccess"/>
+												<Button type="Transparent" press="handleDeletePageAccess" icon="sap-icon://delete"/>
+											</Toolbar>
+										</headerToolbar>
+										<columns>
+											<Column width="13em">
+												<Text text="Name"/>
+											</Column>
+											<Column width="10em">
+												<Text text="Application"/>
+											</Column>
+											<Column >
+												<Text text="Create Access"/>
+											</Column>
+											<Column>
+												<Text text="Read Access"/>
+											</Column>
+											<Column>
+												<Text text="Update Access"/>
+											</Column>
+											<Column>
+												<Text text="Delete Access"/>
+											</Column>
+											<Column>
+												<Text text="Share Access"/>
+											</Column>
+										</columns>
+										<items>
+											<ColumnListItem id="cloumnListItemId1" type="Inactive">
+												<cells>
+													<Text text="{pagetitle}"/>
+													<Text text="{applicationname}"/>
+													<!--<CheckBox selected="{path:'createid',formatter:'.formatter.getBooleanCondition'}" select="handleAccessPressed"/>
+										<CheckBox selected="{path:'readid',formatter:'.formatter.getBooleanCondition'}" select="handleAccessPressed"/>
+										<CheckBox selected="{path:'updateid',formatter:'.formatter.getBooleanCondition'}" select="handleAccessPressed"/>
+										<CheckBox selected="{path:'deleteid',formatter:'.formatter.getBooleanCondition'}" select="handleAccessPressed"/>
+										<CheckBox selected="{path:'shareid',formatter:'.formatter.getBooleanCondition'}" select="handleAccessPressed"/>-->
+													<CheckBox id="createid" selected="{createid}" select="handleAccessPressed"/>
+													<CheckBox id="readid" selected="{readid}" select="handleAccessPressed"/>
+													<CheckBox id="updateid" selected="{updateid}" select="handleAccessPressed"/>
+													<CheckBox id="deleteid" selected="{deleteid}" select="handleAccessPressed"/>
+													<CheckBox id="shareid" selected="{shareid}" select="handleAccessPressed"/>
+												</cells>
+											</ColumnListItem>
+										</items>
+									</Table>
+								</IconTabFilter>
+								<IconTabFilter text="Models">
+									<Table items="{path:'/'}" id="pagesAccessId2" mode="MultiSelect">
+										<headerToolbar>
+											<Toolbar design="Transparent">
+												<ToolbarSpacer/>
+												<Button type="Transparent" id="addAccessId2" icon="sap-icon://add" press="handleAddModels"/>
+												<Button type="Transparent" press="handleDeleteModels" icon="sap-icon://delete"/>
+											</Toolbar>
+										</headerToolbar>
+										<columns>
+											<Column width="13em">
+												<Text text="Name"/>
+											</Column>
+											<Column >
+												<Text text="Create Access"/>
+											</Column>
+											<Column>
+												<Text text="Read Access"/>
+											</Column>
+											<Column>
+												<Text text="Update Access"/>
+											</Column>
+											<Column>
+												<Text text="Delete Access"/>
+											</Column>
+											<Column>
+												<Text text="Share Access"/>
+											</Column>
+										</columns>
+										<items>
+											<ColumnListItem id="cloumnListItemId2" type="Inactive">
+												<cells>
+													<Text text="{modelName}"/>
+													<!--<CheckBox selected="{path:'createid',formatter:'.formatter.getBooleanCondition'}" select="handleAccessPressed"/>
+										<CheckBox selected="{path:'readid',formatter:'.formatter.getBooleanCondition'}" select="handleAccessPressed"/>
+										<CheckBox selected="{path:'updateid',formatter:'.formatter.getBooleanCondition'}" select="handleAccessPressed"/>
+										<CheckBox selected="{path:'deleteid',formatter:'.formatter.getBooleanCondition'}" select="handleAccessPressed"/>
+										<CheckBox selected="{path:'shareid',formatter:'.formatter.getBooleanCondition'}" select="handleAccessPressed"/>-->
+													<CheckBox selected="{createid}" select="handleAccessPressed"/>
+													<CheckBox selected="{readid}" select="handleAccessPressed"/>
+													<CheckBox selected="{updateid}" select="handleAccessPressed"/>
+													<CheckBox selected="{deleteid}" select="handleAccessPressed"/>
+													<CheckBox selected="{shareid}" select="handleAccessPressed"/>
+												</cells>
+											</ColumnListItem>
+										</items>
+									</Table>
+								</IconTabFilter>
+							</items>
+						</IconTabBar>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</semantic:content>
+		<semantic:closeAction>
+			<semantic:CloseAction id="closeColumn" press="onCloseDetailPress"/>
+		</semantic:closeAction>
+		<semantic:fullScreenAction>
+			<semantic:FullScreenAction id="enterFullScreen"
+				visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}" press="toggleFullScreen"/>
+		</semantic:fullScreenAction>
+		<semantic:exitFullScreenAction>
+			<semantic:ExitFullScreenAction id="exitFullScreen"
+				visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}" press="toggleFullScreen"/>
+		</semantic:exitFullScreenAction>
+		<semantic:footerCustomActions>
+			<Button type="Transparent" text="Save" id="saveButtonId" visible="false" press="handleSaveUserAccess"/>
+			<Button type="Transparent" text="Cancel" id="cancelButtonId" visible="false" press="handleCancelUser"/>
+			<Button type="Transparent" text="Edit" id="editButtonId" press="handleEditUserPress"/>
+			<Button type="Transparent" text="Delete" id="deleteButtonId" press="handleDeleteUserPress"/>
+		</semantic:footerCustomActions>
+	</semantic:SemanticPage>
+</mvc:View>

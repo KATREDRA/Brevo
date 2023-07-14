@@ -1,0 +1,274 @@
+{
+	"OVPPages": [{
+		"Page_ID": 84,
+		"PageTitle": "TEST DASHBOARD 1",
+		"Subtitle": "",
+		"TypeOfPage": "O",
+		"Configuration": "[{\"pageId\":84,\"cardId\":\"11\"},{\"pageId\":84,\"cardId\":\"12\"},{\"pageId\":84,\"cardId\":\"13\"},{\"pageId\":84,\"cardId\":\"14\"},{\"pageId\":84,\"cardId\":\"21\"},{\"pageId\":84,\"cardId\":\"22\"},{\"pageId\":84,\"cardId\":\"60\"},{\"pageId\":84,\"cardId\":\"63\"},{\"pageId\":84,\"cardId\":\"65\"},{\"pageId\":84,\"cardId\":\"69\"}]",
+		"Created_by": "p2000488727",
+		"Shared": "0",
+		"Filterconfig": null
+	}, {
+		"Page_ID": 89,
+		"PageTitle": "Order Tracking Dashboard TEST",
+		"Subtitle": "",
+		"TypeOfPage": "O",
+		"Configuration": "",
+		"Created_by": "",
+		"Shared": "1",
+		"Filterconfig": "\"\""
+	}, {
+		"Page_ID": 94,
+		"PageTitle": "Plant Manager Dashboard TEST",
+		"Subtitle": "",
+		"TypeOfPage": "O",
+		"Configuration": "[{\"pageId\":94,\"cardId\":\"277\"},{\"pageId\":94,\"cardId\":\"278\"},{\"pageId\":94,\"cardId\":\"262\"},{\"pageId\":94,\"cardId\":\"263\"},{\"pageId\":94,\"cardId\":\"270\"},{\"pageId\":94,\"cardId\":\"271\"},{\"pageId\":94,\"cardId\":\"268\"},{\"pageId\":94,\"cardId\":\"269\"}]",
+		"Created_by": "",
+		"Shared": "0",
+		"Filterconfig": null
+	}, {
+		"Page_ID": 100,
+		"PageTitle": "Plant Manager Summary TEST",
+		"Subtitle": "",
+		"TypeOfPage": "O",
+		"Configuration": "[{\"pageId\":100,\"cardId\":\"25\"},{\"pageId\":100,\"cardId\":\"26\"},{\"pageId\":100,\"cardId\":\"27\"}]",
+		"Created_by": "",
+		"Shared": "0",
+		"Filterconfig": "[{\"filterName\":\"ORDER_DATE\",\"filterDataType\":\"datetime\",\"filterValue\":\"2019-01-02 00:00:00.000\",\"isBtw\":false,\"filterOperator\":\"ge\",\"properties\":[{\"value\":\"ID\",\"dataType\":\"dimension\",\"property\":\"ID\",\"label\":\"Id\"},{\"value\":\"CUSTOMER_ID\",\"dataType\":\"dimension\",\"property\":\"CUSTOMER_ID\",\"label\":\"Customer Id\"},{\"value\":\"CUSTOMER_PURCHASE_ORDER_REFERENCE\",\"dataType\":\"dimension\",\"property\":\"CUSTOMER_PURCHASE_ORDER_REFERENCE\",\"label\":\"Customer Purchase Order Reference\"},{\"value\":\"NAME\",\"dataType\":\"dimension\",\"property\":\"NAME\",\"label\":\"Name\"},{\"value\":\"SALES_REPRESENTITIVE_ID\",\"dataType\":\"dimension\",\"property\":\"SALES_REPRESENTITIVE_ID\",\"label\":\"Sales Representitive Id\"},{\"value\":\"SITE_ID\",\"dataType\":\"dimension\",\"property\":\"SITE_ID\",\"label\":\"Site Id\"},{\"value\":\"TERMS_DESCRIPTION\",\"dataType\":\"dimension\",\"property\":\"TERMS_DESCRIPTION\",\"label\":\"Terms Description\"},{\"value\":\"ORDER_DATE\",\"dataType\":\"datetime\",\"property\":\"ORDER_DATE\",\"label\":\"Order Date\"},{\"value\":\"DESIRED_SHIP_DATE_PRESENT\",\"dataType\":\"dimension\",\"property\":\"DESIRED_SHIP_DATE_PRESENT\",\"label\":\"Desired Ship Date Present\"},{\"value\":\"DESIRED_SHIP_DATE\",\"dataType\":\"datetime\",\"property\":\"DESIRED_SHIP_DATE\",\"label\":\"Desired Ship Date\"},{\"value\":\"STATUS\",\"dataType\":\"dimension\",\"property\":\"STATUS\",\"label\":\"Status\"},{\"value\":\"CURRENCY\",\"dataType\":\"dimension\",\"property\":\"CURRENCY\",\"label\":\"Currency\"},{\"value\":\"LINE_NUMBER\",\"dataType\":\"dimension\",\"property\":\"LINE_NUMBER\",\"label\":\"Line Number\"},{\"value\":\"PART_ID\",\"dataType\":\"dimension\",\"property\":\"PART_ID\",\"label\":\"Part Id\"},{\"value\":\"MISC_REFERENCE\",\"dataType\":\"dimension\",\"property\":\"MISC_REFERENCE\",\"label\":\"Misc Reference\"},{\"value\":\"LINE_SHIPPED_DATE\",\"dataType\":\"dimension\",\"property\":\"LINE_SHIPPED_DATE\",\"label\":\"Line Shipped Date\"},{\"value\":\"SELLING_UNIT_MEASURE\",\"dataType\":\"dimension\",\"property\":\"SELLING_UNIT_MEASURE\",\"label\":\"Selling Unit Measure\"},{\"value\":\"PROMISE_SHIP_DATE_PRESENT\",\"dataType\":\"dimension\",\"property\":\"PROMISE_SHIP_DATE_PRESENT\",\"label\":\"Promise Ship Date Present\"},{\"value\":\"PROMISE_SHIP_DATE\",\"dataType\":\"datetime\",\"property\":\"PROMISE_SHIP_DATE\",\"label\":\"Promise Ship Date\"},{\"value\":\"MONTH_DESCRIPTION\",\"dataType\":\"dimension\",\"property\":\"MONTH_DESCRIPTION\",\"label\":\"Month Description\"},{\"value\":\"YEAR\",\"dataType\":\"dimension\",\"property\":\"YEAR\",\"label\":\"Year\"},{\"value\":\"IS_DELAYED\",\"dataType\":\"dimension\",\"property\":\"IS_DELAYED\",\"label\":\"Is Delayed\"},{\"value\":\"STATUS_EFFECTIVE_DATE\",\"dataType\":\"datetime\",\"property\":\"STATUS_EFFECTIVE_DATE\",\"label\":\"Status Effective Date\"},{\"value\":\"ACTUAL_SHIPPED_DATE\",\"dataType\":\"datetime\",\"property\":\"ACTUAL_SHIPPED_DATE\",\"label\":\"Actual Shipped Date\"},{\"value\":\"SITE_NAME\",\"dataType\":\"dimension\",\"property\":\"SITE_NAME\",\"label\":\"Site Name\"},{\"value\":\"INVOICE_ID\",\"dataType\":\"dimension\",\"property\":\"INVOICE_ID\",\"label\":\"Invoice Id\"},{\"value\":\"INVOICED_DATE\",\"dataType\":\"datetime\",\"property\":\"INVOICED_DATE\",\"label\":\"Invoiced Date\"},{\"value\":\"STATUS_DESCRIPTION\",\"dataType\":\"dimension\",\"property\":\"STATUS_DESCRIPTION\",\"label\":\"Status Description\"},{\"value\":\"ORDERED_MONTH\",\"dataType\":\"dimension\",\"property\":\"ORDERED_MONTH\",\"label\":\"Ordered Month\"},{\"value\":\"ORDERED_YEAR\",\"dataType\":\"dimension\",\"property\":\"ORDERED_YEAR\",\"label\":\"Ordered Year\"},{\"value\":\"IS_ORDER_DELAYED\",\"dataType\":\"dimension\",\"property\":\"IS_ORDER_DELAYED\",\"label\":\"Is Order Delayed\"},{\"value\":\"IS_ORDER_ONTIME_DESIRED\",\"dataType\":\"dimension\",\"property\":\"IS_ORDER_ONTIME_DESIRED\",\"label\":\"Is Order Ontime Desired\"}]}]"
+	}, {
+		"Page_ID": 103,
+		"PageTitle": "Financial Dashboard TEST",
+		"Subtitle": "",
+		"TypeOfPage": "O",
+		"Configuration": "[{\"pageId\":103,\"cardId\":\"320\"},{\"pageId\":103,\"cardId\":\"321\"},{\"pageId\":103,\"cardId\":\"324\"}]",
+		"Created_by": "nsimakurti",
+		"Shared": "0",
+		"Filterconfig": null
+	}, {
+		"Page_ID": 104,
+		"PageTitle": "Opportunity Details TEST",
+		"Subtitle": "",
+		"TypeOfPage": "O",
+		"Configuration": "[{\"pageId\":104,\"cardId\":\"332\"}]",
+		"Created_by": "nsimakurti",
+		"Shared": "0",
+		"Filterconfig": null
+	}, {
+		"Page_ID": 106,
+		"PageTitle": "Plant Manager - Service Report",
+		"Subtitle": "",
+		"TypeOfPage": "O",
+		"Configuration": "[{\"pageId\":106,\"cardId\":\"32\"},{\"pageId\":106,\"cardId\":\"36\"},{\"pageId\":106,\"cardId\":\"67\"},{\"pageId\":106,\"cardId\":\"35\"},{\"pageId\":106,\"cardId\":\"62\"},{\"pageId\":106,\"cardId\":\"93\"},{\"pageId\":106,\"cardId\":\"37\"},{\"pageId\":106,\"cardId\":\"42\"},{\"pageId\":106,\"cardId\":\"68\"},{\"pageId\":106,\"cardId\":\"39\"},{\"pageId\":106,\"cardId\":\"59\"},{\"pageId\":106,\"cardId\":\"33\"},{\"pageId\":106,\"cardId\":\"61\"},{\"pageId\":106,\"cardId\":\"40\"},{\"pageId\":106,\"cardId\":\"41\"},{\"pageId\":106,\"cardId\":\"43\"},{\"pageId\":106,\"cardId\":\"45\"},{\"pageId\":106,\"cardId\":\"46\"},{\"pageId\":106,\"cardId\":\"47\"},{\"pageId\":106,\"cardId\":\"44\"}]",
+		"Created_by": "p2000488727",
+		"Shared": "0",
+		"Filterconfig": "[{\"filterName\":\"ORDER_DATE\",\"filterDataType\":\"datetime\",\"filterValue\":\"2019-06-01 00:00:00.000\",\"isBtw\":true,\"filterOperator\":\"bw\",\"properties\":[{\"value\":\"ID\",\"dataType\":\"dimension\",\"property\":\"ID\",\"label\":\"Id\"},{\"value\":\"CUSTOMER_ID\",\"dataType\":\"dimension\",\"property\":\"CUSTOMER_ID\",\"label\":\"Customer Id\"},{\"value\":\"SALES_REPRESENTITIVE_ID\",\"dataType\":\"dimension\",\"property\":\"SALES_REPRESENTITIVE_ID\",\"label\":\"Sales Representitive Id\"},{\"value\":\"ORDER_DATE\",\"dataType\":\"datetime\",\"property\":\"ORDER_DATE\",\"label\":\"Order Date\"},{\"value\":\"STATUS\",\"dataType\":\"dimension\",\"property\":\"STATUS\",\"label\":\"Status\"},{\"value\":\"SITE_NAME\",\"dataType\":\"dimension\",\"property\":\"SITE_NAME\",\"label\":\"Site Name\"}],\"filterValue2\":\"2019-07-01 00:00:00.000\"}]"
+	}, {
+		"Page_ID": 110,
+		"PageTitle": "Lead To Cash Dashboard TEST",
+		"Subtitle": "",
+		"TypeOfPage": "O",
+		"Configuration": "[{\"pageId\":110,\"cardId\":\"374\"},{\"pageId\":110,\"cardId\":\"375\"},{\"pageId\":110,\"cardId\":\"376\"},{\"pageId\":110,\"cardId\":\"377\"},{\"pageId\":110,\"cardId\":\"378\"},{\"pageId\":110,\"cardId\":\"379\"},{\"pageId\":110,\"cardId\":\"380\"},{\"pageId\":110,\"cardId\":\"381\"},{\"pageId\":110,\"cardId\":\"382\"},{\"pageId\":110,\"cardId\":\"383\"}]",
+		"Created_by": "p2000488727",
+		"Shared": "0",
+		"Filterconfig": null
+	}, {
+		"Page_ID": 111,
+		"PageTitle": "Shipping Detail Revenue Report",
+		"Subtitle": "",
+		"TypeOfPage": "O",
+		"Configuration": "",
+		"Created_by": "nsimakurti",
+		"Shared": "0",
+		"Filterconfig": ""
+	}, {
+		"Page_ID": 118,
+		"PageTitle": "Plant Manager Service Report - Backup TEST",
+		"Subtitle": "",
+		"TypeOfPage": "O",
+		"Configuration": "[{\"pageId\":118,\"cardId\":\"70\"}]",
+		"Created_by": "nsimakurti",
+		"Shared": "0",
+		"Filterconfig": "[{\"filterName\":\"ORDER_DATE\",\"filterDataType\":\"datetime\",\"filterValue\":\"2019-03-18 00:00:00.000\",\"isBtw\":false,\"filterOperator\":\"gt\",\"properties\":[{\"value\":\"ID\",\"dataType\":\"dimension\",\"property\":\"ID\",\"label\":\"Id\"},{\"value\":\"CUSTOMER_ID\",\"dataType\":\"dimension\",\"property\":\"CUSTOMER_ID\",\"label\":\"Customer Id\"},{\"value\":\"NAME\",\"dataType\":\"dimension\",\"property\":\"NAME\",\"label\":\"Name\"},{\"value\":\"SALES_REPRESENTITIVE_ID\",\"dataType\":\"dimension\",\"property\":\"SALES_REPRESENTITIVE_ID\",\"label\":\"Sales Representitive Id\"},{\"value\":\"SITE_ID\",\"dataType\":\"dimension\",\"property\":\"SITE_ID\",\"label\":\"Site Id\"},{\"value\":\"TERMS_DESCRIPTION\",\"dataType\":\"dimension\",\"property\":\"TERMS_DESCRIPTION\",\"label\":\"Terms Description\"},{\"value\":\"ORDER_DATE\",\"dataType\":\"datetime\",\"property\":\"ORDER_DATE\",\"label\":\"Order Date\"},{\"value\":\"DESIRED_SHIP_DATE_PRESENT\",\"dataType\":\"dimension\",\"property\":\"DESIRED_SHIP_DATE_PRESENT\",\"label\":\"Desired Ship Date Present\"},{\"value\":\"DESIRED_SHIP_DATE\",\"dataType\":\"datetime\",\"property\":\"DESIRED_SHIP_DATE\",\"label\":\"Desired Ship Date\"},{\"value\":\"STATUS\",\"dataType\":\"dimension\",\"property\":\"STATUS\",\"label\":\"Status\"},{\"value\":\"CURRENCY\",\"dataType\":\"dimension\",\"property\":\"CURRENCY\",\"label\":\"Currency\"},{\"value\":\"PROMISE_SHIP_DATE_PRESENT\",\"dataType\":\"dimension\",\"property\":\"PROMISE_SHIP_DATE_PRESENT\",\"label\":\"Promise Ship Date Present\"},{\"value\":\"PROMISE_SHIP_DATE\",\"dataType\":\"datetime\",\"property\":\"PROMISE_SHIP_DATE\",\"label\":\"Promise Ship Date\"},{\"value\":\"MONTH_DESCRIPTION\",\"dataType\":\"dimension\",\"property\":\"MONTH_DESCRIPTION\",\"label\":\"Month Description\"},{\"value\":\"YEAR\",\"dataType\":\"dimension\",\"property\":\"YEAR\",\"label\":\"Year\"},{\"value\":\"IS_DELAYED\",\"dataType\":\"dimension\",\"property\":\"IS_DELAYED\",\"label\":\"Is Delayed\"},{\"value\":\"STATUS_EFFECTIVE_DATE\",\"dataType\":\"datetime\",\"property\":\"STATUS_EFFECTIVE_DATE\",\"label\":\"Status Effective Date\"},{\"value\":\"ACTUAL_SHIPPED_DATE\",\"dataType\":\"datetime\",\"property\":\"ACTUAL_SHIPPED_DATE\",\"label\":\"Actual Shipped Date\"},{\"value\":\"SITE_NAME\",\"dataType\":\"dimension\",\"property\":\"SITE_NAME\",\"label\":\"Site Name\"},{\"value\":\"STATUS_DESCRIPTION\",\"dataType\":\"dimension\",\"property\":\"STATUS_DESCRIPTION\",\"label\":\"Status Description\"},{\"value\":\"ORDERED_MONTH\",\"dataType\":\"dimension\",\"property\":\"ORDERED_MONTH\",\"label\":\"Ordered Month\"},{\"value\":\"ORDERED_YEAR\",\"dataType\":\"dimension\",\"property\":\"ORDERED_YEAR\",\"label\":\"Ordered Year\"},{\"value\":\"IS_ORDER_ONTIME_DESIRED\",\"dataType\":\"dimension\",\"property\":\"IS_ORDER_ONTIME_DESIRED\",\"label\":\"Is Order Ontime Desired\"},{\"value\":\"CREATE_DATE\",\"dataType\":\"datetime\",\"property\":\"CREATE_DATE\",\"label\":\"Create Date\"},{\"value\":\"POST_DELAYED_SHIPMENT_REASON\",\"dataType\":\"dimension\",\"property\":\"POST_DELAYED_SHIPMENT_REASON\",\"label\":\"Post Delayed Shipment Reason\"},{\"value\":\"PRE_DELAYED_SHIPMENT_REASON\",\"dataType\":\"dimension\",\"property\":\"PRE_DELAYED_SHIPMENT_REASON\",\"label\":\"Pre Delayed Shipment Reason\"},{\"value\":\"NEW_DESIRED_SHIPPED_DATE\",\"dataType\":\"dimension\",\"property\":\"NEW_DESIRED_SHIPPED_DATE\",\"label\":\"New Desired Shipped Date\"}]}]"
+	}, {
+		"Page_ID": 120,
+		"PageTitle": "Purchase Order Details TEST",
+		"Subtitle": "",
+		"TypeOfPage": "O",
+		"Configuration": "[{\"pageId\":120,\"cardId\":\"71\"}]",
+		"Created_by": "p2000488727",
+		"Shared": "0",
+		"Filterconfig": "[{\"filterName\":\"ORDER_DATE\",\"filterDataType\":\"datetime\",\"filterValue\":\"2019-01-02 00:00:00.000\",\"isBtw\":true,\"filterOperator\":\"bw\",\"properties\":[{\"value\":\"PURCHASE_ORDER_ID\",\"dataType\":\"dimension\",\"property\":\"PURCHASE_ORDER_ID\",\"label\":\"Purchase Order Id\"},{\"value\":\"vendor_id\",\"dataType\":\"dimension\",\"property\":\"vendor_id\",\"label\":\"Vendor Id\"},{\"value\":\"VENDOR\",\"dataType\":\"dimension\",\"property\":\"VENDOR\",\"label\":\"Vendor\"},{\"value\":\"ADDRESS_LINE_1\",\"dataType\":\"dimension\",\"property\":\"ADDRESS_LINE_1\",\"label\":\"Address Line 1\"},{\"value\":\"ADDRESS_LINE_2\",\"dataType\":\"dimension\",\"property\":\"ADDRESS_LINE_2\",\"label\":\"Address Line 2\"},{\"value\":\"ADDRESS_LINE_3\",\"dataType\":\"dimension\",\"property\":\"ADDRESS_LINE_3\",\"label\":\"Address Line 3\"},{\"value\":\"ORDER_DATE\",\"dataType\":\"datetime\",\"property\":\"ORDER_DATE\",\"label\":\"Order Date\"},{\"value\":\"user_1\",\"dataType\":\"dimension\",\"property\":\"user_1\",\"label\":\"User 1\"},{\"value\":\"PART_ID\",\"dataType\":\"dimension\",\"property\":\"PART_ID\",\"label\":\"Part Id\"},{\"value\":\"PRODUCT_CODE\",\"dataType\":\"dimension\",\"property\":\"PRODUCT_CODE\",\"label\":\"Product Code\"},{\"value\":\"GL_EXPENSE_ACCT_ID\",\"dataType\":\"dimension\",\"property\":\"GL_EXPENSE_ACCT_ID\",\"label\":\"Gl Expense Acct Id\"}],\"filterValue2\":\"2019-01-31 00:00:00.000\"}]"
+	}, {
+		"Page_ID": 122,
+		"PageTitle": "Plant Manager -Service Report- Back Up",
+		"Subtitle": "",
+		"TypeOfPage": "O",
+		"Configuration": null,
+		"Created_by": "p2000488727",
+		"Shared": "0",
+		"Filterconfig": "[{\"filterName\":\"ORDER_DATE\",\"filterDataType\":\"datetime\",\"filterValue\":\"2019-03-18 00:00:00.000\",\"isBtw\":false,\"filterOperator\":\"gt\",\"properties\":[{\"value\":\"ID\",\"dataType\":\"dimension\",\"property\":\"ID\",\"label\":\"Id\"},{\"value\":\"CUSTOMER_ID\",\"dataType\":\"dimension\",\"property\":\"CUSTOMER_ID\",\"label\":\"Customer Id\"},{\"value\":\"CUSTOMER_PURCHASE_ORDER_REFERENCE\",\"dataType\":\"dimension\",\"property\":\"CUSTOMER_PURCHASE_ORDER_REFERENCE\",\"label\":\"Customer Purchase Order Reference\"},{\"value\":\"SALES_REPRESENTITIVE_ID\",\"dataType\":\"dimension\",\"property\":\"SALES_REPRESENTITIVE_ID\",\"label\":\"Sales Representitive Id\"},{\"value\":\"SITE_ID\",\"dataType\":\"dimension\",\"property\":\"SITE_ID\",\"label\":\"Site Id\"},{\"value\":\"ORDER_DATE\",\"dataType\":\"datetime\",\"property\":\"ORDER_DATE\",\"label\":\"Order Date\"},{\"value\":\"DESIRED_SHIP_DATE\",\"dataType\":\"datetime\",\"property\":\"DESIRED_SHIP_DATE\",\"label\":\"Desired Ship Date\"},{\"value\":\"STATUS\",\"dataType\":\"dimension\",\"property\":\"STATUS\",\"label\":\"Status\"},{\"value\":\"LINE_NUMBER\",\"dataType\":\"dimension\",\"property\":\"LINE_NUMBER\",\"label\":\"Line Number\"},{\"value\":\"PART_ID\",\"dataType\":\"dimension\",\"property\":\"PART_ID\",\"label\":\"Part Id\"},{\"value\":\"SITE_NAME\",\"dataType\":\"dimension\",\"property\":\"SITE_NAME\",\"label\":\"Site Name\"},{\"value\":\"NEW_DESIRED_SHIPPED_DATE\",\"dataType\":\"dimension\",\"property\":\"NEW_DESIRED_SHIPPED_DATE\",\"label\":\"New Desired Shipped Date\"}]}]"
+	}, {
+		"Page_ID": 124,
+		"PageTitle": "TEST DASHBOARD 2",
+		"Subtitle": "",
+		"TypeOfPage": "O",
+		"Configuration": "",
+		"Created_by": "nsimakurti",
+		"Shared": "0",
+		"Filterconfig": ""
+	}, {
+		"Page_ID": 125,
+		"PageTitle": "TEST DASHBOARD 4",
+		"Subtitle": "",
+		"TypeOfPage": "O",
+		"Configuration": "[{\"pageId\":125,\"cardId\":\"95\"}]",
+		"Created_by": "nsimakurti",
+		"Shared": "0",
+		"Filterconfig": "[{\"filterName\":\"ORDER_YEAR\",\"filterDataType\":\"dimension\",\"filterValue\":\"2019\",\"filterOperator\":\"eq\",\"isBtw\":false,\"properties\":[{\"value\":\"ID\",\"dataType\":\"dimension\",\"property\":\"ID\",\"label\":\"Id\"},{\"value\":\"ORDER_DATE\",\"dataType\":\"datetime\",\"property\":\"ORDER_DATE\",\"label\":\"Order Date\"},{\"value\":\"ORDER_QUANTITY\",\"dataType\":\"dimension\",\"property\":\"ORDER_QUANTITY\",\"label\":\"Order Quantity\"},{\"value\":\"PROMISED_SHIP_DATE\",\"dataType\":\"datetime\",\"property\":\"PROMISED_SHIP_DATE\",\"label\":\"Promised Ship Date\"},{\"value\":\"DESIRED_SHIP_DATE\",\"dataType\":\"dimension\",\"property\":\"DESIRED_SHIP_DATE\",\"label\":\"Desired Ship Date\"},{\"value\":\"TOTAL_SHIPPED_QUANTITY\",\"dataType\":\"dimension\",\"property\":\"TOTAL_SHIPPED_QUANTITY\",\"label\":\"Total Shipped Quantity\"},{\"value\":\"STATUS\",\"dataType\":\"dimension\",\"property\":\"STATUS\",\"label\":\"Status\"},{\"value\":\"SITE_ID\",\"dataType\":\"dimension\",\"property\":\"SITE_ID\",\"label\":\"Site Id\"},{\"value\":\"SITE_NAME\",\"dataType\":\"dimension\",\"property\":\"SITE_NAME\",\"label\":\"Site Name\"},{\"value\":\"CUSTOMER_NAME\",\"dataType\":\"dimension\",\"property\":\"CUSTOMER_NAME\",\"label\":\"Customer Name\"},{\"value\":\"CUSTOMER_ID\",\"dataType\":\"dimension\",\"property\":\"CUSTOMER_ID\",\"label\":\"Customer Id\"},{\"value\":\"CUSTOMER_PURCHASE_ORDER_REFERENCE\",\"dataType\":\"dimension\",\"property\":\"CUSTOMER_PURCHASE_ORDER_REFERENCE\",\"label\":\"Customer Purchase Order Reference\"},{\"value\":\"SALES_REPRESENTITIVE_ID\",\"dataType\":\"dimension\",\"property\":\"SALES_REPRESENTITIVE_ID\",\"label\":\"Sales Representitive Id\"},{\"value\":\"ORDER_COMPETED_DATE\",\"dataType\":\"datetime\",\"property\":\"ORDER_COMPETED_DATE\",\"label\":\"Order Competed Date\"},{\"value\":\"ORDER_YEAR\",\"dataType\":\"dimension\",\"property\":\"ORDER_YEAR\",\"label\":\"Order Year\"},{\"value\":\"TOTAL_ORDERS\",\"dataType\":\"dimension\",\"property\":\"TOTAL_ORDERS\",\"label\":\"Total Orders\"},{\"value\":\"BOL_ID\",\"dataType\":\"dimension\",\"property\":\"BOL_ID\",\"label\":\"Bol Id\"},{\"value\":\"ORDER_SHIP_DATE\",\"dataType\":\"datetime\",\"property\":\"ORDER_SHIP_DATE\",\"label\":\"Order Ship Date\"},{\"value\":\"SHIP_DATE_VARIFICATION\",\"dataType\":\"dimension\",\"property\":\"SHIP_DATE_VARIFICATION\",\"label\":\"Ship Date Varification\"}]},{\"filterName\":\"ORDER_DATE\",\"filterDataType\":\"datetime\",\"filterValue\":\"2019-06-18 00:00:00.000\",\"filterOperator\":\"ge\",\"isBtw\":false,\"properties\":[{\"value\":\"ID\",\"dataType\":\"dimension\",\"property\":\"ID\",\"label\":\"Id\"},{\"value\":\"ORDER_DATE\",\"dataType\":\"datetime\",\"property\":\"ORDER_DATE\",\"label\":\"Order Date\"},{\"value\":\"ORDER_QUANTITY\",\"dataType\":\"dimension\",\"property\":\"ORDER_QUANTITY\",\"label\":\"Order Quantity\"},{\"value\":\"PROMISED_SHIP_DATE\",\"dataType\":\"datetime\",\"property\":\"PROMISED_SHIP_DATE\",\"label\":\"Promised Ship Date\"},{\"value\":\"DESIRED_SHIP_DATE\",\"dataType\":\"dimension\",\"property\":\"DESIRED_SHIP_DATE\",\"label\":\"Desired Ship Date\"},{\"value\":\"TOTAL_SHIPPED_QUANTITY\",\"dataType\":\"dimension\",\"property\":\"TOTAL_SHIPPED_QUANTITY\",\"label\":\"Total Shipped Quantity\"},{\"value\":\"STATUS\",\"dataType\":\"dimension\",\"property\":\"STATUS\",\"label\":\"Status\"},{\"value\":\"SITE_ID\",\"dataType\":\"dimension\",\"property\":\"SITE_ID\",\"label\":\"Site Id\"},{\"value\":\"SITE_NAME\",\"dataType\":\"dimension\",\"property\":\"SITE_NAME\",\"label\":\"Site Name\"},{\"value\":\"CUSTOMER_NAME\",\"dataType\":\"dimension\",\"property\":\"CUSTOMER_NAME\",\"label\":\"Customer Name\"},{\"value\":\"CUSTOMER_ID\",\"dataType\":\"dimension\",\"property\":\"CUSTOMER_ID\",\"label\":\"Customer Id\"},{\"value\":\"CUSTOMER_PURCHASE_ORDER_REFERENCE\",\"dataType\":\"dimension\",\"property\":\"CUSTOMER_PURCHASE_ORDER_REFERENCE\",\"label\":\"Customer Purchase Order Reference\"},{\"value\":\"SALES_REPRESENTITIVE_ID\",\"dataType\":\"dimension\",\"property\":\"SALES_REPRESENTITIVE_ID\",\"label\":\"Sales Representitive Id\"},{\"value\":\"ORDER_COMPETED_DATE\",\"dataType\":\"datetime\",\"property\":\"ORDER_COMPETED_DATE\",\"label\":\"Order Competed Date\"},{\"value\":\"ORDER_YEAR\",\"dataType\":\"dimension\",\"property\":\"ORDER_YEAR\",\"label\":\"Order Year\"},{\"value\":\"TOTAL_ORDERS\",\"dataType\":\"dimension\",\"property\":\"TOTAL_ORDERS\",\"label\":\"Total Orders\"},{\"value\":\"BOL_ID\",\"dataType\":\"dimension\",\"property\":\"BOL_ID\",\"label\":\"Bol Id\"},{\"value\":\"ORDER_SHIP_DATE\",\"dataType\":\"datetime\",\"property\":\"ORDER_SHIP_DATE\",\"label\":\"Order Ship Date\"},{\"value\":\"SHIP_DATE_VARIFICATION\",\"dataType\":\"dimension\",\"property\":\"SHIP_DATE_VARIFICATION\",\"label\":\"Ship Date Varification\"}]}]"
+	}, {
+		"Page_ID": 129,
+		"PageTitle": "Master Data Creation Reports - Empower",
+		"Subtitle": "",
+		"TypeOfPage": "O",
+		"Configuration": "[{\"pageId\":129,\"cardId\":\"116\"},{\"pageId\":129,\"cardId\":\"117\"},{\"pageId\":129,\"cardId\":\"118\"},{\"pageId\":129,\"cardId\":\"119\"}]",
+		"Created_by": "nsimakurti",
+		"Shared": "0",
+		"Filterconfig": null
+	}, {
+		"Page_ID": 133,
+		"PageTitle": "TEST DASHBOARD 3",
+		"Subtitle": "",
+		"TypeOfPage": "O",
+		"Configuration": null,
+		"Created_by": "nsimakurti",
+		"Shared": "0",
+		"Filterconfig": null
+	}, {
+		"Page_ID": 137,
+		"PageTitle": "dashboard",
+		"Subtitle": "",
+		"TypeOfPage": "O",
+		"Configuration": null,
+		"Created_by": "p2000488727",
+		"Shared": "0",
+		"Filterconfig": ""
+	}],
+	"AnalyticalPages": [{
+		"Page_ID": 5,
+		"PageTitle": "Sales Compare",
+		"Subtitle": "",
+		"TypeOfPage": "A",
+		"Configuration": null,
+		"Created_by": null,
+		"Shared": null,
+		"Filterconfig": null
+	}, {
+		"Page_ID": 12,
+		"PageTitle": "On time Delivery Details",
+		"Subtitle": "",
+		"TypeOfPage": "A",
+		"Configuration": null,
+		"Created_by": null,
+		"Shared": null,
+		"Filterconfig": null
+	}, {
+		"Page_ID": 16,
+		"PageTitle": "Order Tracking",
+		"Subtitle": "",
+		"TypeOfPage": "A",
+		"Configuration": null,
+		"Created_by": null,
+		"Shared": null,
+		"Filterconfig": null
+	}, {
+		"Page_ID": 18,
+		"PageTitle": "Lead To Cash Details",
+		"Subtitle": "",
+		"TypeOfPage": "A",
+		"Configuration": null,
+		"Created_by": null,
+		"Shared": null,
+		"Filterconfig": null
+	}, {
+		"Page_ID": 28,
+		"PageTitle": "Finance",
+		"Subtitle": "",
+		"TypeOfPage": "A",
+		"Configuration": null,
+		"Created_by": null,
+		"Shared": null,
+		"Filterconfig": null
+	}, {
+		"Page_ID": 109,
+		"PageTitle": "Service Line",
+		"Subtitle": "",
+		"TypeOfPage": "A",
+		"Configuration": "",
+		"Created_by": "",
+		"Shared": "0",
+		"Filterconfig": null
+	}, {
+		"Page_ID": 114,
+		"PageTitle": "Test",
+		"Subtitle": "Test",
+		"TypeOfPage": "A",
+		"Configuration": "",
+		"Created_by": "",
+		"Shared": "0",
+		"Filterconfig": null
+	}, {
+		"Page_ID": 119,
+		"PageTitle": "Serviceline UAT",
+		"Subtitle": "",
+		"TypeOfPage": "A",
+		"Configuration": "",
+		"Created_by": "",
+		"Shared": "0",
+		"Filterconfig": null
+	}, {
+		"Page_ID": 121,
+		"PageTitle": "Purchase Order Details",
+		"Subtitle": "Purchase Order Details",
+		"TypeOfPage": "A",
+		"Configuration": "",
+		"Created_by": "",
+		"Shared": "0",
+		"Filterconfig": null
+	}, {
+		"Page_ID": 123,
+		"PageTitle": "ServiceLineNew",
+		"Subtitle": "",
+		"TypeOfPage": "A",
+		"Configuration": "",
+		"Created_by": "",
+		"Shared": "0",
+		"Filterconfig": null
+	}, {
+		"Page_ID": 126,
+		"PageTitle": "Plant Manager Service Report - New Process",
+		"Subtitle": "",
+		"TypeOfPage": "A",
+		"Configuration": "",
+		"Created_by": "",
+		"Shared": "0",
+		"Filterconfig": null
+	}, {
+		"Page_ID": 128,
+		"PageTitle": "Service Line - Justin's Requirement",
+		"Subtitle": "",
+		"TypeOfPage": "A",
+		"Configuration": "",
+		"Created_by": "",
+		"Shared": "0",
+		"Filterconfig": null
+	}, {
+		"Page_ID": 130,
+		"PageTitle": "Master Data Creation",
+		"Subtitle": "",
+		"TypeOfPage": "A",
+		"Configuration": "",
+		"Created_by": "",
+		"Shared": "0",
+		"Filterconfig": null
+	}]
+}

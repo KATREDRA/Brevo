@@ -1,0 +1,99 @@
+<mvc:View controllerName="inhance.userManagementSecurity.controller.Home" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page id="Home" showHeader="false">
+		<l:BlockLayout id="BlockLayout" background="Default">
+			<l:BlockLayoutRow class="blockLayoutRowOne">
+				<l:BlockLayoutCell class="sapUiNoContentPadding">
+					<Image src="https://www.nexmo.com/wp-content/uploads/2017/11/secondary-user-management-dashboard.jpg" height="20rem" width="100%"/>
+				</l:BlockLayoutCell>
+			</l:BlockLayoutRow>
+			<l:BlockLayoutRow >
+				<l:BlockLayoutCell class="sapUiResponsiveContentPadding" title="{i18n>shopAdminTitle}" backgroundColorSet="ColorSet9"
+					backgroundColorShade="ShadeA" titleAlignment="Left"/>
+			</l:BlockLayoutRow>
+			<l:BlockLayoutRow>
+				<l:BlockLayoutCell visible="{=!${appView>/menuTabsVisibility}}" backgroundColorSet="ColorSet6" backgroundColorShade="ShadeD">
+					<l:VerticalLayout>
+						<core:Icon src="sap-icon://key-user-settings" size="2.5rem" color="White"/>
+						<Link text="Super Admin" press="handleSuperAdminPress" titleStyle="H2"
+							class="sapMTitleStyleH2 sapUiDocTitleLink darkTheme sapUiTinyMarginTopBottom"/>
+						<Text text="Maintaining the Application access based on the license" class="sapUiTinyMarginBottom"/>
+						<!--	<core:Icon src="sap-icon://product" size="2.5rem" color="White"/>
+						<Link text="Application" press="handleApplicationPress" titleStyle="H2" class="sapMTitleStyleH2 sapUiDocTitleLink darkTheme sapUiTinyMarginTopBottom"/>
+						<Text text="Create and manage an applications" class="sapUiTinyMarginBottom"/>-->
+					</l:VerticalLayout>
+				</l:BlockLayoutCell>
+				<l:BlockLayoutCell id="superAdminCell" visible="{=!${appView>/menuTabsVisibility}}" backgroundColorSet="ColorSet11"
+					backgroundColorShade="ShadeB">
+					<l:VerticalLayout>
+						<!--	<core:Icon src="sap-icon://key-user-settings" size="2.5rem" color="Default"/>
+						<Link text="Super Admin" press="handleSuperAdminPress" titleStyle="H2" class="sapMTitleStyleH2 sapUiDocTitleLink sapUiTinyMarginTopBottom"/>
+						<Text text="Maintaining the Application access based on the license" class="sapUiTinyMarginBottom"/>-->
+						<core:Icon src="sap-icon://product" size="2.5rem" color="Default"/>
+						<Link text="Application" press="handleApplicationPress" titleStyle="H2" class="sapMTitleStyleH2 sapUiDocTitleLink sapUiTinyMarginTopBottom"/>
+						<Text text="Create and manage an applications" class="sapUiTinyMarginBottom"/>
+					</l:VerticalLayout>
+				</l:BlockLayoutCell>
+				<l:BlockLayoutCell id="roleCell" visible="{appView>/menuTabsVisibility}" backgroundColorSet="ColorSet6" backgroundColorShade="ShadeD">
+					<l:VerticalLayout>
+						<core:Icon src="sap-icon://role" size="2.5rem" color="White"/>
+						<Link press="handleRolesPress" text="{i18n>productTitle}" class="sapMTitleStyleH2 sapUiDocTitleLink darkTheme sapUiTinyMarginTopBottom"/>
+						<Text text="{i18n>productContent}" class="sapUiTinyMarginBottom"/>
+						<Link type="Transparent" press="handleRolesPress" text="View" class="darkTheme" emphasized="true"/>
+					</l:VerticalLayout>
+				</l:BlockLayoutCell>
+				<l:BlockLayoutCell id="userCell" visible="{appView>/menuTabsVisibility}" backgroundColorSet="ColorSet11" backgroundColorShade="ShadeB">
+					<l:VerticalLayout>
+						<core:Icon src="sap-icon://user-edit" size="2.5rem" color="Default"/>
+						<Link text="{i18n>revenueTitle}" press="handleUserPress" titleStyle="H2" class="sapMTitleStyleH2 sapUiDocTitleLink sapUiTinyMarginTopBottom"/>
+						<Text text="{i18n>revenueContent}" class="sapUiTinyMarginBottom"/>
+						<Link text="View" press="handleUserPress" emphasized="true"/>
+					</l:VerticalLayout>
+				</l:BlockLayoutCell>
+				<l:BlockLayoutCell visible="true" backgroundColorSet="ColorSet6" backgroundColorShade="ShadeD">
+					<l:VerticalLayout>
+						<core:Icon src="sap-icon://kpi-corporate-performance" size="2.5rem" color="White"/>
+						<Link press="onUserPress" text="{i18n>supplierTitle}" titleStyle="H2"
+							class="sapMTitleStyleH2 sapUiDocTitleLink darkTheme sapUiTinyMarginTopBottom"/>
+						<Text text="{i18n>supplierContent}" class="sapUiTinyMarginBottom"/>
+					</l:VerticalLayout>
+				</l:BlockLayoutCell>
+			</l:BlockLayoutRow>
+			<l:BlockLayoutRow>
+				<!--<l:BlockLayoutCell backgroundColorSet="ColorSet9" backgroundColorShade="ShadeA" width="3">
+					<Table id="formTableId" items="{/actions}" growing="true" growingThreshold="5">
+						<headerToolbar>
+							<Toolbar design="Transparent">
+								<Title text="{i18n>customerOverviewTitle}"/>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column>
+								<Text text="Action"/>
+							</Column>
+							<Column >
+								<Text text="New Value"/>
+							</Column>
+							<Column >
+								<Text text="Changed By"/>
+							</Column>
+							<Column>
+								<Text text="Changed On"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{Action}"/>
+									<Text text="value"/>
+									<Text text="{Changed_By}"/>
+									<Text text="{Changed_On}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</l:BlockLayoutCell>-->
+			</l:BlockLayoutRow>
+		</l:BlockLayout>
+	</Page>
+</mvc:View>

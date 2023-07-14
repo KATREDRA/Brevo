@@ -1,0 +1,36 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:tnt="sap.tnt">
+  <Dialog title="Dimensions" showHeader="true" height="20em" class="sapUiPopupWithPadding" placement="Bottom">
+    <endButton>
+      <Button text="Close" type="transparent" press="valueHelpCloseButton"/>
+    </endButton>
+    <content>
+      <Table mode="None" items="{/}">
+        <columns>
+          <Column>
+            <header>
+              <Text text="Name"/>
+            </header>
+          </Column>
+          <Column >
+            <header>
+              <Text text="Chart Type"/>
+            </header>
+          </Column>
+        </columns>
+        <items>
+          <ColumnListItem>
+            <cells>
+              <Text text="{PageTitle}"></Text>
+              <Select change="onMeasureChartChanged" >
+                <items>
+                  <core:Item text="Column" />
+                  <core:Item text="Line" />
+                </items>
+              </Select>
+            </cells>
+          </ColumnListItem>
+        </items>
+      </Table>
+    </content>
+  </Dialog>
+</core:FragmentDefinition>

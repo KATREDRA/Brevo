@@ -1,0 +1,552 @@
+var url	 = "mongodb://1.186.146.208:27017/";
+const {ObjectId} = require('mongodb').ObjectId;
+var database = "UserManagement_brevo"
+var MongoClient=require('mongodb').MongoClient;
+
+function verifyReadAccess(userid, result,  callback){
+	MongoClient.connect(url,function(err,db)
+	{
+		if(err)
+			callback(err)
+		else
+		{
+			var dbo = db.db(database);
+			dbo.collection("useraccesspagepermission").find({'userid':ObjectId(userid),"readid":"true"}).toArray(function(err, access){
+				if(err)
+					callback(err)
+				else{
+					if(access!=null){
+						var finalResult = []
+						for(var i=0; i<result.length; i++){
+							if(str(result[i].CreatedBy) == str(userid)){
+								finalResult.push(result[i]);
+							}
+							else{
+								for(var j=0; j<access.length; j++){
+									console.log(result[i])
+									if(access[j].pageid == result[i].Page_Id){
+										finalResult.push(result[i]);
+										break;
+									}
+								}
+							}
+						}
+						callback(finalResult)
+					}
+				}
+			})
+		}	
+	})
+}
+
+function verifyUpdateAccess(userid, pageid, callback){
+	MongoClient.connect(url,function(err,db)
+	{
+		if(err)
+			callback(err)
+		else
+		{
+			var dbo = db.db(database);
+			var brevodb = db.("Brevov3")
+			brevodb.collection("OVPPageConfig").findOne({Page_Id:pageid}, function(err, res){
+				if(err)
+					callback(err)
+				else{
+					if(str(res.CreatedBy) == str(userid))
+						callback(true)
+					else{
+						dbo.collection("useraccesspagepermission").findOne({'userid':ObjectId(userid),"updateid":"true", 'pageid':int(pageid)},function(err, access){
+							if(err)
+								 callback(err)
+							else{
+									if(access == null)
+										callback(false)
+									else
+										callback(true)
+								}
+
+						})
+					}
+				}
+			})
+			
+		}	
+	})
+}
+
+function verifyDeleteAccess(userid, pageid, callback){
+	MongoClient.connect(url,function(err,db)
+	{
+		if(err)
+			callback(err)
+		else
+		{
+			var dbo = db.db(database);
+			var brevodb = db.("Brevov3")
+			brevodb.collection("OVPPageConfig").findOne({Page_Id:pageid}, function(err, res){
+				if(err)
+					callback(err)
+				else{
+					if(str(res.CreatedBy) == str(userid))
+						callback(true)
+					else{
+						dbo.collection("useraccesspagepermission").findOne({'userid':ObjectId(userid),"deleteid":"true", 'pageid':int(pageid)},function(err, access){
+							if(err)
+								 callback(err)
+							else{
+									if(access == null)
+										callback(false)
+									else
+										callback(true)
+								}
+
+						})
+					}
+				}
+			})
+		}	
+	})
+}
+
+function verifyCreateAccess(userid, pageid, callback){
+	MongoClient.connect(url,function(err,db)
+	{
+		if(err)
+			callback(err)
+		else
+		{
+			var brevodb = db.("Brevov3")
+			brevodb.collection("OVPPageConfig").findOne({Page_Id:pageid}, function(err, res){
+				if(err)
+					callback(err)
+				else{
+					if(str(res.CreatedBy) == str(userid))
+						callback(true)
+					else{
+						var dbo = db.db(database);
+						dbo.collection("useraccesspagepermission").findOne({'userid':ObjectId(userid),"createid":"true", 'pageid':int(pageid)},function(err, access){
+							if(err)
+								 callback(err)
+							else{
+									if(access == null)
+										callback(false)
+									else
+										callback(true)
+								}
+
+						})
+					}
+				}
+			})
+		}	
+	})
+}
+
+function verifyModelReadAccess(userid, model, callback){
+	MongoClient.connect(url,function(err,db)
+	{
+		if(err)
+			callback(err)
+		else
+		{
+			var dbo = db.db(database);
+			dbo.collection("useraccessmodulepermission").findOne({'userid':ObjectId(userid),"readid":"true", 'modelName':model},function(err, access){
+				if(err)
+					 callback(err)
+				else{
+						if(access == null)
+							callback(false)
+						else
+							callback(true)
+					}
+
+			})
+		}	
+	})
+}
+
+function verifyModelUpdateAccess(userid, model, callback){
+	MongoClient.connect(url,function(err,db)
+	{
+		if(err)
+			callback(err)
+		else
+		{
+			var dbo = db.db(database);
+			dbo.collection("useraccessmodulepermission").findOne({'userid':ObjectId(userid),"updateid":"true", 'modelName':model},function(err, access){
+				if(err)
+					 callback(err)
+				else{
+						if(access == null)
+							callback(false)
+						else
+							callback(true)
+					}
+
+			})
+		}	
+	})
+}
+function verifyModelDeleteAccess(userid, model, callback){
+	MongoClient.connect(url,function(err,db)
+	{
+		if(err)
+			callback(err)
+		else
+		{
+			var dbo = db.db(database);
+			dbo.collection("useraccessmodulepermission").findOne({'userid':ObjectId(userid),"deleteid":"true", 'modelName':model},function(err, access){
+				if(err)
+					 callback(err)
+				else{
+						if(access == null)
+							callback(false)
+						else
+							callback(true)
+					}
+
+			})
+		}	
+	})
+}
+function verifyModelCreateAccess(userid, model, callback){
+	MongoClient.connect(url,function(err,db)
+	{
+		if(err)
+			callback(err)
+		else
+		{
+			var dbo = db.db(database);
+			dbo.collection("useraccessmodulepermission").findOne({'userid':ObjectId(userid),"createid":"true", 'modelName':model},function(err, access){
+				if(err)
+					 callback(err)
+				else{
+						if(access == null)
+							callback(false)
+						else
+							callback(true)
+					}
+
+			})
+		}	
+	})
+}
+
+function verifyModelsReadAccess(userid, result,  callback){
+	MongoClient.connect(url,function(err,db)
+	{
+		if(err)
+			callback(err)
+		else
+		{
+			var dbo = db.db(database);
+			dbo.collection("useraccessmodulepermission").find({'userid':ObjectId(userid),"readid":"true"}).toArray(function(err, access){
+				if(err)
+					callback(err)
+				else{
+					if(access!=null){
+						var finalResult = []
+						for(var i=0; i<result.length; i++){
+							for(var j=0; j<access.length; j++){
+								console.log(result[i])
+								if(access[j].pageid == result[i].Page_Id){
+									finalResult.push(result[i]);
+									break;
+								}
+							}
+						}
+						callback(finalResult)
+					}
+				}
+			})
+		}	
+	})
+}
+
+
+module.exports = {
+    verifyReadAccess,
+    verifyUpdateAccess,
+	verifyCreateAccess,
+	verifyDeleteAccess,
+	verifyModelReadAccess,
+	verifyModelUpdateAccess,
+	verifyModelDeleteAccess,
+	verifyModelCreateAccess
+}
+var url	 = "mongodb://1.186.146.208:27017/";
+const {ObjectId} = require('mongodb').ObjectId;
+var database = "UserManagement_brevo"
+var MongoClient=require('mongodb').MongoClient;
+
+function verifyReadAccess(userid, result,  callback){
+	MongoClient.connect(url,function(err,db)
+	{
+		if(err)
+			callback(err)
+		else
+		{
+			var dbo = db.db(database);
+			dbo.collection("useraccesspagepermission").find({'userid':ObjectId(userid),"readid":"true"}).toArray(function(err, access){
+				if(err)
+					callback(err)
+				else{
+					if(access!=null){
+						var finalResult = []
+						for(var i=0; i<result.length; i++){
+							if(str(result[i].CreatedBy) == str(userid)){
+								finalResult.push(result[i]);
+							}
+							else{
+								for(var j=0; j<access.length; j++){
+									console.log(result[i])
+									if(access[j].pageid == result[i].Page_Id){
+										finalResult.push(result[i]);
+										break;
+									}
+								}
+							}
+						}
+						callback(finalResult)
+					}
+				}
+			})
+		}	
+	})
+}
+
+function verifyUpdateAccess(userid, pageid, callback){
+	MongoClient.connect(url,function(err,db)
+	{
+		if(err)
+			callback(err)
+		else
+		{
+			var dbo = db.db(database);
+			var brevodb = db.db("BrevoV3")
+			brevodb.collection("OVPPageConfig").findOne({Page_Id:pageid}, function(err, res){
+				if(err)
+					callback(err)
+				else{
+					if(str(res.CreatedBy) == str(userid))
+						callback(true)
+					else{
+						dbo.collection("useraccesspagepermission").findOne({'userid':ObjectId(userid),"updateid":"true", 'pageid':int(pageid)},function(err, access){
+							if(err)
+								 callback(err)
+							else{
+									if(access == null)
+										callback(false)
+									else
+										callback(true)
+								}
+
+						})
+					}
+				}
+			})
+			
+		}	
+	})
+}
+
+function verifyDeleteAccess(userid, pageid, callback){
+	MongoClient.connect(url,function(err,db)
+	{
+		if(err)
+			callback(err)
+		else
+		{
+			var dbo = db.db(database);
+			var brevodb = db.("Brevov3")
+			brevodb.collection("OVPPageConfig").findOne({Page_Id:pageid}, function(err, res){
+				if(err)
+					callback(err)
+				else{
+					if(str(res.CreatedBy) == str(userid))
+						callback(true)
+					else{
+						dbo.collection("useraccesspagepermission").findOne({'userid':ObjectId(userid),"deleteid":"true", 'pageid':int(pageid)},function(err, access){
+							if(err)
+								 callback(err)
+							else{
+									if(access == null)
+										callback(false)
+									else
+										callback(true)
+								}
+
+						})
+					}
+				}
+			})
+		}	
+	})
+}
+
+function verifyCreateAccess(userid, pageid, callback){
+	MongoClient.connect(url,function(err,db)
+	{
+		if(err)
+			callback(err)
+		else
+		{
+			var brevodb = db.("Brevov3")
+			brevodb.collection("OVPPageConfig").findOne({Page_Id:pageid}, function(err, res){
+				if(err)
+					callback(err)
+				else{
+					if(str(res.CreatedBy) == str(userid))
+						callback(true)
+					else{
+						var dbo = db.db(database);
+						dbo.collection("useraccesspagepermission").findOne({'userid':ObjectId(userid),"createid":"true", 'pageid':int(pageid)},function(err, access){
+							if(err)
+								 callback(err)
+							else{
+									if(access == null)
+										callback(false)
+									else
+										callback(true)
+								}
+
+						})
+					}
+				}
+			})
+		}	
+	})
+}
+
+function verifyModelReadAccess(userid, model, callback){
+	MongoClient.connect(url,function(err,db)
+	{
+		if(err)
+			callback(err)
+		else
+		{
+			var dbo = db.db(database);
+			dbo.collection("useraccessmodulepermission").findOne({'userid':ObjectId(userid),"readid":"true", 'modelName':model},function(err, access){
+				if(err)
+					 callback(err)
+				else{
+						if(access == null)
+							callback(false)
+						else
+							callback(true)
+					}
+
+			})
+		}	
+	})
+}
+
+function verifyModelUpdateAccess(userid, model, callback){
+	MongoClient.connect(url,function(err,db)
+	{
+		if(err)
+			callback(err)
+		else
+		{
+			var dbo = db.db(database);
+			dbo.collection("useraccessmodulepermission").findOne({'userid':ObjectId(userid),"updateid":"true", 'modelName':model},function(err, access){
+				if(err)
+					 callback(err)
+				else{
+						if(access == null)
+							callback(false)
+						else
+							callback(true)
+					}
+
+			})
+		}	
+	})
+}
+function verifyModelDeleteAccess(userid, model, callback){
+	MongoClient.connect(url,function(err,db)
+	{
+		if(err)
+			callback(err)
+		else
+		{
+			var dbo = db.db(database);
+			dbo.collection("useraccessmodulepermission").findOne({'userid':ObjectId(userid),"deleteid":"true", 'modelName':model},function(err, access){
+				if(err)
+					 callback(err)
+				else{
+						if(access == null)
+							callback(false)
+						else
+							callback(true)
+					}
+
+			})
+		}	
+	})
+}
+function verifyModelCreateAccess(userid, model, callback){
+	MongoClient.connect(url,function(err,db)
+	{
+		if(err)
+			callback(err)
+		else
+		{
+			var dbo = db.db(database);
+			dbo.collection("useraccessmodulepermission").findOne({'userid':ObjectId(userid),"createid":"true", 'modelName':model},function(err, access){
+				if(err)
+					 callback(err)
+				else{
+						if(access == null)
+							callback(false)
+						else
+							callback(true)
+					}
+
+			})
+		}	
+	})
+}
+
+function verifyModelsReadAccess(userid, result,  callback){
+	MongoClient.connect(url,function(err,db)
+	{
+		if(err)
+			callback(err)
+		else
+		{
+			var dbo = db.db(database);
+			dbo.collection("useraccessmodulepermission").find({'userid':ObjectId(userid),"readid":"true"}).toArray(function(err, access){
+				if(err)
+					callback(err)
+				else{
+					if(access!=null){
+						var finalResult = []
+						for(var i=0; i<result.length; i++){
+							for(var j=0; j<access.length; j++){
+								console.log(result[i])
+								if(access[j].pageid == result[i].Page_Id){
+									finalResult.push(result[i]);
+									break;
+								}
+							}
+						}
+						callback(finalResult)
+					}
+				}
+			})
+		}	
+	})
+}
+
+
+module.exports = {
+    verifyReadAccess,
+    verifyUpdateAccess,
+	verifyCreateAccess,
+	verifyDeleteAccess,
+	verifyModelReadAccess,
+	verifyModelUpdateAccess,
+	verifyModelDeleteAccess,
+	verifyModelCreateAccess
+}

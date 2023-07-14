@@ -1,0 +1,9 @@
+var MongoClient = require('mongodb').MongoClient;
+// Connection to demo database in MongoDB
+MongoClient.connect("mongodb://techvasppadmin:Init2020!@127.0.0.1:28017/", function(err, db) {
+	if(err){
+		console.log(err);
+	}else{
+   	 	console.log("Success");
+    }
+});

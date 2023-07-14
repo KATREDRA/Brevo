@@ -1,0 +1,41 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+	<Popover  showHeader="true" contentWidth="23em" contentHeight="38em" offsetX="6" offsetY="100" class="customPopOver sapUiPopupWithPadding" horizontalScrolling="false" placement="Right">
+		<customHeader>
+			<Toolbar >
+				<Button icon="sap-icon://close-command-field" class="menuButton" type="Transparent" press="valueHelpCloseButton"/>
+				<ToolbarSpacer/>
+				<Title text="Restricted Measure Settings"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>
+		<content>
+			<HBox>
+						<Label text="Measure Type" width="7rem" class="sapUiTinyMarginTopBottom sapUiSmallMarginBegin"/>
+					<Select change="handleMeasureTypeChange" class="customMultiBoxStyle" width="10rem">
+						<core:Item key="Conditional" text="Conditional"/>
+						<core:Item key="Restricted" text="Restricted"/>
+					</Select>
+					<HBox/>
+					<HBox>
+						<Label text="Aggregation Type" width="7rem" class="sapUiTinyMarginTopBottom sapUiSmallMarginBegin"/>
+					<Select change="handleAggregationType" class="customMultiBoxStyle" width="10rem">
+						<core:Item key="sum" text="Sum"/>
+						<core:Item key="avg" text="Average"/>
+						<core:Item key="count" text="Count"/>
+					</Select>
+					<HBox/>
+					
+					<Label text="Measure Name" width="7rem" class="sapUiTinyMarginTopBottom sapUiSmallMarginBegin"/>
+					<Input width="15rem"/>
+					<Text text="Formula Editor"/>
+						<TextArea height="30%" cols="100" rows="10" class="sapUiTinyMarginEnd"/>
+						<Button text="Validate" width="7rem" type="Accept" press="onValidateFormula"/>
+					
+				
+		</content>
+	</Popover>
+</core:FragmentDefinition>

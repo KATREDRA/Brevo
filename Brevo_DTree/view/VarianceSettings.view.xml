@@ -1,0 +1,46 @@
+<mvc:View controllerName="Brevo.BrevoDtree.controller.VarianceSettings" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Title" showHeader="false" enableScrolling="false">
+		<content>
+			<f:SimpleForm id="SimpleFormDisplay354wideDual" editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3"
+				labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
+				singleContainerFullSize="true">
+				<f:content>
+					<core:Title text="Variance Analysis"/>
+					<Label text="Time Dimension" required="false"/>
+					<Select selectedKey="Time" change="handleSelectionChange" items="{/}">
+						<items>
+							<core:Item key="{Name}" text="{Name}"></core:Item>
+						</items>
+					</Select>
+					<Label text="Time Period" required="false"/>
+					<!--<Select items="{/}" change="handleSelectionChange">-->
+					<!--	<items>-->
+					<!--		<core:Item key="{year}" text="{year}"></core:Item>-->
+					<!--	</items>-->
+					<!--</Select>-->
+					<Select selectedKey="All" change="handleSelectionChange">
+						<items>
+							<core:Item key="All" text="All"></core:Item>
+							<core:Item key="Q1" text="Q1"></core:Item>
+							<core:Item key="Q2" text="Q2"></core:Item>
+							<core:Item key="Q3" text="Q3"></core:Item>
+							<core:Item key="Q4" text="Q4"></core:Item>
+						</items>
+					</Select>
+					<Label visible="true" text="Variance Measure" required="false"/>
+					<Select visible="true" selectedKey="Revenue Previous" change="handleSelectionChange" items="{/}">
+						<items>
+							<core:Item key="{value}" text="{value}"></core:Item>
+						</items>
+					</Select>
+					<Label text="Minimum Dimension Contribution" required="false"/>
+					<Slider class="sliderPadding" min="0.0" max="1.0" width="100%" change="handleSliderChange"></Slider>
+					<Label text="Minium Measure Contribution" required="false"/>
+					<Slider class="sliderPadding" min="-10" max="10" width="100%" change="handleSliderChange"></Slider>
+					<core:Title text=""/>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+	</Page>
+</mvc:View>

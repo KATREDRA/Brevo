@@ -1,0 +1,74 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified">
+	<Dialog title="Select your filters" showHeader="true" contentWidth="60rem" contentHeight="40em"
+		class="sapUiPopupWithPadding sapUiSizeCompact sapContrastPlus" placement="Bottom">
+		<beginButton>
+			<Button text="OK" type="Transparent" press="handleFilterConfirm"/>
+		</beginButton>
+		<endButton>
+			<Button text="Close" type="Transparent" press="handleFilterClose"/>
+		</endButton>
+		<Table items="{/}" noDataText="No Filterable Values" mode="None">
+			<headerToolbar>
+				<Toolbar>
+					<ToolbarSpacer/>
+					<Button icon="sap-icon://add" type="Tranparent" press="onAddNewFilterRow"></Button>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column vAlign="Middle" hAlign="Center" width="10rem">
+					<header>
+						<Text text="Dimension"/>
+					</header>
+				</Column>
+				<Column vAlign="Middle" hAlign="Center" width="10rem">
+					<header>
+						<Text text="Operator"/>
+					</header>
+				</Column>
+				<Column vAlign="Middle" hAlign="Center" width="10rem">
+					<header>
+						<Text text="Value"/>
+					</header>
+				</Column>
+				<Column vAlign="Middle" hAlign="Center" width="2rem">
+					<header>
+						<Text text=""/>
+					</header>
+				</Column>
+				<Column vAlign="Middle" hAlign="Center" width="2rem">
+					<header>
+						<Text text=""/>
+					</header>
+				</Column>
+			</columns>
+			<ColumnListItem vAlign="Middle" hAlign="Center">
+				<cells>
+					<Select forceSelection="false" change="handlepropertyChange" items="{properties}" selectedKey="{filterParameter}">
+						<items>
+							<core:Item key="{LABEL}" text="{COLUMN_NAME}"></core:Item>
+						</items>
+					</Select>
+					<Select selectedKey="{filterOperator}" change="handleFilterOperator" forcedSelection="true">
+						<core:Item key="eq" text="Equal to (=)"/>
+						<core:Item key="ne" text="Not Equal to (!=)"/>
+						<core:Item key="gt" text="Greater than (>)"/>
+						<core:Item key="ge" text="Greater than or Equal (>=)"/>
+						<core:Item key="lt" text="Less than (&lt;)"/>
+						<core:Item key="le" text="Less than or Equal (&lt;=)"/>
+						<core:Item key="bw" text="Between (&lt;>)"/>
+					</Select>
+					<VBox visible="true">
+						<Input value="{filterValue}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="onValueHelpRequestForFilterValue"></Input>
+						<Input value="{filterValue2}" visible="{isBtw}" showValueHelp="false" valueHelpOnly="false" placeholder="to"
+							valueHelpRequest="onValueHelpRequestForFilterValue"></Input>
+						<DatePicker visible="false" displayFormat="short" change="handleChange" class="sapUiSmallMarginBottom"/>
+						<DatePicker visible="false" displayFormat="short" change="handleChange" class="sapUiSmallMarginBottom"/>
+					</VBox>
+					<Button icon="sap-icon://add" visible="false" type="Tranparent" press="onAddNewFilterRow"></Button>
+					<Button icon="sap-icon://delete" type="Tranparent" press="onDeleteFilterRow"></Button>
+				</cells>
+			</ColumnListItem>
+		</Table>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,261 @@
+{
+	"d": {
+		"results": [{
+			"chartURL": "images/VerticalBar.PNG",
+			"chartDesc": "Purchase",
+			"chartType": "Column",
+			"type": "bar",
+			"category": "A",
+			"icon": "sap-icon://horizontal-bar-chart-2",
+			"chartName": "Report Table",
+			"typeOfChart": ""
+		}, {
+			"chartURL": "images/VerticalBar.PNG",
+			"chartDesc": "Purchase",
+			"chartType": "Report Table",
+			"type": "bar",
+			"category": "R",
+			"icon": "sap-icon://table-view",
+			"chartName": "Report Table",
+			"typeOfChart": ""
+		}, {
+			"chartURL": "images/VerticalBar.PNG",
+			"chartDesc": "Purchase",
+			"chartType": "Bar Charts",
+			"type": "bar",
+			"category": "D",
+			"icon": "sap-icon://bar-chart",
+			"chartName": "Column Chart",
+			"typeOfChart": "",
+			"measures": 1,
+			"dimensions": 1
+
+		}, {
+			"chartURL": "images/Bar.PNG",
+			"chartDesc": "Purchase",
+			"chartType": "Bar Charts",
+			"type": "bar",
+			"category": "D",
+			"icon": "sap-icon://horizontal-bar-chart-2",
+			"chartName": "Bar Chart",
+			"typeOfChart": "",
+			"measures": 1,
+			"dimensions": 1
+
+		}, {
+			"chartURL": "images/VerticalStackedBar.PNG",
+			"chartDesc": "HR",
+			"chartType": "Bar Charts",
+			"type": "stacked_column",
+			"category": "D",
+			"icon": "sap-icon://vertical-stacked-chart",
+			"chartName": "Stacked Column",
+			"typeOfChart": "",
+			"measures": 2,
+			"dimensions": 1
+		}, {
+			"chartURL": "images/Stacked_Bar.PNG",
+			"chartDesc": "HR",
+			"chartType": "Bar Charts",
+			"category": "D",
+			"icon": "sap-icon://horizontal-stacked-chart",
+			"type": "stacked_bar",
+			"chartName": "Stacked Bar",
+			"typeOfChart": "",
+			"measures": 2,
+			"dimensions": 1
+		}, {
+			"chartURL": "images/StackedCombinationNew.PNG",
+			"chartDesc": "Purchase",
+			"chartType": "Bar Charts",
+			"type": "bar",
+			"category": "D",
+			"icon": "sap-icon://horizontal-combination-chart",
+			"chartName": "Stacked Combination",
+			"typeOfChart": "",
+			"measures": 3,
+			"dimensions": 1
+		}, {
+			"chartURL": "images/Waterfall.PNG",
+			"chartDesc": "Numeric",
+			"chartType": "Numeric chart",
+			"icon": "sap-icon://number-sign",
+			"chartName": "Numeric Chart",
+			"type": "Numeric",
+			"category": "D",
+			"typeOfChart": "",
+			"measures": 2,
+			"dimensions": 0
+
+		}, {
+			"chartURL": "images/BlockMatrix.PNG",
+			"chartDesc": "Finance",
+			"chartType": "Bar Charts",
+			"type": "bar",
+			"icon": "sap-icon://grid",
+			"chartName": "Block Matrix",
+			"typeOfChart": "dimple.plot.bar",
+			"measures": 1,
+			"category": "D",
+			"dimensions": 1
+		}, {
+			"chartURL": "images/Donut.PNG",
+			"chartDesc": "Finance",
+			"chartType": "Donut Charts",
+			"type": "donut",
+			"icon": "sap-icon://donut-chart",
+			"chartName": "Donut Chart",
+			"typeOfChart": "donut",
+			"measures": 1,
+			"category": "D",
+			"dimensions": 1
+		}, {
+			"chartURL": "images/Pie.PNG",
+			"chartDesc": "Finance",
+			"chartType": "Pie Charts",
+			"type": "pie",
+			"category": "D",
+			"icon": "sap-icon://pie-chart",
+			"chartName": "Pie Chart",
+			"typeOfChart": "pie",
+			"measures": 1,
+			"dimensions": 1
+		}, {
+			"chartURL": "images/VerticalFloatingBars.PNG",
+			"chartDesc": "HR",
+			"chartType": "Bar Charts",
+			"chartName": "Vertical Floating Bars",
+			"type": "bar",
+			"category": "D",
+			"icon": "sap-icon://vertical-grip",
+			"typeOfChart": "dimple.plot.bar",
+			"measures": 1,
+			"dimensions": 1
+
+		}, {
+			"chartURL": "images/Scatter.PNG",
+			"chartDesc": "HR",
+			"chartType": "Scatter Charts",
+			"icon": "sap-icon://scatter-chart",
+			"chartName": "Scatter Chart",
+			"category": "D",
+			"type": "stacked_column",
+			"typeOfChart": "scatter",
+			"measures": 2,
+			"dimensions": 0
+
+		}, {
+			"chartURL": "images/Bubble.PNG",
+			"chartDesc": "Sales",
+			"chartType": "Bubble Charts",
+			"category": "D",
+			"icon": "sap-icon://bubble-chart",
+			"chartName": "Bubble Chart",
+			"typeOfChart": "",
+			"type": "bubble",
+			"measures": 3,
+			"dimensions": 0
+
+		}, {
+			"chartURL": "images/StackedArea.PNG",
+			"chartDesc": "HR",
+			"chartType": "Area Charts",
+			"icon": "sap-icon://area-chart",
+			"chartName": "Stacked Area",
+			"category": "D",
+			"typeOfChart": "dimple.plot.area",
+			"measures": 1,
+			"dimensions": 1
+
+		}, {
+			"chartURL": "images/Line.PNG",
+			"chartDesc": "HR",
+			"chartType": "Line Charts",
+			"icon": "sap-icon://line-chart",
+			"category": "D",
+			"chartName": "Line Chart",
+			"typeOfChart": "line",
+			"type": "line",
+			"measures": 1,
+			"dimensions": 1
+
+		}, {
+			"chartURL": "images/BubbleRing.PNG",
+			"chartDesc": "Sales",
+			"chartType": "Ring Charts",
+			"chartName": "Bubble Ring",
+			"icon": "sap-icon://bubble-chart",
+			"type": "stacked_column",
+			"category": "D",
+			"typeOfChart": "dimple.plot.bubble",
+			"measures": 1,
+			"dimensions": 1
+
+		}, {
+			"chartURL": "images/GroupedStepLine.PNG",
+			"chartDesc": "HR",
+			"chartType": "Step Charts",
+			"chartName": "Grouped Step Line",
+			"icon": "sap-icon://horizontal-waterfall-chart",
+			"typeOfChart": "dimple.plot.line",
+			"measures": 1,
+			"category": "D",
+			"dimensions": 1
+
+		}, {
+			"chartURL": "images/table.PNG",
+			"icon": "sap-icon://table-column",
+			"chartDesc": "HR",
+			"chartType": "Table",
+			"chartName": "Table",
+			"category": "D",
+			"typeOfChart": ""
+		}, {
+			"chartURL": "images/GeoMap.PNG",
+			"chartDesc": "HR",
+			"icon": "sap-icon://choropleth-chart",
+			"chartType": "Geo Map",
+			"chartName": "Geo Map",
+			"category": "D",
+			"typeOfChart": "dimple.plot.line",
+			"measures": 1,
+			"dimensions": 1
+		}, {
+			"chartURL": "images/heatMap.PNG",
+			"chartDesc": "HR",
+			"chartType": "Heat Map",
+			"icon": "sap-icon://Chart-Tree-Map",
+			"category": "D",
+			"chartName": "Heat Map",
+			"type": "heat",
+			"typeOfChart": "",
+			"measures": 1,
+			"dimensions": 2
+
+		}, {
+			"chartURL": "images/Bullet.PNG",
+			"chartDesc": "HR",
+			"category": "D",
+			"chartType": "Bullet",
+			"icon": "sap-icon://vertical-bullet-chart",
+			"type": "bullet",
+			"chartName": "Bullet",
+			"typeOfChart": "",
+			"measures": 2,
+			"dimensions": 1
+
+		}, {
+			"chartURL": "images/Waterfall.PNG",
+			"chartDesc": "HR",
+			"chartType": "Waterfall",
+			"category": "D",
+			"icon": "sap-icon://vertical-waterfall-chart",
+			"chartName": "Waterfall",
+			"type": "waterfall",
+			"typeOfChart": "",
+			"measures": 1,
+			"dimensions": 2
+
+		}]
+	}
+}

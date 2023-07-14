@@ -1,0 +1,32 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:m="sap.suite.ui.microchart" xmlns="sap.m" xmlns:ovp="sap.ovp.ui" xmlns:f="sap.ui.layout.form"
+	controllerName="dynamicCards.cards.AddCards" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:c="sap.ui.commons"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<VBox class="sapMFlexBox sapMHBox sapOvpBaseCard customHoverColor" id="topContractsCard">
+		<VBox width="100%" alignItems="End" justifyContent="End">
+			<core:Icon src="sap-icon://decline" color="white" backgroundColor="#007f98" class="sapUshellTileDeleteIconOuterClass" press="onDeletePress"
+				visible="false" tooltip="Delete"/>
+		</VBox>
+		<VBox class="sapOvpCardHeaderNotUsed"> 
+			<VBox alignItems="Start" justifyContent="SpaceBetween" class="extraPadding">
+				<Text text="Create a new card" class="sapOvpCardAddCardCustom"/>
+			</VBox>
+			<FlexBox alignItems="Start" visible="false" justifyContent="SpaceBetween">
+				<VBox class="">
+					<FlexBox alignItems="Start" justifyContent="SpaceBetween"></FlexBox>
+					<HBox class="numericContentHbox " visible="false" alignItems="End" justifyContent="Start">
+						<items></items>
+					</HBox>
+					<FlexBox alignItems="Start" visible="false" justifyContent="SpaceBetween"></FlexBox>
+					<FlexBox alignItems="Start" justifyContent="SpaceBetween"></FlexBox>
+				</VBox>
+			</FlexBox>
+			<FlexBox class="sapOvpCardSubtitleContainer">
+				<Text text="" class="sapOvpCardSubtitle" tooltip="{ovpCardProperties>/subTitle}"/>
+			</FlexBox>
+		</VBox>
+		<FlexBox visible="true" alignItems="Center" width="100%" justifyContent="Center">
+			<core:Icon src="sap-icon://add" tooltip="Add Card" size="10rem" color="white" width="25rem" press="handleAddCard"/>
+		</FlexBox>
+	</VBox>
+</core:View>

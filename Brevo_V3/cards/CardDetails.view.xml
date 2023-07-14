@@ -1,0 +1,36 @@
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m"
+	controllerName="dynamicCards.cards.CardDetails" xmlns:html="http://www.w3.org/1999/xhtml">
+	<VBox class="sapMFlexBox sapMHBox sapOvpBaseCard sapOvpCardRightContent">
+		<VBox width="100%" alignItems="End" justifyContent="End" id="deleteIconId"
+			class="sapUshellTileDeleteIconBox">
+			<core:Icon src="sap-icon://decline" color="white"
+				backgroundColor="#007f98" class="sapUshellTileDeleteIconOuterClass"
+				press="onDeletePress" visible="false" />
+		</VBox>
+		<VBox class="analyticalHeaderVbox">
+			<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+				<Text text="YTD Repair Sales" class="sapOvpCardCategoryCustom extraPadding" />
+			</FlexBox>
+			<VBox class="analyticalHeaderVbox">
+				<HBox alignItems="Start" justifyContent="SpaceBetween"
+					id="numericContentBoxHidden" visible="false">
+					<NumericContent size="M" withMargin="false" value=""
+						state="Loaded" id="numericContentBoxItem" truncateValueTo="5"
+						class="sapUiSmallMargin sapOvpAnaliticalCardkpiNumberValueStyle customBlueColor"
+						press="press" />
+				</HBox>
+				<HBox alignItems="Center" justifyContent="Center" id="numericContentBox">
+					<NumericContent size="M" withMargin="false" value="0"
+						state="Loaded" truncateValueTo="5"
+						class="sapUiSmallMargin sapOvpAnaliticalCardkpiNumberValueStyle customBlueColor"
+						press="press" />
+					<NumericContent size="M" visible="false" withMargin="false"
+						value="0" scale="%" truncateValueTo="5" valueColor="Good"
+						indicator="Up" state="Loaded"
+						class="sapUiSmallMargin sapOvpAnaliticalCardkpiNumberValueStyle"
+						press="press" />
+				</HBox>
+			</VBox>
+		</VBox>
+	</VBox>
+</core:View>

@@ -1,0 +1,53 @@
+<mvc:View xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.f" xmlns:mvc="sap.ui.core.mvc" controllerName="Brevo.Brevo_V2.controller.App"
+	xmlns:tnt="sap.tnt">
+	<tnt:ToolPage id="app" class="sapUiDemoToolPage">
+		<tnt:header>
+			<Toolbar id="shellBar" class="sapFShellBar">
+				<ToolbarSpacer width="0.5rem"/>
+				<Button type="Transparent" id="menuButton" icon="sap-icon://menu" press="openVariants"/>
+				<Image src="images/Brevo_New_Logo.png" height="2.5rem"/>
+				<ToolbarSpacer/>
+				<Button type="Transparent" icon="sap-icon://search" press="onMainSearchPressed"/>
+				<MenuButton type="Transparent" icon="sap-icon://employee">
+					<menu>
+						<Menu>
+							<items>
+								<MenuItem press="onAvatarPress" text="Profile" icon="sap-icon://employee"/>
+								<MenuItem press="onLogout" text="Log Out" icon="sap-icon://log"/>
+							</items>
+						</Menu>
+					</menu>
+				</MenuButton>
+				<ToolbarSpacer width="1rem"/>
+			</Toolbar>
+			<!--<f:ShellBar id="shellBar2" visible="false" title="" secondTitle="" showMenuButton="true"-->
+			<!--	class="sapUiSizeCompactN sapContrastPlus tinyPadding" menuButtonPressed="openVariants" homeIcon="images/Brevo_New_Logo.png"-->
+			<!--	showCopilot="false" showSearch="true" searchButtonPressed="onMainSearchPressed" showNotifications="false" showProductSwitcher="false">-->
+			<!--	<f:profile>-->
+			<!--		<f:Avatar press="onAvatarPress" backgroundColor="Transparent"/>-->
+			<!--	</f:profile>-->
+			<!--</f:ShellBar>-->
+		</tnt:header>
+		<tnt:sideContent>
+			<tnt:SideNavigation expanded="false" itemSelect="onItemSelect">
+				<tnt:NavigationList items="{ path: 'side>/navigation', templateShareable: false }" selectedKey="Browser_Brevo">
+					<tnt:NavigationListItem text="{side>title}" icon="{side>icon}" expanded="{side>expanded}" select="onNavigationListItemPress"
+						items="{ path: 'side>items', templateShareable: false }" key="{side>key}">
+						<tnt:NavigationListItem text="{side>title}" key="{side>key}" expanded="{side>expanded}"
+							items="{ path: 'side>items', templateShareable: false }">
+							<tnt:NavigationListItem text="{side>title}" key="{side>key}"></tnt:NavigationListItem>
+						</tnt:NavigationListItem>
+					</tnt:NavigationListItem>
+				</tnt:NavigationList>
+				<tnt:fixedItem>
+					<tnt:NavigationList items="{ path: 'side>/fixedNavigation', templateShareable: false }">
+						<tnt:NavigationListItem text="{side>title}" icon="{side>icon}" key="{side>key}"></tnt:NavigationListItem>
+					</tnt:NavigationList>
+				</tnt:fixedItem>
+			</tnt:SideNavigation>
+		</tnt:sideContent>
+		<tnt:mainContents>
+			<App id="parentApp" class="sapContrastPlus" backgroundRepeat="false" backgroundColor="#fafafa"></App>
+		</tnt:mainContents>
+	</tnt:ToolPage>
+</mvc:View>

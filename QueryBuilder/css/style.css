@@ -1,0 +1,197 @@
+.hboxstyle .sapMList,
+.hboxstyle2 .sapMList {
+    min-height: 15rem!important
+}
+
+.filterPanel,
+.form .sapMList,
+.hboxstyle .sapMList,
+.hboxstyle2 .sapMList {
+    max-height: 15rem!important;
+    overflow-y: scroll
+}
+
+.sapUiTinyMarginBegin,
+.tileLayout {
+    margin-left: 1.5rem!important
+}
+
+#paper,
+.tileLayout {
+    box-sizing: border-box
+}
+
+.textcomplete-dropdown a:hover,
+.tileLayout {
+    cursor: pointer
+}
+
+#paper {
+    border: 1px solid gray
+}
+
+.record-item-available {
+    text-decoration: underline
+}
+
+.hboxstyle {
+    height: 100%;
+    width: 100%
+}
+
+.hboxstyle>.sapMFlexItem {
+    width: 50%;
+    padding-left: 20px;
+    padding-right: 20px
+}
+
+.inputStyleClass {
+    min-width: 10rem!important
+}
+
+.previewTitle {
+    border-bottom: 1px solid #fafafa!important
+}
+
+.hboxstyle2 .sapMList {
+    min-width: 47rem!important;
+    max-width: 47rem!important
+}
+
+.cliPadding {
+    padding: 0 1rem!important
+}
+
+.ltiBorder {
+    border-bottom: 0 solid #ccc!important
+}
+
+.hboxstyle>.sapMFlexItem>.sapMList>.sapMListDummyArea>.sapMListModeMultiSelect>.sapMLIB {
+    background: green
+}
+
+.filterClass {
+    background-color: #e8eff6!important
+}
+
+.leftSpace {
+    padding-left: 15px;
+    font-size: 18px;
+    color: #4682b4
+}
+
+.objListItemClass .sapMListItems .sapMLIB .sapMLIBContent .sapMObjLTopRow .sapMObjLNumberDiv .sapMObjectNumber .sapMObjectNumberText,
+.tileFont {
+    font-size: 1rem
+}
+
+.spacer {
+    padding-top: 13px!important
+}
+
+.labelspacer {
+    padding-top: 0!important
+}
+
+.spacer2 {
+    padding-top: 30px!important
+}
+
+.tileLayout {
+    margin-top: 1rem!important;
+    display: inline-block;
+    border-radius: .125rem;
+    position: relative;
+    outline: 0;
+    background: #fff;
+    border: 1px solid transparent;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .15);
+    vertical-align: top
+}
+
+.formulaPanel,
+.tokenError {
+    border-width: 2px!important
+}
+
+.tileFont {
+    color: #333;
+    font-weight: 400;
+    font-family: "72", Arial, Helvetica, sans-serif
+}
+
+.tileLayout:hover {
+    background: 0 0
+}
+
+.FirstLineMargin {
+    margin-top: 3.8rem!important;
+    font-weight: 700!important
+}
+
+.customMultiBoxStyle>.sapMListModeMultiSelect>.sapMMultiComboBoxItem {
+    height: 2rem!important
+}
+
+.alignRight {
+    align-items: flex-end!important
+}
+
+.formulaPanel {
+    background-color: #ebebeb!important;
+    border-color: #000!important;
+    border-radius: .2rem!important;
+    padding: .5rem;
+    height: 90%!important
+}
+
+.operatorToken {
+    background-color: #4F4!important;
+    margin-left: .3rem;
+    margin-right: .3rem
+}
+
+.measureToken {
+    background-color: #FFAF18!important
+}
+
+.measureTokenSelected {
+    background-color: #91c8f6!important
+}
+
+.tokenError {
+    border-color: red!important
+}
+
+.tokenIconHide {
+    visibility: hidden
+}
+
+.textcomplete-dropdown {
+    border: 1px solid #ddd;
+    background-color: #fff
+}
+
+.textcomplete-dropdown li {
+    border-top: 1px solid #ddd;
+    padding: 2px 5px
+}
+
+.textcomplete-dropdown li:first-child {
+    border-top: none
+}
+
+.textcomplete-dropdown .active,
+.textcomplete-dropdown li:hover {
+    background-color: #6eb7db
+}
+
+.textcomplete-dropdown {
+    list-style: none;
+    padding: 0;
+    margin: 0
+}
+
+.objAttributeClass .sapMOHBottomRow .sapMOHAttrRow .sapMOHAttr .sapMObjectAttributeDiv .sapMObjectAttributeText {
+    font-size: large
+}

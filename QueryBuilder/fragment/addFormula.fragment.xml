@@ -1,0 +1,69 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified">
+	<Dialog title="Custom Measure" contentHeight="40rem" contentWidth="50rem" class="sapUiSizeCompact">
+		<content>
+			<VBox class="sapUiSmallMargin">
+				<HBox>
+					<Label text="Measure Type" width="7rem" class="sapUiTinyMarginTopBottom sapUiSmallMarginBegin"/>
+					<Select change="handleMeasureTypeChange" class="customMultiBoxStyle" width="10rem">
+						<core:Item key="Conditional" text="Conditional"/>
+					</Select>
+					<Label text="Measure Name" width="7rem" class="sapUiTinyMarginTopBottom sapUiSmallMarginBegin"/>
+					<Input width="15rem" value="" change="onRemoveTable"/>
+				</HBox>
+				<HBox>
+					<VBox width="65%" class="sapUiTinyMarginTopBottom sapUiSmallMarginBegin">
+						<Text text="Formula Editor"/>
+						<TextArea height="30%" cols="100" rows="10" class="sapUiTinyMarginEnd" change="onremovetable"/>
+						<Button text="Validate" width="7rem" type="Accept" press="onValidateFormula"/>
+					</VBox>
+					<VBox width="30%">
+						<Panel expandable="true" expanded="false" headerText="Functions" width="auto" class="sapUiTinyMarginTop">
+							<content>
+								<VBox alignItems="Center" justifyContent="Center">
+									<Button text="If()" width="7rem" type="Emphasized" press="onFunctionPress"/>
+									<Button text="Log()" width="7rem" type="Emphasized" press="onFunctionPress"/>
+									<Button text="Int()" width="7rem" type="Emphasized" press="onFunctionPress"/>
+									<Button text="Float()" width="7rem" type="Emphasized" press="onFunctionPress"/>
+									<Button text="Double()" width="7rem" type="Emphasized" press="onFunctionPress"/>
+									<Button text="Quarter()" width="7rem" type="Emphasized" press="onFunctionPress"/>
+									<Button text="Month()" width="7rem" type="Emphasized" press="onFunctionPress"/>
+								</VBox>
+							</content>
+						</Panel>
+						<Panel expandable="true" expanded="false" headerText="Conditions" width="auto" class="sapUiTinyMarginTop">
+							<content>
+								<VBox alignItems="Center" justifyContent="Center">
+									<Button text="And" width="7rem" type="Emphasized" press="onConditionPress"/>
+									<Button text="Or" width="7rem" type="Emphasized" press="onConditionPress"/>
+									<Button text="=" width="7rem" type="Emphasized" press="onConditionPress"/>
+									<Button text="!=" width="7rem" type="Emphasized" press="onConditionPress"/>
+									<Button text="Greater Than" width="7rem" type="Emphasized" press="onConditionPress"/>
+									<Button text="Greater Than Equals" width="7rem" type="Emphasized" press="onConditionPress"/>
+									<Button text="Less Than" width="7rem" type="Emphasized" press="onConditionPress"/>
+									<Button text="Less Than Equals" width="7rem" type="Emphasized" press="onConditionPress"/>
+								</VBox>
+							</content>
+						</Panel>
+						<Panel expandable="true" expanded="false" headerText="Operators" width="auto" class="sapUiTinyMarginTop">
+							<content>
+								<VBox alignItems="Center" justifyContent="Center">
+									<Button text="+" width="7rem" type="Emphasized" press="onOperatorPress"/>
+									<Button text="-" width="7rem" type="Emphasized" press="onOperatorPress"/>
+									<Button text="*" width="7rem" type="Emphasized" press="onOperatorPress"/>
+									<Button text="/" width="7rem" type="Emphasized" press="onOperatorPress"/>
+								</VBox>
+							</content>
+						</Panel>
+					</VBox>
+				</HBox>
+			</VBox>
+		</content>
+		<beginButton>
+			<Button text="Save Measure" press="handleCustomMeasureSave"/>
+		</beginButton>
+		<endButton>
+			<Button text="Cancel" press="handleCustomMeasureCancel"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

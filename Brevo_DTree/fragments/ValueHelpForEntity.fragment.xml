@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Select a Target Measure" showHeader="true" contentHeight="60%" contentWidth="30%"
+		class="sapUiPopupWithPadding sapContrastPlus">
+		<endButton>
+			<Button text="Close" press="valueHelpCloseButton"/>
+		</endButton>
+		<content>
+			<SearchField liveChange="onmeasureSearch"></SearchField>
+			<List growing="true" items="{/MEASURES}">
+				<items>
+					<ObjectListItem title="{}" type="Active" press="valueHelpItemSelectionEntity"/>
+				</items>
+			</List>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

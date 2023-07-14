@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+	<Popover title="User Information" placement="Left">
+		<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="5" labelSpanM="5" labelSpanS="5"
+			adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+			singleContainerFullSize="false" visible="true" class="removeTitle">
+			<f:content>
+				<Label text="Name"/>
+				<Text text="{appView>/loginDetails/0/firstname} {appView>/loginDetails/0/lastname}"/>
+				<Label text="Email Id"/>
+				<Text text="{appView>/loginDetails/0/user_emailid}"/>
+				<Label text="Phone No"/>
+				<Text text="{appView>/loginDetails/0/contactnumber}"/>
+			</f:content>
+		</f:SimpleForm>
+	</Popover>
+</core:FragmentDefinition>

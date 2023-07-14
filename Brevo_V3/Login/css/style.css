@@ -1,0 +1,25 @@
+/* Enter your custom styles here */
+
+.loginForm {
+    background-color: #d5787836;
+}
+
+span.sapMBtnInner.sapMBtnEmphasized {
+    background-color: #00b04f;
+    border-color: #00b04f;
+    text-shadow: 0 0 0.125rem transparent;
+}
+
+.sapMBtn:hover>.sapMBtnHoverable.sapMBtnEmphasized:not(.sapMBtnActive):not(.sapMToggleBtnPressed) {
+    background-color: #00b04f;
+    border-color: #00b04f;
+    color: #fff;
+}
+
+.sapMLabel {
+    color: #000000;
+}
+
+.sapUiGlobalBackgroundImage {
+    background-color: white;
+}

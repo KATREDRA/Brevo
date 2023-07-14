@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Popover showHeader="false" contentWidth="200px" contentHeight="64px" placement="Bottom" >
+	<!--<NavContainer-->
+	<!--id="navCon">-->
+		<Page id="master" showHeader="false">
+			<List id="list" >
+	<!--items="{/ProductCollection}"-->
+					<StandardListItem title="Remove Item from Output" description="" type="Active"  press="onRemoveItemPress"	iconDensityAware="false" iconInset="false"/>
+			</List>
+		</Page>
+	</Popover>
+	<!--<SelectDialog noDataText="No data Found" title="Select Output Columns" search="handleSearch" confirm="onAddItemsPress" cancel="handleClose"-->
+	<!--	remember="true" multiSelect="true" items="{ path: '/columns' }">-->
+	<!--	<StandardListItem title="{label}" type="Active"/>-->
+	<!--</SelectDialog>-->
+</core:FragmentDefinition>

@@ -1,0 +1,10 @@
+{
+	"status": "Success",
+	"count": 9,
+	"tables": ["applications", "favourite", "filters", "group_applications", "group_role_relation", "groups", "roles", "user_roles", "users"],
+	"views": [{
+		"NAME": "View1"
+	}, {
+		"NAME": "View2"
+	}]
+}

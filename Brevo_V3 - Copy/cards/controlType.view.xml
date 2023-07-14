@@ -1,0 +1,51 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:m="sap.suite.ui.microchart" xmlns:viz="sap.viz.ui5.controls"
+	xmlns="sap.m" xmlns:ovp="sap.ovp.ui" xmlns:f="sap.ui.layout.form"
+	controllerName="dynamicCards.cards.controlType" xmlns:c="sap.ui.commons"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<!-- <VBox class="sapOvpBaseCard sapOvpCardHeader sapUshellTileDeleteIconBox" 
+		id="conTypCard"> <core:Icon src="sap-icon://decline" color="white" backgroundColor="#007f98" 
+		class="sapUshellTileDeleteIconOuterClass" press="onDeletePress" visible="false" 
+		/> -->
+
+	<VBox class="sapMFlexBox sapMHBox sapOvpBaseCard sapOvpCardRightContent"
+		id="conTypCard">
+		<VBox width="100%" alignItems="End" justifyContent="End"
+			class="sapUshellTileDeleeIconBox">
+			<core:Icon src="sap-icon://decline" color="white"
+				backgroundColor="#007f98" class="sapUshellTileDeleteIconOuterClass"
+				press="onDeletePress" visible="false" />
+		</VBox>
+		<VBox class="sapOvpCardHeader">
+			<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+				<Label design="Bold" id="conTypText" text="{/graphDetails/0/title3}"
+					class="sapOvpCardCategory" />
+			</FlexBox>
+			<FlexBox alignItems="Start" visible="false" justifyContent="SpaceBetween">
+				<VBox class="">
+					<FlexBox alignItems="Start" justifyContent="SpaceBetween"></FlexBox>
+					<HBox class="numericContentHbox " visible="false" alignItems="End"
+						justifyContent="Start">
+						<items></items>
+					</HBox>
+					<FlexBox alignItems="Start" visible="false" justifyContent="SpaceBetween"></FlexBox>
+					<FlexBox alignItems="Start" justifyContent="SpaceBetween"></FlexBox>
+				</VBox>
+			</FlexBox>
+			<FlexBox class="sapOvpCardSubtitleContainer">
+				<Text text="" class="sapOvpCardSubtitle" tooltip="{ovpCardProperties>/subTitle}" />
+			</FlexBox>
+		</VBox>
+		<ovp:CardContentContainer>
+			<FlexBox alignItems="Center" justifyContent="Center" visible="true"
+				width="100%" id="barGraphId">
+				<f:SimpleForm>
+					<viz:VizFrame width="300px" id="idVizFrameStackedColumn">
+					</viz:VizFrame>
+				</f:SimpleForm>
+			</FlexBox>
+		</ovp:CardContentContainer>
+	</VBox>
+
+</core:View>

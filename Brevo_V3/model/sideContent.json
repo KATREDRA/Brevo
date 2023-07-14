@@ -1,0 +1,123 @@
+{
+	"navigation": [{
+		"title": "Home",
+		"icon": "sap-icon://home",
+		"expanded": false,
+		"allUser": true,
+		"key": "home",
+		"items": []
+	}, {
+		"title": "Browse",
+		"icon": "sap-icon://bbyd-dashboard",
+		"expanded": true,
+		"allUser": true,
+		"key": "Brevo Dashboard",
+		"items": [{
+			"title": "Dashboards - Data Rubicon",
+			"icon": "sap-icon://bbyd-dashboard",
+			"expanded": false,
+			"componentName ": "Brevo.Brevo_V2",
+			"URL": "current",
+			"allUser": true,
+			"key": "Browser_Brevo",
+			"items": []
+		}, {
+			"title": "Decision Tree",
+			"icon": "sap-icon://tree",
+			"expanded": false,
+			"allUser": true,
+			"URL": "/Brevo_DTree/index.html",
+			"componentName": "ibrevoVDT",
+			"key": "Browse_DTree",
+			"items": []
+		}]
+	}, {
+		"title": "Create",
+		"icon": "sap-icon://create",
+		"allUser": true,
+		"expanded": true,
+		"key": "Content Creator",
+		"items": [{
+			"title": "Dashboards - Data Rubicon",
+			"icon": "sap-icon://bbyd-dashboard",
+			"expanded": true,
+			"allUser": true,
+			"URL": "current",
+			"key": "Create_Brevo",
+			"items": [{
+				"title": "KPI - in the current Dashboard",
+				"icon": "sap-icon://add",
+				"allUser": true,
+				"expanded": false,
+				"componentName": "Brevo.Brevo_V2",
+				"URL": "current",
+				"key": "Dashboards - Data Rubicon",
+				"items": []
+			}]
+		}, {
+			"title": "Decision Tree",
+			"icon": "sap-icon://tree",
+			"expanded": false,
+			"allUser": true,
+			"componentName": "ibrevoVDT",
+			"URL": "/Brevo_DTree/index.html",
+			"key": "DTree Breakdown",
+			"items": []
+		}]
+	}, {
+		"title": "More",
+		"icon": "sap-icon://role",
+		"expanded": false,
+		"allUser": false,
+		"key": "DTree Breakdown",
+		"items": [{
+			"title": "Modeling",
+			"icon": "sap-icon://database",
+			"allUser": false,
+			"expanded": false,
+			"componentName": "Brevo.Brevo_V2",
+			"URL": "/QueryBuilder/index.html",
+			"key": "modeling",
+			"items": []
+		}, {
+			"title": "User Mangement",
+			"icon": "sap-icon://database",
+			"allUser": false,
+			"expanded": false,
+			"componentName": "Brevo.Brevo_V2",
+			"URL": "/UserManagement/index.html",
+			"key": "userMgt",
+			"items": []
+		}]
+	}],
+	"fixedNavigation": [{
+		"title": "Important Links",
+		"icon": "sap-icon://chain-link",
+		"key": "Important Links was pressed"
+	}, {
+		"title": "Legal",
+		"icon": "sap-icon://compare",
+		"key": "Legal was pressed"
+	}],
+	"masterSettings": [{
+		"title": "System Settings",
+		"key": "systemSettings",
+		"selected": true
+	}, {
+		"title": "Order Settings",
+		"key": "orderSettings",
+		"selected": false
+	}, {
+		"title": "Supplier Settings",
+		"key": "supplierSettings",
+		"selected": false
+	}, {
+		"title": "Campaign Settings",
+		"key": "campaignSettings",
+		"selected": false
+	}, {
+		"title": "Shipping Settings",
+		"key": "shipping Settings",
+		"selected": false
+	}]
+}

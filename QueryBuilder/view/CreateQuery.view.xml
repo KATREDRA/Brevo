@@ -1,0 +1,229 @@
+<mvc:View controllerName="Brevo.QueryBuilder.controller.CreateQuery" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" xmlns:tnt="sap.tnt"
+	xmlns:l="sap.ui.layout" xmlns:t="sap.ui.table">
+	<App>
+		<NavContainer id="wizardNavContainer">
+			<pages>
+				<Page title="{i18n>title}" id="wizardContentPage" showHeader="true" showNavButton="true" navButtonPress="onNavBack" backgroundDesign="List">
+					<headerContent>
+						<Button id="editorButton" text="SQL editor" type="Emphasized" press="onEditorPress"></Button>
+					</headerContent>
+					<content>
+						<Wizard id="createQueryWizard" complete="wizardCompletedHandler">
+							<WizardStep id="queryName" validated="true" title="General Configuration">
+								<form:SimpleForm width="50%" editable="true" layout="ResponsiveGridLayout">
+									<form:content>
+										<Label text="Select a Database" labelFor="database2" class="labelspacer"/>
+										<Select forceSelection="true" change="onDatabaseChange" items="{ path: '/database_list'}" id="database">
+											<core:Item key="{name}" text="{name}"/>
+										</Select>
+									</form:content>
+								</form:SimpleForm>
+							</WizardStep>
+							<WizardStep id="ProductTypeStep" title="Select Tables/Views" validated="true" activate="clickNext">
+								<HBox class="hboxstyle">
+									<FlexBox direction="Column">
+										<Text id="tableText" class="leftSpace" text="Tables"/>
+										<SearchField liveChange="onTableSearch" width="100%"/>
+										<List mode="MultiSelect" id="tables" items="{/Tables}" selectionChange="clickNext">
+											<items >
+												<StandardListItem title="{TABLE_NAME}" class="popOverItem" press="clickNext"/>
+											</items>
+										</List>
+									</FlexBox>
+									<FlexBox direction="Column">
+										<Text id="ViewText" class="leftSpace" text="Selected Tables/Views"/>
+										<SearchField liveChange="onViewSearch" width="100%"/>
+										<List mode="None" id="selectedTables" items="{/selectedTables/}">
+											<items>
+												<StandardListItem title="{TABLE_NAME}" class="popOverItem"/>
+											</items>
+										</List>
+									</FlexBox>
+								</HBox>
+							</WizardStep>
+							<WizardStep id="linkingDimension" validated="true" title="Linking Properties" activate="validateStepThree">
+								<Toolbar>
+									<Title text="" level="H2"/>
+									<ToolbarSpacer ></ToolbarSpacer>
+									<Button type="Emphasized" icon="sap-icon://add" text="Add Join" class="alignRight" press="onAddJoinPress"/>
+									<!--<Button id="add" text="Add Stop" icon="sap-icon://add" type="Transparent" visible="true" press="addRoutes"/>-->
+								</Toolbar>
+								<ScrollContainer height="100%" width="100%" horizontal="true" vertical="true" focusable="true">
+									<!--<HBox id="linkingFlexBox" class="hboxstyle"></HBox>-->
+									<core:HTML content="&lt;div id=&quot;linkingProperties&quot;&gt;&lt;/div&gt;"></core:HTML>
+								</ScrollContainer>
+								<!--<HBox class="hboxstyle">-->
+								<!--	<Label text="Type Of Join" labelFor="productInput" class="spacer"/>-->
+								<!--	<Select id="joinType" forceSelection="true" width="100%">-->
+								<!--		<core:Item key="inner join" text="Inner Join"/>-->
+								<!--		<core:Item key="left join" text="Left Join"/>-->
+								<!--		<core:Item key="right join" text="Right Join"/>-->
+								<!--	</Select>-->
+								<!--</HBox>-->
+							</WizardStep>
+							<WizardStep id="Linking" validated="true" title="Output Columns">
+								<t:Table title="" rows="{/}" showColumnVisibilityMenu="true" enableCellFilter="true" enableCustomFilter="false"
+									enableColumnReordering="true" id="columnSelectionTableId" noDataText="No Data" visible="true" visibleRowCount="12" selectionMode="None">
+									<t:columns>
+										<t:Column width="11rem">
+											<Label text="Table Name"/>
+											<t:template>
+												<Text text="{tablename}"></Text>
+											</t:template>
+										</t:Column>
+										<t:Column width="11rem">
+											<Label text="Column Name"/>
+											<t:template>
+												<Text text="{label}"></Text>
+											</t:template>
+										</t:Column>
+										<t:Column width="11rem">
+											<Label text="Description"/>
+											<t:template>
+												<Input value="{descriptions}"></Input>
+											</t:template>
+										</t:Column>
+										<t:Column width="11rem">
+											<Label text="Data Type"/>
+											<t:template>
+												<Text text="{col_datatype}"></Text>
+											</t:template>
+										</t:Column>
+										<t:Column width="11rem">
+											<Label text="Column Type"/>
+											<t:template>
+												<Text text="{datatype}"></Text>
+											</t:template>
+										</t:Column>
+										<t:Column width="11rem">
+											<Label text="Aggregation Type"/>
+											<t:template>
+												<Select change="onTableColumnAggregationChanged" selectedKey="{aggregationType}"
+													visible="{path:'datatype',formatter:'Brevo.QueryBuilder.util.Formatter.aggregationColumnVisibility'}">
+													<items>
+														<core:Item text="Sum" key="sum"/>
+														<core:Item text="Average" key="avg"/>
+														<core:Item text="Count" key="count"/>
+													</items>
+												</Select>
+											</t:template>
+										</t:Column>
+										<t:Column width="11rem">
+											<Label text="Hidden"/>
+											<t:template>
+												<Switch state="{hidden}"/>
+											</t:template>
+										</t:Column>
+										<t:Column width="11rem">
+											<Label text="Synonyms"/>
+											<t:template>
+												<Input value="{synonyms}"></Input>
+											</t:template>
+										</t:Column>
+										<t:Column width="11rem">
+											<Label text="Custom Label"/>
+											<t:template>
+												<Input value="{customLabel}"/>
+											</t:template>
+										</t:Column>
+										<t:Column width="11rem">
+											<Label text="Filter Operator"/>
+											<t:template>
+												<Select selectedKey="{filterOperator}" change="handleFilterOperator"
+													visible="{path:'datatype',formatter:'Brevo.QueryBuilder.util.Formatter.filterColumnVisibility'}">
+													<core:Item key="eq" text="Equal to (=)"/>
+													<core:Item key="ne" text="Not Equal to (!=)"/>
+													<core:Item key="gt" text="Greater than (>)"/>
+													<core:Item key="ge" text="Greater than or Equal (>=)"/>
+													<core:Item key="lt" text="Less than (&lt;)"/>
+													<core:Item key="le" text="Less than or Equal (&lt;=)"/>
+													<core:Item key="bw" text="Between (&lt;>)"/>
+												</Select>
+											</t:template>
+										</t:Column>
+										<t:Column width="11rem">
+											<Label text="Filters"/>
+											<t:template>
+												<VBox>
+													<Input value="{filters}" visible="{path:'datatype',formatter:'Brevo.QueryBuilder.util.Formatter.getFilterVisibility'}" showValueHelp="true"
+														valueHelpRequest="handletableColumnFilters"></Input>
+													<Input value="{filters1}"
+														visible="{parts :[{path:'datatype'},{path:'filterOperator'}],formatter:'Brevo.QueryBuilder.util.Formatter.getBTFilterVisibility'}"
+														showValueHelp="true" valueHelpRequest="handletableColumnFilters"></Input>
+													<DatePicker value="{filters}" visible="{path:'datatype',formatter:'Brevo.QueryBuilder.util.Formatter.getDateFilterVisibility'}"
+														displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"></DatePicker>
+													<DatePicker value="{filters1}"
+														visible="{parts :[{path:'datatype'},{path:'filterOperator'}],formatter:'Brevo.QueryBuilder.util.Formatter.getDateBTFilterVisibility'}"
+														displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"></DatePicker>
+												</VBox>
+											</t:template>
+										</t:Column>
+										<t:Column width="11rem">
+											<Label text="Format Pattern"/>
+											<t:template>
+												<Select selectedKey="{formatpattern}" change="handleScaleSelection" class="customMultiBoxStyle">
+													<core:Item key="none" text="None"/>
+													<core:Item key="default" text="Default"
+														enabled="{path:'datatype',formatter:'Brevo.QueryBuilder.util.Formatter.aggregationColumnVisibility'}"/>
+													<core:Item key="short" text="Short" enabled="{path:'datatype',formatter:'Brevo.QueryBuilder.util.Formatter.aggregationColumnVisibility'}"/>
+													<core:Item key="percentage" text="Percentage"
+														enabled="{path:'datatype',formatter:'Brevo.QueryBuilder.util.Formatter.aggregationColumnVisibility'}"/>
+												</Select>
+											</t:template>
+										</t:Column>
+										<!--<t:Column width="11rem">-->
+										<!--	<Label text="Currency Type"/>-->
+										<!--	<t:template>-->
+										<!--		<Input value="{currencyType}"></Input>-->
+										<!--	</t:template>-->
+										<!--</t:Column>-->
+									</t:columns>
+								</t:Table>
+								<Toolbar>
+									<Title text="Calculated Measures" id="formulaFormId" level="H1"/>
+									<ToolbarSpacer ></ToolbarSpacer>
+									<Button id="formulaId" icon="sap-icon://add" text="Add Formula" press="onAddButtonPress" type="Transparent"/>
+								</Toolbar>
+								<!--	<form:SimpleForm title="" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" editable="true"
+									layout="ResponsiveGridLayout">
+									<form:content>-->
+								<!--<Label text=""/>-->
+								<!--	<Button id="formulaId" icon="sap-icon://add" text="Add Formula" press="onAddButtonPress" type="Transparent"/>-->
+								<!--	<Label text="Formula"/>
+										<MultiComboBox items="{/}" selectionChange="handleSelectionChange" selectionFinish="handleSelectionFinish" id="comboBoxFormulaId">
+											<core:Item key="{Aliasname}" text="{Aliasname}"/>
+										</MultiComboBox>-->
+								<List items="{/}" id="comboBoxFormulaId" class="objListItemClass" width="100%" mode="Delete" delete="handleDelete">
+									<items>
+										<ObjectListItem title="{Aliasname}" type="Active" press="onListItemPress">
+											<attributes>
+												<!--	<ObjectAttribute text="{description}"/>-->
+												<!--<ObjectAttribute text="by D301234"/>-->
+											</attributes>
+										</ObjectListItem>
+									</items>
+								</List>
+								<form:SimpleForm id="sortId" minWidth="1024" editable="true" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3" emptySpanL="4"
+									emptySpanM="4" columnsL="1" columnsM="1">
+									<form:content>
+										<Label text="Sort" required="false" class=""/>
+										<Input id="sortById" value="" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="onValueHelpRequestForSortValue"></Input>
+									</form:content>
+								</form:SimpleForm>
+								<!--	</form:content>
+								</form:SimpleForm>-->
+							</WizardStep>
+						</Wizard>
+					</content>
+					<footer>
+						<OverflowToolbar>
+							<ToolbarSpacer/>
+							<Button text="Cancel" press="onNavBack"/>
+						</OverflowToolbar>
+					</footer>
+				</Page>
+			</pages>
+		</NavContainer>
+	</App>
+</mvc:View>

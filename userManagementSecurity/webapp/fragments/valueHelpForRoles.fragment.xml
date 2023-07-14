@@ -1,0 +1,40 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<Dialog title="Create Role" contentWidth="30%" class="sapUiSizeCompact">
+		<endButton>
+			<Button text="Cancel" press="handleRolesFragmentCancel"/>
+		</endButton>
+		<beginButton>
+			<Button text="Save" press="handleRolesFragmentSave"/>
+		</beginButton>
+		<f:SimpleForm minWidth="1024" maxContainerCols="2" editable="true" title="Role Details" layout="ResponsiveGridLayout" labelSpanL="4"
+			labelSpanM="12" adjustLabelSpan="true" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+			<f:content>
+				<Label text="Role Name" required="true"/>
+				<Input value="{/type}"/>
+				<Label text="Role Description" required="true"/>
+				<Input value="{/description}"/>
+			</f:content>
+		</f:SimpleForm>
+		<f:SimpleForm minWidth="1024" maxContainerCols="2" title="License Details" editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
+			labelSpanM="12" adjustLabelSpan="true" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+			<f:content>
+				<Label text="License Type"/>
+				<Select selectedKey="{appView>/loginDetails/0/license/license_type}" enabled="false">
+					<core:Item text="Trail License" key="Trail License"/>
+					<core:Item text="Permissive License" key="Permissive License"/>
+					<core:Item text="Full Access License" key="Full Access License"/>
+				</Select>
+				<Label text="License Period"/>
+				<DateRangeSelection change="handleDateRange"
+					value="{path:'appView>loginDetails/0/license/startdate', formatter:'.formatter.handleDateValues'} - {path:'appView>loginDetails/0/license/enddate' ,formatter:'.formatter.handleDateValues'}"
+					editable="false"/>
+				<Label text="No Of Days"/>
+				<Input value="{/LicenseSpan}" editable="false"></Input>
+				<Label text="Authorize to Create No Of Dashboards" required="true"/>
+				<Input type="Number" value="{/countofcreatepage}" liveChange="handleCreatePageCount"></Input>
+				<!--	<Label text="Authorize to Create No Of Users"/>
+				<Input value="{/Authorize_to_Create_No_Of_Users}"></Input>-->
+			</f:content>
+		</f:SimpleForm>
+	</Dialog>
+</core:FragmentDefinition>

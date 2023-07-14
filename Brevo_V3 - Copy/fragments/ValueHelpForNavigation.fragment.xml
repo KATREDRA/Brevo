@@ -1,0 +1,45 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+	<Popover  showHeader="false" contentWidth="23em" contentHeight="40.8em" offsetX="15" offsetY="100" class="customPopOver sapUiPopupWithPadding" placement="Right">
+	<!-- 	<footer>
+			<Toolbar>
+				<ToolbarSpacer width="0.01rem"/>
+				<Button id="reporId" icon="sap-icon://add" text="Report"  type="Transparent" press="OnNavigate"></Button>
+			</Toolbar>
+		</footer>
+		 <customHeader>
+			<Toolbar>
+				<Button id="navButton" visible ="false" icon="sap-icon://close-command-field" class="menuButton" type="Transparent" press="onnavBackButton"/>
+				<ToolbarSpacer/>
+				<Title id="navigationTitle" />
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>  -->
+		<content>
+				<App initialPage="typeOfNavigation" > 
+				<Page id="typeOfNavigation"   showHeader="true" showNavButton="false" title="Select Navigation Type ">
+					<List noDataText="No data" mode="None">
+						<items>
+						<StandardListItem title="Reports" class="popOverItem" type="Navigation" press="onNavigationValueHelpItemPress"/>
+						<StandardListItem title="Table" class="popOverItem" type="Navigation" press="onNavigationValueHelpItemPress"/>
+						<StandardListItem title="Analytics" class="popOverItem" type="Navigation" press="onNavigationValueHelpItemPress"/>
+						</items>
+					</List>
+				</Page>
+				<Page id="listOfNavigation"    showHeader="true" showNavButton="true" title="Select Drill-Down Report " navButtonPress="onnavBackButton">
+					
+						<!-- <List items="{/}">
+						<items>
+						<StandardListItem title="{reportTitle}" class="popOverItem" type="Active" press="navigationListPress"/>
+						</items>
+						</List> -->
+							<List></List>
+				
+				</Page>
+			</App>
+		</content>
+	</Popover>
+</core:FragmentDefinition>

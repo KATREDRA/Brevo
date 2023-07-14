@@ -1,0 +1,91 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Popover showHeader="true" contentWidth="23em" contentHeight="38em" offsetX="8" offsetY="100" class="customPopOver sapUiPopupWithPadding"
+		horizontalScrolling="false" placement="Right">
+		<!-- <Dialog title="Select from available Queries" showHeader="false" height="40em" class="sapUiPopupWithPadding" placement="Bottom"> -->
+		<customHeader>
+			<Toolbar >
+				<Button icon="sap-icon://close-command-field" class="menuButton" type="Transparent" press="valueHelpCloseButtonForMeasureSettings"/>
+				<ToolbarSpacer/>
+				<Title text="Measure Settings"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>
+		<content>
+			<Panel expandable="true" expanded="true" headerText="Format" width="auto" class="sapUiResponsiveMargi">
+				<f:SimpleForm editable="true" title="" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1"
+					layout="ResponsiveGridLayout">
+					<f:content>
+						<!-- 	<Label text="Scale" required="true" class="fontLabelColor"/>
+						<Select change="handleScaleSelection" class="customMultiBoxStyle">
+							<core:Item key="default" text="Default"/>
+							<core:Item key="percent" text="% Percentage"/>
+							<core:Item key="short" text="Short"/>
+						</Select> -->
+						<Label text="Aggregation Type" required="true" class="fontLabelColor"/>
+						<Select change="handleScaleSelection" id="aggregationTypeSelect" class="customMultiBoxStyle">
+							<core:Item key="Sum" text="Sum"/>
+							<core:Item key="Average" text="Average"/>
+							<core:Item key="Count" text="Count"/>
+						</Select>
+						<!-- 	<Label text="Decimal Places" required="true" class="fontLabelColor"/>
+						<Input liveChange="handleDecimalSelection" /> -->
+						<!-- <Label text="Show Sign As" required="true" class="fontLabelColor"/>
+						<Select change="handleSelectionChange" class="customMultiBoxStyle">
+							<core:Item key="default" text="Default"/>
+							<core:Item key="operator" text="+/-"/>
+							<core:Item key="symbol" text="()"/>
+						</Select>
+						<Label text="Unit" class="fontLabelColor"/>
+						<Input text="%"/> -->
+					</f:content>
+					<f:content>
+						<Table mode="None" noDataText="No Measures Selected" items="{/}" visible="false">
+							<columns>
+								<Column>
+									<header>
+										<Text text="Name"/>
+									</header>
+								</Column>
+								<Column >
+									<header>
+										<Text text="Chart Type"/>
+									</header>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{value}"></Text>
+										<Select change="onMeasureChartChanged" selectedKey="{measureType}" items="{measureSettings/}">
+											<items>
+												<core:Item text="{text}" key="{key}"/>
+											</items>
+										</Select>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</f:content>
+				</f:SimpleForm>
+			</Panel>
+			<!-- <Panel expandable="true"  expanded="true" headerText="Visualize" width="auto" class="sapUiResponsiveMargi">
+				<f:SimpleForm  editable="true" title="" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1"
+									layout="ResponsiveGridLayout">
+					<f:content>
+						<Label text="Color" class="fontLabelColor"/>
+						<Select id="colorText" change="handleSelectionChange" class="customMultiBoxStyle">
+							<core:Item key="Semantic_Color" text="Semantic Color"/>
+							<core:Item key="Default_Color" text="Default Color"/>
+							<core:Item key="Manual_Color" text="Manual Color"/>
+						</Select>
+							<Label text="Pattern" required="true" class="fontLabelColor"/><Input /><Label text="Show Sign As" required="true" class="titleCustomStyle"/><Select change="handleSelectionChange" class="customMultiBoxStyle"><core:Item key="default" text="Default"/><core:Item key="operator" text="+/-"/><core:Item key="symbol" text="()"/></Select><Label text="Show Data Labels" class="titleCustomStyle"/><Input type="Text" id="measureDecimal" value="3"/>
+						<MultiInput id="colorValues" enabled="false" tokenChange="onTokensChange" liveChange="onNewColorAdded" submit="onColorAdded"
+										showValueHelp="false"/>
+						<CheckBox text="Show Data Labels" selected="true" id="isShowLabelsSet" class="fontLabelColor" select="handleSelectionChange"/>
+					
+					</f:content>
+				</f:SimpleForm>
+			</Panel> -->
+		</content>
+	</Popover>
+</core:FragmentDefinition>

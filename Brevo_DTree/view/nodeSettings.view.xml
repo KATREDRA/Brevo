@@ -1,0 +1,84 @@
+<mvc:View controllerName="Brevo.BrevoDtree.controller.nodeSettings" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.ui.layout.form" xmlns:d="sap.suite.ui.commons" xmlns:m="sap.m"
+	xmlns:l="sap.ui.layout">
+	<Page title="Node Settings" showNavButton="true" navButtonPress="navBackToTreeView" class="sapContrastPlus" backgroundDesign="Solid">
+		<content>
+			<f:SimpleForm labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2" id="Properties" editable="true"
+				layout="ResponsiveGridLayout" title="Scenario Configuration" class="groupAlign">
+				<f:content>
+					<core:Title text=""/>
+					<Label text="scenario Title" required="false" class=""/>
+					<Text id="Scentitle" text="Sales"/>
+					<Label text="Data Model"/>
+					<Text id="datamodel" text="Sales Forecast"/>
+					<Label text="Target"/>
+					<Text id="scenEntity" text="Sales"/>
+					<core:Title text=""/>
+					<Label text="Measures" required="false" class=""/>
+					<Text id="scenMeas" text="Value in Q4"/>
+					<Label text="Dimensions" required="false" class=""/>
+					<Text id="scenDim" text="Customer,Selling_Plant"/>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2" editable="true"
+				layout="ResponsiveGridLayout" title="Calculation Details" class="groupAlign">
+				<f:content>
+					<core:Title text=""/>
+					<Label text="Node Name"/>
+					<Text id="nodeName" text="Margin"/>
+					<Label text="Node Calculation"/>
+					<Select id="calculateKey" items="{/}" selectedKey="Assumptions" change="handleSelectionChange">
+						<core:Item key="{key}" text="{name}"/>
+						<!-- <core:Item key="Assumptions" text="External Assumptions"/>
+					<core:Item key="Formula" text="Formula"/>
+					<core:Item key="SystemDerived" text="System Derived"/> -->
+					</Select>
+					<Label id="calculate" text="Calculation" required="false"/>
+					<Label id="operator" text="Pearson r formula"/>
+					<Label id="formulaText" text="Formula"/>
+					<Label id="extLabelText" text="Value"/>
+					<Input id="extLabelValue" placeholder="Enter Value"/>
+					<Label id="systemFormulaLabel" text="System Formula"/>
+					<VBox>
+						<Text id="systemFormula" text="NewTarget = T - (Co-efficentnode * NodeOrginalValue)"/>
+						<Text id="systemFormulaText" text=""/>
+					</VBox>
+					<Label id="coefficientLabel" text="Co-Efficient"/>
+					<!--<HBox alignItems="Center">-->
+					<!--	<Input id="systemValue" value="Value"/>-->
+					<!--	<Button icon="sap-icon://reset" tooltip="Reset to System Derived Co-Efficient Value" press="onResetButtonPress"></Button>-->
+					<!--</HBox>-->
+					<Input id="systemValue" value="Value" type="Number" liveChange="onSystemCoEfficientChange">
+						<layoutData>
+							<l:GridData span="XL7 L7 M7 S10"/>
+						</layoutData>
+					</Input>
+					<Button icon="sap-icon://reset" tooltip="Reset to System Derived Co-Efficient Value" id="resetButtonId" press="onResetButtonPress"
+						visible="false">
+						<layoutData>
+							<l:GridData span="XL1 L1 M1 S2"/>
+						</layoutData>
+					</Button>
+					<core:Title text=""/>
+				</f:content>
+			</f:SimpleForm>
+			<d:CalculationBuilder id="formulaValue" variables="{/}" expression="">
+				<d:variables>
+					<d:CalculationBuilderVariable key="{key}" label="{label}" items="{path:'items', templateShareable:true}">
+						<d:items>
+							<d:CalculationBuilderItem key="{key}"></d:CalculationBuilderItem>
+						</d:items>
+					</d:CalculationBuilderVariable>
+				</d:variables>
+			</d:CalculationBuilder>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button text="Save" press="onNodeSave"/>
+					<Button text="Cancel" press="onNodeCancel"/>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>

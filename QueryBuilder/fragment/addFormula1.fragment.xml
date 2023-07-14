@@ -1,0 +1,125 @@
+<!--<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified">
+	<Dialog title="Add Formula" resizable='true' draggable='true' class="sapUiSizeCompact">
+		<content>
+			<VBox class="sapUiSmallMargin">
+				<Panel width="auto" class="sapUiNoMargin" accessibleRole="Region">
+					<headerToolbar>
+						<Toolbar height="2rem">
+							<ToolbarSpacer/>
+							<Label text="Measure Type" width="7rem"/>
+							<Select change="handleMeasureTypeChange" id="idMeasureTypeSelect" class="customMultiBoxStyle">
+								<core:Item key="Conditional" text="Conditional"/>
+							</Select>
+							<ToolbarSpacer/>
+							<Label text="Measure Name" width="7rem"/>
+							<Input id="idMeasureName"/>
+							<ToolbarSpacer/>
+						</Toolbar>
+					</headerToolbar>
+					<content>
+						<HBox>
+							<VBox width="70%">
+								<Text text="Formula Editor"/>
+								<HBox width="100%" class="formulaPanel">
+									<Token id="idMeasure1" text="Select Measure 1" class="measureToken" press="onTokenPress" delete="onTokenDelete" visible="false"/>
+									<Token id="idOperation" text=" Equals " class="operatorToken" visible="false"/>
+									<Token id="idMeasure2" text="Select Measure 2" class="measureToken" press="onTokenPress" delete="onTokenDelete" visible="false"/>
+								</HBox>
+							</VBox>
+							<VBox width="30%">
+								<l:Grid containerQuery="true" hSpacing="2" vSpacing="0.5">
+									<ToggleButton id="idOperator1" text="Equals" width="7rem" press="onTogglePress"/>
+									<ToggleButton id="idOperator2" text="No Equals" width="7rem" press="onTogglePress"/>
+									<ToggleButton id="idOperator3" text="Greater Than" width="7rem" press="onTogglePress"/>
+									<ToggleButton id="idOperator4" text="Less Than" width="7rem" press="onTogglePress"/>
+								</l:Grid>
+							</VBox>
+						</HBox>
+					</content>
+				</Panel>
+			</VBox>
+		</content>
+		<beginButton>
+			<Button text="Save" press="handleCustomMeasureSave"/>
+		</beginButton>
+		<endButton>
+			<Button text="Cancel" press="handleCustomMeasureCancel"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>-->
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified">
+	<Dialog title="Add Formula" resizable='true' draggable='true' class="sapUiSizeCompact">
+		<content>
+			<VBox class="sapUiSmallMargin">
+				<HBox>
+				
+					<Label text="Measure Type" width="7rem" class="sapUiTinyMarginTopBottom sapUiSmallMarginBegin"/>
+					<Select change="handleMeasureTypeChange" class="customMultiBoxStyle">
+						<core:Item key="Conditional" text="Conditional"/>
+						<!--<core:Item key="Restricted" text="Restricted"/>
+						<core:Item key="Aggregated" text="Aggregated"/>-->
+					</Select>
+					<Label text="Select Table" width="9rem" class="sapUiTinyMarginTopBottom sapUiSmallMarginBegin"/>
+					<Select class="customMultiBoxStyle"  change="handleTableSelect" >
+						<core:Item key="Select" text="Select"/>
+					</Select>
+					<Label text="Calculated Measures" width="9rem" class="sapUiTinyMarginTopBottom sapUiSmallMarginBegin"/>
+					<Select class="customMultiBoxStyle"  change="handleCustomMeasureChange" >
+						<core:Item key="Select" text="Select"/>
+					</Select>
+					<ToolbarSpacer/>
+				
+				</HBox>
+				<Panel width="auto" class="sapUiTinyMarginTop" accessibleRole="Region">
+					<headerToolbar>
+						<Toolbar height="2rem">
+							<ToolbarSpacer/>
+							<Label text="Aggregation Type" width="7rem"/>
+							<Select change="handleAggregationType" class="customMultiBoxStyle">
+								<core:Item key="sum" text="Sum"/>
+								<core:Item key="avg" text="Average"/>
+								<core:Item key="count" text="Count"/>
+							</Select>
+							<ToolbarSpacer width="1rem"/>
+							<Label text="Measure Name" width="9rem"/>
+							<Input/>
+							<ToolbarSpacer/>
+						</Toolbar>
+					</headerToolbar>
+					<content>
+						<HBox>
+							<VBox width="70%">
+								<Text text="Formula Editor"/>
+								<HBox width="100%" class="formulaPanel">
+									<Token text="Select Measure 1" class="measureToken" press="onTokenPress" delete="onTokenDelete" visible="false"/>
+									<Token text=" Equals " class="operatorToken" visible="false"/>
+									<Token text="Select Measure 2" class="measureToken" press="onTokenPress" delete="onTokenDelete" visible="false"/>
+								</HBox>
+							</VBox>
+							<VBox width="30%">
+								<l:Grid containerQuery="true" hSpacing="2" vSpacing="0.5">
+									<ToggleButton text="Equals" width="7rem" press="onTogglePress"/>
+									<ToggleButton text="No Equals" width="7rem" press="onTogglePress"/>
+									<ToggleButton text="Greater Than" width="7rem" press="onTogglePress"/>
+									<ToggleButton text="Less Than" width="7rem" press="onTogglePress"/>
+								</l:Grid>
+							</VBox>
+						</HBox>
+					</content>
+				</Panel>
+			</VBox>
+			<!--<f:SimpleForm labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="4" columnsM="4" id="customMeasureTypeForm" title=""-->
+			<!--	layout="ResponsiveGridLayout">-->
+			<!--	<f:content></f:content>-->
+			<!--</f:SimpleForm>-->
+		</content>
+		<beginButton>
+			<Button text="Save" press="handleCustomMeasureSave"/>
+		</beginButton>
+		<endButton>
+			<Button text="Cancel" press="handleCustomMeasureCancel"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,49 @@
+{
+  "welcomeFile": "/index.html",
+  "authenticationMethod": "none",
+  "routes": [
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/Brevo",
+      "target": {
+        "type": "destination",
+        "name": "Brevo"
+      },
+      "description": "Northwind OData Service"
+    },
+    {
+      "path": "/BrevoMongoDB",
+      "target": {
+        "type": "destination",
+        "name": "BrevoMongoDB"
+      },
+      "description": "BrevoMongoDB"
+    },
+    {
+      "path": "/IMS",
+      "target": {
+        "type": "destination",
+        "name": "IMS"
+      },
+      "description": "IMS"
+    }
+  ],
+  "sendWelcomeFileRedirect": true
+}

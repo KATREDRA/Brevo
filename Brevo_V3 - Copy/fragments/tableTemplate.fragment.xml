@@ -1,0 +1,61 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:table="sap.ui.table" xmlns:suiteCommons="sap.suite.ui.commons">
+	<VBox class="sapMFlexBox sapMHBox sapOvpBaseCard sapOvpCardRightContent">
+		<VBox width="100%" alignItems="End" justifyContent="End" class="sapUshellTileDeleeIconBox">
+			<core:Icon src="sap-icon://decline" color="white" backgroundColor="#007f98" class="sapUshellTileDeleteIconOuterClass" press="onDeletePress"
+				visible="false"/>
+			<Text visible="false"/>
+		</VBox>
+		<Toolbar class="sapUiTinyMargin sapOvpCardHeade cardToolbar">
+			<content>
+				<Link text="{/cardTitle}" emphasized="true" press="cardTitlePress" class="cardTitle"></Link>
+				<Text visible="false" text="{/confiId}"></Text>
+				<Title visible="false" text="{/cardTitle}" emphasized="true" press="cardTitlePress" class=""></Title>
+				<!--<ObjectIdentifier class="cardTitle" titleActive="true" titlePress="cardTitlePress"></ObjectIdentifier>-->
+				<ToolbarSpacer/>
+				<MenuButton icon="sap-icon://action-settings" class="sapUiSizeCompact" press="onCardSettingsPress" type="Transparent">
+					<menu>
+						<Menu>
+							<items>
+								<MenuItem icon="sap-icon://edit" text="Edit" visible="{= ${AccessModel>/editCardEnabled} === true}" class="menuButton sapUiSizeCompact"
+									press="editCurrentCard" tooltip="Edit"></MenuItem>
+								<MenuItem icon="sap-icon://copy" text="Copy" visible="{= ${AccessModel>/editCardEnabled} === true}" class="menuButton sapUiSizeCompact"
+									press="copyCurrentCard" tooltip="Delete"></MenuItem>
+								<MenuItem icon="sap-icon://delete" text="Delete" visible="{= ${AccessModel>/editCardEnabled} === true}" class="menuButton sapUiSizeCompact"
+									press="deletCurrentCard" tooltip="Delete"></MenuItem>
+								<MenuItem icon="sap-icon://download" text="Export" visible="true" class="menuButton sapUiSizeCompact" press="downloadCurrentDataSet"
+									tooltip="Delete"></MenuItem>
+							</items>
+						</Menu>
+					</menu>
+				</MenuButton>
+				<Button icon="sap-icon://full-screen" press="resizeCard" type="Transparent"/>
+			</content>
+		</Toolbar>
+		<suiteCommons:ChartContainer alignItems="Center" class="customerChartContainer sapUiTinyMargin" showFullScreen="false"
+			showPersonalization="false" autoAdjustHeight="true" showLegendButton="false" showLegend="true" showZoom="false" justifyContent="Center"
+			visible="true">
+			<suiteCommons:content>
+				<suiteCommons:ChartContainerContent>
+					<suiteCommons:content>
+						<table:Table fixedLayout="true" class="tableOnMainView" mode="None" alternateRowColors="false" visibleRowCount="15" enableSelectAll="false"
+							enableGrouping="true" enableColumnFreeze="true" items="{/}" growingScrollToload="false" growingThreshold="10" growing="true" visisble="true"
+							type="Inactive">
+							<table:columns>
+								<table:Column hAlign="Center" vAlign="Middle">
+									<ObjectIdentifier title=""/>
+								</table:Column>
+								<table:Column hAlign="Center" vAlign="Middle">
+									<ObjectIdentifier title=""/>
+								</table:Column>
+								<table:Column hAlign="Center" vAlign="Middle">
+									<ObjectIdentifier title=""/>
+								</table:Column>
+							</table:columns>
+						</table:Table>
+					</suiteCommons:content>
+				</suiteCommons:ChartContainerContent>
+			</suiteCommons:content>
+		</suiteCommons:ChartContainer>
+	</VBox>
+</core:FragmentDefinition>

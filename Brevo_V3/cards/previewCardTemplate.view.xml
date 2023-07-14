@@ -1,0 +1,71 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:m="sap.suite.ui.microchart" xmlns="sap.m" xmlns:ovp="sap.ovp.ui" xmlns:f="sap.ui.layout.form"
+	controllerName="Brevo.Brevo_V2.cards.previewCardTemplate" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:c="sap.ui.commons"
+	xmlns:html="http://www.w3.org/1999/xhtml" class="cardTemplateClass">
+	<!-- <VBox class="sapMFlexBox sapMHBox sapMContainer2RemPadding" id="topContractsCard" visible="true" width="50rem" height="29rem">-->
+	<VBox class="sapMFlexBox sapMHBox sapUiSmallMargin" id="topContractsCard" visible="true">
+		<VBox class="sapOvpCardHeaderN" id="previewCardVBox">
+			<VBox alignItems="Start" justifyContent="SpaceBetween" class="extraPadding">
+				<Text id="ChartTitle" text=""/>
+			</VBox>
+			<FlexBox class="sapOvpCardSubtitleContainer">
+				<Text text="" id="ChartSubTitle" class="sapOvpCardSubtitle sapUiSmallMarginBegin" tooltip="{ovpCardProperties>/subTitle}"/>
+			</FlexBox>
+			<FlexBox alignItems="Center" visible="true" justifyContent="Center"></FlexBox>
+		</VBox>
+		<VBox visible="{= ${chartType>/isChart} === false}" id="numConBoxId">
+			<Text text="" class="numContentText"></Text>
+			<Text text="" class="numContentText"></Text>
+		</VBox>
+		<FlexBox id="previewChartBoxId" height="100%" alignItems="Center" justifyContent="Center">
+			<VBox alignItems="Center" visible="true" justifyContent="Center" id="ChartPreviewBox">
+				<Text text="Card Preview" class="sapOvpCardSubtitle" tooltip="{ovpCardProperties>/subTitle}"/>
+				<Text text="Configure your card to preview here." maxLines="999" class="sapOvpCardSubtitle" tooltip="{ovpCardProperties>/subTitle}"/>
+			</VBox>
+			<VBox alignItems="Start" visible="false" justifyContent="Center" id="chartContainer"></VBox>
+		</FlexBox>
+		<Table id="graphListId" items="{/value/}" visible="{= ${chartType>/isChart} === false}" mode="None" class="sapUiSmallMarginTop"
+			growingScrollToload="true" growingThreshold="10" growing="true">
+			<columns></columns>
+			<ColumnListItem type="Active" press="handleItemPress">
+				<cells></cells>
+			</ColumnListItem>
+		</Table>
+		<FlexBox id="vizChartBoxId" alignItems="Center" justifyContent="Center">
+			<viz:VizFrame id="idVizFrameCombination" height="30rem" width="57rem" class="sapUiSmallMarginTop">
+				<viz:feeds id="idVizFrameCombinationFeed"></viz:feeds>
+			</viz:VizFrame>
+		</FlexBox>
+		<FlexBox id="numericChartBoxId" alignItems="Start" visible="false" justifyContent="Start">
+			<NumericContent size="L" id="numericChart" formatterValue="true"></NumericContent>
+			<NumericContent size="L" id="numericChart2" formatterValue="true"></NumericContent>
+		</FlexBox>
+		<FlexBox id="errorText" width="20rem" height="25rem" justifyContent="Center" alignContent="Center" alignItems="Center"
+			class="sapUiContentPadding" visible="false">
+			<Text text="Incorrect Configuration!"/>
+		</FlexBox>
+		<FlexBox id="geoMapLayoutId" class="reportParent" visible="{= ${chartType>/isChart} === false}">
+			<core:HTML content='&lt;div id=&quot;territoryMap&quot; style=&quot;height: 600px; width: 48rem&quot;/div&gt;'></core:HTML>
+		</FlexBox>
+		<VBox class="floaterSettings sapUiSizeCompact sapUiTinyMargin" id="predictionControlBox"
+			visible="{= ${chartType>/predictionSupport} === true}">
+			<HBox justifyContent="SpaceAround" alignItems="Center">
+				<HBox class="sapUiTinyMarginBegin">
+					<Label text="Positive" class="footerLabel"/>
+					<VBox class="statusIndicator sapUiTinyMargin" height="5px" width="6rem"/>
+					<Label text="Critical" class="footerLabel"/>
+				</HBox>
+			</HBox>
+			<HBox id="floatSliderVisibility" justifyContent="SpaceAround" alignItems="Center" class="sapUiTinyMarginTop floatSliderVisibility">
+				<Link text="2018" class="sapUiTinyMarginBegin"></Link>
+				<Link text="2019" class="sapUiTinyMarginBegin"></Link>
+				<Link text="2020" class="sapUiTinyMarginBegin"></Link>
+				<Label text="Months : " class="sapUiTinyMarginBegin"/>
+				<Slider id="floatSlider" min="0" max="12" step="3" enableTickmarks="true" width="8rem" liveChange="handleFloatSliderChange"
+					class="sliderLables sapUiTinyMarginBottom sapUiTinyMarginEnd">
+					<ResponsiveScale tickmarksBetweenLabels="1"/>
+				</Slider>
+			</HBox>
+		</VBox>
+	</VBox>
+</core:View>

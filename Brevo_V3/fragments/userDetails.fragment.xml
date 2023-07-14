@@ -1,0 +1,15 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		noDataText="No users Found"
+		title="Select Users"
+		liveChange="handleSearch"
+		confirm="handleClose"
+		cancel="handleCancel"
+		multiSelect="true"
+		items="{/}" >
+		<StandardListItem
+			title="{USER_NAME}"	type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

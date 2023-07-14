@@ -1,0 +1,432 @@
+{
+	"roles": [{
+		"roleName": "Administrator",
+		"Description": "Administrative Activity",
+		"NoOfUsers": 1,
+		"roleId": 100,
+		"users": [{
+			"UserId": 301,
+			"FirstName": "John",
+			"LastName": "Miller",
+			"Email": "john@gmail.com",
+			"Phone": "977378327",
+			"License": "Active",
+			"Role": {
+				"roleName": "Administrator",
+				"roleId": 100
+			},
+			"access": []
+		}],
+		"LicenseType": "Full Access License",
+		"LicensePeriod": "Aug 01, 2019 - July 20, 2020",
+		"LicenseSpan": "365",
+		"Authorize_to_Create_No_Of_Dashboards": "9999999",
+		"Authorize_to_Create_No_Of_Users": "9999999"
+	}, {
+		"roleName": "Manager",
+		"Description": "Manager Activity",
+		"NoOfUsers": 2,
+		"roleId": 101,
+		"users": [{
+			"UserId": 302,
+			"FirstName": "Steve",
+			"LastName": "Smith",
+			"Email": "Smith@gmail.com",
+			"Phone": "977378327",
+			"License": "InActive",
+			"Role": {
+				"roleName": "Manager",
+				"roleId": 100
+			},
+			"access": []
+		}, {
+			"UserId": 303,
+			"FirstName": "Randy",
+			"LastName": "Orton",
+			"Email": "Randy@gmail.com",
+			"Phone": "977435427",
+			"License": "InActive",
+			"Role": {
+				"roleName": "Manager",
+				"roleId": 100
+			},
+			"access": []
+		}],
+		"LicenseType": "Full Access License",
+		"LicensePeriod": "Aug 01, 2019 - July 20, 2020",
+		"LicenseSpan": "365",
+		"Authorize_to_Create_No_Of_Dashboards": "10",
+		"Authorize_to_Create_No_Of_Users": "10"
+	}, {
+		"roleName": "Employee",
+		"Description": "Employee Activity",
+		"NoOfUsers": 2,
+		"roleId": 102,
+		"users": [{
+			"UserId": 304,
+			"FirstName": "King",
+			"LastName": "Booker",
+			"Email": "Booker@gmail.com",
+			"Phone": "9754456327",
+			"License": "InActive",
+			"Role": {
+				"roleName": "Employee",
+				"roleId": 100
+			},
+			"access": []
+		}, {
+			"UserId": 305,
+			"FirstName": "Kane",
+			"LastName": "Williamson",
+			"Email": "Williamson@gmail.com",
+			"Phone": "965458327",
+			"License": "InActive",
+			"Role": {
+				"roleName": "Employee",
+				"roleId": 100
+			},
+			"access": []
+		}],
+		"LicenseType": "Full Access License",
+		"LicensePeriod": "Aug 01, 2019 - July 20, 2020",
+		"LicenseSpan": "365",
+		"Authorize_to_Create_No_Of_Dashboards": "20",
+		"Authorize_to_Create_No_Of_Users": "20"
+	}, {
+		"roleName": "Trainee",
+		"Description": "Trainee Activity",
+		"NoOfUsers": 1,
+		"roleId": 103,
+		"users": [{
+			"UserId": 303,
+			"FirstName": "Randy",
+			"LastName": "Orton",
+			"Email": "Randy@gmail.com",
+			"Phone": "977435427",
+			"License": "InActive",
+			"Role": {
+				"roleName": "Trainee",
+				"roleId": 100
+			},
+			"access": []
+		}],
+		"LicenseType": "Full Access License",
+		"LicensePeriod": "Aug 01, 2019 - July 20, 2020",
+		"LicenseSpan": "365",
+		"Authorize_to_Create_No_Of_Dashboards": "1",
+		"Authorize_to_Create_No_Of_Users": "0"
+	}, {
+		"roleName": "Demo User",
+		"Description": "Demo User Activity",
+		"NoOfUsers": 0,
+		"roleId": 104,
+		"users": [],
+		"LicenseType": "Full Access License",
+		"LicensePeriod": "Aug 01, 2019 - July 20, 2020",
+		"LicenseSpan": "365",
+		"Authorize_to_Create_No_Of_Dashboards": "4",
+		"Authorize_to_Create_No_Of_Users": "4"
+	}, {
+		"roleName": "Business Partners",
+		"Description": "Business Partners Activity",
+		"NoOfUsers": 0,
+		"roleId": 105,
+		"users": [],
+		"LicenseType": "Full Access License",
+		"LicensePeriod": "Aug 01, 2019 - July 20, 2020",
+		"LicenseSpan": "365",
+		"Authorize_to_Create_No_Of_Dashboards": "0",
+		"Authorize_to_Create_No_Of_Users": "0"
+	}],
+	"users": [{
+		"UserId": 301,
+		"FirstName": "John",
+		"LastName": "Miller",
+		"Email": "john@gmail.com",
+		"Phone": "977378327",
+		"License": "Active",
+		"Role": {
+			"roleName": "Administrator",
+			"roleId": 100
+		},
+		"access": []
+	}, {
+		"UserId": 302,
+		"FirstName": "Steve",
+		"LastName": "Smith",
+		"Email": "Smith@gmail.com",
+		"Phone": "977378327",
+		"License": "InActive",
+		"Role": {
+			"roleName": "Employee",
+			"roleId": 100
+		},
+		"access": []
+	}, {
+		"UserId": 303,
+		"FirstName": "Randy",
+		"LastName": "Orton",
+		"Email": "Randy@gmail.com",
+		"Phone": "977435427",
+		"License": "Active",
+		"Role": {
+			"roleName": "Trainee",
+			"roleId": 100
+		},
+		"access": []
+	}, {
+		"UserId": 304,
+		"FirstName": "King",
+		"LastName": "Booker",
+		"Email": "Booker@gmail.com",
+		"Phone": "9754456327",
+		"License": "InActive",
+		"Role": {
+			"roleName": "Employee",
+			"roleId": 100
+		},
+		"access": []
+	}, {
+		"UserId": 305,
+		"FirstName": "Kane",
+		"LastName": "Williamson",
+		"Email": "Williamson@gmail.com",
+		"Phone": "965458327",
+		"License": "Active",
+		"Role": {
+			"roleName": "Manager",
+			"roleId": 100
+		},
+		"access": []
+	}],
+	"actions": [{
+		"Action": "Role Created",
+		"Changed_By": "Administrator",
+		"Changed_On": "21.08.2019"
+	}, {
+		"Action": "User Added",
+		"Changed_By": "Employee",
+		"Changed_On": "08.08.2019"
+	}, {
+		"Action": "Access Assigned",
+		"Changed_By": "Administrator",
+		"Changed_On": "01.08.2019"
+	}],
+	"superAdmin": [{
+		"organizationName": "Empower Solutions",
+		"organizationId": 501,
+		"organizationDescription": "Electrical Device Manufacturers",
+		"Email": "Empower@gmail.com",
+		"admin": [{
+			"adminName": "Stephen Fleming",
+			"FirstName": "Stephen",
+			"LastName": "Fleming",
+			"Email": "fleming@yahoo.com",
+			"Contact No.": "986445678"
+
+		}],
+		"LicenseType": "Trail License",
+		"LicensePeriod": "Aug 01, 2019 - Aug 30, 2019",
+		"LicenseSpan": "30",
+		"Authorize_to_Create_No_Of_Dashboards": "10",
+		"Authorize_to_Create_No_Of_Users": "10",
+		"roles": [{
+			"roleName": "Administrator",
+			"noOfUsers": "1",
+			"createdAt": "08/01/2019",
+			"lastChangedAt": "08/01/2019"
+		}, {
+			"roleName": "Manager",
+			"noOfUsers": "2",
+			"createdAt": "08/04/2019",
+			"lastChangedAt": "08/04/2019"
+		}],
+		"users": [{
+			"userName": "Stephen Fleming",
+			"role": "Administrator",
+			"Email": "fleming@gmail.com",
+			"createdAt": "08/05/2019",
+			"lastChangedAt": "08/05/2019"
+		}, {
+			"userName": "Adam Smith",
+			"role": "Manager",
+			"Email": "Adam@gmail.com",
+			"createdAt": "08/05/2019",
+			"lastChangedAt": "08/05/2019"
+		}, {
+			"userName": "Thushara Srinivas",
+			"role": "Manager",
+			"Email": "Thushara@gmail.com",
+			"createdAt": "08/05/2019",
+			"lastChangedAt": "08/05/2019"
+		}],
+		"logs": [{
+			"action": "User Added",
+			"value": "U1254656",
+			"changedBy": "Administrator",
+			"changedOn": "08/21/2019"
+		}],
+		"apps": [{
+			"AppId": 1000,
+			"AppName": "Dashboard Builder",
+			"Description": "Application To create Dashboards",
+			"App_Url": "https://35.238.55.231:4390/Brevo_V2/index.html",
+			"Created_At": "08/21/2019",
+			"Last_Changed_At": "08/21/2019"
+		}]
+	}, {
+		"organizationName": "iExceed Technologies",
+		"organizationId": 502,
+		"organizationDescription": "Website designers",
+		"Email": "iExceed@gmail.com",
+		"Phone": "(257) 563-7401",
+		"Address": "Cecilia Chapman 711 - 2880 Nulla St. Mankato Mississippi 96522",
+		"admin": [{
+			"adminName": "Ben Stokes",
+			"FirstName": "Ben",
+			"LastName": "Stokes",
+			"Email": "stokes@yahoo.com",
+			"Contact No.": "9864456782"
+
+		}],
+		"roles": [{
+			"roleName": "Administrator",
+			"noOfUsers": "1",
+			"createdAt": "08/01/2019",
+			"lastChangedAt": "08/01/2019"
+		}, {
+			"roleName": "Demo Users",
+			"noOfUsers": "4",
+			"createdAt": "08/04/2019",
+			"lastChangedAt": "08/04/2019"
+		}],
+		"users": [{
+			"userName": "Ben Stokes",
+			"role": "Administrator",
+			"Email": "stokes@gmail.com",
+			"createdAt": "08/05/2019",
+			"lastChangedAt": "08/05/2019"
+		}, {
+			"userName": "Steve Smith",
+			"role": "Demo Users",
+			"Email": "Steve@gmail.com",
+			"createdAt": "08/05/2019",
+			"lastChangedAt": "08/05/2019"
+		}, {
+			"userName": "Christian Loos",
+			"role": "Demo Users",
+			"Email": "Christian@gmail.com",
+			"createdAt": "08/05/2019",
+			"lastChangedAt": "08/05/2019"
+		}, {
+			"userName": "St Rita",
+			"role": "Demo Users",
+			"Email": "Rita@gmail.com",
+			"createdAt": "08/05/2019",
+			"lastChangedAt": "08/05/2019"
+		}, {
+			"userName": "Nicolson",
+			"role": "Demo Users",
+			"Email": "Nicolson@gmail.com",
+			"createdAt": "08/05/2019",
+			"lastChangedAt": "08/05/2019"
+		}],
+		"LicenseType": "Full Access License",
+		"LicensePeriod": "Aug 01, 2019 - July 30, 2020",
+		"LicenseSpan": "365",
+		"Authorize_to_Create_No_Of_Dashboards": "999999999",
+		"Authorize_to_Create_No_Of_Users": "99999999",
+		"logs": [{
+			"action": "Roles Added",
+			"value": "Trainee",
+			"changedBy": "Administrator",
+			"changedOn": "07/25/2019"
+		}, {
+			"action": "Access assigned",
+			"value": "3 OVP Pages",
+			"changedBy": "Administrator",
+			"changedOn": "08/08/2019"
+		}],
+		"apps": [{
+			"AppId": 1001,
+			"AppName": "Analytical Builder",
+			"Description": "Application To create Drilldown reports",
+			"App_Url": "https://35.238.55.231:4390/Pana_Builder/index.html",
+			"Created_At": "08/21/2019",
+			"Last_Changed_At": "08/21/2019"
+		}]
+	}, {
+		"organizationName": "Sigmatics Hardwares",
+		"organizationId": 503,
+		"organizationDescription": "Mechanical Device Manufacturers",
+		"Email": "Sigmatics@gmail.com",
+		"Phone": "(372) 587-2335",
+		"Address": "Iris Watson P.O. Box 283 8562 Fusce Rd. Frederick Nebraska 20620",
+		"admin": [{
+			"adminName": "Smith",
+			"FirstName": "Smith",
+			"LastName": "",
+			"Email": "Smith@yahoo.com",
+			"Contact No.": "9864456782"
+
+		}],
+		"roles": [{
+			"roleName": "Administrator",
+			"noOfUsers": "1",
+			"createdAt": "08/01/2019",
+			"lastChangedAt": "08/01/2019"
+		}, {
+			"roleName": "Employee",
+			"noOfUsers": "1",
+			"createdAt": "08/04/2019",
+			"lastChangedAt": "08/04/2019"
+		}],
+		"users": [{
+			"userName": "Smith",
+			"role": "Administrator",
+			"Email": "Smith@gmail.com",
+			"createdAt": "08/05/2019",
+			"lastChangedAt": "08/05/2019"
+		}, {
+			"userName": "David Miller",
+			"role": "Employee",
+			"Email": "Miller@gmail.com",
+			"createdAt": "08/05/2019",
+			"lastChangedAt": "08/05/2019"
+		}],
+		"LicenseType": "Permissive License",
+		"LicensePeriod": "",
+		"LicenseSpan": "25",
+		"Authorize_to_Create_No_Of_Dashboards": "3",
+		"Authorize_to_Create_No_Of_Users": "3",
+		"logs": [{
+			"action": "User Added",
+			"value": "U1254656",
+			"changedBy": "Administrator",
+			"changedOn": "08/21/2019"
+		}],
+		"apps": [{
+			"AppId": 1000,
+			"AppName": "Dashboard Builder",
+			"Description": "Application To create Dashboards",
+			"App_Url": "https://35.238.55.231:4390/Brevo_V2/index.html",
+			"Created_At": "08/21/2019",
+			"Last_Changed_At": "08/21/2019"
+		}]
+	}],
+	"apps": [{
+		"AppId": 1000,
+		"AppName": "Dashboard Builder",
+		"Description": "Application To create Dashboards",
+		"App_Url": "https://35.238.55.231:4390/Brevo_V2/index.html",
+		"Created_At": "08/21/2019",
+		"Last_Changed_At": "08/21/2019"
+	}, {
+		"AppId": 1001,
+		"AppName": "Analytical Builder",
+		"Description": "Application To create Drilldown reports",
+		"App_Url": "https://35.238.55.231:4390/Pana_Builder/index.html",
+		"Created_At": "08/21/2019",
+		"Last_Changed_At": "08/21/2019"
+	}]
+}

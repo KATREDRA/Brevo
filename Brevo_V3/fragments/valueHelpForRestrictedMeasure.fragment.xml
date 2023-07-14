@@ -1,0 +1,130 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+	<Popover  showHeader="true" contentWidth="23em" contentHeight="38em" offsetX="6" offsetY="100" class="customPopOver sapUiPopupWithPadding" horizontalScrolling="false" placement="Right">
+		<customHeader>
+			<Toolbar >
+				<Button icon="sap-icon://close-command-field" class="menuButton" type="Transparent" press="valueHelpCloseButton"/>
+				<ToolbarSpacer/>
+				<Title text=""/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>
+		<content>
+			<f:SimpleForm  editable="true" title="" visible="false" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1"
+									layout="ResponsiveGridLayout">
+				<f:content>
+					<!-- <Label text="Measure Type" required="true" class="titleCustomStyle"/>
+					<Select change="handleMeasureTypeChange" class="customMultiBoxStyle" >
+						<core:Item key="Conditional" text="Conditional"/>
+						<core:Item key="Restricted" text="Restricted"/>
+					</Select> -->
+					<Label text="Agrregation Type" required="true" class="titleCustomStyle"/>
+					<Select change="handleAggregationType" class="customMultiBoxStyle" >
+						<core:Item key="sum" text="Sum"/>
+						<core:Item key="avg" text="Average"/>
+						<core:Item key="count" text="Count"/>
+					</Select>
+					<Label text="Measure Name" required="true" class="titleCustomStyle"/>
+					<Input/>
+					<Label text="Formula editor" required="true" class="titleCustomStyle"/>
+					<TextArea height="30%" cols="100" rows="10" class="sapUiTinyMarginEnd"/>
+						<Button text="Validate" width="7rem" type="Accept" press="onValidateFormula"/>
+					<Label text="Functions" required="true" class="titleCustomStyle"/>
+					<Select change="handlefunctionsType" class="customMultiBoxStyle" >
+						<core:Item key="If" text="If"/>
+						<core:Item key="Int" text="Int"/>
+						<core:Item key="Flaot" text="Float"/>
+						<core:Item key="Double" text="Double"/>
+					</Select>
+					<Label text="Conditions" required="true" class="titleCustomStyle"/>
+					<Select change="handleconditionType" class="customMultiBoxStyle">
+						<core:Item key="And" text="And"/>
+						<core:Item key="Or" text="Or"/>
+						<core:Item key="Equals" text="Equals"/>
+						<core:Item key="isnot" text="Is Not"/>
+						<core:Item key="greaterthan" text="Greater Than"/>
+						<core:Item key="gtthaneq" text="Greater than equals"/>
+						<core:Item key="ltthan" text="Less Than"/>
+						<core:Item key="ltthaneq" text="Less Than Equals"/>
+					</Select>
+					<Label text="Operators" required="true" class="titleCustomStyle"/>
+					<Select change="handleoperationType" class="customMultiBoxStyle" >
+						<core:Item key="plus" text="+"/>
+						<core:Item key="minus" text="-"/>
+						<core:Item key="multiply" text="*"/>
+						<core:Item key="divide" text="/"/>
+					</Select>
+				</f:content>
+			</f:SimpleForm>
+			<f:SimpleForm  editable="true" title="" visible="false"  labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1"
+									layout="ResponsiveGridLayout">
+				<f:content>
+					<!-- <Label text="Measure Type" required="true" class="titleCustomStyle"/>
+					<Select change="handleMeasureTypeChange" class="customMultiBoxStyle" >
+						<core:Item key="Conditional" text="Conditional"/>
+						<core:Item key="Restricted" text="Restricted"/>
+					</Select> -->
+					<Label text="Agrregation Type" required="true" class="titleCustomStyle"/>
+					<Select change="handleAggregationType" class="customMultiBoxStyle" >
+						<core:Item key="sum" text="Sum"/>
+						<core:Item key="avg" text="Average"/>
+						<core:Item key="count" text="Count"/>
+					</Select>
+					<Label text="Measure Name" required="true" class="titleCustomStyle"/>
+					<Input/>
+					
+					<CheckBox text="Constant Selection" selected="false" class="sapUiTinyMarginTop sapUiTinyMarginBegin"/>
+					
+					<Label text="Properties" design="Bold"/>
+					
+					<Label text="Measure"  width="5rem" class="sapUiTinyMarginTopBottom sapUiSmallMarginBegin"/>
+					<Select change="handle" class="customMultiBoxStyle"  width="15rem" items="{/}" >
+						<core:Item key="{name}" text="{value}"/>
+					</Select>
+						<Label text="Dimensions" width="13rem" class="sapUiSmallMarginBegin sapUiTinyMarginTopBottom"/>
+						<Select width="15rem" items="{/}" selectedKey="{filetrName}" change="handleResFilterMeasure" class="customMultiBoxStyle sapUiSmallMarginEnd">
+									<core:Item key="{name}" text="{value}"/>
+								</Select>
+						<Label text="Operators" width="12rem" class="sapUiSmallMarginBegin sapUiTinyMarginTopBottom"/>
+							
+								<Select selectedKey="{filterOperator}" width="15rem"  change="handleRestrictedFilterOperator" class="sapUiSmallMarginEnd">
+									<core:Item key="eq" text="Equal to (=)"/>
+									<core:Item key="ne" text="Not Equal to (!=)"/>
+									<core:Item key="gt" text="Greater than (>)"/>
+									<core:Item key="ge" text="Greater than or Equal (>=)"/>
+									<core:Item key="lt" text="Less than (&lt;)"/>
+									<core:Item key="le" text="Less than or Equal (&lt;=)"/>
+									<core:Item key="bw" text="Between (&lt;>)"/>
+								</Select>
+						<Label text="Values or Input Controls" width="12rem" class="sapUiSmallMarginBegin sapUiTinyMarginTopBottom"/>
+								<!--	<Input value="{filterValue}" width="16rem" visible="true" showValueHelp="true" valueHelpOnly="true"
+											valueHelpRequest="onValueHelpRequestForFilterValue"></Input>-->
+						<Input id="firstInput" value="{filterValue}"
+						visible="{path:'filterDataType',formatter:'DashboardBuilder.util.Formatter.getFilterVisibility'}" showValueHelp="true" valueHelpOnly="true"
+						valueHelpRequest="handleValueHelpForResMesauresFilters"></Input>
+									<!-- <Input id="secondInput" value="{filterValue1}"
+										visible="{parts :[{path:'filterDataType'},{path:'filterOperator'}],formatter:'DashboardBuilder.util.Formatter.getBTFilterVisibility'}"
+										showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleValueHelpForResMesauresFilters"></Input>
+									<DatePicker value="{filterValue}" visible="{path:'filterDataType',formatter:'DashboardBuilder.util.Formatter.getDateFilterVisibility'}"
+										displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"></DatePicker>
+									<DatePicker value="{filterValue1}"
+										visible="{parts :[{path:'filterDataType'},{path:'filterOperator'}],formatter:'DashboardBuilder.util.Formatter.getDateBTFilterVisibility'}"
+										displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"></DatePicker> -->
+								
+								<!-- <Button icon="sap-icon://sys-cancel" type="Transparent" press="handleResFilterRemovePress"/> -->
+							
+					
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<footer>
+		<Toolbar>
+		<ToolbarSpacer/>
+		<Button text="Save"/>
+		</Toolbar>
+		</footer>
+	</Popover>
+</core:FragmentDefinition>

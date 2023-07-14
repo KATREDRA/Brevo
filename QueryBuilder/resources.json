@@ -1,0 +1,227 @@
+{
+    "resources": [
+        {
+            "name": "js/dataMapping/autoScale.js"
+        },
+        {
+            "name": "controller/SqlEditor.controller.js"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "js/dataMapping/jointShapesMapping.js"
+        },
+        {
+            "name": "js/dataMapping/jointRoutersMapping.js"
+        },
+        {
+            "name": "js/dataMapping/jointLinkToolsMapping.js"
+        },
+        {
+            "name": "js/dataMapping/jointAnchorsMapping.js"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "_custom/control/textcomplete.js"
+        },
+        {
+            "name": "_custom/control/Tile.js"
+        },
+        {
+            "name": "util/Formatter.js"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "model/Service.js"
+        },
+        {
+            "name": "js/rappid.js"
+        },
+        {
+            "name": "js/lodash.js"
+        },
+        {
+            "name": "js/joint.js"
+        },
+        {
+            "name": "js/backbone.js"
+        },
+        {
+            "name": "model/data.json"
+        },
+        {
+            "name": "controller/Home.controller.js"
+        },
+        {
+            "name": "controller/DataPreview.controller.js"
+        },
+        {
+            "name": "controller/CreateQuery.controller.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "manifest-bundle.zip"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "controller/SqlEditor-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/dataMapping/jointShapesMapping-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/dataMapping/jointRoutersMapping-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/dataMapping/jointLinkToolsMapping-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/dataMapping/jointAnchorsMapping-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/dataMapping/autoScale-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "_custom/control/textcomplete-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "_custom/control/Tile-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/Formatter-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "model/models-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "model/Service-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/rappid-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/lodash-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/joint-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/backbone-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Home-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/DataPreview-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/CreateQuery-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/App-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "Component-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../sap-ui-version.json"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "di.code-validation.core_issues.json"
+        },
+        {
+            "name": "view/SqlEditor.view.xml"
+        },
+        {
+            "name": "view/Home.view.xml"
+        },
+        {
+            "name": "view/DataPreview.view.xml"
+        },
+        {
+            "name": "view/CreateQuery.view.xml"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "images/table.svg"
+        },
+        {
+            "name": "images/edit.svg"
+        },
+        {
+            "name": "fragment/valueHelpForSort.fragment.xml"
+        },
+        {
+            "name": "fragment/valueHelpForFilters.fragment.xml"
+        },
+        {
+            "name": "fragment/popOver.fragment.xml"
+        },
+        {
+            "name": "fragment/linkingPopOver.fragment.xml"
+        },
+        {
+            "name": "fragment/editView.fragment.xml"
+        },
+        {
+            "name": "fragment/createView.fragment.xml"
+        },
+        {
+            "name": "fragment/addFormula1.fragment.xml"
+        },
+        {
+            "name": "fragment/addFormula.fragment.xml"
+        },
+        {
+            "name": "fragment/ReviewPage.fragment.xml"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "css/rappid.css"
+        },
+        {
+            "name": "index.html"
+        }
+    ]
+}

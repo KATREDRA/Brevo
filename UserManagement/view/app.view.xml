@@ -1,0 +1,40 @@
+<mvc:View height="100%" controllerName="inhance.userManagementSecurity.controller.app" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	xmlns:tnt="sap.tnt" xmlns:f="sap.f" class="sapUiSizeCompact loginPageClass">
+	<tnt:ToolPage id="app" class="sapUiDemoToolPage">
+		<tnt:header >
+			<tnt:ToolHeader visible="{appView>/sideMenuVisible}">
+				<Button id="sideNavigationToggleButton" icon="sap-icon://menu2" type="Transparent" press="onSideNavButtonPress"
+					tooltip="{i18n>navigationToggleButtonTooltip}">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow"/>
+					</layoutData>
+				</Button>
+				<ToolbarSpacer/>
+				<Title text="Administration Tool"/>
+				<ToolbarSpacer/>
+				<Image toolTip="User Profile" height="2rem" press="handleUserProfilePress"
+					src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/220px-User_icon_2.svg.png" densityAware="false"></Image>
+				<Button id="userButton" icon="sap-icon://log" type="Transparent" press="handleLogoutPress">
+					<layoutData>
+						<OverflowToolbarLayoutData closeOverflowOnInteraction="false"/>
+					</layoutData>
+				</Button>
+			</tnt:ToolHeader>
+		</tnt:header>
+		<tnt:sideContent>
+			<tnt:SideNavigation id="sideNavigationList" visible="{appView>/sideMenuVisible}" expanded="false" itemSelect="onItemSelect">
+				<tnt:NavigationList items="{ path: 'side>/navigation', templateShareable: false }">
+					<tnt:NavigationListItem text="{side>title}" icon="{side>icon}" expanded="{side>expanded}"
+						visible="{parts:['side>title','appView>/menuTabsVisibility'],formatter:'.formatter.getSideMenuItemVisibility'}"
+						items="{ path: 'side>items', templateShareable: false }" key="{side>key}">
+						<tnt:NavigationListItem text="{side>title}" key="{side>key}"></tnt:NavigationListItem>
+					</tnt:NavigationListItem>
+				</tnt:NavigationList>
+			</tnt:SideNavigation>
+		</tnt:sideContent>
+		<tnt:mainContents>
+			<!--<App id="mainContents"/>-->
+			<f:FlexibleColumnLayout id="layout" class="mainContentClass" layout="{appView>/layout}" backgroundDesign="Translucent"></f:FlexibleColumnLayout>
+		</tnt:mainContents>
+	</tnt:ToolPage>
+</mvc:View>

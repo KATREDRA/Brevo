@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Choose Template" showHeader="true" height="40em" class="sapUiPopupWithPadding" placement="Bottom">
+		<endButton>
+			<Button text="Close" type="transparent" press="onCardsConfigClose"/>
+		</endButton>
+		<content> 
+			<List items="{/d/results}">
+				<items>
+					<ObjectListItem title="{Page_Title}" press="onCategrorySelection" type="Active" intro="{Sub_Title}"></ObjectListItem>
+				</items>
+			</List>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

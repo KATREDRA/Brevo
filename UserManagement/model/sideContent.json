@@ -1,0 +1,51 @@
+{
+	"navigation": [{
+		"title": "Home",
+		"icon": "sap-icon://home",
+		"expanded": false,
+		"key": "home",
+		"items": []
+	}, {
+		"title": "Security",
+		"icon": "sap-icon://shield",
+		"expanded": false,
+		"key": "security",
+		"items": [{
+				"title": "Users",
+				"icon": "sap-icon://user-edit",
+				"expanded": false,
+				"key": "users",
+				"items": []
+			},
+
+			{
+				"title": "Roles",
+				"icon": "sap-icon://role",
+				"expanded": false,
+				"key": "roles",
+				"items": []
+			}
+		]
+	},{
+			"title": "Super Admin",
+			"icon": "sap-icon://key-user-settings",
+			"expanded": false,
+			"key": "Super Admin",
+			"items": []
+		},{
+			"title": "Application",
+			"icon": "sap-icon://product",
+			"expanded": false,
+			"key": "Application",
+			"items": []
+		}],
+	"fixedNavigation": [{
+		"title": "Important Links",
+		"icon": "sap-icon://chain-link",
+		"key": "Important Links was pressed"
+	}, {
+		"title": "Legal",
+		"icon": "sap-icon://compare",
+		"key": "Legal was pressed"
+	}]
+}

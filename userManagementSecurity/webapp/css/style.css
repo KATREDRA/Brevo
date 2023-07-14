@@ -1,0 +1,89 @@
+/* Enter your custom styles here */
+
+/*.mainContentClass {
+    background: transparent !important;
+}
+
+.sapFFCL.sapFFCLBackgroundDesignTranslucent {
+    background: transparent !important;
+}*/
+.objHedaerClass .sapMOHTitleDiv{
+	width : 60% !important;
+}
+.blockLayoutRowOne{
+		background : white ;
+}
+..mainContentClass {
+    background: transparent !important;
+}
+
+.loginPageClass>.sapTntToolPage {
+    /*	background-image:
+		url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYKrWU8C1A8tgHzVJzYl9oi5PNpVaovsVEIX8QMsyramNaAze1');*/
+    background-image: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), url('https://static.wixstatic.com/media/d5eb4e_0f24ec79a676463a803dcca68a1a7523.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.orTextClass>span {
+    padding-left: 12.5rem;
+}
+
+.removeTitle>.sapUiForm>.sapUiFormResGrid>.sapUiFormResGridMain div>.sapUiFormContainerTitle>.sapUiFormTitle {
+    height: 0rem !important;
+    line-height: 0rem !important;
+}
+
+.sapMITBFilter .sapMITBText {
+    overflow: visible !important;
+    ;
+}
+
+.objHedaerClass {
+    padding: 0rem !important;
+}
+
+html:not(.sapUiTheme-sap_belize_hcb):not(.sapUiTheme-sap_belize_hcw) .darkTheme > span {
+    color: #fff;
+}
+
+html:not(.sapUiTheme-sap_belize_hcb):not(.sapUiTheme-sap_belize_hcw) .darkTheme > span >span {
+    color: #fff;
+}
+
+.darkTheme {
+    color: #fff !important;
+}
+
+.darkTheme>.sapMInputDivWrapper>.sapMInputBaseInner {
+    color: white;
+    background: transparent;
+    border: none !important;
+    border-bottom: 1px solid #bfbfbf !important;
+    -webkit-appearance: none;
+}
+
+.sapMInputDivWrapper>.sapMInputBaseInner {
+    border: none !important;
+    background: transparent;
+    border-bottom: 1px solid #bfbfbf !important;
+    -webkit-appearance: none;
+}
+
+.darkTheme>*>::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white !important;
+    opacity: 1;
+    /* Firefox */
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: red !important;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: red !important;
+}

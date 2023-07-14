@@ -1,0 +1,63 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:tnt="sap.tnt">
+  <Dialog title="Select Chart Type for Measures" showHeader="true" width="20rem" height="20em" class="sapUiPopupWithPadding" placement="Bottom">
+    <endButton>
+      <Button text="Ok" type="Transparent" press="onMeasureSettingsOkPress"/>
+    </endButton>
+    <content>
+      <Table mode="None" noDataText="No Measures Selected" items="{/}">
+        <columns>
+          <Column>
+            <header>
+              <Text text="Name"/>
+            </header>
+          </Column>
+          <Column >
+            <header>
+              <Text text="Chart Type"/>
+            </header>
+          </Column>
+            <Column >
+            <header>
+              <Text text="Aggregation Type"/>
+            </header>
+          </Column>
+         <Column >
+		   <header>
+		     <Text text="Format Values"/>
+		   </header>
+	     </Column>
+    		<Column >
+			<header>
+	    		<Text text="Decimal Place"/>
+			</header>
+		 </Column>
+        </columns>
+        <items>
+          <ColumnListItem>
+            <cells>
+              <Text text="{value}"></Text>
+              <Select change="onMeasureChartChanged" selectedKey="{measureType}" items="{measureSettings/}">
+                <items>
+                  <core:Item text="{text}" key="{key}" />
+                </items>
+              </Select>
+              	<Select change="onAggregationTypeSelected">
+								<items>
+									<core:Item text="Sum" key="sum"/>
+									<core:Item text="Average" key="avg"/>
+									<core:Item text="Count" key="count"/>
+								</items>
+							</Select>
+								<Select  change="handleScaleSelectionForTable" class="customMultiBoxStyle">
+								<core:Item key="default" text="Default"/>
+								<core:Item key="short" text="Short"/>
+								<core:Item key="percentage" text="Percentage"/>
+							</Select>
+							<Input value=""/>
+            </cells>
+          </ColumnListItem>
+        </items>
+      </Table>
+    </content>
+  </Dialog>
+</core:FragmentDefinition>

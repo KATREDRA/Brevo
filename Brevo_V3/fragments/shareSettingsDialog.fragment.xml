@@ -1,0 +1,50 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:tnt="sap.tnt">
+	<Dialog title="Edit Sharing Settings" showHeader="true" contentWidth="50rem" class="sapUiPopupWithPadding">
+		<beginButton>
+			<Button text="Save" press="handleShareSavePress"/>
+		</beginButton>
+		<endButton>
+			<Button text="Cancel" press="handleShareCancelPress"/>
+		</endButton>
+		<content>
+			<Table mode="None" noDataText="No Users" items="{/}">
+				<columns>
+					<Column>
+						<header>
+							<Text text="User/Team"/>
+						</header>
+					</Column>
+					<Column >
+						<header>
+								<Text text="Full Access" />
+						</header>
+					</Column>
+					<Column >
+							<Text text="Read Access" />
+					</Column>
+					<Column>
+							<Text text="Update Access" />
+					</Column>
+						<Column>
+							<Text text="Delete Access" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							
+								<Text text="{USER_NAME}"/>
+							<CheckBox text="" selected="{FullAccess}"  name="fullaccess" select="onaccessChange"/>
+							<CheckBox text="" selected="{ReadAccess}"  name="readaccess" select="onaccessChange"/>
+							<CheckBox text="" selected="{UpdateAccess}"  name="updateaccess" select="onaccessChange"/>
+							<CheckBox text="" selected="{DeleteAccess}"   name="deleteaccess" select="onaccessChange"/>
+							<!--<Button icon="sap-icon://decline" press="handleDeleteUsersPress" type="Transparent"
+							visible="{path:'name',formatter:'DashboardBuilder.util.Formatter.getDeleteButtonVisibility'}"/>-->
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<Button text="Add Users and Teams" press="handleAddUsersPress" type="Emphasized"/>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

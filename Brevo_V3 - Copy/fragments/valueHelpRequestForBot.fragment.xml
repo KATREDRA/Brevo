@@ -1,0 +1,32 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Popover noDataText="No data" showHeader="false" offsetX="-20" contentWidth="40rem" class="popForPages" placement="Bottom" multiSelect="true" liveChange="handleFilterSearch"
+		confirm="handleFilterConfirm" close="handleFilterClose" items="{/}">
+		<content>
+			<Toolbar>
+			<Title class="botTitle" text="Create your own card" />
+			</Toolbar>
+			<List headerText="" >
+				<FeedListItem sender="brevo" icon="https://d30y9cdsu7xlg0.cloudfront.net/png/140730-200.png" senderPress="onPress" iconPress="onPress"
+					iconDensityAware="false" info="{Type}" timestamp="27 July, 2017" text="Which card you want to create today?" convertLinksToAnchorTags="All"/>
+				<FeedListItem sender="Paul" icon="sap-icon://employee-pane" senderPress="onPress" iconPress="onPress" visible="false"
+					iconDensityAware="false" info="{Type}" timestamp="27 July, 2017"
+					text="Create a card for Sales-Forecast of Q3 and Q4 and group it by Customers?" convertLinksToAnchorTags="All"/>
+				<FeedListItem sender="brevo" icon="https://d30y9cdsu7xlg0.cloudfront.net/png/140730-200.png" senderPress="onPress" visible="false"
+					iconPress="onPress" iconDensityAware="false" info="{Type}" timestamp="27 July, 2017"
+					text="Here is the list of cards matching your request. Which one you would like to select? &lt;br/&gt; 1. Customer-wise Turnover. Q1 &lt;br/&gt; 2. Customer-wise Turnover. Q3, Q4 Sales vs Value Add &lt;br/&gt; 3. BAL vs Maruthi Customer Sales"
+					convertLinksToAnchorTags="All"/>
+				<FeedListItem sender="Paul" icon="sap-icon://employee-pane" senderPress="onPress" iconPress="onPress" visible="false"
+					iconDensityAware="false" info="{Type}" timestamp="27 July, 2017" text="2" convertLinksToAnchorTags="All"/>
+				<FeedListItem  sender="brevo" icon="https://d30y9cdsu7xlg0.cloudfront.net/png/140730-200.png" senderPress="onPress" visible="false"
+					iconPress="onPress" iconDensityAware="false" info="{Type}" timestamp="27 July, 2017"
+					text="Selected 2. &lt;br/&gt; Would you like to add a filter?" convertLinksToAnchorTags="All"/>
+				<FeedListItem sender="Paul" icon="sap-icon://employee-pane" senderPress="onPress" iconPress="onPress" visible="false"
+					iconDensityAware="false" info="{Type}" timestamp="27 July, 2017" text="No." convertLinksToAnchorTags="All"/>
+				<FeedListItem sender="brevo" icon="https://d30y9cdsu7xlg0.cloudfront.net/png/140730-200.png" senderPress="onPress" visible="false"
+					iconPress="onPress" iconDensityAware="false" info="{Type}" timestamp="27 July, 2017" text="Generating your card..."
+					convertLinksToAnchorTags="All"/>
+			</List>
+			<FeedInput post="onBotSend" placeholder="Your message" showIcon="true" icon="sap-icon://employee-pane" class="botSendButtonClass"/>
+		</content>
+	</Popover>
+</core:FragmentDefinition>

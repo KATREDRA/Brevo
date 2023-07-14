@@ -1,0 +1,24 @@
+<mvc:View controllerName="Brevo.QueryBuilder.controller.SqlEditor" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:c="sap.ui.codeeditor"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:t="sap.ui.table">
+	<App>
+		<pages>
+			<Page id="view2" title="SQL Editor" showNavButton="true" navButtonPress="onNavBack">
+				<headerContent>
+					<Button id="wizardButton" text="Wizard" type="Emphasized" press="onWizardPress"></Button>
+				</headerContent>
+				<content>
+					<c:CodeEditor id="aCodeEditor" type="sql"/>
+				</content>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button text="Validate Query" press="onValidatePress"/>
+						<Button id="execute" text="Preview Data" press="onExecutePress" visible="true"/>
+						<Button id="create" text="Create View" visible="true" press="onCreateViewPress"/>
+						<Button id="update" text="Update View" press="onUpdateViewPress" visible="false"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

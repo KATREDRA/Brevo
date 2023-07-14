@@ -1,0 +1,67 @@
+<!-- <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" 
+	xmlns:f="sap.ui.layout.form"> <Dialog title="Add Node" contentHeight="40%" 
+	contentWidth="30%" class="sapContrastPlus"> <content> <f:SimpleForm editable="true" layout="ResponsiveGridLayout" 
+	title="" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" 
+	emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" 
+	columnsL="1" columnsM="1" singleContainerFullSize="false"> <f:content> <Label 
+	text="Node Type"/> <Select selectedKey="Data" change="selectNodeChange"> 
+	<items> <core:Item text="Data Node" key="Data"/> <core:Item text="Assumption 
+	Node" key="Assumption"/> <core:Item text="Union Node" key="Union"/> </items> 
+	</Select> <Label text="Node Name"/> <VBox> <Select items="{/}" width="100%"> 
+	<items> <core:Item text="{property}" key="{value}"/> </items> </Select> <Input 
+	visible="false" placeholder="Enter Node Name"/> </VBox> <Label text="Assumption 
+	Value" visible="false" required="true" /> <Input visible="false" type="Number"/> 
+	</f:content> </f:SimpleForm> </content> <endButton> <Button text="Cancel" 
+	press="onCancel"/> </endButton> <beginButton> <Button text="OK" press="onSaveNewNode"/> 
+	</beginButton> </Dialog> </core:FragmentDefinition> -->
+<core:FragmentDefinition xmlns:d="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified" xmlns="sap.suite.ui.commons" xmlns:mvc="sap.ui.core.mvc">
+	<d:Dialog title="Add Node" contentHeight="40rem" contentWidth="45rem" class="sapUiSizeCompact">
+		<d:content>
+			<f:SimpleForm labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2" editable="true"
+				layout="ResponsiveGridLayout">
+				<f:content>
+					<d:Label text="Node Name"/>
+					<d:VBox>
+						<d:Input placeholder="Enter Node Name" class="customMultiBoxStyle" width="10rem"/>
+					</d:VBox>
+				</f:content>
+			</f:SimpleForm>
+			<CalculationBuilder variables="{/}" expression="">
+				<variables>
+					<CalculationBuilderVariable key="{key}" label="{label}" items="{path:'items', templateShareable:true}">
+						<items>
+							<CalculationBuilderItem key="{key}"></CalculationBuilderItem>
+						</items>
+					</CalculationBuilderVariable>
+				</variables>
+			</CalculationBuilder>
+		</d:content>
+		<d:beginButton>
+			<d:Button text="Save" press="onSaveNewNode"/>
+		</d:beginButton>
+		<d:endButton>
+			<d:Button text="Cancel" press="onCancel"/>
+		</d:endButton>
+	</d:Dialog>
+</core:FragmentDefinition>
+<!--  <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" 
+	xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified"> <Dialog title="Add Nodes" contentHeight="40rem" contentWidth="50rem" class="sapUiSizeCompact"> 
+	<content> <VBox class="sapUiSmallMargin"> <HBox> <Label text="Node Name" 
+	width="7rem" class="sapUiTinyMarginTopBottom sapUiSmallMarginBegin" /> <Input 
+	placeholder="Enter Node Name" width="15rem" /> </HBox> <HBox> <Label text="Calculation 
+	Type" width="7rem" class="sapUiTinyMarginTopBottom sapUiSmallMarginBegin" 
+	/> <Select change="handleAggregationType" class="customMultiBoxStyle" width="10rem"> 
+	<core:Item key="agg" text="On Aggregate" /> <core:Item key="detail" text="On 
+	Detail" /> </Select> </HBox> <HBox> <VBox width="65%" class="sapUiTinyMarginTopBottom 
+	sapUiSmallMarginBegin"> <Text text="Formula Editor" /> <TextArea height="30%" 
+	cols="100" rows="10" class="sapUiTinyMarginEnd" /> </VBox> <VBox width="30%"> 
+	<Panel expandable="true" expanded="true" headerText="Operators" width="auto" 
+	class="sapUiTinyMarginTop"> <content> <VBox alignItems="Center" justifyContent="Center"> 
+	<Button text="+" width="7rem" type="Emphasized" press="onOperatorPress" /> 
+	<Button text="-" width="7rem" type="Emphasized" press="onOperatorPress" /> 
+	<Button text="*" width="7rem" type="Emphasized" press="onOperatorPress" /> 
+	<Button text="/" width="7rem" type="Emphasized" press="onOperatorPress" /> 
+	</VBox> </content> </Panel> </VBox> </HBox> </VBox> </content> <beginButton> 
+	<Button text="Save" press="onSaveNewNode" /> </beginButton> <endButton> <Button 
+	text="Cancel" press="onCancel" /> </endButton> </Dialog> </core:FragmentDefinition>  -->

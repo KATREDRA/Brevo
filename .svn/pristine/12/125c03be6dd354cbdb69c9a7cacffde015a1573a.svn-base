@@ -1,0 +1,23 @@
+{
+  "name": "brevov3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "curl": "^0.1.4",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.7",
+    "mysql": "^2.18.1",
+    "request": "^2.88.2",
+    "simple-odata-server": "^1.1.1",
+    "simple-odata-server-mongodb": "^1.0.0",
+    "snowflake-sdk": "^1.5.2"
+  }
+}

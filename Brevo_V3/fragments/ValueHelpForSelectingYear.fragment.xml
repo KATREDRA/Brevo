@@ -1,0 +1,64 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Popover placement="Vertical" showHeader="false" width="200%" height="22rem" class="popoverClassYear">
+		<customHeader>
+			<Toolbar >
+				<ToolbarSpacer/>
+				<Title text="Select a Year"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>
+		<VBox>
+			<FlexBox alignItems="Center" justifyContent="Center">
+				<items>
+					<Button text="2007" type="Transparent" press="handleYearSelect" class="sapUiTinyMarginBottom popOverItem menuButton" />
+					<Button text="2008" type="Transparent" press="handleYearSelect" class="sapUiTinyMarginBottom popOverItem menuButton"  />
+					<Button text="2009" type="Transparent" press="handleYearSelect" class="sapUiTinyMarginBottom popOverItem menuButton"  />
+					<Button text="2010" type="Transparent" press="handleYearSelect" class="sapUiTinyMarginBottom popOverItem menuButton"   />
+				</items>
+			</FlexBox>
+			<FlexBox alignItems="Center" justifyContent="Center">
+				<items>
+					<Button text="2011" type="Transparent" press="handleYearSelect" class="sapUiTinyMarginBottom popOverItem menuButton"  />
+					<Button text="2012" type="Transparent" press="handleYearSelect" class="sapUiTinyMarginBottom popOverItem menuButton"  />
+					<Button text="2013" type="Transparent" press="handleYearSelect"  class="sapUiTinyMarginBottom popOverItem menuButton" />
+					<Button text="2014" type="Transparent" press="handleYearSelect" class="sapUiTinyMarginBottom popOverItem menuButton"  />
+				</items>
+			</FlexBox>
+			<FlexBox alignItems="Center" justifyContent="Center">
+				<items>
+					<Button text="2015" type="Transparent" press="handleYearSelect" class="sapUiTinyMarginBottom popOverItem menuButton"  />
+					<Button text="2016" type="Transparent" press="handleYearSelect"  class="sapUiTinyMarginBottom popOverItem menuButton" />
+					<Button text="2017" type="Transparent" press="handleYearSelect" class="sapUiTinyMarginBottom popOverItem menuButton"  />
+					<Button text="2018" type="Transparent" press="handleYearSelect" class="sapUiTinyMarginBottom popOverItem menuButton"  />
+				</items>
+			</FlexBox>
+			<FlexBox alignItems="Center" justifyContent="Center">
+				<items>
+					<Button text="2019" type="Transparent" press="handleYearSelect"  class="sapUiTinyMarginBottom popOverItem menuButton" />
+					<Button text="2020" type="Transparent" press="handleYearSelect" class="sapUiTinyMarginBottom popOverItem menuButton"  />
+					<Button text="2021" type="Transparent" press="handleYearSelect" class="sapUiTinyMarginBottom popOverItem menuButton"  />
+					<Button text="2022" type="Transparent" press="handleYearSelect" class="sapUiTinyMarginBottom popOverItem menuButton"  />
+				</items>
+			</FlexBox>
+			<FlexBox alignItems="Center" justifyContent="Center">
+				<items>
+					<Button text="2023" type="Transparent" press="handleYearSelect" class="sapUiTinyMarginBottom popOverItem menuButton"  />
+					<Button text="2024" type="Transparent" press="handleYearSelect" class="sapUiTinyMarginBottom popOverItem menuButton"  />
+					<Button text="2025" type="Transparent" press="handleYearSelect" class="sapUiTinyMarginBottom popOverItem menuButton"  />
+					<Button text="2026" type="Transparent" press="handleYearSelect" class="sapUiTinyMarginBottom popOverItem menuButton"  />
+				</items>
+			</FlexBox>
+			<FlexBox alignItems="Center" justifyContent="Center">
+				<items>
+					<Button text="2027" type="Transparent" press="handleYearSelect" class="sapUiTinyMarginBottom popOverItem menuButton"  />
+					<Button text="2028" type="Transparent" press="handleYearSelect" class="sapUiTinyMarginBottom popOverItem menuButton"  />
+					<Button text="2029" type="Transparent" press="handleYearSelect" class="sapUiTinyMarginBottom popOverItem menuButton"  />
+					<Button text="2030" type="Transparent" press="handleYearSelect"  class="sapUiTinyMarginBottom popOverItem menuButton" />
+				</items>
+			</FlexBox>
+		</VBox>
+	</Popover>
+</core:FragmentDefinition>
+

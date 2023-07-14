@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/core/mvc/Controller","Brevo/QueryBuilder/model/Service"],function(e,r){"use strict";return e.extend("Brevo.QueryBuilder.controller.App",{onInit:function(){}})});

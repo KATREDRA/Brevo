@@ -1,0 +1,1 @@
+sap.ui.define(["inhance/userManagementSecurity/controller/app.controller"],function(n){"use strict";QUnit.module("app Controller");QUnit.test("I should test the app controller",function(t){var e=new n;e.onInit();t.ok(e)})});

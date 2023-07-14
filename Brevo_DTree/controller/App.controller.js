@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/core/mvc/Controller","Brevo/BrevoDtree/model/Service"],function(e,r){"use strict";return e.extend("Brevo.BrevoDtree.controller.App",{onInit:function(){}})});

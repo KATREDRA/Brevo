@@ -1,0 +1,33 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:tnt="sap.tnt">
+	<Dialog title="Variant Information" contentWidth="50%" contentHeight="20rem" verticalScrolling="true" showHeader="true"
+		class="sapContrastPlus">
+		<content>
+			<SegmentedButton select="onSelectVariant" width="100%">
+				<items>
+					<SegmentedButtonItem icon="sap-icon://create-form" text="Add New variant" key="newvariant"/>
+					<SegmentedButtonItem icon="sap-icon://expense-report" text="Existing variants" key="existsvariant"/>
+				</items>
+			</SegmentedButton>
+			<f:SimpleForm editable="true" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1"
+				layout="ResponsiveGridLayout">
+				<f:content>
+					<Label text="Title" required="true" class="titleCustomStyle"/>
+					<Input/>
+					<Label text="Share"/>
+					<CheckBox/>
+				</f:content>
+			</f:SimpleForm>
+			<List visible="false" mode="SingleSelectMaster" select="onExistingVariantPress" items="{/}">
+				<items>
+					<StandardListItem title="{VariantName}"></StandardListItem>
+				</items>
+			</List>
+		</content>
+		<endButton>
+			<Button text="Cancel" press="handleVariantDialogClose"/>
+		</endButton>
+		<beginButton>
+			<Button text="Save" press="handleVariantScenario"/>
+		</beginButton>
+	</Dialog>
+</core:FragmentDefinition>

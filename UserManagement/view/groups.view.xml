@@ -1,0 +1,92 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core" controllerName="inhance.userManagementSecurity.controller.groups" displayBlock="true">
+	<App backgroundColor="Transparent">
+		<Page title="Group Details" showNavButton="true" navButtonPress="onNavBack">
+			<content>
+				<Table id="userInfoTableId" inset="false" items="{/results}" sticky="ColumnHeaders">
+					<headerToolbar>
+						<Toolbar class="headerClass">
+							<Title text="Group Information" id="tableTitleId" level="H2"/>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://refresh" press="onUserRefershPress"/>
+							<!--<Select items="{/results}" width="15%" id="deptId" enabled="false" change="onSelectedDeptartment">
+								<core:Item text="{Name}" key="{Department Id}"/>
+							</Select>-->
+							<SearchField liveChange="handleUserSearch" width="15%"/>
+							<Button icon="sap-icon://sort" press="handleSortUser"/>
+							<Button icon="sap-icon://add" text="Add New User" press="handleAddGroups"/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+							<Text text="First Name"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+							<Text text="Last Name"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center" visible="false">
+							<Text text="Phone Number"/>
+						</Column>
+						<Column minScreenWidth="Tablet" visible="false" demandPopin="true" hAlign="Center">
+							<Text text="Departments"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+							<Text text="Email Id"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+							<Text text="Last Visited"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+							<Text text="Actions"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<Input value="{First_Name}" editable="false" change="liveValueChange1"/>
+								<Input value="{Last_Name}" editable="false" liveChange="liveValueChange2"/>
+								<Input value="{Mobile}" editable="false" liveChange="liveValueChange3" visible="false"/>
+								<!--
+<Input value="{Department/0/Department_name}" editable="false" liveChange="liveValueChange3" />
+-->
+								<Select items="{/results}" width="100%" id="editTableDeptId" selectedKey="{Department/0/Department_Id}" enabled="false"
+									change="onEditDeptartment">
+									<core:Item text="{Name}" key="{Department Id}"/>
+								</Select>
+								<Input value="{Email}" editable="false" liveChange="liveValue"/>
+								<!--
+ <HBox class="tablefirstcellClass">
+								<VBox>
+									<Button id="editId" icon="sap-icon://edit" press="onEditPress" type="Transparent"/>
+								</VBox>
+								<VBox>
+									<Button id="deleteId" icon="sap-icon://delete" tooltip="Delete" press="onDeletePress" type="Transparent"/>
+								</VBox>
+							</HBox> 
+-->
+								<Text text="{LastVisted}"/>
+								<HBox class="tablefirstcellClass">
+									<Button id="activateId" icon="sap-icon://activate"
+										tooltip="{path:'RecentlyActivated',formatter:'vaspp.form.administration.util.Formatter.getTooltip'}" press="onActivatePress"
+										class="activateClass" type="Transparent">
+										<customData>
+											<core:CustomData key="color" value="{path:'RecentlyActivated',formatter:'vaspp.form.administration.util.Formatter.getActivateColor'}"
+												writeToDom="true"/>
+										</customData>
+									</Button>
+									<Button id="editId" icon="sap-icon://edit" tooltip="Edit" press="onEditPress" type="Transparent"/>
+									<Button id="deleteId" icon="sap-icon://delete" tooltip="Delete" press="onDeletePress" type="Transparent"/>
+								</HBox>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</content>
+			<footer>
+				<Toolbar>
+					<ToolbarSpacer/>
+				</Toolbar>
+			</footer>
+		</Page>
+	</App>
+</mvc:View>

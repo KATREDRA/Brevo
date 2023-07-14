@@ -1,0 +1,573 @@
+<mvc:View controllerName="Brevo.Brevo_V2.controller.cardTemplate" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data" xmlns:fiori="sap.f"
+	xmlns:viz="sap.viz.ui5.controls" xmlns:core="sap.ui.core" xmlns:covp="Brevo.Brevo_V2.util" xmlns:mvc="sap.ui.core.mvc" xmlns:uxap="sap.uxap"
+	xmlns:layout="sap.ui.layout" xmlns="sap.m" class="fullHeight">
+	<Page navButtonPress="backToMainPage" class="createPage" showHeader="false" backgroundDesign="Transparent" id="cardTemplateMainPage"
+		showNavButton="false" enableScrolling="true">
+		<content>
+			<SplitContainer id="SplitContDemo" initialDetail="detail" initialMaster="master">
+				<detailPages>
+					<Page title="Detail 1" showHeader="true" class="sapUiStdPage">
+						<customHeader>
+							<Toolbar class="previewHeader">
+								<ToolbarSpacer/>
+								<Button icon="sap-icon://refresh" class="btnColor" type="Transparent" id="cardRefershBtn" press="handleRefreshButton" tooltip="Refresh"></Button>
+							</Toolbar>
+						</customHeader>
+						<content>
+							<VBox width="100%" height="100%" class="previewAreaParent ">
+								<VBox width="100%" height="105%" class="previewArea">
+									<mvc:XMLView height="100%" viewName="Brevo.Brevo_V2.cards.previewCardTemplate"></mvc:XMLView>
+								</VBox>
+							</VBox>
+						</content>
+					</Page>
+				</detailPages>
+				<masterPages>
+					<Page title="Master 1" showHeader="false" enableScrolling="false" icon="sap-icon://action" backgroundDesign="Transparent"
+						class="sapUiStdPage sapUiSizeCompact">
+						<content>
+							<HBox height="100%">
+								<VBox width="20%" class="customMenuList">
+									<List backgroundDesign="Transparent" mode="SingleSelectMaster">
+										<!--<CustomListItem type="Active" id="menuItem1" class="sapUiResponsivePadding invalid customMenuItem">-->
+										<CustomListItem type="Active" id="menuItem1" class="sapUiResponsivePadding customMenuItem">
+											<content>
+												<VBox class="sapUiSmallMargin" justifyContent="Center" alignItems="Center">
+													<core:Icon src="sap-icon://search" color="#d2d2d2" size="1.2rem"/>
+													<Label class="pureWhiteText" text="Search"/>
+												</VBox>
+											</content>
+										</CustomListItem>
+										<!--<CustomListItem type="Active" id="menuItem2" class="sapUiResponsivePadding invalid customMenuItem">-->
+										<CustomListItem type="Active" id="menuItem3" class="sapUiResponsivePadding invalid customMenuItem">
+											<content>
+												<VBox class="sapUiSmallMargin" justifyContent="Center" alignItems="Center">
+													<core:Icon src="sap-icon://wrench" color="#d2d2d2" size="1.2rem"/>
+													<Text class="pureWhiteText" text="General"/>
+												</VBox>
+											</content>
+										</CustomListItem>
+										<CustomListItem type="Active" id="menuItem4" class="sapUiResponsivePadding invalid customMenuItem">
+											<content>
+												<VBox class="sapUiSmallMargin" justifyContent="Center" alignItems="Center">
+													<core:Icon src="sap-icon://database" color="#d2d2d2" size="1.2rem"/>
+													<Label class="pureWhiteText" text="Data"/>
+												</VBox>
+											</content>
+										</CustomListItem>
+										<CustomListItem type="Active" id="menuItem5" class="sapUiResponsivePadding invalid customMenuItem">
+											<content>
+												<VBox class="sapUiSmallMargin" justifyContent="Center" alignItems="Center">
+													<core:Icon src="sap-icon://horizontal-bar-chart" color="#d2d2d2" size="1.2rem"/>
+													<Label class="pureWhiteText" text="Charts"/>
+												</VBox>
+											</content>
+										</CustomListItem>
+										<CustomListItem type="Active" id="menuItem6" class="sapUiResponsivePadding invalid customMenuItem">
+											<content>
+												<VBox class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiSmallMarginTop sapUiSmallMarginBottom" justifyContent="Center" alignItems="Center">
+													<core:Icon src="sap-icon://measure" color="#d2d2d2" size="1.2rem"/>
+													<Text class="pureWhiteText" textAlign="Center" text="Metric/Unit &amp; Criteria"/>
+												</VBox>
+											</content>
+										</CustomListItem>
+										<CustomListItem type="Active" id="menuItem7" class="sapUiResponsivePadding customMenuItem">
+											<content>
+												<VBox class="sapUiSmallMargin" justifyContent="Center" alignItems="Center">
+													<core:Icon src="sap-icon://filter" color="#d2d2d2" size="1.2rem"/>
+													<Label class="pureWhiteText" text="Filters"/>
+												</VBox>
+											</content>
+										</CustomListItem>
+										<CustomListItem type="Active" id="menuItem8" class="sapUiResponsivePadding customMenuItem">
+											<content>
+												<VBox class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiSmallMarginTop sapUiSmallMarginBottom" justifyContent="Center" alignItems="Center">
+													<core:Icon src="sap-icon://palette" color="#d2d2d2" size="1.2rem"/>
+													<Text class="pureWhiteText" text="Formatting"/>
+												</VBox>
+											</content>
+										</CustomListItem>
+										<!--<CustomListItem type="Active" id="menuItem9" class="sapUiResponsivePadding customMenuItem">-->
+										<!--	<content>-->
+										<!--		<VBox class="sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiSmallMarginTop sapUiSmallMarginBottom" justifyContent="Center" alignItems="Center">-->
+										<!--			<core:Icon src="sap-icon://filter-analytics" color="#d2d2d2" size="1.2rem"/>-->
+										<!--			<Text class="whiteText" text="Predictive Analysis"/>-->
+										<!--		</VBox>-->
+										<!--	</content>-->
+										<!--</CustomListItem>-->
+									</List>
+								</VBox>
+								<VBox width="80%">
+									<!-- tab 1 Search Box-->
+									<VBox id="configuration1" visible="false">
+										<Toolbar class="sapUiSizeCompact sapuiSmallMarginTop">
+											<ToolbarSpacer width="1rem"/>
+											<SearchField search="onAISearch" width="80%" showIcon="false" visible="true" id="aiSearch" class="onAISearch" placeholder="Search"/>
+											<ToolbarSpacer width="0rem"/>
+											<Button icon="sap-icon://headset" class="menuButton" visible="true" id="aiSearchBtn" press="handleShowSearchButton"
+												tooltip="Chat with Brevo assistant"></Button>
+										</Toolbar>
+										<Title text="Recommended for you" id="aiTitle" class="sapUiTinyMargin"/>
+										<!--	<l:VerticalLayout scrollStep="400" scrollTime="500" showDividers="false" class="sapUiSmallMargin" id="aiGrid"> -->
+										<VBox class="aiGridParent">
+											<l:Grid defaultSpan="L6 M6 S6" id="aiGrid" content="{/}">
+												<VBox justifyContent="Center" class="sapOvpBaseCardNo recommendedObjects" alignContent="" alignItems="" height="11.5rem">
+													<core:Icon press="handleAiObjectPress" class="sapUiSmallMarginTop" color="#d2d2d2" width="100%"
+														src="{path:'cardType',formatter:'Brevo.Brevo_V2.util.Formatter.getStaticImagePath'}" size="3.5rem">
+														<!--<layoutData>-->
+														<!--	<FlexItemData growFactor="0.4"/>-->
+														<!--</layoutData>-->
+													</core:Icon>
+													<!--<Image width="14.6rem" src="{path:'chartURL',formatter:'dynamicCards.util.Formatter.getImagePath'}"/>-->
+													<VBox height="100%" width="100%" alignItems="Start" alignContent="Start" justifyContent="End" class="sapUiSmallMrgin">
+														<!--<layoutData>-->
+														<!--	<FlexItemData growFactor="0.6"/>-->
+														<!--</layoutData>-->
+														<Link emphasized="true" titleActive="true" press="handleAiObjectPress" titlePress="handleAiObjectPress" text="{cardTitle}" class=""></Link>
+														<!--<Text class="pureWhiteText" maxLines="2" text="{cardSubtitle}"/>+-->
+														<Text class="pureWhiteText smallText" maxLines="1" text="{dimension/0/value}"/>
+														<Text class="pureWhiteText smallText" maxLines="1" text="{measures/0/value}"/>
+													</VBox>
+												</VBox>
+											</l:Grid>
+										</VBox>
+									</VBox>
+									<!-- tab 2 Layout configuration-->
+									<VBox id="configuration2" visible="false">
+										<!-- tab 1 -->
+										<VBox class="sapUiTinyMarginTop aiGridParent">
+											<l:Grid defaultSpan="L6 M6 S12" content="{/d/results}">
+												<VBox class="customChartSelectHoverColora recommendedObjects sapOvpBaseCardN smallPadding" height="9rem" alignItems="Center">
+													<core:Icon press="handleAiObjectPress" class="sapUiSmallMrgin" color="#d2d2d2" width="100%" src="{icon}" size="3.5rem"/>
+													<VBox width="100%" alignItems="Start">
+														<Text class="sapUiSmallMargin pureWhiteText" text="{chartName}" select="onChartTypeSelected"/>
+													</VBox>
+												</VBox>
+											</l:Grid>
+										</VBox>
+									</VBox>
+									<!-- tab 3 General Configuration-->
+									<VBox id="configuration3" visible="false">
+										<VBox class="sapUiTinyMargin aiGridParent">
+											<f:SimpleForm id="sfTitleId" editable="true" title="" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1"
+												layout="ResponsiveGridLayout">
+												<f:content>
+													<Title text="General Configuration for Chart"/>
+													<HBox alignItems="End">
+														<Label text="Title:" tooltip="Title for the chart." required="true" class="titleCustomStyle fontLabelColor"/>
+														<core:Icon class="sapUiTinyMarginBegin" src="sap-icon://sys-help" tooltip="Title for the chart."></core:Icon>
+													</HBox>
+													<Input id="cardTitleId" tooltip="Title for the chart." value="{/cardTitle}" valueState="Error" liveChange="handleTitleInput"/>
+													<HBox alignItems="End" class="sapUiSmallMarginTop">
+														<Label text="Subtitle:" class="fontLabelColor" tooltip="Subtitle for the chart."/>
+														<core:Icon class="sapUiTinyMarginBegin" src="sap-icon://sys-help" tooltip="Subtitle for the chart."></core:Icon>
+													</HBox>
+													<Input id="cardSubTitleId" value="{/cardSubtitle}" liveChange="handleSubTitleInput"></Input>
+													<HBox alignItems="End" class="sapUiSmallMarginTop">
+														<Label text="On title press navigate to:" class="fontLabelColor"
+															tooltip="Use value help to link your card to existing PANA drill downs or add any link/URL."/>
+														<core:Icon class="sapUiTinyMarginBegin" src="sap-icon://sys-help"
+															tooltip="Use value help to link your card to existing PANA drill downs or add any link/URL."></core:Icon>
+													</HBox>
+													<Input id="trgURLID" value="{/targetURL}" tooltip="Use value help to link your card to existing PANA drill downs or add any link/URL."
+														placeholder="Any link or use the help ->" valueHelpRequest="onNvaigationValueHelpPress" showValueHelp="true"/>
+												</f:content>
+											</f:SimpleForm>
+										</VBox>
+									</VBox>
+									<!-- tab 4 Data Configuration-->
+									<VBox id="configuration4" visible="false">
+										<VBox class="sapUiTinyMargin aiGridParent">
+											<Title text="Data Configuration" class="sapUiTinyMargin"/>
+											<l:Grid defaultSpan="L6 M6 S12" class="sapUiTinyMargin">
+												<VBox id="excelBox" class="customChartSelectHoverColora recommendedObjects sapOvpBaseCardN smallPadding" height="7.5rem" alignItems="Center">
+													<core:Icon press="handleExcelFilePress" class="sapUiSmallMrgin" color="#d2d2d2" width="100%"
+														tooltip="To create a card using new or previously uploaded spreadsheets." src="sap-icon://excel-attachment" size="3rem"/>
+													<Text class="sapUiTinyMargin sapUiSmallMarginBottom pureWhiteText" text="Spreadsheet" select="onChartTypeSelected"/>
+												</VBox>
+												<VBox id="dataBox" class="customChartSelectHoverColora recommendedObjects sapOvpBaseCardN smallPadding" height="7.5rem" alignItems="Center">
+													<core:Icon press="handleAiObjectPress" class="sapUiSmallMrgin" color="#d2d2d2" width="100%" src="sap-icon://database" size="3rem"
+														tooltip="To create a card using systems connected to Brevo. To add a new system contact admin"/>
+													<Text class="sapUiTinyMargin sapUiSmallMarginBottom pureWhiteText" text="Data Set" select="onChartTypeSelected"/>
+												</VBox>
+											</l:Grid>
+											<!--	<Label text="Excel file" required="true" class="titleCustomStyle"/><Input id="fileId" placeholder="Upload your excel file here" valueState="Error" value="{/fileName}"
+											valueHelpRequest="onValueHelpRequestForFiles" showValueHelp="true" valueHelpOnly="true"/><Label></Label><Text text="or" textAlign="Center"/><Label visible="false" text="Select system source" required="true" class="titleCustomStyle"/><Input id="srcId" visible="false" placeholder="Select your data source" valueState="Error" value="{/RfcName}"
+											valueHelpRequest="onValueHelpRequestForDataSrc" showValueHelp="true" valueHelpOnly="true"/><Label text="Data Records" required="true" class="titleCustomStyle"/><Input id="serviceURLId" placeholder="Path to metadata of the odata service" valueState="Error" value="{/serviceURL}"
+											change="onServiceUrlChanged" valueHelpRequest="onValueHelpRequestForDataRecords" showValueHelp="true"/>
+													-->
+											<Text text="{/serviceURL}" id="fileId" visible="false" class="whiteText sapUiTinyMargin"/>
+											<Text text="" id="destinationId" visible="false" class="whiteText sapUiTinyMargin"/>
+											<Text text="" id="setfileIdText" class="messageText sapUiTinyMargin"/>
+											<f:SimpleForm id="sfContentId" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" editable="true"
+												title="" layout="ResponsiveGridLayout">
+												<f:content>
+													<HBox alignItems="End" class="sapUiSmallMarginTop">
+														<Label text="Entity:" required="true" visible="true" class="fontLabelColor"
+															tooltip="Select a dataset first and then select an entity/sub-set of data from the valuehelp."/>
+														<core:Icon class="sapUiTinyMarginBegin" src="sap-icon://sys-help"
+															tooltip="Select a dataset first and then select an entity/sub-set of data from the valuehelp."></core:Icon>
+													</HBox>
+													<Input id="entityId" valueHelpRequest="onValueHelpRequestForEntity" showValueHelp="true"
+														tooltip="Select a dataset first and then select an entity/sub-set of data from the valuehelp." valueHelpOnly="true"
+														liveChange="handleEntityInput" visible="true"/>
+													<HBox alignItems="End" class="sapUiSmallMarginTop">
+														<Label text="Data Refresh in Seconds:" class="fontLabelColor"
+															tooltip="Enter time in seconds to refresh the data of your chart automatically."/>
+														<core:Icon class="sapUiTinyMarginBegin" src="sap-icon://sys-help"
+															tooltip="Enter time in seconds to refresh the data of your chart automatically."></core:Icon>
+													</HBox>
+													<Input tooltip="Enter time in seconds to refresh the data of your chart automatically." placeholder="By Default: No refresh" type="Number"
+														id="refreshIntervalId" value="{/ris}" liveChange="onIntervalChange"/>
+													<Label/>
+													<CheckBox text="Limit Data Records:" selected="{/isDataSetLimited}"
+														tooltip="Check this box if you want to limit the number of records. Useful to create Top N charts." id="isDataSetLimited"
+														select="onLimitDataSelect" class="fontLabelColor"/>
+													<HBox alignItems="End" class="sapUiSmallMarginTop">
+														<Label text="Limit Data Records:" class="fontLabelColor"
+															tooltip="Enter a numeric value to restrict data. For example '10', will get you Top 10 data. The data can be sorted according to any metric in filters menu"/>
+														<core:Icon class="sapUiTinyMarginBegin" src="sap-icon://sys-help"
+															tooltip="Enter a numeric value to restrict data. For example '10', will get you Top 10 data. The data can be sorted according to any metric in filters menu"></core:Icon>
+													</HBox>
+													<Input
+														tooltip="Enter a numeric value to restrict data. For example '10', will get you Top 10 data. The data can be sorted according to any metric in filters menu"
+														id="limitDataSet" value="{path:'/dataSetLimit'}" placeholder="#"
+														visible="{path:'/isDataSetLimited',formatter:'Brevo.Brevo_V2.util.Formatter.checkForVisibility'}"/>
+													<Label text="Numeric Content:" visible="false" id="numConId"/>
+													<Input value="{/numContent1}" visible="false" id="numConVal1Id" liveChange="handleNumInput">
+														<layoutData>
+															<l:GridData span="L4 M4 S4"/>
+														</layoutData>
+													</Input>
+													<Input value="{/numContent2}" visible="false" id="numConVal2Id" liveChange="handleNumInput1">
+														<layoutData>
+															<l:GridData span="L4 M4 S4"/>
+														</layoutData>
+													</Input>
+												</f:content>
+											</f:SimpleForm>
+										</VBox>
+									</VBox>
+									<!-- tab 5 Chart Selection press="handleAiObjectPress"-->
+									<VBox id="configuration5" visible="false" height="100%">
+										<VBox class="sapUiTinyMarginTop aiGridParent" height="100%">
+											<SearchField liveChange="onChartSearch" width="95%" showIcon="false" visible="true" id="cahrtSearch"
+												class="onAISearch sapUiTinyMargin sapUiSizeCompact" placeholder="Search"/>
+											<l:Grid defaultSpan="L6 M6 S12" id="masterListId2" content="{/}">
+												<VBox class="customChartSelectHoverColora recommendedObjects sapOvpBaseCardN smallPadding" id="chrtSelectBox" height="8rem"
+													alignItems="Center">
+													<core:Icon class="sapUiSmallMrgin" color="#d2d2d2" width="100%" src="{icon}" size="3rem"/>
+													<VBox width="100%" alignItems="Start">
+														<Text class="sapUiSmallMargin pureWhiteText" text="{chartName}" select="onChartTypeSelected"/>
+													</VBox>
+												</VBox>
+											</l:Grid>
+										</VBox>
+									</VBox>
+									<!-- tab 6 Measures and dimension-->
+									<VBox id="configuration6" class="sapUiSizeCompactn">
+										<SearchField search="onChartSearch" width="95%" showIcon="false" visible="false" id="measureSearch"
+											class="onAISearch sapUiTinyMarginTop sapUiTinyMarginBegin sapUiTinyMarginEnd sapUiSizeCompact" placeholder="Search"/>
+										<!--<HBox id="hboxbuttonsID" wrap="Wrap" class="aiBtns sapUiSizeCompact sapUiSmallMarginTop">-->
+										<!--	<Button type="Emphasized" icon="sap-icon://accept" class="sapUiTinyMarginBegin" text="dimensions 1"/>-->
+										<!--	<Button type="Emphasized" icon="sap-icon://accept" class="sapUiTinyMarginBegin" text="Measure 1"/>-->
+										<!--	<Button type="Emphasized" class="sapUiTinyMarginBegin" text="Measure 1"/>-->
+										<!--	<Button type="Emphasized" class="sapUiTinyMarginBegin" text="Measure 1"/>-->
+										<!--</HBox>-->
+										<Panel expandable="true" expanded="true" id="DimensionPanel" headerText="Dimension" width="auto" height="auto" class="sapUiResponsiveMargi">
+											<headerToolbar>
+												<Toolbar>
+													<HBox alignItems="End" class="sapUimallMarginTop">
+														<Text tooltip="Select a dimension for your chart" class="whiteText sapUiTinyMarginTop sapUiTinyMarginBegin" text="Dimensions:"/>
+														<core:Icon class="sapUiTinyMarginBegin" src="sap-icon://sys-help" tooltip="Select a dimension for your chart"></core:Icon>
+													</HBox>
+													<ToolbarSpacer/>
+													<MenuButton text="New" visible="false" type="Transparent" class="menuButton sapUiTinyMarginTop">
+														<menu>
+															<Menu >
+																<items>
+																	<MenuItem text="Calculated Dimension" icon="sap-icon://add-document"/>
+																	<MenuItem text="Metric Dimension" press="handleAddCard" icon="sap-icon://line-chart"/>
+																</items>
+															</Menu>
+														</menu>
+													</MenuButton>
+												</Toolbar>
+											</headerToolbar>
+											<!--	<VBox   class="sapUiTinyMargin smallPadding aiGridParent" > -->
+											<!--<List mode="MultiSelect" class="sapUiTinyMarginTop" id="dimensionId" items="{/}"  selectionChange="handleSelectionChange">-->
+											<Text class="messageText sapUiTinyMarginTop" id="dimensionText"/>
+											<fiori:GridList mode="MultiSelect" noDataText="Select a Data Source" class="sapUiTinyMarginTop dimensionList" id="dimensionId" items="{/}"
+												selectionChange="handleSelectionChange">
+												<CustomListItem class="cliPadding popOverItem">
+													<content>
+														<Toolbar class="ltiBorder">
+															<Text class="whiteText" text="{LABEL}" placeholder="{property}"/>
+															<!--	<ToolbarSpacer/><core:Icon src="sap-icon://settings" color="#d2d2d2" size="1.2rem"/> -->
+														</Toolbar>
+													</content>
+												</CustomListItem>
+											</fiori:GridList>
+										</Panel>
+										<!--	</VBox><VBox  class="sapUiTinyMargin aiGridParent" > -->
+										<Panel expandable="true" expanded="true" id="measurePanel" headerText="Metric/Unit" tooltip="unit of measure relating to KPIs" width="auto"
+											class="sapUiResponsiveMargi">
+											<headerToolbar>
+												<Toolbar>
+													<HBox alignItems="End" class="sapUimallMarginTop">
+														<Text class="sapUiTinyMarginTop sapUiTinyMarginBegin" tooltip="Unit of measure relating to KPIs" text="Measures"/>
+														<core:Icon class="sapUiTinyMarginBegin" src="sap-icon://sys-help" tooltip="Unit of measure relating to KPIs"></core:Icon>
+													</HBox>
+													<ToolbarSpacer/>
+													<!-- 	<Button id="measureSettingsBtn" visible="true" icon="sap-icon://settings" width="2rem" press="onMeasuresSettingsPress" type="Transparent"/>					 -->
+													<MenuButton visible="false" text="New" type="Transparent" class="menuButton sapUiTinyMarginTop">
+														<menu>
+															<Menu >
+																<items>
+																	<MenuItem text="Calculated Measure" press="handleCalculatedMeasure" icon="sap-icon://add-document"/>
+																	<MenuItem text="Restricted Measure" press="handleRestrictedMeasure" icon="sap-icon://line-chart"/>
+																</items>
+															</Menu>
+														</menu>
+													</MenuButton>
+												</Toolbar>
+											</headerToolbar>
+											<Text class="messageText sapUiTinyMarginTop" id="measureText"/>
+											<fiori:GridList mode="MultiSelect" noDataText="Select a Data Source" class="sapUiTinyMarginTop measureList" id="measureId" items="{/}"
+												selectionChange="handleSelectionChange">
+												<CustomListItem class="cliPadding popOverItem">
+													<content>
+														<Toolbar class="ltiBorder">
+															<Text class="whiteText" text="{LABEL}" placeholder="{property}"/>
+															<ToolbarSpacer/>
+															<core:Icon src="sap-icon://settings" color="#d2d2d2" size="1.2rem" press="onMeasureSettingPress"/>
+														</Toolbar>
+													</content>
+												</CustomListItem>
+												<!--<CustomListItem class="cliPadding popOverItem">-->
+												<!--	<content>-->
+												<!--		<Toolbar class="ltiBorder">-->
+												<!--			<Text class="whiteText" text="{value}" placeholder="{property}"/>-->
+												<!--			<ToolbarSpacer/>-->
+												<!--			<core:Icon src="sap-icon://settings" visible="false" color="#d2d2d2" size="1.2rem" press="onMeasureSettingPress"/>-->
+												<!--		</Toolbar>-->
+												<!--	</content>-->
+												<!--</CustomListItem>-->
+											</fiori:GridList>
+										</Panel>
+										<VBox id="columnVboxId" visible="false">
+											<Toolbar class="noBorderToolbar">
+												<ToolbarSpacer width="1rem"/>
+												<Title text="Add Column:" level="H1"/>
+												<ToolbarSpacer/>
+												<Button class="menuButton" iconFirst="false" icon="sap-icon://add" press="handleDynamicColumn" visible="true" type="Transparent"/>
+												<ToolbarSpacer width="0.5rem"/>
+											</Toolbar>
+											<VBox id="addColumnId" class="columnClass sapUiSizeCompact" height="35rem">
+												<Panel id="column1panel" expandable="true" expanded="true" visible="false" headerText="Columns" width="auto" class="sapUiResponsiveMargi">
+													<headerToolbar>
+														<Toolbar>
+															<Text class="whiteText" text="Column 1"/>
+														</Toolbar>
+													</headerToolbar>
+													<content>
+														<Select items="{/}" change="handleSelectionChange" class="customMultiBoxStyle" id="column1" width="100%">
+															<core:Item key="{COLUMN_NAME}" text="{LABEL}"/>
+														</Select>
+													</content>
+												</Panel>
+												<Panel id="column2panel" expandable="true" expanded="true" visible="false" headerText="Columns" width="auto" class="sapUiResponsiveMargi">
+													<headerToolbar>
+														<Toolbar>
+															<Text class="whiteText" text="Column 2"/>
+														</Toolbar>
+													</headerToolbar>
+													<content>
+														<Select items="{/}" change="handleSelectionChange" class="customMultiBoxStyle" id="column2" width="100%">
+															<core:Item key="{COLUMN_NAME}" text="{LABEL}"/>
+														</Select>
+													</content>
+												</Panel>
+												<Panel id="column3panel" expandable="true" expanded="true" visible="false" headerText="Columns" width="auto" class="sapUiResponsiveMargi">
+													<headerToolbar>
+														<Toolbar>
+															<Text class="whiteText" text="Column 3"/>
+														</Toolbar>
+													</headerToolbar>
+													<content>
+														<Select items="{/}" change="handleSelectionChange" class="customMultiBoxStyle" id="column3" width="100%">
+															<core:Item key="{COLUMN_NAME}" text="{LABEL}"/>
+														</Select>
+													</content>
+												</Panel>
+											</VBox>
+										</VBox>
+									</VBox>
+									<!-- tab 7-->
+									<VBox id="configuration7" visible="true">
+										<Toolbar>
+											<ToolbarSpacer width="1rem"/>
+											<Title text="Sort by:" level="H1"/>
+											<ToolbarSpacer/>
+											<Button id="sortButtonId" iconFirst="false" class="sapUiSizeCompact menuButton" text="Select a Value" icon="sap-icon://edit"
+												press="handleAddSort" visible="true" type="Transparent"/>
+											<ToolbarSpacer width="0.5rem"/>
+										</Toolbar>
+										<Toolbar class="noBorderToolbar">
+											<ToolbarSpacer width="1rem"/>
+											<Title text="Filters:" level="H1"/>
+											<ToolbarSpacer/>
+											<Button class="menuButton" iconFirst="false" icon="sap-icon://add" press="handleAddRow" visible="true" type="Transparent"/>
+											<ToolbarSpacer width="0.5rem"/>
+										</Toolbar>
+										<!--<VBox id="filterParameterVboxId" items="{/}" class="sapUiTinyMargin"> -->
+										<VBox id="filterParameterVboxId" items="{/}" class="filterPanelClass">
+											<items>
+												<Panel expandable="true" expanded="false" headerText="Measures" width="auto" class="sapUiSizeCompact filterPanel">
+													<headerToolbar>
+														<Toolbar>
+															<Text class="whiteText" text="{filterParameter}"/>
+															<ToolbarSpacer/>
+															<Button icon="sap-icon://edit" press="handleFilterEditPress" class="menuButton" visible="true" type="Transparent"/>
+															<Button icon="sap-icon://delete" press="handleFilterDeletePress" class="menuButton" visible="true" type="Transparent"/>
+														</Toolbar>
+													</headerToolbar>
+													<content>
+														<VBox id="sdc" class="sapUiTinyMargin" items="{filterParameterArr}">
+															<Button text="{filterParameterValue}" type="Transparent" iconFirst="false" press="handleFilterValueDeletePress" width="100%"
+																icon="sap-icon://delete" class="sapUiTinyMarginBottom popOverItem menuButton"/>
+															<!--<Button type="Transparent" iconFirst="false"  width="100%" icon="sap-icon://delete" class="sapUiTinyMarginBottom popOverItem menuButton" text="Measure 1" /><Button type="Transparent" width="100%" iconFirst="false"  icon="sap-icon://delete" class="sapUiTinyMarginBottom popOverItem menuButton" text="Measure 1" /><Button type="Transparent" width="100%" iconFirst="false"  icon="sap-icon://delete" class="sapUiTinyMarginBottom popOverItem menuButton" text="Measure 1" />-->
+														</VBox>
+														<!--<VBox id="filterParameterVboxId1" items="{/}" class="sapUiTinyMargin"><items><Button text="{filterParameterArr}" type="Transparent" iconFirst="false" width="100%" icon="sap-icon://delete" class="sapUiTinyMarginBottom popOverItem menuButton"/>-->
+														<!--<Button type="Transparent" iconFirst="false"  width="100%" icon="sap-icon://delete" class="sapUiTinyMarginBottom popOverItem menuButton" text="Measure 1" /><Button type="Transparent" width="100%" iconFirst="false"  icon="sap-icon://delete" class="sapUiTinyMarginBottom popOverItem menuButton" text="Measure 1" /><Button type="Transparent" width="100%" iconFirst="false"  icon="sap-icon://delete" class="sapUiTinyMarginBottom popOverItem menuButton" text="Measure 1" />-->
+														<!--</items></VBox>-->
+													</content>
+												</Panel>
+											</items>
+										</VBox>
+										<!--<Panel  expandable="true" expanded="false" headerText="Measures" width="auto" class="sapUiSizeCompact filterPanel"><headerToolbar><Toolbar><Text  class="whiteText" text="Customer"/><ToolbarSpacer/><Button icon="sap-icon://edit" press="handleAddRow" class="menuButton" visible="true" type="Transparent"/><Button icon="sap-icon://delete" press="handleAddRow" class="menuButton" visible="true" type="Transparent"/></Toolbar></headerToolbar><content><VBox class="sapUiTinyMargin"><Button type="Transparent" width="100%" iconFirst="false"  icon="sap-icon://delete" class="sapUiTinyMarginBottom popOverItem menuButton" text="Measure 1" /><Button type="Transparent" width="100%" iconFirst="false"  icon="sap-icon://delete" class="sapUiTinyMarginBottom popOverItem menuButton" text="Measure 1" /><Button type="Transparent" width="100%" iconFirst="false"  icon="sap-icon://delete" class="sapUiTinyMarginBottom popOverItem menuButton" text="Measure 1" /><Button type="Transparent" width="100%" iconFirst="false"  icon="sap-icon://delete" class="sapUiTinyMarginBottom popOverItem menuButton" text="Measure 1" /></VBox></content></Panel>-->
+									</VBox>
+									<VBox id="configuration8" visible="true">
+										<f:SimpleForm labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" id="formattingId" editable="true"
+											title="Formatting" layout="ResponsiveGridLayout">
+											<f:content>
+												<Label text="Scale" class="fontLabelColor"/>
+												<Select id="scaleSelectionId" change="handleScaleSelection" class="customMultiBoxStyle">
+													<core:Item key="default" text="Default"/>
+													<core:Item key="percent" text="% Percentage"/>
+													<core:Item key="short" text="Short"/>
+													<!--	<core:Item key="thousand" text="Thousand"/>
+											<core:Item key="million" text="Million"/>
+											<core:Item key="billion" text="Billion"/>
+											<core:Item key="percent" text="Percentage"/>-->
+												</Select>
+												<Label text="Decimal Places" class="fontLabelColor"/>
+												<Input id="decimalPlacesId"/>
+												<Label text="X - Axis Label" class="fontLabelColor"/>
+												<Input id="xAxisLabelId"/>
+												<Label text="Y - Axis Label" class="fontLabelColor"/>
+												<Input id="yAxisLabelId"/>
+											</f:content>
+										</f:SimpleForm>
+										<!-- <VBox id ="tableId" items="{/}">
+								
+								<items>
+								<HBox>
+								<Label id="dum" text="{colNum}"/>
+								
+								<Input value="{customLabel}" liveChange="oncustomLabelchange"/>
+								</HBox>
+								
+								
+								</items>
+								</VBox>
+								 -->
+										<VBox id="sid">
+											<VBox class="sapUiTinyMargin aiGridParent">
+												<f:SimpleForm id="cvid" editable="true" title="Formatter" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1"
+													columnsM="1" layout="ResponsiveGridLayout">
+													<f:content>
+														<VBox id="tableId" class="sapUiTinyMarginBottom" items="{/}">
+															<items>
+																<VBox>
+																	<Label id="dum" text="{colNum}:" class="fontLabelColor"/>
+																	<Input value="{customLabel}" liveChange="oncustomLabelchange"/>
+																</VBox>
+															</items>
+														</VBox>
+													</f:content>
+												</f:SimpleForm>
+											</VBox>
+										</VBox>
+										<!-- <f:SimpleForm labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" id="tableId" editable="true"
+									title="Format" layout="ResponsiveGridLayout" content="{/}">
+									
+									{colNum}
+										<f:content>
+										<Text id="dum" text="abc"/>
+										<Input value="{customLabel}" liveChange="oncustomLabelchange"/>
+										</f:content>
+									
+								</f:SimpleForm> -->
+										<f:SimpleForm labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" id="colors" editable="true"
+											title="Color Selection" layout="ResponsiveGridLayout">
+											<Label id="colorLabel" text="Colors" visible="true" class="fontLabelColor"/>
+											<Select id="colorText" change="handleChangeinVBox" class="customMultiBoxStyle">
+												<core:Item key="Semantic_Color" text="Semantic Color"/>
+												<core:Item key="Default_Color" text="Default Color"/>
+												<core:Item key="Manual_Color" text="Manual Color"/>
+											</Select>
+											<Label/>
+											<MultiInput id="colorValues" enabled="false" tokenChange="onTokensChange" liveChange="onNewColorAdded" submit="onColorAdded"
+												showValueHelp="false"/>
+											<Label/>
+											<CheckBox text="Show Data Labels" selected="true" id="isShowLabelsSet" select="handleChangeinVBox" class="fontLabelColor"/>
+										</f:SimpleForm>
+									</VBox>
+									<VBox id="configuration9" visible="true">
+										<!-- <Toolbar>
+											<ToolbarSpacer width="1rem"/>
+											<Title text="Predictive Analytics:" level="H1"/>
+											<ToolbarSpacer/>
+											<Switch customTextOn="Yes" customTextOff="No" enabled="false" id="isPredictiveEnabled" change="onPredictionOnOff"/>
+											<ToolbarSpacer width="0.5rem"/>
+										</Toolbar> -->
+										<f:SimpleForm labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" id="predictionForm" editable="true"
+											title="" layout="ResponsiveGridLayout">
+											<f:toolbar>
+												<Toolbar>
+													<Title text="Predictive Analytics:" required="false" visible="true"/>
+													<ToolbarSpacer width="1rem"/>
+													<Switch customTextOn="Yes" customTextOff="No" enabled="false" id="isPredictiveEnabled" change="onPredictionOnOff"/>
+												</Toolbar>
+											</f:toolbar>
+											<f:content>
+												<Label text="Predictive Type:"/>
+												<Select change="handlePredictionAlgorthimChange" class="customMultiBoxStyle" enabled="false">
+													<core:Item key="forecast" text="Time Series Forecasting"/>
+												</Select>
+												<Label text="Predictive Output:"/>
+												<Select change="handlePredictionAlgorthimChange" class="customMultiBoxStyle" enabled="false">
+													<core:Item key="forecast" text="Net Sales"/>
+												</Select>
+											</f:content>
+										</f:SimpleForm>
+										<!--<Panel  expandable="true" expanded="false" headerText="Measures" width="auto" class="sapUiSizeCompact filterPanel"><headerToolbar><Toolbar><Text  class="whiteText" text="Customer"/><ToolbarSpacer/><Button icon="sap-icon://edit" press="handleAddRow" class="menuButton" visible="true" type="Transparent"/><Button icon="sap-icon://delete" press="handleAddRow" class="menuButton" visible="true" type="Transparent"/></Toolbar></headerToolbar><content><VBox class="sapUiTinyMargin"><Button type="Transparent" width="100%" iconFirst="false"  icon="sap-icon://delete" class="sapUiTinyMarginBottom popOverItem menuButton" text="Measure 1" /><Button type="Transparent" width="100%" iconFirst="false"  icon="sap-icon://delete" class="sapUiTinyMarginBottom popOverItem menuButton" text="Measure 1" /><Button type="Transparent" width="100%" iconFirst="false"  icon="sap-icon://delete" class="sapUiTinyMarginBottom popOverItem menuButton" text="Measure 1" /><Button type="Transparent" width="100%" iconFirst="false"  icon="sap-icon://delete" class="sapUiTinyMarginBottom popOverItem menuButton" text="Measure 1" /></VBox></content></Panel>-->
+									</VBox>
+								</VBox>
+							</HBox>
+						</content>
+						<footer>
+							<Toolbar visible="true">
+								<ToolbarSpacer/>
+								<Button id="saveCardId" text="Save" type="Accept" press="handleSaveButton"></Button>
+								<Button id="cancelCardId" text="Cancel" type="Reject" press="handleCancelBtn"></Button>
+							</Toolbar>
+						</footer>
+					</Page>
+				</masterPages>
+			</SplitContainer>
+		</content>
+	</Page>
+</mvc:View>

@@ -1,0 +1,55 @@
+from pyspark.sql import SparkSession
+import sys, json
+
+def main():
+	table = sys.argv[1]
+	select = sys.argv[2]
+	filter = sys.argv[3]
+	top = sys.argv[4]
+	aggregation = sys.argv[5]
+	my_spark = SparkSession \
+		.builder \
+		.appName("myApp") \
+		.config("spark.mongodb.input.uri", "mongodb://localhost:27017/fileuploader."+table) \
+		.config("spark.mongodb.output.uri", "mongodb://localhost:27017/fileuploader."+table) \
+		.config("spark.mongodb.input.partitioner", "MongoPaginateBySizePartitioner") \
+		.config('spark.jars.packages', 'org.mongodb.spark:mongo-spark-connector_2.12:2.4.1')\
+		.getOrCreate()
+	collDet = my_spark.read.format("com.mongodb.spark.sql.DefaultSource").option("uri","mongodb://127.0.0.1/fileuploader.CollectionDetails").load()
+	collDet = collDet.toJSON().collect()
+	collDet =json.dumps(collDet)
+	collDet = json.loads(collDet)
+	collDet = json.loads(collDet[0])
+	grpby = []
+	select = select.upper()
+	select = select.split(",")
+	sql = "SELECT "
+	i=0;
+	for val in select:
+		if i>0:
+			sql = sql+","
+		if val in collDet['MEASURES']:
+			sql =  sql = sql + aggregation.upper()+"("+val.upper()+")"+" AS "+val.upper()
+			i = i+1
+		elif val in collDet['DIMENSIONS']:
+			sql = sql + val.upper()
+			grpby.append(val.upper())
+			i = i+1
+	sql = sql + " FROM "+table+" WHERE "+filter.upper()+" GROUP BY "
+	i=0
+	for val in grpby:
+		if i>0:
+			sql = sql+","
+		sql = sql + val.upper()
+		i = i+1
+	sql = sql + " LIMIT "+ top
+	df = my_spark.read.format("com.mongodb.spark.sql.DefaultSource").load()
+	df.createOrReplaceTempView(table)
+	data = my_spark.sql(sql)
+	out = data.toJSON().collect()
+	sys.stdout.write(json.dumps(out))
+	sys.stdout.flush() 
+
+
+if __name__ == '__main__':
+	main()

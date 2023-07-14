@@ -1,0 +1,164 @@
+{
+    "_version": "1.12.0",
+    "sap.app": {
+        "id": "Brevo.QueryBuilder",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "ui5template.basicSAPUI5ApplicationProject",
+            "version": "1.40.12"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "rootView": {
+            "viewName": "Brevo.QueryBuilder.view.App",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.65.6",
+            "libs": {
+                "sap.ui.layout": {},
+                "sap.ui.core": {},
+                "sap.m": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "Brevo.QueryBuilder.i18n.i18n"
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                },
+                {
+                    "uri": "css/rappid.css"
+                }
+            ],
+            "js": [
+                {
+                    "uri": "js/lodash.js"
+                },
+                {
+                    "uri": "js/backbone.js"
+                },
+                {
+                    "uri": "js/rappid.js"
+                },
+                {
+                    "uri": "js/dataMapping/jointShapesMapping.js"
+                },
+                {
+                    "uri": "js/dataMapping/jointRoutersMapping.js"
+                },
+                {
+                    "uri": "js/dataMapping/jointAnchorsMapping.js"
+                },
+                {
+                    "uri": "js/dataMapping/jointLinkToolsMapping.js"
+                },
+                {
+                    "uri": "_custom/control/textcomplete.js"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "Brevo.QueryBuilder.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "home",
+                    "target": [
+                        "home"
+                    ]
+                },
+                {
+                    "pattern": "home/:reload:/:isDeptAdded:",
+                    "name": "HomeView",
+                    "target": [
+                        "home"
+                    ]
+                },
+                {
+                    "pattern": "createQuery/:isEditMode:/:isWizardDataPresent:",
+                    "name": "createQuery",
+                    "target": [
+                        "createQuery"
+                    ]
+                },
+                {
+                    "pattern": "DataPreview/:viewName:",
+                    "name": "dataPreview",
+                    "target": [
+                        "dataPreview"
+                    ]
+                },
+                {
+                    "pattern": "sqlEditor/:isQueryPresent:/:isEditMode:",
+                    "name": "sqlEditor",
+                    "target": "sqlEditor"
+                }
+            ],
+            "targets": {
+                "home": {
+                    "viewID": "Home",
+                    "viewName": "Home"
+                },
+                "createQuery": {
+                    "viewID": "CreateQuery",
+                    "viewName": "CreateQuery"
+                },
+                "dataPreview": {
+                    "viewID": "DataPreview",
+                    "viewName": "DataPreview"
+                },
+                "sqlEditor": {
+                    "viewID": "SqlEditor",
+                    "viewName": "SqlEditor"
+                }
+            }
+        }
+    },
+    "sap.platform.hcp": {
+        "uri": "webapp",
+        "_version": "1.1.0"
+    }
+}

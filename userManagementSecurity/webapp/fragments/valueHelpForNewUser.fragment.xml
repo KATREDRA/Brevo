@@ -1,0 +1,48 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified">
+	<Dialog title="Add User" contentWidth="30%" class="sapUiSizeCompact">
+		<endButton>
+			<Button text="Cancel" press="handleAddUserCancelPress"/>
+		</endButton>
+		<beginButton>
+			<Button text="Save" press="handleAddUserOkPress"/>
+		</beginButton>
+		<SegmentedButton width="100%" class="sapUiSmallMarginTop" selectionChange="handleChangeUsersCreate">
+			<items>
+				<SegmentedButtonItem text="Create User" key="Create User"/>
+				<SegmentedButtonItem text="Upload Users" key="Upload Users"/>
+			</items>
+		</SegmentedButton>
+		<f:SimpleForm minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3"
+			emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="editableForm" title="Upload users">
+			<f:content>
+				<Label text="File Name"/>
+				<VBox>
+					<u:FileUploader width="100%" change="onUpload" placeholder="Choose a Excel file" fileType="XLSX" style="Emphasized"/>
+					<!--<Button text="Upload File" press="onUpload"/>-->
+				</VBox>
+			</f:content>
+		</f:SimpleForm>
+		<!--	<Title text="OR" class="orTextClass"/>-->
+		<f:SimpleForm minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3"
+			emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" class="editableForm" title="Create User">
+			<f:content>
+				<Label required="true" text="First Name"/>
+				<Input value=""/>
+				<Label text="Last Name"/>
+				<Input value=""/>
+				<Label required="true" text="Email Id"/>
+				<Input type="Email" value="" change="handleValidateEmail"/>
+				<Label required="false" text="Contact No"/>
+				<Input value="" liveChange="limitPhoneNumbers"/>
+				<Label text="Roles"/>
+				<Select items="{rolesDetails>/}" width="100%" enabled="true">
+					<core:Item text="{rolesDetails>type}" key="{rolesDetails>_id}"/>
+				</Select>
+				<!--<Label text="Groups"/>
+				<Select items="{/results}" width="100%" enabled="true">
+					<core:Item text="{Name}" key="{Department Id}"/>
+				</Select>-->
+			</f:content>
+		</f:SimpleForm>
+	</Dialog>
+</core:FragmentDefinition>

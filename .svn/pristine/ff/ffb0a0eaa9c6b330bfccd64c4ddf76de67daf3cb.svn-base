@@ -1,0 +1,1023 @@
+// Assign the required packages and dependencies to variables
+var express = require('express');
+var ODataServer = require("simple-odata-server");
+var msqlAdapter = require('./mysqlAdapter')
+var mongoAdapter = require('simple-odata-server-mongodb');
+var mysql = require('mysql');
+var MongoClient = require('mongodb').MongoClient;
+var cors = require("cors");
+var bodyParser = require('body-parser');
+var parser = require('odata-parser')
+var url = require('url')
+var querystring = require('querystring')
+var UMServer = require('./UserManagerment.js')
+// Load the Snowflake Node.js driver.
+var snowflake = require('snowflake-sdk');
+
+var Session = require('./Session.js')
+// Create app variable to initialize Express 
+var app = express();
+
+// Enable Cross-origin resource sharing (CORS)  for app.
+app.use(cors());
+app.use(express.json());
+app.use(bodyParser.json({limit: "5000mb"}));
+app.use(bodyParser.urlencoded({limit: "5000mb", extended: true, parameterLimit:500000}));
+
+
+MongoClient.connect("mongodb://localhost:27017/", function(err, db) {
+	if(err){
+		//console.log("err");
+	}else{
+		dbo = db.db("BrevoV3")
+   	 	dbo.collection("Session").createIndex( { "createdAt": 1 }, { expireAfterSeconds: 1200 } )
+    } 
+});
+
+// Define Odata model of the resource entity i.e. Product. 
+// The metadata is defined using OData type system called the Entity Data Model (EDM),
+// consisting of EntitySets, Entities, ComplexTypes and Scalar Types.
+var MongoModel = {
+    namespace: "BrevoV3",
+    entityTypes: {
+        "OVPPageConfig": {
+        	"_id":{"type": "Edm.String"},
+            "Page_Id": {"type": "Edm.Int32", key: true},        
+            "Roleflag": {"type": "Edm.String"},
+            "createdTime": {"type": "Edm.String"},  
+            "createdDate": {"type": "Edm.String"}, 
+            "createdBy":{"type":"Edm.String"},
+            "Lastchanged": {"type": "Edm.String"},  
+            "FavoriteFlag": {"type": "Edm.Boolean"},  
+            "NoOfCounts": {"type": "Edm.Int32"},
+            "NoOfLikes": {"type": "Edm.Int32"},
+            "link":{"type":"Edm.String"},
+            "template":{"type":"Edm.String"},
+            "AssetId":{"type":"Edm.Int32"},
+            "MimeType":{"type":"Edm.String"},
+            "Saved":{"type":"Edm.String"},
+            "PageTitle":{"type":"Edm.String"},
+            "SubTitle":{"type":"Edm.String"},
+            "TypeOfPage":{"type":"Edm.String"},
+            "PageDescrpition":{"type":"Edm.String"},
+            "CardConfiguration":{"type":"Edm.String"},
+            "ReportConfigSet":{"type":"Edm.String"},
+            "KPIConfigSet":{"type":"Edm.String"},
+            "type":"service"         
+        },
+        "CardConfiguration": {
+        	"_id":{"type": "Edm.String"},
+            "Page_Id": {"type": "Edm.Int32"},
+            "ConfigId": {"type": "Edm.Int32", key: true},        
+            "createdTime": {"type": "Edm.String"},  
+            "createdDate": {"type": "Edm.String"}, 
+            "createdBy":{"type":"Edm.String"},
+            "Configuration": {"type": "Edm.String"},
+            "type":"service"                      
+        },
+        "ReportConfigSet":{
+        	"_id":{"type": "Edm.String"},
+            "Page_Id": {"type": "Edm.Int32"},        
+            "createdTime": {"type": "Edm.String"},  
+            "createdDate": {"type": "Edm.String"}, 
+            "createdBy":{"type":"Edm.String"},
+            "RepConfig": {"type": "Edm.Int32"},
+            "RepId":{"type": "Edm.String", key: true},
+            "KpiId":{"type":"Edm.Int32"},
+            "TypeOfReport":{"type":"Edm.String"},
+            "type":"service"         
+        },
+        "KPIConfigSet":{
+        	"_id":{"type": "Edm.String"},
+            "Page_Id": {"type": "Edm.Int32"},        
+            "createdTime": {"type": "Edm.String"},  
+            "createdDate": {"type": "Edm.String"}, 
+            "createdBy":{"type":"Edm.String"},
+            "KpiConfig": {"type": "Edm.String"},
+            "RepId":{"type": "Edm.Int32"},
+            "KpiId":{"type":"Edm.Int32", key: true},
+            "PageTitle":{"type":"Edm.String"},
+            "type":"service"         
+        },
+        "Themes":{
+        	"_id":{"type": "Edm.String"},
+            "ThemeId": {"type": "Edm.Int32", key: true},        
+            "ThemeName": {"type": "Edm.String"},  
+            "BackgroundColor": {"type": "Edm.String"}, 
+            "Basecolor":{"type":"Edm.String"},
+            "BrandColor": {"type": "Edm.String"},
+            "HighlightColor":{"type": "Edm.String"},
+            "ShellHeaderColor":{"type":"Edm.String"},
+            "TestColor":{"type":"Edm.String"},
+            "BackgroundImage":{"type":"Edm.String"},
+            "CompanyLogo":{"type":"Edm.String"},
+            "type":"service"         
+        },
+        "comments":{
+        	"_id":{"type": "Edm.String"},
+            "CommentId": {"type": "Edm.Int32", key: true},        
+            "ScenId": {"type": "Edm.Int32"},  
+			"VariantId": {"type": "Edm.Int32"},
+			"VariantName": {"type": "Edm.String"},
+            "CreatedDate": {"type": "Edm.String"}, 
+            "CreatedTime":{"type":"Edm.String"},
+            "CommentDesc": {"type": "Edm.String"},
+            "CreatedBy":{"type": "Edm.String"},
+			"Filter":{"type":"Edm.String"},
+            "type":"service"         
+         },
+        "Assets":{
+        	"_id":{"type": "Edm.String"},
+            "AssetId": {"type": "Edm.Int32", key: true},        
+            "AssetTitle": {"type": "Edm.String"},  
+            "AssetDesc": {"type": "Edm.String"}, 
+            "Link":{"type":"Edm.String"},
+            "Tags": {"type": "Edm.String"},
+            "CreatedBy":{"type": "Edm.String"},
+            "Groups": {"type": "Edm.String"},
+            "ImageUpload": {"type": "Edm.String"},
+            "Template": {"type": "Edm.String"},
+            "type":"service"         
+         },
+         "Scenarios":{
+        	"_id":{"type": "Edm.String"},
+            "ScenId": {"type": "Edm.Int32", key: true},        
+            "ListId": {"type": "Edm.Int32"},  
+            "ScenName": {"type": "Edm.String"}, 
+            "ScenConfig":{"type":"Edm.String"},
+            "RoleFlag": {"type": "Edm.String"},
+            "Filter":{"type": "Edm.String"},
+            "CreatedBy":{"type": "Edm.String"},
+            "VariantSettings":{"type": "Edm.String"},
+            "Variants":{"type": "Edm.String"},
+            "type":"service"         
+         },
+         "Variants":{
+        	"_id":{"type": "Edm.String"},
+            "VariantId": {"type": "Edm.Int32", key: true},        
+            "ScenId": {"type": "Edm.Int32"},  
+			"VariantName":{"type": "Edm.String"},
+            "SegmentSelection": {"type": "Edm.String"}, 
+            "CreatedTime":{"type":"Edm.String"},
+            "CreatedDate": {"type": "Edm.String"},
+            "CreatedBy":{"type": "Edm.String"},
+            "MeasureTree":{"type": "Edm.String"},
+            "SegmentTree":{"type": "Edm.String"},
+            "HiddenNotes":{"type": "Edm.String"},
+            "Filter":{"type": "Edm.String"},
+            "VariantSelection":{"type": "Edm.String"},
+            "RoleFlag":{"type": "Edm.String"},
+            "type":"service"         
+         }
+    },   
+    entitySets: {
+        "OVPPageConfig": {
+            entityType: "BrevoV3.OVPPageConfig",
+            type:"service"
+        },
+        "CardConfiguration": {
+            entityType: "BrevoV3.CardConfiguration",
+            type:"service"
+        },
+        "ReportConfigSet": {
+            entityType: "BrevoV3.ReportConfigSet",
+            type:"service"
+        },
+        "KPIConfigSet":{
+        	entityType: "BrevoV3.KPIConfigSet",
+            type:"service"
+        },
+        "Themes":{
+        	entityType: "BrevoV3.Themes",
+            type:"service"
+        },
+        "comments":{
+        	entityType: "BrevoV3.comments",
+            type:"service"
+        },
+        "Assets": {
+            entityType: "BrevoV3.Assets",
+            type:"service"
+        },
+        "Scenarios":{
+        	entityType: "BrevoV3.Scenarios",
+            type:"service"
+        },
+        "Variants":{
+        	entityType: "BrevoV3.Variants",
+            type:"service"
+        }
+    }
+};
+
+// Instantiates ODataServer and assigns to odataserver variable.
+var odataMongoServer = ODataServer().model(MongoModel);
+
+// Connection to demo database in MongoDB
+MongoClient.connect("mongodb://localhost:27017/", function(err, db) {
+	if(err){
+		//console.log("err");
+	}else{
+   	 	odataMongoServer.adapter(mongoAdapter(function(cb) { 
+        cb(err, db.db('BrevoV3')); 
+    })); 
+   	 }
+});
+
+// The directive to set app route path.
+app.use("/odata/mongodb", function (req, res) {
+		if (req.headers.SessionKey != undefined){
+			sessionValidity = Session.validateSession(req.headers.SessionKey, req.headers.userId)
+			if (sessionValidity)
+				odataMongoServer.handle(req, res);
+			else
+				res.end("Invalid Session")
+		}
+		else
+			odataMongoServer.handle(req, res);
+    });
+
+var UMServer = UMServer()
+
+app.use("/UM", function(req, res){
+	UMServer.handle(req, res);
+})
+
+var mysqlModel = {
+	namespace:"node_test",
+	entityTypes:{
+		"test":{
+			"Id":{"type":"Edm.Int32", key: true},
+			"Name":{"type":"Edm.String"},
+			"Category":{"type":"Edm.String"},
+			"Quantity":{"type":"Edm.String"},
+		}
+	},
+	entitySets:{
+		"test":{
+			entityType:"node_test.test",
+            type:"table"
+		}
+	}
+}
+
+var odataMysqlServer = ODataServer().model(mysqlModel);
+
+var Mysqlconnection = mysql.createConnection({
+	host:'localhost',
+	user:'root',
+	password:'Init2019',
+	database:'node_test'
+});
+Mysqlconnection.connect(function(err){
+	if(err)
+	{
+		//console.log(err);
+		
+		
+	}
+	odataMysqlServer.adapter(msqlAdapter(function(cb){
+		cb(err, Mysqlconnection);
+	}))
+});
+setInterval(keepAlive, 8000000);
+function keepAlive() {
+    Mysqlconnection.query('SELECT * from test');
+    console.log("Fired Keep-Alive");
+    return;
+}
+ app.use("/odata/mysql", function(req, res){
+ 	odataMysqlServer.handle(req, res);
+ })
+
+// Create a Connection object that we can use later to connect.
+var connection = snowflake.createConnection( {
+    account: "zk10159.eu-central-1",
+    username: "KAVYA",
+    password: "Init2020"
+//     database:"TEST",
+//     schema:"TEST",
+//     role:"ACCOUNTADMIN"
+});
+
+
+function createConnection(callBack){
+// Try to connect to Snowflake, and check whether the connection was successful.
+connection.connect( 
+    function(err, conn) {
+        if (err) {
+            console.error('Unable to connect: ' + err.message);
+//             return true;
+            } 
+        else {
+            console.log('Successfully connected to Snowflake.'+conn.toString());
+            // Optional: store the connection ID.
+//             connection_ID = conn.getId();
+//             return false;
+//             callBack();
+          
+            
+    	 }
+    }
+);
+}
+
+function destroyConnection(){
+	connection.destroy(function(err, conn) {
+ 				 if (err) {
+   					 console.error('Unable to disconnect: ' + err.message);
+ 				 } else {
+   					 console.log('Disconnected connection with id: ' + connection.getId());
+  				}
+			});
+}
+
+function tableExists(tableName, fields,data, callBack){
+	connection.execute({
+  		sqlText: "SELECT * FROM \"PS_DATA\".\"TEST\".\""+tableName+"\"",
+  		streamResult: true, // prevent rows from being returned inline in the complete callback
+  		complete: function(err, stmt, rows) {
+  			if(err){
+  				console.log(err.message)
+  				callBack(tableName, fields,data);
+  			}
+  			else{
+  				connection.execute({
+  			sqlText: "DROP TABLE \"PS_DATA\".\"TEST\".\""+tableName+"\"",
+  			complete:function(err, stmt, rows){
+  				if (err) {
+      				console.error('Failed to execute statement due to the following error: ' + err.message);
+      				return false;
+    			} else {
+     			 	console.log('Successfully executed statement: ' + stmt.getSqlText());
+     			 	callBack(tableName, fields,data);
+    			}
+  			}
+  		});
+
+  			}
+  		}
+  	});
+}
+
+// function createTable(tableName, fields){
+// 	if(tableExists(tableName)){
+// 		connection.execute({
+//   			sqlText: "DROP TABLE "+tableName,
+//   			complete:function(err, stmt, rows){
+//   				if (err) {
+//       				console.error('Failed to execute statement due to the following error: ' + err.message);
+//       				return false;
+//     			} else {
+//      			 	console.log('Successfully executed statement: ' + stmt.getSqlText());
+//      			 	return true;
+//     			}
+//   			}
+//   		});
+// 	}
+// 	var stmt = "CREATE TABLE \""+tableName+"\" ( ";
+// 	data="";
+// 	for(var i=0; i<fields.length; i++){
+// 		if(i==0)
+// 			data = data+fields[i].FieldName+" "+fields[i].dataType;
+// 		else
+// 			data = data+", "+fields[i].FieldName+" "+fields[i].dataType;
+// 	}
+// 	stmt = stmt+data+")";
+// 	console.log(stmt);
+// 	connection.execute({
+//   		sqlText: stmt,
+//   		complete:function(err, stmt, rows){
+//   			if (err) {
+//       			console.error('Failed to execute statement due to the following error: ' + err.message);
+//       			return false;
+//     		} else {
+//      		 	console.log('Successfully executed statement: ' + stmt.getSqlText());
+//      		 	return true;
+//     		}
+//   		}
+//   	});
+// 	
+// }
+
+function createTable(source, tableName, fields,fieldData, res){
+	tableExists(tableName,fields,fieldData, function(tableName, fields, fieldData){
+	var database = "PS_DATA";
+	if(source == "Brevo")
+		database = "SPREADSHEETS";
+	var stmt = "CREATE TABLE \""+database+"\".\"TEST\".\""+tableName+"\" ( ";
+	data="";
+	for(var i=0; i<fields.length; i++){
+		if(i==0)
+			data = data+fields[i].FieldName+" "+fields[i].dataType;
+		else
+			data = data+", "+fields[i].FieldName+" "+fields[i].dataType;
+	}
+	stmt = stmt+data+")";
+// 	console.log(stmt);
+	connection.execute({
+  		sqlText: stmt,
+  		complete:function(err, stmt, rows){
+  			if (err) {
+      			console.error('Failed to execute statement due to the following error: ' + err.message);
+      			return false;
+    		} else {
+     		 	console.log('Successfully executed statement: ' + stmt.getSqlText());
+     		 	
+     		 	insertData(database,tableName, fields, fieldData, res)
+    		}
+  		}
+  	});
+	});
+}
+
+
+
+function insertData(database,tableName,fields, data, res){
+// console.log(fields)
+	var Values = "";
+	var column = "( ";
+	var keys = Object.keys(data[0]);
+	for(var i=0; i<fields.length; i++){
+		if(i==0)
+			column = column+fields[i].FieldName;
+		else
+			column = column+", "+fields[i].FieldName;
+	}
+	column= column+" )";
+// 	console.log(typeof(data))
+	for (var i=0; i<data.length; i++){
+		if(i==0)
+			Values = Values+"( ";
+		else
+			Values = Values+",  (";
+		// console.log(data[i])
+		for(var j=0; j<keys.length; j++){
+			var field = keys[j];
+			if(j==0)
+			{
+				if(fields[j].dataType == "VARCHAR(255)")
+					Values = Values +"'" +data[i][keys[j]]+"'";
+				else
+					Values = Values +data[i][keys[j]];
+			}
+			else{
+			console.log(fields[j].sataType)
+				if(fields[j].dataType == "VARCHAR(255)")
+					Values = Values+", '" + data[i][keys[j]]+"'";
+				else
+					Values = Values+", " + data[i][keys[j]];
+			}
+		}
+		Values = Values + ")"
+	}
+	var stmt = "INSERT INTO \""+database+"\".\"TEST\".\""+tableName+"\" "+ column + " VALUES "+ Values;
+	console.log(stmt)
+	connection.execute({
+  		sqlText: stmt,
+  		complete:function(err, stmt, rows){
+  			if (err) {
+      			console.error('Failed to execute statement due to the following error: ' + err.message);
+      			res.end(JSON.stringify({insert:false}));
+    		} else {
+     		 	console.log('Successfully executed statement: ' + stmt.getSqlText());
+     		 	if(database == "PS_DATA"){
+     		 		connection.execute({
+  						sqlText: "CREATE VIEW \"_SYS_BIC\".\"TEST\".\""+tableName+"\" AS (SELECT * FROM \"PS_DATA\".\"TEST\".\""+tableName+"\")",
+  						complete:function(err, stmt, rows){
+  							if (err) {
+      							console.error('Failed to execute statement due to the following error: ' + err.message);
+      							res.end(JSON.stringify({insert:false}));
+    						} else {
+     						 	console.log('Successfully executed statement: ' + stmt.getSqlText());
+     		 	
+     		 					res.end(JSON.stringify({insert:true}));
+    						}
+  						}
+  					});
+  				}
+  				else{
+  					res.end(JSON.stringify({insert:true}));
+  				}
+     		 	
+    		}
+  		}
+  	});
+}
+
+
+function getTableData(source, tableName, res){
+	var database = "PS_DATA";
+	if(source == "Brevo")
+		database = "SPREADSHEETS";
+	connection.execute({
+  		sqlText: "SELECT * FROM \""+database+"\".\"TEST\".\""+tableName+"\"",
+// 		sqlText:"Select * from \"OCT Monthly Report\"",
+  		complete: function(err, stmt, rows) {
+  			if(err){
+  				console.log(err.message);
+  			}
+  			else{
+  				console.log('Successfully executed statement: ' + stmt.getSqlText());
+  				// console.log(rows.length)
+  				// console.log(err)
+     			res.end(JSON.stringify(rows));
+  			}
+  		}
+  	});
+}
+
+// app.post("/:source/FileUploader", function (req, res) {
+	// var params = req.body;
+	
+	// //params = JSON.parse(params);
+		// console.log("Hello")
+		// var keys = Object.keys(params.data[0]);
+		// var fields = [];
+		// for(var i=0; i<keys.length; i++){
+			// var dataType = "VARCHAR(255)";
+			// try{
+				// var value = params.data[0][keys[i]];
+				// var isNumeric = isNaN(value);
+				// if(!isNumeric)
+					// dataType = value % 1 != 0?"DOUBLE":"INT";
+			
+			// }catch(e){
+				// dataType = "VARCHAR(255)";
+			// }
+			// fields.push({FieldName: keys[i].toUpperCase().trim().split('&').join('and').split('/').join('-').split(' ').join('_'), dataType:dataType})
+		// }
+		// var table = createConnection();
+		// function waitFunc(){
+			// createTable(req.params.source, params.FileName, fields, params.data, res);
+		// }
+		// setTimeout(waitFunc, 1500);
+	
+// });
+
+app.get("/:source/FileUploader", function(req, res){
+	var params = req.query;
+	var table = createConnection();
+	function waitFunc(){
+		getTableData(req.params.source, params.FileName, res);
+	}
+	setTimeout(waitFunc, 1500);
+	
+});
+
+// app.get("/Tables", function(req, res){
+	// var params = req.query;
+	// var table = createConnection();
+	// function waitFunc(){
+		// connection.execute({
+  		// sqlText: "SELECT TABLE_NAME FROM PS_DATA.INFORMATION_SCHEMA.tables WHERE table_schema = 'TEST' AND table_type = 'BASE TABLE'",
+  		// complete: function(err, stmt, rows) {
+  			// if(err){
+  				// console.log(err.message);
+  			// }
+  			// else{
+  				// console.log('Successfully executed statement: ' + stmt.getSqlText());
+     			// res.end(JSON.stringify(rows));
+  			// }
+  		// }
+  	// });
+	// }
+	// setTimeout(waitFunc, 1500);
+	
+// });
+
+// app.get("/Views", function(req, res){
+	// var params = req.query;
+	// var table = createConnection();
+	// function waitFunc(){
+		// connection.execute({
+  		// sqlText: "SELECT TABLE_NAME FROM _SYS_BIC.INFORMATION_SCHEMA.tables WHERE table_schema = 'TEST' AND table_type = 'VIEW'",
+  		// complete: function(err, stmt, rows) {
+  			// if(err){
+  				// console.log(err.message);
+  			// }
+  			// else{
+  				// console.log('Successfully executed statement: ' + stmt.getSqlText());
+     			// res.end(JSON.stringify(rows));
+  			// }
+  		// }
+  	// });
+	// }
+	// setTimeout(waitFunc, 1500);
+	
+// });  
+
+
+// app.get("/ColumnsOfTable", function(req, res){
+	// var params = req.query;
+	// var table = createConnection();
+	// function waitFunc(){
+		// connection.execute({
+  		// sqlText: "select COLUMN_NAME, DATA_TYPE from _SYS_BIC.information_schema.columns where table_name = '"+params.FileName+"'",
+  		// complete: function(err, stmt, rows) {
+  			// if(err){
+  				// console.log(err.message);
+  			// }
+  			// else{
+  				// console.log('Successfully executed statement: ' + stmt.getSqlText());
+  				// for(var i=0; i<rows.length; i++){
+  					// if(rows[i].DATA_TYPE == "TEXT")
+  						// rows[i].DATA_TYPE = "NVARCHAR";
+  					// else if(rows[i].DATA_TYPE == "NUMBER")
+  						// rows[i].DATA_TYPE = "INT";
+  					// else if(rows[i].DATA_TYPE == "FLOAT")
+  						// rows[i].DATA_TYPE = "DECIMAL";
+  				// }
+     			// res.end(JSON.stringify(rows));
+  			// }
+  		// }
+  	// });
+	// }
+	// setTimeout(waitFunc, 1500);
+// })
+
+// app.get("/ColumnsOfView", function(req, res){
+	// var params = req.query;
+	// var table = createConnection();
+	// function waitFunc(){
+		// connection.execute({
+  		// sqlText: "select COLUMN_NAME, DATA_TYPE from PS_DATA.information_schema.columns where table_name = '"+params.FileName+"'",
+  		// complete: function(err, stmt, rows) {
+  			// if(err){
+  				// console.log(err.message);
+  			// }
+  			// else{
+  				// console.log('Successfully executed statement: ' + stmt.getSqlText());
+  				// for(var i=0; i<rows.length; i++){
+  					// if(rows[i].DATA_TYPE == "TEXT")
+  						// rows[i].DATA_TYPE = "NVARCHAR";
+  					// else if(rows[i].DATA_TYPE == "NUMBER")
+  						// rows[i].DATA_TYPE = "INT";
+  					// else if(rows[i].DATA_TYPE == "FLOAT")
+  						// rows[i].DATA_TYPE = "DECIMAL";
+  				// }
+     			// res.end(JSON.stringify(rows));
+  			// }
+  		// }
+  	// });
+	// }
+	// setTimeout(waitFunc, 1500);
+// })
+
+
+app.post("/login", function(req, res){
+	data = req.body
+	if(data.userId && data.password){
+		MongoClient.connect("mongodb://localhost:27017/", function(err, db) {
+			if(err){
+				res.end(JSON.stringify({login:false,"Error":"Connection Error"}))
+			}else{
+				var dbo = db.db("UserManagement_brevo");
+				dbo.collection("user").findOne({user_emailid:data.userId, password:data.password}, function(err, res){
+					if (err)
+						res.end(JSON.stringify({login:false,"Error":err.toString()}))
+					else{
+						if(res == null)
+							res.end(JSON.stringify({login:false,"Error":"Authentication Error"}))
+						else{
+							var sessionKey = Session.createSession(data.userId)
+							res.end(JSON.stringify({login:true,"key":sessionKey}))
+						}
+					}
+				})
+			}
+		});
+	}
+})
+
+app.post("/logout",function(req, res){
+	var logout = Session.deleteSession(req.headers.sessionKey)
+	res.end(JSON.stringify({"logout":logout}))
+})
+
+app.post("/callPython", function(req, res){
+	console.log(req.body)
+	const spawn = require("child_process").spawn;
+	
+	const pythonProcess = spawn('python',["test.py", req.body.data ]);
+	pythonProcess.stdout.on('data', (data) => {
+		// Do something with the data returned from python script
+		res.end(data);
+	});
+	pythonProcess.stderr.on('data', (data) => {
+		console.log(data)
+		res.end(data);
+	});
+});
+	
+app.get("/TableData", function (req, res) {
+	var collection = req.query.fileName;
+	var result;
+	var queryOptions = {
+    $filter: {}
+  }
+	var sqlQuery = {}
+  var _url = url.parse(req.url, true)
+  if (_url.search) {
+    var query = _url.query
+	sqlQuery = query
+    var fixedQS = {}
+    if (query.$) fixedQS.$ = query.$
+    if (query.$expand) fixedQS.$expand = query.$expand
+    if (query.$filter) fixedQS.$filter = query.$filter
+    if (query.$format) fixedQS.$format = query.$format
+    if (query.$inlinecount) fixedQS.$inlinecount = query.$inlinecount
+    if (query.$select) fixedQS.$select = query.$select
+    if (query.$skip) fixedQS.$skip = query.$skip
+    if (query.$top) fixedQS.$top = query.$top
+    if (query.$orderby) fixedQS.$orderby = query.$orderby
+  }
+	if(query.$filter){
+		query.$filter = query.$filter.replace(/eq/g, '==');
+		query.$filter = query.$filter.replace(/ne/g, '!=');
+		query.$filter = query.$filter.replace(/lt/g, '<');
+		query.$filter = query.$filter.replace(/gt/g, '>');
+		query.$filter = query.$filter.toUpperCase();
+	}else{
+		query.$filter = "undefined"
+	}
+	if(query.$select)
+		query.$select = query.$select.toUpperCase();
+	else
+		query.$select = "undefined"
+	if(query.$top)
+		query.$top = parseInt(query.$top);
+	else
+		query.$top = "undefined"
+	if(query.aggregation)
+		query.$aggregation = query.$aggregation.toUpperCase();
+	else
+		query.aggregation = "undefined"
+	// console.log(query.$select+" "+query.$filter+" "+query.$top+" "+query.$aggregation)
+	// var sql = "Select "+query.$select+" from "+collection+" where "+query.$filter+" limit "+query.$top;
+	const spawn = require("child_process").spawn;
+	
+	const pythonProcess = spawn('python',["getData.py",collection, query.$select, query.$filter, query.$top, query.$aggregation]);
+	pythonProcess.stdout.on('data', (data) => {
+		// Do something with the data returned from python script
+		
+		try{
+			
+			var result = JSON.parse(data.toString());
+			for(var i=0; i<result.length; i++){
+				result[i] = JSON.parse(result[i]);
+				// console.log(result[i])
+			}
+			res.end(JSON.stringify(result));
+		}
+		catch(e){
+			// console.log(e.toString())
+		}
+	});
+	pythonProcess.stdout.on('end', function(){
+		//console.log(result)
+	});
+	pythonProcess.stderr.on('data', (data) => {
+		console.log(data.toString())
+		// res.end(data.toString());
+	});
+	
+});
+
+
+// app.get("/TableData/:collection", function (req, res) {
+	// var collection = req.params.collection;
+	// var result;
+	// var queryOptions = {
+    // $filter: {}
+  // }
+	// var sqlQuery = {}
+  // var _url = url.parse(req.url, true)
+  // if (_url.search) {
+    // var query = _url.query
+	// sqlQuery = query
+    // var fixedQS = {}
+    // if (query.$) fixedQS.$ = query.$
+    // if (query.$expand) fixedQS.$expand = query.$expand
+    // if (query.$filter) fixedQS.$filter = query.$filter
+    // if (query.$format) fixedQS.$format = query.$format
+    // if (query.$inlinecount) fixedQS.$inlinecount = query.$inlinecount
+    // if (query.$select) fixedQS.$select = query.$select
+    // if (query.$skip) fixedQS.$skip = query.$skip
+    // if (query.$top) fixedQS.$top = query.$top
+    // if (query.$orderby) fixedQS.$orderby = query.$orderby
+  // }
+	// query.$filter = query.$filter.replace(/eq/g, '==');
+	// query.$filter = query.$filter.replace(/ne/g, '!=');
+	// query.$filter = query.$filter.replace(/lt/g, '<');
+	// query.$filter = query.$filter.replace(/gt/g, '>');
+	// query.$select = query.$select.toUpperCase();
+	// query.$top = parseInt(query.$top);
+	// query.$filter = query.$filter.toUpperCase();
+	// query.$aggregation = query.$aggregation.toUpperCase();
+	// console.log(query.$select+" "+query.$filter+" "+query.$top+" "+query.$aggregation)
+	// // var sql = "Select "+query.$select+" from "+collection+" where "+query.$filter+" limit "+query.$top;
+	// const spawn = require("child_process").spawn;
+	
+	// const pythonProcess = spawn('python',["getData.py",collection, query.$select, query.$filter, query.$top, query.$aggregation]);
+	// pythonProcess.stdout.on('data', (data) => {
+		// // Do something with the data returned from python script
+		// console.log(data.toString())
+		// try{
+			
+			// var result = JSON.parse(data.toString());
+			// for(var i=0; i<result.length; i++){
+				// result[i] = JSON.parse(result[i]);
+				// console.log(result[i])
+			// }
+			// res.end(JSON.stringify(result));
+		// }
+		// catch(e){
+			// console.log(e.toString())
+		// }
+	// });
+	// pythonProcess.stdout.on('end', function(){
+		// //console.log(result)
+	// });
+	// pythonProcess.stderr.on('data', (data) => {
+		// //console.log(data)
+		// // res.end(data);
+	// });
+	
+// });
+
+// app.get("/ColumnsOfView", function(req, res){
+	// var params = req.query;
+	// var table = createConnection();
+	// function waitFunc(){
+		// connection.execute({
+  		// sqlText: "select COLUMN_NAME, DATA_TYPE from PS_DATA.information_schema.columns where table_name = '"+params.FileName+"'",
+  		// complete: function(err, stmt, rows) {
+  			// if(err){
+  				// console.log(err.message);
+  			// }
+  			// else{
+  				// console.log('Successfully executed statement: ' + stmt.getSqlText());
+  				// for(var i=0; i<rows.length; i++){
+  					// if(rows[i].DATA_TYPE == "TEXT")
+  						// rows[i].DATA_TYPE = "NVARCHAR";
+  					// else if(rows[i].DATA_TYPE == "NUMBER")
+  						// rows[i].DATA_TYPE = "INT";
+  					// else if(rows[i].DATA_TYPE == "FLOAT")
+  						// rows[i].DATA_TYPE = "DECIMAL";
+  				// }
+     			// res.end(JSON.stringify(rows));
+  			// }
+  		// }
+  	// });
+	// }
+	// setTimeout(waitFunc, 1500);
+// })
+
+// app.post("/callPython", function(req, res){
+	// console.log(req.body)
+	// const spawn = require("child_process").spawn;
+	
+	// const pythonProcess = spawn('python',["test.py", req.body.data ]);
+	// pythonProcess.stdout.on('data', (data) => {
+		// // Do something with the data returned from python script
+		// res.end(data);
+	// });
+	// pythonProcess.stderr.on('data', (data) => {
+		// console.log(data)
+		// res.end(data);
+	// });
+// });
+	
+// app.get("/TableData", function (req, res) {
+	// var collection = req.query.FileName;
+	// var result;
+	// var queryOptions = {
+    // $filter: {}
+  // }
+	// var sqlQuery = {}
+  // var _url = url.parse(req.url, true)
+  // if (_url.search) {
+    // var query = _url.query
+	// sqlQuery = query
+    // var fixedQS = {}
+    // if (query.$) fixedQS.$ = query.$
+    // if (query.$expand) fixedQS.$expand = query.$expand
+    // if (query.$filter) fixedQS.$filter = query.$filter
+    // if (query.$format) fixedQS.$format = query.$format
+    // if (query.$inlinecount) fixedQS.$inlinecount = query.$inlinecount
+    // if (query.$select) fixedQS.$select = query.$select
+    // if (query.$skip) fixedQS.$skip = query.$skip
+    // if (query.$top) fixedQS.$top = query.$top
+    // if (query.$orderby) fixedQS.$orderby = query.$orderby
+  // }
+  // if(query.$filter){
+	// query.$filter = query.$filter.replace(/eq/g, '==');
+	// query.$filter = query.$filter.replace(/ne/g, '!=');
+	// query.$filter = query.$filter.replace(/lt/g, '<');
+	// query.$filter = query.$filter.replace(/gt/g, '>');
+	// query.$filter = query.$filter.toUpperCase();
+  // }
+  // if(query.$select)
+	// query.$select = query.$select.toUpperCase();
+  // if(query.$top)
+	// query.$top = parseInt(query.$top);
+  // if(query.$aggregation)
+	// query.$aggregation = query.$aggregation.toUpperCase();
+	// // console.log(query.$select+" "+query.$filter+" "+query.$top+" "+query.$aggregation)
+	// // var sql = "Select "+query.$select+" from "+collection+" where "+query.$filter+" limit "+query.$top;
+	// const spawn = require("child_process").spawn;
+	
+	// const pythonProcess = spawn('python',["getData.py",collection, query.$select, query.$filter, query.$top, query.$aggregation]);
+	// console.log("test")
+	// pythonProcess.stdout.on('data', (data) => {
+		// // Do something with the data returned from python script
+		// // console.log(data.toString())
+		// try{
+			
+			// var result = JSON.parse(data.toString());
+			// for(var i=0; i<result.length; i++){
+				// result[i] = JSON.parse(result[i]);
+				// // console.log(result[i])
+			// }
+			// res.end(JSON.stringify(result));
+		// }
+		// catch(e){
+			// console.log(e.toString())
+		// }
+	// });
+	// pythonProcess.stdout.on('end', function(){
+		// console.log(result)
+	// });
+	// pythonProcess.stderr.on('data', (data) => {
+		// // console.log(data.toString())
+		// res.end(data.toString());
+	// });
+	
+// });
+
+
+app.post("/FileUploader", function (req, res) {
+	var params = req.body;
+	const spawn = require("child_process").spawn;
+	const pythonProcess = spawn('python',["1.py",JSON.stringify({fileName:params.fileName, data:params.data, agg:params.aggregationType})]);
+	pythonProcess.stdout.on('data', (data) => {
+		// Do something with the data returned from python script
+		// console.log(data.toString())
+		res.end(JSON.stringify({insert:true, columnData:JSON.parse(data.toString())}));
+	});
+	pythonProcess.stdout.on('end', function(){
+		//console.log(result)
+	});
+	pythonProcess.stderr.on('data', (data) => {
+		//console.log(data.toString())
+		res.end(JSON.stringify({insert:false, err:data.toString()}))
+	});
+	
+});
+
+app.put("/FileUploader", function (req, res) {
+	var params = req.body;
+	const spawn = require("child_process").spawn;
+	const pythonProcess = spawn('python',["UpdateFile.py",JSON.stringify({fileName:params.fileName, coll_det:params.COLUMN_DET})]);
+	pythonProcess.stdout.on('data', (data) => {
+		// Do something with the data returned from python script
+		//console.log(data.toString())
+		if(data == "Invalid Data")
+			res.end(JSON.stringify({update:false, err:data}))
+		else
+			res.end(JSON.stringify({update:true, columnData:JSON.parse(data.toString())}));
+	});
+	pythonProcess.stdout.on('end', function(){
+		//console.log(result)
+	});
+	pythonProcess.stderr.on('data', (data) => {
+		//console.log(data.toString())
+		res.end(JSON.stringify({update:false, err:data.toString()}))
+	});
+	
+});
+
+app.get("/FileUploader/Tables",function(req, res){
+	const spawn = require("child_process").spawn;
+	const pythonProcess = spawn('python',["getTables.py", req.query.$filter]);
+	pythonProcess.stdout.on('data', (data) => {
+		// Do something with the data returned from python script
+		//console.log(data.toString())
+		res.end(data.toString());
+	});
+	pythonProcess.stdout.on('end', function(){
+		//console.log(result)
+	});
+	pythonProcess.stderr.on('data', (data) => {
+		//console.log(data.toString())
+		res.end(data.toString())
+	});
+})
+
+
+
+// The app listens on port 3010 and prints the endpoint URI in console window.
+var server = app.listen(3010, function () {
+    console.log('Server running at http://127.0.0.1:3010/');
+});

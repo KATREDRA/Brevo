@@ -1,0 +1,10 @@
+SERVICES,ACTIVITY,COST_DRIVER,DRIVER_TYPE,CUSTOMER1,CUSTOMER2
+Contract,Activity1,Contract Docs,Volume,100,200
+Contract,Activity1,Contract Approvals,Volume,200,300
+Contract,Activity1,Contract Mods,Volume,200,150
+Contract,Activity2,Contract Market Research,Contract Volume,5000000,10000000
+Contract,Activity2,Contract Requirements,Contract Volume,5000000,10000000
+Contract,Activity3,Contract - Admin,Volume,500,600
+Travel,Activity4,# of Travel Contracts,Volume,3000,5000
+Travel,Activity5,Advance Payments Processing,Volume,2000,2500
+Travel,Activity6,Collection Invoices,Amount Collected,500000,200000

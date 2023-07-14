@@ -1,0 +1,290 @@
+{
+    "resources": [
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "js/multifact-pivottable.js"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "util/table.js"
+        },
+        {
+            "name": "util/reportChart.js"
+        },
+        {
+            "name": "util/draw.js"
+        },
+        {
+            "name": "util/Formatter.js"
+        },
+        {
+            "name": "util/DrawPivotTable.js"
+        },
+        {
+            "name": "util/CustomerFormatter.js"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "model/Service.js"
+        },
+        {
+            "name": "js/xlsx.js"
+        },
+        {
+            "name": "js/pivot.js"
+        },
+        {
+            "name": "model/icontabModel.json"
+        },
+        {
+            "name": "js/jquery.wheel.js"
+        },
+        {
+            "name": "js/jquery.min.js"
+        },
+        {
+            "name": "js/gridstack.js"
+        },
+        {
+            "name": "js/gridstack.jQueryUI.js"
+        },
+        {
+            "name": "js/gchart_renderers.js"
+        },
+        {
+            "name": "js/excelgrid.js"
+        },
+        {
+            "name": "js/d3plus.js"
+        },
+        {
+            "name": "js/d3.min.js"
+        },
+        {
+            "name": "js/coolGrids.js"
+        },
+        {
+            "name": "controller/nodeSettings.controller.js"
+        },
+        {
+            "name": "controller/View1.controller.js"
+        },
+        {
+            "name": "controller/VarianceSettings.controller.js"
+        },
+        {
+            "name": "controller/Report.controller.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "manifest-bundle.zip"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "util/draw-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/table-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/reportChart-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/Formatter-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/DrawPivotTable-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/CustomerFormatter-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "model/models-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "model/Service-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/xlsx-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/pivot-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/multifact-pivottable-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/jquery.wheel-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/jquery.min-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/gridstack-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/gridstack.jQueryUI-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/gchart_renderers-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/excelgrid-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/d3plus-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/d3.min-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/coolGrids-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/nodeSettings-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/View1-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/VarianceSettings-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Report-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/App-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "Component-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../sap-ui-version.json"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "di.code-validation.core_issues.json"
+        },
+        {
+            "name": "view/nodeSettings.view.xml"
+        },
+        {
+            "name": "view/View1.view.xml"
+        },
+        {
+            "name": "view/VarianceSettings.view.xml"
+        },
+        {
+            "name": "view/Report.view.xml"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "images/user.png"
+        },
+        {
+            "name": "images/edit.png"
+        },
+        {
+            "name": "images/Settings.png"
+        },
+        {
+            "name": "images/Comment.png"
+        },
+        {
+            "name": "fragments/vizChart.fragment.xml"
+        },
+        {
+            "name": "fragments/addVariant.fragment.xml"
+        },
+        {
+            "name": "fragments/ValueHelpForService.fragment.xml"
+        },
+        {
+            "name": "fragments/ValueHelpForFiles.fragment.xml"
+        },
+        {
+            "name": "fragments/ValueHelpForEntity.fragment.xml"
+        },
+        {
+            "name": "fragments/ValueHelpForDataRecords.fragment.xml"
+        },
+        {
+            "name": "fragments/PopUpForScenario.fragment.xml"
+        },
+        {
+            "name": "fragments/DialogForExcelUpdate.fragment.xml"
+        },
+        {
+            "name": "fragments/AddNodes.fragment.xml"
+        },
+        {
+            "name": "fragments/AddComments.fragment.xml"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "css/pivot.css"
+        },
+        {
+            "name": "css/pie.css"
+        },
+        {
+            "name": "css/naturavitalis.css"
+        },
+        {
+            "name": "css/gridStack.css"
+        },
+        {
+            "name": "css/card.css"
+        },
+        {
+            "name": "index.html"
+        }
+    ]
+}

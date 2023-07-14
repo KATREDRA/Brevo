@@ -1,0 +1,35 @@
+{
+	"d": {
+		"results": [{
+			"chartURL": "images/VerticalBar.PNG",
+			"chartDesc": "Create flexible dashboards that can be presented on any device or screen size",
+			"chartType": "Column",
+			"type": "D",
+			"category": "kpi",
+			"icon": "sap-icon://bbyd-dashboard",
+			"chartName": "Responsive Page",
+			"typeOfChart": ""
+		}, {
+			"chartURL": "images/VerticalBar.PNG",
+			"chartDesc": "Create flexible dashboards that can be presented on any device or screen size",
+			"chartType": "Bar Charts",
+			"type": "A",
+			"category": "dashboard",
+			"icon": "sap-icon://table-view",
+			"chartName": "Report",
+			"typeOfChart": "",
+			"measures": 1,
+			"dimensions": 1
+		}],
+		"f": {
+			"chartURL": "images/VerticalBar.PNG",
+			"chartDesc": "Create flexible dashboards that can be presented on any device or screen size",
+			"chartType": "Report Table",
+			"type": "A",
+			"category": "report",
+			"icon": "sap-icon://kpi-corporate-performance",
+			"chartName": "KPIs and Report",
+			"typeOfChart": ""
+		}
+	}
+}

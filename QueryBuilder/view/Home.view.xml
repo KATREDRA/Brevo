@@ -1,0 +1,67 @@
+<mvc:View controllerName="Brevo.QueryBuilder.controller.Home" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m" xmlns:tnt="sap.tnt" xmlns:c="Brevo.QueryBuilder._custom.control" xmlns:l="sap.ui.layout">
+	<App>
+		<pages>
+			<Page showHeader="false">
+				<content>
+					<tnt:ToolHeader>
+						<ToolbarSpacer></ToolbarSpacer>
+						<ToolbarSpacer/>
+						<Text text="Query Builder" wrapping="false"></Text>
+						<ToolbarSpacer/>
+						<SearchField width="15%" liveChange="onViewSearch" class="sapUiSmallMargin"/>
+						<ToggleButton icon="sap-icon://grid" id="toggle" press="onGridIconPress"/>
+					</tnt:ToolHeader>
+					<!--<ObjectHeader title="My Queries"></ObjectHeader> binding="{/tables/0}"-->
+					<ObjectHeader id="idObjectHeader" title="{Department_name}" showTitleSelector="true" titleSelectorPress="handleTitleSelectorPress"
+						class="objAttributeClass">
+						<attributes>
+							<ObjectAttribute text="My Queries"/>
+						</attributes>
+					</ObjectHeader>
+					<HBox id="graphical" items="{/Views/}" visible="false" wrap="Wrap">
+						<Title level="H2" text="My Queries"/>
+						<GenericTile header="{name}" id="genericTileId" state="Loaded" class="sapUiTinyMarginBegin sapUiTinyMarginTop" frameType="OneByOne"
+							subheader="{description}" press="onGraphicalTilePress">
+							<tileContent>
+								<TileContent footer="" class="sapUiSmallMargin">
+									<content>
+										<FeedContent contentText="Last Modified: { path: 'last_change', formatter: 'Brevo.QueryBuilder.util.Formatter.lastChangeFormatter' }"
+											subheader="by D61030" value=""/>
+									</content>
+								</TileContent>
+							</tileContent>
+						</GenericTile>
+						<!--<c:Tile width="11rem" height="11rem" id="customTile" class="customTileClass">-->
+						<!--	<c:content>-->
+						<!--		<l:VerticalLayout>-->
+						<!--			<Text text="{TABLE_NAME}" class="tileFont"/>-->
+						<!--			<Text text="Last Modified:" textAlign="Begin" class="FirstLineMargin"/>-->
+						<!--			<Text text="{ path: 'last_change', formatter: 'Brevo.QueryBuilder.util.Formatter.lastChangeFormatter' }" textAlign="Begin"/>-->
+						<!--			<Text text="by D301234" textAlign="Begin"/>-->
+						<!--		</l:VerticalLayout>-->
+						<!--	</c:content>-->
+						<!--</c:Tile>-->
+					</HBox>
+					<List items="{/Views/}" id="listView" visible="true" class="objListItemClass">
+						<items>
+							<ObjectListItem title="{name}" type="Active" press="onListItemPress"
+								number="Last Modified: { path: 'last_change', formatter: 'Brevo.QueryBuilder.util.Formatter.lastChangeFormatter' }" numberUnit="by D301234">
+								<attributes>
+									<ObjectAttribute text="{description}"/>
+									<!--<ObjectAttribute text="by D301234"/>-->
+								</attributes>
+							</ObjectListItem>
+						</items>
+					</List>
+				</content>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button text="Create New Query" icon="sap-icon://create" type="Emphasized" iconFirst="true" press="onCreateTilePress"></Button>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

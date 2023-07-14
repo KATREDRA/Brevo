@@ -1,0 +1,81 @@
+{
+  "_from": "simple-odata-server",
+  "_id": "simple-odata-server@1.1.1",
+  "_inBundle": false,
+  "_integrity": "sha512-/LxZX/NGTpVc8gz015rOBod9W60troVAz9kdPtJQYx+KCiVjyFSrA2zdnmup3bLORoW8/8c0Ynred5dqK7B15A==",
+  "_location": "/simple-odata-server",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "simple-odata-server",
+    "name": "simple-odata-server",
+    "escapedName": "simple-odata-server",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/simple-odata-server/-/simple-odata-server-1.1.1.tgz",
+  "_shasum": "001f8824b1771c7e87984352da9713bf632b6f52",
+  "_spec": "simple-odata-server",
+  "_where": "C:\\Users\\Administrator\\BrevoV3",
+  "author": {
+    "name": "Jan Blaha"
+  },
+  "bugs": {
+    "url": "https://github.com/pofider/node-simple-odata-server/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "methods": "1.1.2",
+    "odata-parser": "1.4.1",
+    "path-to-regexp": "2.1.0",
+    "safe-buffer": "5.1.1",
+    "xmlbuilder": "9.0.4"
+  },
+  "deprecated": false,
+  "description": "OData server with adapter for mongodb and nedb",
+  "devDependencies": {
+    "eslint": "4.15.0",
+    "mocha": "4.1.0",
+    "mongodb": "3.0.1",
+    "nedb": "1.8.0",
+    "should": "13.2.1",
+    "standard": "10.0.3",
+    "supertest": "3.0.0",
+    "xml2js": "0.4.19"
+  },
+  "files": [
+    "lib",
+    "index.js"
+  ],
+  "homepage": "https://github.com/pofider/node-simple-odata-server#readme",
+  "keywords": [
+    "OData",
+    "server",
+    "mongodb",
+    "nedb"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "simple-odata-server",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pofider/node-simple-odata-server.git"
+  },
+  "scripts": {
+    "test": "standard && mocha --exit -R spec"
+  },
+  "standard": {
+    "ignore": "example/**",
+    "env": {
+      "mocha": true,
+      "node": true
+    }
+  },
+  "version": "1.1.1"
+}

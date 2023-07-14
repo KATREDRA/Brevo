@@ -1,0 +1,42 @@
+var Emitter = require('events').EventEmitter
+var util = require('util')
+var url = require('url')
+var Buffer = require('safe-buffer').Buffer
+
+function UMServer (serviceUrl) {
+  this.serviceUrl = serviceUrl
+}
+
+util.inherits(UMServer, Emitter)
+
+UMServer.prototype.handle = function (req, res) {
+  if (!this.serviceUrl && !req.protocol) {
+    throw new Error('Unable to determine service url from the express request or value provided in the ODataServer constructor.')
+  }
+
+  function escapeRegExp (str) {
+    return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&')
+  }
+
+  // If mounted in express, trim off the subpath (req.url) giving us just the base path
+  var path = (req.originalUrl || '/').replace(new RegExp(escapeRegExp(req.url) + '$'), '')
+  this.serviceUrl = this.serviceUrl ? this.serviceUrl : (req.protocol + '://' + req.get('host') + path)
+
+  var prefix = url.parse(this.serviceUrl).pathname
+  if (!this.router || (prefix !== this.router.prefix)) {
+    this.router = new Router(prefix)
+    this._initializeRoutes()
+  }
+
+  this.router.dispatch(req, res)
+}
+
+UMServer.prototype._initializeRoutes = function () {
+  var self = this
+  this.router.get('/test', function (req, res) {
+  
+    return res.end("test")
+  })
+}
+
+module.exports = UMServer

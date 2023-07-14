@@ -1,0 +1,375 @@
+<mvc:View controllerName="Brevo.Brevo_V2.controller.Main" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:commons="sap.ui.commons"
+	xmlns:uxap="sap.uxap" xmlns:core="sap.ui.core" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:v="sap.ui.comp.variants"
+	xmlns:micro="sap.suite.ui.microchart" xmlns:f="sap.f" xmlns:mvc="sap.ui.core.mvc" xmlns:fb="sap.ui.comp.filterbar" xmlns:ushel="sap.ushell"
+	xmlns:floatAtion="sap.ushell.ui.shell" xmlns:ovp="sap.ovp.ui" xmlns:grid="sap.ui.layout.cssgrid">
+	<!--<App id="mainApp">-->
+	<Page id="mainPage" showHeader="false" class="sapUiSizeCompact mainPage sapUiResponsivePadding" backgroundDesign="Transparent"
+		enableScrolling="true">
+		<content>
+			<HBox id="pageList" class="pageList" visible="true" height="100%" width="100%">
+				<VBox class="sapUiMediumMarginBegin sapUiContentPadding" width="100%">
+					<HBox justifyContent="SpaceBetween" alignItems="Stretch">
+						<Title id="welcomeText" text="Welcome, Demo User!" titleStyle="H1" level="H1" class="sapUiSmallMarginTop"/>
+						<Button icon="sap-icon://close-command-field" press="closeVariants" type="Transparent"/>
+					</HBox>
+					<Toolbar class="transparentToolbar sapUiTinyMarginTop noBorderToolbar">
+						<ToolbarSpacer width="1rem"/>
+						<Button icon="{= ${device>/browser/mobile} === true?'sap-icon://past':''}" text="{= ${device>/browser/mobile} === true?'':'Recent Pages'}"
+							class="aiBtns" type="Emphasized" press="onOvpRecentPage"/>
+						<Button icon="{= ${device>/browser/mobile} === true?'sap-icon://favorite-list':''}"
+							text="{= ${device>/browser/mobile} === true?'':'Most Visited'}" class="aiBtns" type="Emphasized"/>
+						<ToolbarSpacer/>
+						<SearchField liveChange="onOvpPageSearch" width="40%"/>
+						<ToolbarSpacer width="1rem"/>
+					</Toolbar>
+					<f:GridList mode="SingleSelectMaster" id="dashboardReports" headerText="Dashboards" selectionChange="onPageSelected" growing="true"
+						growingScrollToLoad="true" growingThreshold="8" class="sapUiSmallMarginBegin sapUiSmallMarginTop"
+						items="{path:'/',filters:[{path:'TypeOfPage',operator:'EQ',value1:'D'}],sorterr:{path: 'CreatedDate', descending: true}}">
+						<f:customLayout>
+							<grid:GridBoxLayout boxWidth="{= ${device>/browser/mobile} === true?'18em':'18em'}"/>
+						</f:customLayout>
+						<CustomListItem >
+							<VBox height="100%" class="sapUiContentPadding">
+								<VBox justifyContent="SpaceBetween">
+									<layoutData>
+										<FlexItemData growFactor="1" shrinkFactor="0"/><!-- Don't shrink below minimum size. Fill space if available. --></layoutData>
+									<HBox class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiTinyMarginTop sapUiTinyMarginBottom" alignItems="Center">
+										<core:Icon src="{path:'TypeOfPage',formatter:'Brevo.Brevo_V2.util.Formatter.IconForPage'}" size="2rem" color="rgb(254, 196, 14)"/>
+										<VBox class="sapUiSmallMarginTop sapUiSmallMarginBegin" height="100%" justifyContent="Start">
+											<Link emphasized="true" text="{PageTitle}" titleStyle="H4" level="H4" wrapping="true"/>
+											<Label text="{Industry}" wrapping="true" class="sapUiTinyMarginBottom"/>
+											<Text text="{PageDescrpition}" class="pageDesc" maxLines="3" wrapping="true"/>
+										</VBox>
+									</HBox>
+									<OverflowToolbar design="Solid" class="sapContrasts transparentToolbar">
+										<ToolbarSpacer/>
+										<Button icon="sap-icon://edit" type="Transparent" press="onOvpPageEdit"/>
+										<Button icon="sap-icon://delete" type="Transparent" press="onOvpPageDelete"/>
+										<!--<Button icon="sap-icon://message-information" type="Transparent"/>-->
+									</OverflowToolbar>
+								</VBox>
+							</VBox>
+						</CustomListItem>
+					</f:GridList>
+					<f:GridList mode="SingleSelectMaster" id="drillDownReports" headerText="Reports" selectionChange="onPageSelected" growing="true"
+						growingScrollToLoad="true" growingThreshold="8" class="sapUiSmallMarginBegin sapUiNegativeMediumMarginTopN"
+						items="{path:'/',filters:[{path:'TypeOfPage',operator:'EQ',value1:'A'}],sorterr:{path: 'CreatedDate', descending: true}}">
+						<f:customLayout>
+							<grid:GridBoxLayout boxWidth="{= ${device>/browser/mobile} === true?'18em':'18em'}"/>
+						</f:customLayout>
+						<CustomListItem >
+							<VBox height="100%" class="sapUiContentPadding">
+								<VBox justifyContent="SpaceBetween">
+									<layoutData>
+										<FlexItemData growFactor="1" shrinkFactor="0"/><!-- Don't shrink below minimum size. Fill space if available. --></layoutData>
+									<HBox class="sapUiSmallMarginTop sapUiSmallMarginBegin sapUiTinyMarginBottom" alignItems="Center">
+										<core:Icon src="sap-icon://table-view" size="2rem" color="rgb(254, 196, 14)"/>
+										<VBox class="sapUiSmallMarginBegin" height="100%" justifyContent="Start">
+											<Link emphasized="true" text="{PageTitle}" titleStyle="H4" level="H4" wrapping="true"/>
+											<Label text="{Industry}" wrapping="true" class="sapUiTinyMarginBottom"/>
+											<Text text="{PageDescrpition}" class="pageDesc" maxLines="3" wrapping="true"/>
+										</VBox>
+									</HBox>
+									<OverflowToolbar design="Solid" class="sapContrasts transparentToolbar">
+										<ToolbarSpacer/>
+										<Button icon="sap-icon://edit" type="Transparent" press="onOvpPageEdit"/>
+										<Button icon="sap-icon://delete" type="Transparent" press="onOvpPageDelete"/>
+										<!--<Button icon="sap-icon://message-information" type="Transparent"/>-->
+									</OverflowToolbar>
+								</VBox>
+							</VBox>
+						</CustomListItem>
+					</f:GridList>
+				</VBox>
+				<VBox visible="false" justifyContent="Start" alignItems="Center" width="30%" class="sapUiContentPadding">
+					<!--<l:Grid defaultSpan="L6 M6 S12" class="sapUiTinyMargin">-->
+					<VBox justifyContent="Start" width="auto" id="createCardBox" class="createBackground smallPadding" height="8rem" alignItems="Center">
+						<core:Icon press="handleExcelFilePress" class="sapUiSmallMrgin" color="#d2d2d2" width="100%" src="sap-icon://business-objects-experience"
+							size="3rem"/>
+						<HBox width="100%" justifyContent="Center" class="sapUiSmallMargin" alignItems="Center">
+							<Link icon="sap-icon://manager-insight" width="100%" textAlign="Center" text="Create New Card / KPI"/>
+						</HBox>
+					</VBox>
+					<VBox height="2px" class="sapUiSmallMarginBegin sapUiSmallMarginEnd"/>
+					<!--</l:Grid>-->
+					<VBox justifyContent="Start" alignItems="Start"
+						class="sapUiSmallMarginTop sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiContentPadding createBackground">
+						<Image press="onCreatePress" width="100%" src="images/BrevoDashboard.PNG"/>
+						<HBox width="100%" justifyContent="Center" class="sapUiSmallMargin" alignItems="Center">
+							<Link width="100%" textAlign="Center" text="Create a New Dashboard with KPIs + Cards"/>
+						</HBox>
+					</VBox>
+					<VBox justifyContent="Start" alignItems="Start" class="sapUiSmallMarginBegin sapUiSmallMarginEnd sapUiContentPadding createBackground">
+						<Image press="onCreatePress" width="100%" src="images/BrevoDashboard.PNG"/>
+						<HBox width="100%" justifyContent="Center" class="sapUiSmallMargin" alignItems="Center">
+							<Link icon="sap-icon://manager-insight" width="100%" textAlign="Center" text="Create a New Dashboard Page with Cards"/>
+						</HBox>
+					</VBox>
+				</VBox>
+			</HBox>
+			<OverflowToolbar class="noBorderToolbar sapUiTinyMarginTop">
+				<ToolbarSpacer width="2rem"/>
+				<HBox justifyContent="Center" alignItems="Center">
+					<Title class="customPageHeader" id="ovpPageHeader" text="Select a dashboard/report to view"/>
+				</HBox>
+				<MenuButton icon="sap-icon://overflow" type="Transparent">
+					<menu>
+						<Menu>
+							<items>
+								<MenuItem press="onSavePressWithoutPopup" text="Save" icon="sap-icon://save"/>
+								<MenuItem press="handleAddCard" text="Add Card" icon="sap-icon://add"/>
+								<MenuItem icon="sap-icon://edit" text="Edit Report" visible="false" id="editBtn" class="menuButton sapUiSizeCompact" press="handleEdit"
+									tooltip="Edit"></MenuItem>
+								<MenuItem press="handleCopyPress" text="Copy All" icon="sap-icon://copy"/>
+								<MenuItem press="handlePastePress" id="pasteBtn" text="Paste" enabled="false" icon="sap-icon://copy"/>
+								<MenuItem icon="sap-icon://share-2" text="Share" visible="{= ${AccessModel>/sharePageEnabled} === true}" id="customFloatEditBtn5"
+									class="menuButton sapUiSizeCompact" press="handleShare" tooltip="Share"></MenuItem>
+							</items>
+						</Menu>
+					</menu>
+				</MenuButton>
+				<!--<MenuButton text="Create" type="Transparent"-->
+				<!--	visible="{=${AccessModel>/createCardEnabled}===true || ${AccessModel>/createPageEnabled}===true}" class="menuButton sapUiSizeCompact1">-->
+				<!--	<menu>-->
+				<!--		<Menu>-->
+				<!--			<items>-->
+				<!--				<MenuItem text="Card" visible="{= ${AccessModel>/createCardEnabled} === true}" press="handleAddCard" icon="sap-icon://line-chart"/>-->
+				<!--			</items>-->
+				<!--		</Menu>-->
+				<!--	</menu>-->
+				<!--</MenuButton>-->
+				<!--<Button press="handleSave" visible="{= ${AccessModel>/editPageEnabled} === true}" icon="sap-icon://save"/>-->
+				<!--<Button visible="{= ${AccessModel>/createCardEnabled} === true}" press="handleAddCard" icon="sap-icon://add"/>-->
+				<!--<MenuButton text="Save" type="Transparent" buttonMode="{= ${AccessModel>/editPageEnabled} === true?'Split':'Split'}"-->
+				<!--	defaultAction="onSavePressWithoutPopup" class="menuButton sapUiSizeCompact1">-->
+				<!--	<menu>-->
+				<!--		<Menu>-->
+				<!--			<items>-->
+				<!--				<MenuItem press="handleSaveAs" text="Save As" icon="sap-icon://copy"/>-->
+				<!--				<MenuItem press="handleSave" visible="{= ${AccessModel>/editPageEnabled} === true}" text="Save" icon="sap-icon://save"/>-->
+				<!--			</items>-->
+				<!--		</Menu>-->
+				<!--	</menu>-->
+				<!--</MenuButton>-->
+				<!--<ToggleButton icon="sap-icon://edit" visible="{= ${AccessModel>/editCardEnabled} === true}" id="editBtn" class="menuButton sapUiSizeCompact"-->
+				<!--	press="handleEdit" tooltip="Edit"></ToggleButton>-->
+				<!--<Button icon="sap-icon://pdf-attachment" type="Transparent" visible="true" id="customFloatEditBtn4" class="menuButton sapUiSizeCompact"-->
+				<!--	press="handlePdfSave" tooltip="Export As PDF"></Button>-->
+				<!--<Button icon="sap-icon://share-2" visible="{= ${AccessModel>/sharePageEnabled} === true}" id="customFloatEditBtn5"-->
+				<!--	class="menuButton sapUiSizeCompact" press="handleShare" tooltip="Share"></Button>-->
+				<ToolbarSpacer/>
+				<Button text="Clear" press="onPageFilterClearPress" type="Transparent"/>
+				<Button icon="sap-icon://filter" press="onPageFilterPress" type="Transparent"/>
+				<Button text="Go" press="onPageFilterGoPress" type="Transparent"/>
+				<ToolbarSpacer width="2rem"/>
+			</OverflowToolbar>
+			<HBox height="10rem" visible="false" class="sapUiMediumMargin searchBox" id="searchBox" justifyContent="Center" alignItems="Center">
+				<SearchField width="50rem" search="onSearchForMain"/>
+				<MessageStrip visible="false" id="searchErrorMessage" text="No Cards found" type="Error" showIcon="true" showCloseButton="true"
+					class="sapUiSmallMargin"></MessageStrip>
+				<Button icon="sap-icon://decline" press="onMainSearchPressed" type="Transparent"/>
+			</HBox>
+			<VBox id="cardContainerParent" class="smallPadding" visible="true">
+				<HeaderContainer scrollStep="200" width="95%" id="filterContainer" visible="true" content="{/}"
+					class="sapUiMediumMarginBegin sapUiSmallMarginBottom filterBar smallPadding">
+					<content>
+						<VBox>
+							<Label text="{filterParameter}:"></Label>
+							<Input value="{filterValue}" class="noBorder" showValueHelp="true" valueHelpRequest="onValueHelpRequestForFilterValue" valueHelpOnly="true"/>
+						</VBox>
+					</content>
+				</HeaderContainer>
+				<HeaderContainer scrollStep="200" id="kpiContainer" visible="false" class="sapUiSmallMargin sapUiSmallMarginTop sapUiSmallMarginBottom">
+					<VBox width="16rem" height="8rem" alignItems="left" justifyContent="SpaceBetween">
+						<Title text="Duration by Phase"/>
+						<micro:InteractiveDonutChart selectionChanged="onSelectionChanged">
+							<micro:segments>
+								<micro:InteractiveDonutChartSegment label="Implementation Phase" value="40.0" displayedValue="40.0%"/>
+								<micro:InteractiveDonutChartSegment label="Design Phase" value="21.5" displayedValue="21.5%"/>
+								<micro:InteractiveDonutChartSegment label="Test Phase" value="38.5" displayedValue="38.5%"/>
+							</micro:segments>
+						</micro:InteractiveDonutChart>
+					</VBox>
+					<VBox width="16rem" height="8rem" alignItems="left" justifyContent="SpaceBetween">
+						<micro:InteractiveLineChart selectionChanged="selectionChanged" press="press" precedingPoint="15" succeedingPoint="89">
+							<micro:points>
+								<micro:InteractiveLineChartPoint value="33.1" label="May" secondaryLabel="Q2"/>
+								<micro:InteractiveLineChartPoint value="12" label="June"/>
+								<micro:InteractiveLineChartPoint value="51.4" label="July" secondaryLabel="Q3"/>
+								<micro:InteractiveLineChartPoint value="52" label="Aug"/>
+								<micro:InteractiveLineChartPoint value="69.9" label="Sep"/>
+								<micro:InteractiveLineChartPoint value="0.9" label="Oct" secondaryLabel="Q4"/>
+							</micro:points>
+						</micro:InteractiveLineChart>
+					</VBox>
+					<VBox width="16rem" height="8rem" alignItems="left" justifyContent="SpaceBetween">
+						<micro:InteractiveLineChart selectionChanged="selectionChanged" press="press" precedingPoint="15" succeedingPoint="89">
+							<micro:points>
+								<micro:InteractiveLineChartPoint value="33.1" label="May" secondaryLabel="Q2"/>
+								<micro:InteractiveLineChartPoint value="12" label="June"/>
+								<micro:InteractiveLineChartPoint value="51.4" label="July" secondaryLabel="Q3"/>
+								<micro:InteractiveLineChartPoint value="52" label="Aug"/>
+								<micro:InteractiveLineChartPoint value="69.9" label="Sep"/>
+								<micro:InteractiveLineChartPoint value="0.9" label="Oct" secondaryLabel="Q4"/>
+							</micro:points>
+						</micro:InteractiveLineChart>
+					</VBox>
+					<VBox width="16rem" height="8rem" alignItems="left" justifyContent="SpaceBetween">
+						<micro:InteractiveDonutChart selectionChanged="onSelectionChanged">
+							<micro:segments>
+								<micro:InteractiveDonutChartSegment label="Implementation Phase" value="40.0" displayedValue="40.0%"/>
+								<micro:InteractiveDonutChartSegment label="Design Phase" value="21.5" displayedValue="21.5%"/>
+								<micro:InteractiveDonutChartSegment label="Test Phase" value="38.5" displayedValue="38.5%"/>
+							</micro:segments>
+						</micro:InteractiveDonutChart>
+					</VBox>
+					<VBox width="16rem" height="8rem" alignItems="left" justifyContent="SpaceBetween">
+						<micro:InteractiveLineChart selectionChanged="selectionChanged" press="press" precedingPoint="15" succeedingPoint="89">
+							<micro:points>
+								<micro:InteractiveLineChartPoint value="33.1" label="May" secondaryLabel="Q2"/>
+								<micro:InteractiveLineChartPoint value="12" label="June"/>
+								<micro:InteractiveLineChartPoint value="51.4" label="July" secondaryLabel="Q3"/>
+								<micro:InteractiveLineChartPoint value="52" label="Aug"/>
+								<micro:InteractiveLineChartPoint value="69.9" label="Sep"/>
+								<micro:InteractiveLineChartPoint value="0.9" label="Oct" secondaryLabel="Q4"/>
+							</micro:points>
+						</micro:InteractiveLineChart>
+					</VBox>
+					<VBox width="16rem" height="8rem" alignItems="left" justifyContent="SpaceBetween">
+						<micro:InteractiveLineChart selectionChanged="selectionChanged" press="press" precedingPoint="15" succeedingPoint="89">
+							<micro:points>
+								<micro:InteractiveLineChartPoint value="33.1" label="May" secondaryLabel="Q2"/>
+								<micro:InteractiveLineChartPoint value="12" label="June"/>
+								<micro:InteractiveLineChartPoint value="51.4" label="July" secondaryLabel="Q3"/>
+								<micro:InteractiveLineChartPoint value="52" label="Aug"/>
+								<micro:InteractiveLineChartPoint value="69.9" label="Sep"/>
+								<micro:InteractiveLineChartPoint value="0.9" label="Oct" secondaryLabel="Q4"/>
+							</micro:points>
+						</micro:InteractiveLineChart>
+					</VBox>
+					<VBox width="16rem" height="8rem" alignItems="left" justifyContent="SpaceBetween">
+						<micro:InteractiveDonutChart selectionChanged="onSelectionChanged">
+							<micro:segments>
+								<micro:InteractiveDonutChartSegment label="Implementation Phase" value="40.0" displayedValue="40.0%"/>
+								<micro:InteractiveDonutChartSegment label="Design Phase" value="21.5" displayedValue="21.5%"/>
+								<micro:InteractiveDonutChartSegment label="Test Phase" value="38.5" displayedValue="38.5%"/>
+							</micro:segments>
+						</micro:InteractiveDonutChart>
+					</VBox>
+					<VBox width="16rem" height="8rem" alignItems="left" justifyContent="SpaceBetween">
+						<micro:InteractiveLineChart selectionChanged="selectionChanged" press="press" precedingPoint="15" succeedingPoint="89">
+							<micro:points>
+								<micro:InteractiveLineChartPoint value="33.1" label="May" secondaryLabel="Q2"/>
+								<micro:InteractiveLineChartPoint value="12" label="June"/>
+								<micro:InteractiveLineChartPoint value="51.4" label="July" secondaryLabel="Q3"/>
+								<micro:InteractiveLineChartPoint value="52" label="Aug"/>
+								<micro:InteractiveLineChartPoint value="69.9" label="Sep"/>
+								<micro:InteractiveLineChartPoint value="0.9" label="Oct" secondaryLabel="Q4"/>
+							</micro:points>
+						</micro:InteractiveLineChart>
+					</VBox>
+					<VBox width="16rem" height="8rem" alignItems="left" justifyContent="SpaceBetween">
+						<micro:InteractiveLineChart selectionChanged="selectionChanged" press="press" precedingPoint="15" succeedingPoint="89">
+							<micro:points>
+								<micro:InteractiveLineChartPoint value="33.1" label="May" secondaryLabel="Q2"/>
+								<micro:InteractiveLineChartPoint value="12" label="June"/>
+								<micro:InteractiveLineChartPoint value="51.4" label="July" secondaryLabel="Q3"/>
+								<micro:InteractiveLineChartPoint value="52" label="Aug"/>
+								<micro:InteractiveLineChartPoint value="69.9" label="Sep"/>
+								<micro:InteractiveLineChartPoint value="0.9" label="Oct" secondaryLabel="Q4"/>
+							</micro:points>
+						</micro:InteractiveLineChart>
+					</VBox>
+					<VBox width="16rem" height="8rem" alignItems="left" justifyContent="SpaceBetween">
+						<micro:InteractiveDonutChart selectionChanged="onSelectionChanged">
+							<micro:segments>
+								<micro:InteractiveDonutChartSegment label="Implementation Phase" value="40.0" displayedValue="40.0%"/>
+								<micro:InteractiveDonutChartSegment label="Design Phase" value="21.5" displayedValue="21.5%"/>
+								<micro:InteractiveDonutChartSegment label="Test Phase" value="38.5" displayedValue="38.5%"/>
+							</micro:segments>
+						</micro:InteractiveDonutChart>
+					</VBox>
+					<VBox width="16rem" height="8rem" alignItems="left" justifyContent="SpaceBetween">
+						<micro:InteractiveLineChart selectionChanged="selectionChanged" press="press" precedingPoint="15" succeedingPoint="89">
+							<micro:points>
+								<micro:InteractiveLineChartPoint value="33.1" label="May" secondaryLabel="Q2"/>
+								<micro:InteractiveLineChartPoint value="12" label="June"/>
+								<micro:InteractiveLineChartPoint value="51.4" label="July" secondaryLabel="Q3"/>
+								<micro:InteractiveLineChartPoint value="52" label="Aug"/>
+								<micro:InteractiveLineChartPoint value="69.9" label="Sep"/>
+								<micro:InteractiveLineChartPoint value="0.9" label="Oct" secondaryLabel="Q4"/>
+							</micro:points>
+						</micro:InteractiveLineChart>
+					</VBox>
+					<VBox width="16rem" height="8rem" alignItems="left" justifyContent="SpaceBetween">
+						<micro:InteractiveLineChart selectionChanged="selectionChanged" press="press" precedingPoint="15" succeedingPoint="89">
+							<micro:points>
+								<micro:InteractiveLineChartPoint value="33.1" label="May" secondaryLabel="Q2"/>
+								<micro:InteractiveLineChartPoint value="12" label="June"/>
+								<micro:InteractiveLineChartPoint value="51.4" label="July" secondaryLabel="Q3"/>
+								<micro:InteractiveLineChartPoint value="52" label="Aug"/>
+								<micro:InteractiveLineChartPoint value="69.9" label="Sep"/>
+								<micro:InteractiveLineChartPoint value="0.9" label="Oct" secondaryLabel="Q4"/>
+							</micro:points>
+						</micro:InteractiveLineChart>
+					</VBox>
+					<VBox width="16rem" height="8rem" alignItems="left" justifyContent="SpaceBetween">
+						<micro:InteractiveDonutChart selectionChanged="onSelectionChanged">
+							<micro:segments>
+								<micro:InteractiveDonutChartSegment label="Implementation Phase" value="40.0" displayedValue="40.0%"/>
+								<micro:InteractiveDonutChartSegment label="Design Phase" value="21.5" displayedValue="21.5%"/>
+								<micro:InteractiveDonutChartSegment label="Test Phase" value="38.5" displayedValue="38.5%"/>
+							</micro:segments>
+						</micro:InteractiveDonutChart>
+					</VBox>
+					<VBox width="16rem" height="8rem" alignItems="left" justifyContent="SpaceBetween">
+						<micro:InteractiveLineChart selectionChanged="selectionChanged" press="press" precedingPoint="15" succeedingPoint="89">
+							<micro:points>
+								<micro:InteractiveLineChartPoint value="33.1" label="May" secondaryLabel="Q2"/>
+								<micro:InteractiveLineChartPoint value="12" label="June"/>
+								<micro:InteractiveLineChartPoint value="51.4" label="July" secondaryLabel="Q3"/>
+								<micro:InteractiveLineChartPoint value="52" label="Aug"/>
+								<micro:InteractiveLineChartPoint value="69.9" label="Sep"/>
+								<micro:InteractiveLineChartPoint value="0.9" label="Oct" secondaryLabel="Q4"/>
+							</micro:points>
+						</micro:InteractiveLineChart>
+					</VBox>
+					<VBox width="16rem" height="8rem" alignItems="left" justifyContent="SpaceBetween">
+						<micro:InteractiveLineChart selectionChanged="selectionChanged" press="press" precedingPoint="15" succeedingPoint="89">
+							<micro:points>
+								<micro:InteractiveLineChartPoint value="33.1" label="May" secondaryLabel="Q2"/>
+								<micro:InteractiveLineChartPoint value="12" label="June"/>
+								<micro:InteractiveLineChartPoint value="51.4" label="July" secondaryLabel="Q3"/>
+								<micro:InteractiveLineChartPoint value="52" label="Aug"/>
+								<micro:InteractiveLineChartPoint value="69.9" label="Sep"/>
+								<micro:InteractiveLineChartPoint value="0.9" label="Oct" secondaryLabel="Q4"/>
+							</micro:points>
+						</micro:InteractiveLineChart>
+					</VBox>
+				</HeaderContainer>
+				<VBox id="cardParent">
+					<core:HTML content='&lt;div id="cardContainer" class="sapiTinyMargin grid-stack"&gt;&lt;/div&gt;'></core:HTML>
+				</VBox>
+				<VBox justifyContent="Center" id="reportContainerParent" width="95%" class="reportContainerParent sapUiMediumMarginBegin" visible="false">
+					<Toolbar width="100%">
+						<Button icon="sap-icon://nav-back" type="Transparent" press="onBackFromAutoReport"/>
+						<ToolbarSpacer width="1rem"/>
+						<Title text="{/cardTitle}"/>
+						<ToolbarSpacer/>
+						<MultiComboBox width="10rem" selectionChange="onDimensionChangedReport"
+							items="{path:'/allProperties',filters:[{path:'TYPE',operator:'EQ',value1:'DIMENSION'}]}">
+							<core:Item text="{LABEL}" selected="true" key="{COLUMN_NAME}"></core:Item>
+						</MultiComboBox>
+						<core:Icon src="sap-icon://warning" visible="{/moreRecords}"
+							tooltip="Number of records too large for reporting. Reduce your selection before continuing"/>
+						<ToolbarSpacer width="1rem"/>
+					</Toolbar>
+					<MessageStrip text="Drag and Drop Properties as Rows or Columns to build your report!" showIcon="true" showCloseButton="true"
+						class="sapUiSmallMargin"></MessageStrip>
+					<core:HTML content='&lt;div id="reportContainer" class="reportContainer"&gt;&lt;/div&gt;'></core:HTML>
+				</VBox>
+			</VBox>
+		</content>
+	</Page>
+	<!--</App>-->
+</mvc:View>

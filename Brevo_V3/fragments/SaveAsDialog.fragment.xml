@@ -1,0 +1,106 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:fi="sap.f" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:grid="sap.ui.layout.cssgrid"
+	xmlns:f="sap.ui.layout.form">
+	<Dialog title="Create New Page" showHeader="true" contentWidth="70em" class="sapUiPopupWithPadding sapContrastPlus sapUiSizeCompact"
+		placement="Bottom">
+		<endButton>
+			<Button text="Cancel" press="onCreateNewPageDialogClose"/>
+		</endButton>
+		<beginButton>
+			<Button text="Save" press="onCreateNewPagePress"/>
+		</beginButton>
+		<content>
+			<HBox>
+				<VBox width="70%" class="sapUiSmallMargin sapUiContentPadding">
+					<HBox alignItems="End">
+						<Label text="Name:" required="true" tooltip="Enter a name for your Dashboard."/>
+						<core:Icon class="sapUiTinyMarginBegin" src="sap-icon://sys-help" tooltip="Enter a name for your Dashboard."></core:Icon>
+					</HBox>
+					<Input value="{PageTitle}" width="100%" tooltip="Enter a name for your Dashboard."/>
+					<l:Grid defaultSpan="L3 M4 S6">
+						<CheckBox text="Set as Default" selected="true">
+							<layoutData>
+								<l:GridData span="L5 M5 S5"/>
+							</layoutData>
+						</CheckBox>
+						<CheckBox text="Share with other Users" selected="{RoleFlag}">
+							<layoutData>
+								<l:GridData span="L5 M5 S5"/></layoutData>
+						</CheckBox>
+						<CheckBox text="Add as a tile" selected="false">
+							<layoutData>
+								<l:GridData span="L5 M5 S5"/></layoutData>
+						</CheckBox>
+					</l:Grid>
+					<Title text="Other Details (Optional)" level="H3" tooltip="Add below details to make it easier to find and know about the dashboard"
+						titleStyle="H3" class="sapUiTinyMarginTop sapUiTinyMarginBottom"/>
+					<HBox alignItems="End">
+						<Label text="Description:" required="false"
+							tooltip="Description for your dashboard page. A Good description always makes it easier to know about the KPIs and it's purpose"/>
+						<core:Icon class="sapUiTinyMarginBegin" src="sap-icon://sys-help"
+							tooltip="Description for your dashboard page. A Good description always makes it easier for your colleages to know about the KPIs and it's purpose."></core:Icon>
+					</HBox>
+					<TextArea rows="5" value="{PageDescrpition}"
+						tooltip="Description for your dashboard page. A Good description always makes it easier to know about the KPIs and it's purpose"
+						width="100%"/>
+					<HBox alignItems="End">
+						<Label text="Department:" class="sapUiTinyMarginTop" tooltip="Catagories your dashboard among the list of departments."/>
+						<core:Icon class="sapUiTinyMarginBegin" src="sap-icon://sys-help" tooltip="Catagories your dashboard among the list of departments."></core:Icon>
+					</HBox>
+					<ComboBox width="100%" selectedKey="{CategoryId}" tooltip="Catagories your dashboard among the list of departments.">
+						<items>
+							<core:Item text="" key=""></core:Item>
+							<core:Item text="Asset Management" key="AssetManagement"></core:Item>
+							<core:Item text="Commerce" key="Commerce"></core:Item>
+							<core:Item text="Finance" key="Finance"></core:Item>
+							<core:Item text="Human Resources" key="HumanResources"></core:Item>
+							<core:Item text="Manufacturing" key="Manufacturing"></core:Item>
+							<core:Item text="Marketing" key="Marketing"></core:Item>
+							<core:Item text="R and D/Engineering" key="RandD/Engineering"></core:Item>
+							<core:Item text="Sales" key="Sales"></core:Item>
+							<core:Item text="Service" key="Service"></core:Item>
+							<core:Item text="Sourcing and Procurement" key="SourcingandProcurement"></core:Item>
+							<core:Item text="Supply Chain" key="SupplyChain"></core:Item>
+							<core:Item text="Sustainability" key="Sustainability"></core:Item>
+						</items>
+					</ComboBox>
+					<HBox alignItems="End">
+						<Label text="Role:" class="sapUiTinyMarginTop" tooltip="Role of user/role that is being monitored."/>
+						<core:Icon class="sapUiTinyMarginBegin" src="sap-icon://sys-help" tooltip="Role of user/role that is being monitored."></core:Icon>
+					</HBox>
+					<ComboBox items="{ path: 'role>/d/results'}" width="100%" selectedKey="{Industry}" tooltip="Role of user/role that is being monitored.">
+						<items>
+							<core:Item text="{role>title}" key="{role>key}"/>
+						</items>
+					</ComboBox>
+					<HBox alignItems="End">
+						<Label text="Keywords:" class="sapUiTinyMarginTop"
+							tooltip="Add keywords to your dashboard. Makes it easier to search the dashboard. For example: sales,regional sales,2020"/>
+						<core:Icon class="sapUiTinyMarginBegin" src="sap-icon://sys-help"
+							tooltip="Add keywords to your dashboard. Makes it easier to search the dashboard."></core:Icon>
+					</HBox>
+					<Input showValueHelp="false" placeholder="Separated by Comma"
+						tooltip="Add keywords to your dashboard. Makes it easier to search the dashboard. For example: sales,regional sales,2020"></Input>
+				</VBox>
+				<VBox width="40%" class="sapUiSmallMargin sapUiContentPadding">
+					<fi:GridList id="dashboardTypeSelector" mode="SingleSelectMaster" items="{dashboardTypes>/d/results}" showSeparators="None" growing="true"
+						growingScrollToLoad="false" growingThreshold="7" class="sapUiContentPadding sapUiSmallMarginTop">
+						<fi:customLayout>
+							<grid:GridBoxLayout boxWidth="100%"/>
+						</fi:customLayout>
+						<CustomListItem >
+							<VBox justifyContent="Start" alignItems="Start" class="">
+								<HBox width="100%" justifyContent="Center" class="sapUiTinyMargin" alignItems="Center">
+									<core:Icon size="4rem" class="sapUiSmallMargin" press="onCreatePress" src="{dashboardTypes>icon}"/>
+									<VBox class="sapUiSmallMargin">
+										<Title class="pureWhite" textAlign="Center" text="{dashboardTypes>chartName}"/>
+										<Text text="{dashboardTypes>chartDesc}"/>
+									</VBox>
+								</HBox>
+							</VBox>
+						</CustomListItem>
+					</fi:GridList>
+				</VBox>
+			</HBox>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,69 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core" controllerName="inhance.userManagementSecurity.controller.applicationList"
+	displayBlock="true">
+	<App backgroundColor="Transparent">
+		<Page title="Application Details" showNavButton="true" navButtonPress="onNavBack">
+			<content>
+				<Table id="appTableId" inset="false" items="{applications>/}" sticky="ColumnHeaders">
+					<headerToolbar>
+						<Toolbar class="headerClass">
+							<Title text="Application Information" id="tableTitleId" level="H2"/>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://refresh" press="onUserRefershPress"/>
+							<!--<Select items="{/results}" width="15%" id="deptId" enabled="false" change="onSelectedDeptartment">
+								<core:Item text="{Name}" key="{Department Id}"/>
+							</Select>-->
+							<SearchField liveChange="handleAppSearch" width="15%"/>
+							<!--<Button icon="sap-icon://sort" press="handleSortUser"/>-->
+							<Button icon="sap-icon://add" text="Add New Application" press="handleAddApplication"/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column minScreenWidth="Tablet" width="5em" demandPopin="true" hAlign="Center">
+							<Text text="Actions" />
+						</Column>
+						<Column minScreenWidth="Tablet" width="8em" demandPopin="true" hAlign="Center">
+							<Text text="App Id"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+							<Text text="Name"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+							<Text text="Description"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+							<Text text="App Url"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+							<Text text="Created At"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+							<Text text="Last Changed At"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<HBox>
+									<Button icon="sap-icon://edit" type="Transparent" press="handleEditAppPress"/>
+									<Button icon="sap-icon://delete" type="Transparent"  press="handleDeleteAppPress"/>
+								</HBox>
+								<Text text="{applications>_id}"/>
+								<Text text="{applications>name}"/>
+								<Text text="{applications>description}" wrapping="true" press="handleLinkPress"/>
+								<Link text="{applications>link}"  press="handleLinkPress"/>
+								<Text text="{path:'applications>createdate',formatter:'.formatter.handleDateValues'}"/>
+								<Text text="{path:'applications>modifydate',formatter:'.formatter.handleDateValues'}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</content>
+			<footer>
+				<Toolbar>
+					<ToolbarSpacer/>
+				</Toolbar>
+			</footer>
+		</Page>
+	</App>
+</mvc:View>

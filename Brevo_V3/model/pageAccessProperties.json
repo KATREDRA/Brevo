@@ -1,0 +1,34 @@
+{
+	"manager": {
+		"createCardEnabled": true,
+		"createPageEnabled": true,
+		"editCardEnabled": true,
+		"editPageEnabled": true,
+		"sharePageEnabled": true,
+		"readAllPages": true
+	},
+	"pageOwner": {
+		"createCardEnabled": true,
+		"createPageEnabled": true,
+		"editCardEnabled": true,
+		"editPageEnabled": true,
+		"sharePageEnabled": true,
+		"readAllPages": true
+	},
+	"user": {
+		"createCardEnabled": false,
+		"createPageEnabled": false,
+		"editCardEnabled": false,
+		"editPageEnabled": false,
+		"sharePageEnabled": false,
+		"readAllPages": false
+	},
+	"default": {
+		"createCardEnabled": false,
+		"createPageEnabled": false,
+		"editCardEnabled": false,
+		"editPageEnabled": false,
+		"sharePageEnabled": false,
+		"readAllPages": false
+	}
+}

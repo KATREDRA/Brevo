@@ -1,0 +1,60 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Save" showHeader="true" contentWidth="40em" class="sapUiPopupWithPadding sapContrastPlus sapUiSizeCompact" placement="Bottom">
+		<endButton>
+			<Button text="Cancel" press="onEditPageDialogClose"/>
+		</endButton>
+		<beginButton>
+			<Button text="Save" press="onEditPageSavePress"/>
+		</beginButton>
+		<content>
+			<VBox class="sapUiSmallMargin">
+				<Label text="Name:" required="true"/>
+				<Input value="{PageTitle}" width="100%"/>
+				<l:Grid defaultSpan="L3 M4 S6">
+					<CheckBox text="Set as Default" selected="true">
+						<layoutData>
+							<l:GridData span="L5 M5 S5"/>
+						</layoutData>
+					</CheckBox>
+					<CheckBox text="Share with other Users" selected="{= ${RoleFlag} == 'true'?true:false}">
+						<layoutData>
+							<l:GridData span="L5 M5 S5"/></layoutData>
+					</CheckBox>
+					<CheckBox text="Add as a tile" selected="false">
+						<layoutData>
+							<l:GridData span="L5 M5 S5"/></layoutData>
+					</CheckBox>
+				</l:Grid>
+				<Title text="Other Details" level="H3" titleStyle="H3" class="sapUiTinyMarginTop sapUiTinyMarginBottom"/>
+				<Label text="Description:" required="false"/>
+				<TextArea rows="5" value="{PageDescrpition}" width="100%"/>
+				<Label text="Line of Business:" class="sapUiTinyMarginTop"/>
+				<ComboBox width="100%" selectedKey="{Industry}">
+					<items>
+						<core:Item text="" key=""></core:Item>
+						<core:Item text="Asset Management" key="Asset Management"></core:Item>
+						<core:Item text="Commerce" key="Commerce"></core:Item>
+						<core:Item text="Finance" key="Finance"></core:Item>
+						<core:Item text="Human Resources" key="Human Resources"></core:Item>
+						<core:Item text="Manufacturing" key="Manufacturing"></core:Item>
+						<core:Item text="Marketing" key="Marketing"></core:Item>
+						<core:Item text="R and D/Engineering" key="R and D/Engineering"></core:Item>
+						<core:Item text="Sales" key="Sales"></core:Item>
+						<core:Item text="Service" key="Service"></core:Item>
+						<core:Item text="Sourcing and Procurement" key="Sourcing and Procurement"></core:Item>
+						<core:Item text="Supply Chain" key="Supply Chain"></core:Item>
+						<core:Item text="Sustainability" key="Sustainability"></core:Item>
+					</items>
+				</ComboBox>
+				<Label text="Role:" class="sapUiTinyMarginTop"/>
+				<ComboBox items="{ path: 'role>/d/results'}" width="100%" selectedKey="{SubTitle}">
+					<items>
+						<core:Item text="{role>title}" key="{role>title}"/>
+					</items>
+				</ComboBox>
+				<Label text="Keywords" class="sapUiTinyMarginTop"/>
+				<Input placeholder="Comma Separated" value="{Tags}" showValueHelp="false"></Input>
+			</VBox>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

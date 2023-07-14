@@ -1,0 +1,75 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Popover placement="Vertical" showHeader="false" class="popoverClassDate">
+		<customHeader>
+			<Toolbar >
+				<ToolbarSpacer/>
+				<Title text="Select a Date"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>
+		<VBox>
+			<FlexBox alignItems="Center" justifyContent="Center">
+				<items>
+					<Button text="1" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton"  />
+					<Button text="2" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" />
+					<Button text="3" press="handleDateSelect"  type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton"/>
+					<Button text="4" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" />
+					<Button text="5" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" />
+				</items>
+			</FlexBox>
+			<FlexBox alignItems="Center" justifyContent="Center">
+				<items>
+					<Button text="6" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" />
+					<Button text="7" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" />
+					<Button text="8" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" />
+					<Button text="9" press="handleDateSelect"  type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton"/>
+					<Button text="10" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" />
+				</items>
+			</FlexBox>
+			<FlexBox alignItems="Center" justifyContent="Center">
+				<items>
+					<Button text="11" press="handleDateSelect"  type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton"/>
+					<Button text="12" press="handleDateSelect"  type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton"/>
+					<Button text="13" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" />
+					<Button text="14" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" />
+					<Button text="15" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" />
+				</items>
+			</FlexBox>
+			<FlexBox alignItems="Center" justifyContent="Center">
+				<items>
+					<Button text="16" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" />
+					<Button text="17" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" />
+					<Button text="18" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" />
+					<Button text="19" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" />
+					<Button text="20" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" />
+				</items>
+			</FlexBox>
+			<FlexBox alignItems="Center" justifyContent="Center">
+				<items>
+					<Button text="21" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" />
+					<Button text="22" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" />
+					<Button text="23" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" />
+					<Button text="24" press="handleDateSelect"  type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton"/>
+					<Button text="25" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" />
+				</items>
+			</FlexBox>
+			<FlexBox alignItems="Center" justifyContent="Center">
+				<items>
+					<Button text="26" press="handleDateSelect"  type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton"/>
+					<Button text="27" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" />
+					<Button text="28" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" />
+					<Button text="29" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" id="buttonId1" visible="true"/>
+					<Button text="30" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" id="buttonId2" visible="true"/>
+				</items>
+			</FlexBox>
+			<FlexBox alignItems="Center" justifyContent="Center">
+				<items>
+					<Button text="31" press="handleDateSelect" type="Transparent" class="sapUiTinyMarginBottom popOverItem menuButton" id="buttonId3" visible="true" />
+				</items>
+			</FlexBox>
+		</VBox>
+	</Popover>
+</core:FragmentDefinition>
+

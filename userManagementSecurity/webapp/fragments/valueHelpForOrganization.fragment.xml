@@ -1,0 +1,61 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<Dialog title="Create Organization" contentWidth="70%" class="sapUiSizeCompact">
+		<endButton>
+			<Button text="Cancel" press="handleOrganizationCancel"/>
+		</endButton>
+		<beginButton>
+			<Button text="Save" press="handleOrganizationSave"/>
+		</beginButton>
+		<f:SimpleForm minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="4" labelSpanM="12"
+			adjustLabelSpan="true" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+			<f:content>
+				<core:Title text="Organization Details"/>
+				<Label text="Organization Name" required="true"/>
+				<Input value="{/name}"/>
+				<Label text="Organization Description" required="true"/>
+				<Input value="{/description}"/>
+				<!--	<Label text="Email" required="true"/>
+				<Input value="" />-->
+				<core:Title text="Communication Data"/>
+				<Label text="phone"/>
+				<Input value="{/phone}" liveChange="limitPhoneNumbers"/>
+				<Label text="Email" required="true"/>
+				<Input value="{/org_email}" change="handleValidateEmail"/>
+				<Label text="address"/>
+				<TextArea rows="2" value="{/address}" change="handleValidateEmail1"/>
+				<core:Title text="License Details"/>
+				<Label text="License Type" required="true"/>
+				<Select selectedKey="{/license_type}">
+					<core:Item text="Trail License" key="Trail License"/>
+					<core:Item text="Permissive License" key="Permissive License"/>
+					<core:Item text="Full Access License" key="Full Access License"/>
+				</Select>
+				<Label text="License Period" required="true"/>
+				<DateRangeSelection change="handleDateRange" value="{/startdate} - {/enddate}"/>
+				<Label text="No Of Days" required="true"/>
+				<Input value="{parts:['/startdate','/enddate'],formatter:'.formatter.getNoOfDays'}" editable="false"></Input>
+				<Label text="Authorize to Create No Of Dashboards" required="true"/>
+				<Input value="{/dashboardcountallowed}"></Input>
+				<Label text="Authorize to Create No Of Users" required="true"/>
+				<Input value="{/usercountallowed}"></Input>
+				<core:Title text="Admin Details"/>
+				<Label text="First Name" required="true"/>
+				<Input value="{/firstname}"/>
+				<Label text="Last Name" required="true"/>
+				<Input value="{/lastname}"/>
+				<Label text="Email" required="true"/>
+				<Input value="{/user_emailid}" change="limitemailadmin"/>
+				<Label text="Contact No." required="true"/>
+				<Input value="{/contactnumber}" liveChange="limitPhoneNumbersadmin"/>
+				<core:Title text="Application Details"/>
+				<Label text="Application" required="true"/>
+				<MultiInput showValueHelp="true" tokenUpdate="handleInputTokenDeleted" valueHelpRequest="handleApplicationValueHelp"
+					tokens="{ path: '/application'}">
+					<tokens>
+						<Token key="{_id}" text="{name}"/>
+					</tokens>
+				</MultiInput>
+			</f:content>
+		</f:SimpleForm>
+	</Dialog>
+</core:FragmentDefinition>

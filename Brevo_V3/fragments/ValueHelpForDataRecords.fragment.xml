@@ -1,0 +1,45 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:tnt="sap.tnt">
+	<Popover showHeader="true" contentWidth="23em" contentHeight="38em" offsetX="6" offsetY="100" class="customPopOver sapUiPopupWithPadding"
+		horizontalScrolling="false" placement="Right">
+		<!-- <Dialog title="Select from available Queries" showHeader="false" height="40em" class="sapUiPopupWithPadding" placement="Bottom"> -->
+		<customHeader>
+			<Toolbar >
+				<Button icon="sap-icon://close-command-field" class="menuButton" type="Transparent" press="valueHelpCloseButtonForDataRecords"/>
+				<ToolbarSpacer/>
+				<Title text="Select a System"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>
+		<content>
+			<App initialPage="systemList">
+				<Page showNavButton="false" title="Select a System" showHeader="false">
+					<SearchField placeholder="Search by System..." liveChange="handleDataSrcSearch"></SearchField>
+					<List noDataText="No data" mode="None">
+						<StandardListItem class="popOverItem" title="Brevo" type="Navigation" press="handleNavListItemSelect" templateShareable="true"
+							description="{RfcDescr}"/>
+						<!-- <StandardListItem class="popOverItem" title="Finance" type="Navigation" press="handleNavListItemSelect" templateShareable="true" description="{RfcDescr}"/> -->
+						<StandardListItem class="popOverItem" title="Hana Express" type="Navigation" press="handleNavListItemSelect" templateShareable="true"
+							description="{RfcDescr}"/>
+						<!-- <StandardListItem class="popOverItem" title="Sugar CRM" type="Navigation" press="handleNavListItemSelect" templateShareable="true" description="{RfcDescr}"/>
+						<StandardListItem class="popOverItem" title="Tiebs" type="Navigation" press="handleNavListItemSelect" templateShareable="true" description="{RfcDescr}"/> -->
+						<StandardListItem class="popOverItem" title="Covid" type="Navigation" press="handleNavListItemSelect" templateShareable="true"
+							description="{RfcDescr}"/>
+						<StandardListItem class="popOverItem" title="Sales Details" type="Navigation" press="handleNavListItemSelect" templateShareable="true"
+							description="{RfcDescr}"/>
+						<StandardListItem class="popOverItem" title="Compliants" type="Navigation" press="handleNavListItemSelect" templateShareable="true"
+							description="{RfcDescr}"/>
+					</List>
+				</Page>
+				<Page showNavButton="true" title="Select a Data Record" navButtonPress="onDataRecordBackPress">
+					<content>
+						<SearchField placeholder="Search by Query.." liveChange="handleServiceFilterSearch"></SearchField>
+						<tnt:NavigationList items="{/d/results}" itemSelect="handleNavListItemSelect">
+							<tnt:NavigationListItem text="{CatNam}" items="{QueryInfoSet/results}">
+								<tnt:NavigationListItem text="{CatNam}"/></tnt:NavigationListItem>
+						</tnt:NavigationList>
+					</content>
+				</Page>
+			</App>
+		</content>
+	</Popover>
+</core:FragmentDefinition>

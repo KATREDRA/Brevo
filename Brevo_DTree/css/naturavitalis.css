@@ -1,0 +1,134 @@
+.sapUiMediumMarginLeft {
+    margin-left: 1.5rem !important;
+}
+.extraMargin{
+	margin-bottom: 1.5rem !important;
+}
+.fontSize {
+	font-size: 14px !important;
+}
+.chartContainer{
+	overflow : hidden !important;
+	height : 450px !important;
+}
+.compactHeaderCell {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+    border: 3px solid transparent;
+    border-radius: 5px !important;
+    cursor: pointer;
+}
+.sapMBar{
+    background-color : transparent !important;
+    box-shadow : inset 0 -0.0625rem transparent !important;
+}
+.selected{
+    border: 0px solid rgb(231, 140, 34);
+	border-bottom: 2px solid rgb(231, 140, 34) !important;
+}
+.sapMHrdrCntrInner{
+    background-color: #ffffff14 !important;
+}
+.containerBG{
+	background : rgb(239,244,249) !important;
+}
+.sapUiCompFilterBar {
+    /*backgroundColor="#eff4f9" */
+    background-color: transparent !important;
+    border-bottom: 0px solid red !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+}
+.sapUiGlobalBackgroundColor, .sapMShellGlobalInnerBackground {
+    background-color: transparent;
+}
+
+
+
+.sapMTitle {
+	color: white !important;
+	text-shadow: 0px 0px 0.125rem #000000 !important;
+}
+.sapUshellShellBG.sapUiShellBackgroundImage {
+	background-image: url('http://wallpoper.com/images/00/45/05/47/green-background-2_00450547.jpg') !important;
+	background-repeat: no-repeat !important;
+	background-size: cover !important;
+	background-position: center !important;
+	opacity: 0.62 !important;
+}
+.sapMShellBG {
+	background-image: url('http://wallpoper.com/images/00/45/05/47/green-background-2_00450547.jpg') !important;
+	background-repeat: no-repeat !important;
+	background-size: cover !important;
+	background-position: center !important;
+	opacity: 0.62 !important;
+}
+.sapMBtnInner {
+	text-shadow: 0 0 20rem #ffffff !important;
+}
+.sapMBtnTransparent {
+	color: #ffffff !important;
+}
+.sapMBtnTransparent>.sapUiIcon  {
+    	color: #ffffff !important;
+}
+.sapUiCompSmartChartHeader.sapMText {
+    color: white !important;
+    font-size: 1.25rem !important;
+    text-shadow: none !important;
+    }
+.sapUshellAppTitle {
+	text-shadow: 0 0 20rem #ffffff !important;
+}
+.sapMBtn>.sapMBtnEmphasized  {
+    border-radius: 1.4rem !important;
+  	background-color: #efa91b !important;
+}
+.vasppLogo {
+	height: 7rem;
+	position: absolute;
+	z-index: -99;
+	width: 10%;
+	background-repeat: no-repeat;
+	background-size: contain;
+	/* top: 7px; */
+	 left: 20px; 
+	background-image: url(http://vaspp.com/wp-content/uploads/2016/11/logo_small.png);
+	bottom: 20px;
+}
+.sapSuiteUiCommonsChartContainerChartArea{
+  background-color:  #ffffff6b !important;
+}
+.sapSuiteUiCommonsChartContainerOverlay{
+    background-color:  #ffffffca !important;
+} 
+.sapOvpCardHeader{
+    background-color: #ffffff6b !important;
+}
+.partnerLogo {
+	height: 7rem;
+	position: absolute;
+	z-index: -9;
+	width: 20%;
+	background-repeat: no-repeat;
+	background-size: contain;
+	right: 20px;
+	background-image: url(https://www.naturavitalis.de/out/naturavitalis/img/logo-company.png?1521627995);
+	bottom: 20px;
+}
+.sapSuiteUiCommonsChartContainerOverlay>.customerChartContainer>div>.sapSuiteUiCommonsChartContainerToolBarArea>.sapMIBar {
+	display: flex;
+}
+.cardToolbar {
+	border-bottom: 0px solid red !important;
+	cursor: pointer;
+}
+.sapMLIB{
+     background-color:  #ffffff6b !important;
+ 
+}
+.sapMListTbl{
+    	width: 100%;
+}

@@ -1,0 +1,90 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:viz="sap.viz.ui5.controls" xmlns:suiteCommons="sap.suite.ui.commons">
+	<VBox height="100%" class="sapMFlexBox sapMHBox sapOvpBaseCard sapOvpBaseCardKPI sapOvpCardRightContent">
+		<OverflowToolbar class="sapUiTinyMarginBegin sapUiTinyMarginTop sapOvpCardHeade cardToolbar">
+			<content>
+				<!--visible="{path:'/navigation',formatter:'Brevo.Brevo_V2.util.Formatter.isCardDrillDownEnabled'}"-->
+				<Link text="{/cardTitle}" emphasized="true" press="cardTitlePress" class="cardTitle"></Link>
+				<Text visible="false" text="{/confiId}"></Text>
+				<Title visible="false" text="{/cardTitle}" emphasized="true" press="cardTitlePress" class=""></Title>
+				<ToolbarSpacer/>
+				<Button visible="{/chartFiltered}" type="Transparent" icon="sap-icon://clear-filter" press="onClearCardFilterPress"/>
+				<MenuButton icon="" class="sapUiSizeCompact settingsBtn" press="onCardSettingsPress" type="Transparent">
+					<menu>
+						<Menu>
+							<items>
+								<MenuItem icon="sap-icon://overflow" text="" visible="{= ${AccessModel>/editCardEnabled} === true}" class="menuButton sapUiSizeCompact"
+									press="filterCurrentCard" tooltip="Filter">
+									<items>
+										<MenuItem icon="sap-icon://sort" text="Sort" items="{/allSorters}" visible="{= ${allSorters}.length>0 === true}"
+											class="menuButton sapUiSizeCompact" tooltip="Sort">
+											<items>
+												<MenuItem text="{value}" visible="{= ${AccessModel>/editCardEnabled} === true}" class="menuButton sapUiSizeCompact" tooltip="Sort">
+													<items>
+														<MenuItem icon="sap-icon://sort" text="Ascending" visible="{= ${AccessModel>/editCardEnabled} === true}" class="menuButton sapUiSizeCompact"
+															press="sortCurrentCard" tooltip="Sort"></MenuItem>
+														<MenuItem icon="sap-icon://sort" text="Descending" visible="{= ${AccessModel>/editCardEnabled} === true}"
+															class="menuButton sapUiSizeCompact" press="sortCurrentCard" tooltip="Sort"></MenuItem>
+													</items>
+												</MenuItem>
+											</items>
+										</MenuItem>
+										<MenuItem icon="sap-icon://filter" text="Filter" items="{/allProperties}" visible="{= ${AccessModel>/editCardEnabled} === true}"
+											class="menuButton sapUiSizeCompact" tooltip="Filters">
+											<items>
+												<MenuItem text="{value}" visible="{= ${AccessModel>/editCardEnabled} === true}" class="menuButton sapUiSizeCompact" tooltip="Sort"
+													press="filterCurrentCard"></MenuItem>
+											</items>
+										</MenuItem>
+										<MenuItem icon="sap-icon://download" text="Export" visible="true" class="menuButton sapUiSizeCompact" press="downloadCurrentDataSet"
+											tooltip="Delete"></MenuItem>
+									</items>
+								</MenuItem>
+								<MenuItem icon="sap-icon://table-view" visible="false" text="Table" class="menuButton sapUiSizeCompact" press="onTableViewPress"
+									tooltip="Table View"></MenuItem>
+								<MenuItem icon="sap-icon://full-screen" visible="false" text="Full Screen" class="menuButton sapUiSizeCompact" press="resizeCard"
+									tooltip="Full Screen"></MenuItem>
+								<MenuItem icon="sap-icon://edit" text="Edit" visible="{= ${AccessModel>/editCardEnabled} === true}" class="menuButton sapUiSizeCompact"
+									press="editCurrentCard" tooltip="Edit"></MenuItem>
+								<MenuItem icon="sap-icon://copy" text="Copy" visible="{= ${AccessModel>/editCardEnabled} === true}" class="menuButton sapUiSizeCompact"
+									press="copyCurrentCard" tooltip="Delete"></MenuItem>
+								<MenuItem icon="sap-icon://delete" text="Delete" visible="{= ${AccessModel>/editCardEnabled} === true}" class="menuButton sapUiSizeCompact"
+									press="deletCurrentCard" tooltip="Delete"></MenuItem>
+							</items>
+						</Menu>
+					</menu>
+				</MenuButton>
+				<Button icon="sap-icon://add-favorite" tooltip="Copy to Page" visible="{/isPinVisible}" class="sapUiSizeCompact"
+					press="onAddSearchCardToPage" type="Transparent">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow"/>
+					</layoutData>
+				</Button>
+			</content>
+		</OverflowToolbar>
+		<Text visible="true" class="sapUiSmallMarginBegin sapUiTinyMarginBottom" text="{/cardSubtitle}"/>
+		<HBox class="" visible="true" justifyContent="SpaceAround" width="100%">
+			<NumericContent size="L" id="numericChart" formatterValue="true"></NumericContent>
+			<NumericContent size="L" id="numericChart2" formatterValue="true"></NumericContent>
+		</HBox>
+		<HBox class="kpiBox" visible="true" justifyContent="SpaceAround" width="100%"></HBox>
+		<VBox class="floaterSettings sapUiSizeCompact sapUiTinyMargin" visible="false">
+			<HBox justifyContent="SpaceAround" alignItems="Center">
+				<HBox class="sapUiTinyMarginBegin">
+					<Label text="Positive" class="footerLabel"/>
+					<VBox class="statusIndicator sapUiTinyMargin" height="5px" width="6rem"/>
+					<Label text="Critical" class="footerLabel"/>
+				</HBox>
+			</HBox>
+			<HBox justifyContent="SpaceAround" alignItems="Center" class="sapUiTinyMarginTop floatSliderVisibility">
+				<Link text="2018" class="sapUiTinyMarginBegin" press="onPredictionYearPress" emphasized="true"></Link>
+				<Link text="2019" class="sapUiTinyMarginBegin" press="onPredictionYearPress"></Link>
+				<Link text="2020" class="sapUiTinyMarginBegin" press="onPredictionYearPress"></Link>
+				<Label text="Months : " class="sapUiTinyMarginBegin"/>
+				<Slider min="0" max="12" step="3" enableTickmarks="true" width="8rem" change="handleFloatSliderChange"
+					class="sliderLables sapUiTinyMarginBottom sapUiTinyMarginEnd">
+					<ResponsiveScale tickmarksBetweenLabels="1"/>
+				</Slider>
+			</HBox>
+		</VBox>
+	</VBox>
+</core:FragmentDefinition>

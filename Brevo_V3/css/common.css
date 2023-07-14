@@ -1,0 +1,186 @@
+.sapTntToolPageMain {
+    padding-left: 0rem !important;
+}
+
+.pageList {
+    padding-left: 14rem !important;
+    width: 60%;
+    overflow-x: hidden;
+}
+
+.gridParent {
+    overflow: scroll !important;
+    /*height: calc(100% - 5rem) !important;*/
+}
+
+.hiddenContainer {
+    display: none !important;
+}
+
+.sapMNC .sapMNCLargeFontSize {
+    font-size: 3.25rem;
+    font-weight: bolder;
+}
+
+.sapMNCValue.Neutral,
+.sapMNCIndicator.Neutral,
+.sapMNCScale.Neutral {
+    color: #154360;
+}
+
+.sap-desktop .sapTntToolPageAsideCollapsed>.sapTntToolPageAside,
+.sap-tablet .sapTntToolPageAsideCollapsed>.sapTntToolPageAside {
+    width: 0rem !important;
+}
+
+.sapTntSideNavigation.sapTntSideNavigationNotExpandedWidth {
+    width: 0rem !important;
+}
+
+.reportParent {
+    overflow: auto;
+}
+
+.hideAside aside {
+    display: none !important;
+}
+
+.hideAside .sapTntToolPageMain {
+    padding-left: 0rem !important;
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src: url('fonts/icomoon.eot');
+    src: url('fonts/icomoon.eot?#iefix') format('embedded-opentype'), url('fonts/icomoon.woff') format('woff'), url('fonts/icomoon.ttf') format('truetype'), url('fonts/icomoon.svg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.excelTable .sapMInputBaseContentWrapper {
+    border: 1px solid transparent;
+}
+
+.sapTntNavLIItem {
+    background-color: #ffffff6b !important;
+}
+
+.sapTntSideNavigation {
+    background: #fec40e !important;
+}
+
+.fileuploader {
+    border: 1px dashed #fec40e !important;
+}
+
+.tableOnMainView {
+    max-height: 30rem;
+}
+
+.sapTntToolPageHeader {
+    background-color: #fedd73 !important;
+}
+
+.filterBar {
+    background-color: #fedd73 !important;
+}
+
+.sapUiTableHeaderRow {
+    background-color: #fec40e !important;
+}
+
+.sapUiTableCell {
+    box-sizing: border-box;
+    border-right: 0rem solid #fec40e !important;
+}
+
+.sapUiTableHeaderCell:not(.sapUiTableRowActionHeaderCell):hover {
+    background-color: #d8a70c;
+}
+
+.sapUiTableRowSelectors:not(.sapUiTableRowHighlights) .sapUiTableCtrlScr,
+.sapUiTableRowSelectors:not(.sapUiTableRowHighlights) .sapUiTableCtrlScrFixed {
+    margin-left: 0rem !important;
+}
+
+.sapUiTableRowSelectors:not(.sapUiTableRowHighlights) .sapUiTableRowHdrScr {
+    width: 0rem;
+    display: none !important;
+}
+
+.sapOvpBaseCard:hover .sapMMenuBtn {
+    visibility: visible !important;
+}
+
+.sapOvpBaseCard .sapMMenuBtn {
+    /*visibility: hidden !important;*/
+}
+
+.v-m-scrollbarThumb {
+    height: 8px !important;
+}
+
+.sapUiTableCell .sapMLabel {
+    color: #ffffff;
+}
+
+.sapMLabel>span>bdi::first-letter {
+    text-transform: uppercase;
+}
+
+.sapOvpBaseCard:hover .v-m-scrollbarThumb {
+    /*visibility: visible !important;*/
+}
+
+.sapOvpBaseCard .v-m-scrollbarThumb {
+    visibility: hidden !important;
+}
+
+.sapOvpBaseCardKPI {
+    margin-bottom: -0.5rem;
+}
+
+.sapMGrowingListTrigger {
+    border-top: none;
+    padding-right: 2rem;
+    text-align: right;
+}
+
+.sapMGrowingListDescription.sapMSLIDescription {
+    padding-right: 1rem;
+    text-align: right;
+    padding-bottom: 0rem;
+}
+
+.sapMGrowingList>.sapMCLI.sapMLIB:not(.sapMLIBActive) {
+    box-shadow: none !important;
+}
+
+.sapMListHdrText {
+    height: 2rem;
+    line-height: 1rem;
+    border: none;
+}
+
+.sapUiNegativeMediumMarginTop {
+    margin-top: -2rem;
+}
+
+.sapMGrowingList>.sapMCLI.sapMLIBHoverable:hover {
+    background: #f5f5f500;
+}
+
+.sapMGrowingListTriggerText>.sapMSLITitle {
+    margin: 0.1rem;
+}
+
+.sapFGridList .sapMLIB:not(.sapMGHLI) {
+    border: none;
+    box-shadow: none;
+    background-color: lightgoldenrodyellow;
+}
+
+.pageDesc {
+    text-align: justify;
+    font-size: 0.8rem;
+}

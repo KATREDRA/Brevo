@@ -1,0 +1,46 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Add Page Access" showHeader="false" class="sapUiSizeCompact">
+		<endButton>
+			<Button text="Cancel" press="handleCancelUserAccess"/>
+		</endButton>
+		<beginButton>
+			<Button text="OK" press="handleAddUserAccess"/>
+		</beginButton>
+		<!--<content>-->
+		<NavContainer width="100%" height="26em">
+			<!--	<App initialPage="typeOfNavigation">-->
+			<Page showNavButton="false" title="Select a Type Of Page" showHeader="true">
+				<List items="{appView>/loginDetails/0/applications/}" noDataText="No data" mode="None">
+					<headerToolbar>
+						<Toolbar>
+							<SearchField liveChange="handleSearchPages1"/>
+						</Toolbar>
+					</headerToolbar>
+					<items>
+						<StandardListItem title="{appView>name}" type="Navigation" press="handlePageTypeSelected"/>
+						<!--<StandardListItem title="Dashboard Builder" type="Navigation" press="handlePageTypeSelected"/>
+							<StandardListItem title="Analytical Pages" type="Navigation" press="handlePageTypeSelected"/>-->
+					</items>
+				</List>
+			</Page>
+			<Page showNavButton="true" title="Select Pages" navButtonPress="oNavigationBackBackPress" class="navigationSelectClass">
+				<content>
+					<SearchField liveChange="handleSearchPages"/>
+					<List items="{pages>/d/results}" mode="MultiSelect" updateFinished="handleListItemsSelected" selectionChange="handleListPageSelected"
+						growing="true" growingThreshold="20">
+						<items>
+							<StandardListItem title="{pages>PageTitle}" type="Active" press="handleOVPPagesPress"></StandardListItem>
+						</items>
+					</List>
+					<List items="{pages>/d/results}" mode="MultiSelect">
+						<items>
+							<StandardListItem title="{pages>PageTitle}" type="Active" press="handleAnalyticalPagesPress"></StandardListItem>
+						</items>
+					</List>
+				</content>
+			</Page>
+			<!--	</App>-->
+		</NavContainer>
+		<!--	</content>-->
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Popover showHeader="true" contentWidth="23em" contentHeight="38em" offsetX="8" offsetY="100" class="customPopOver sapUiPopupWithPadding"
+		horizontalScrolling="false" placement="Right">
+		<!-- <Dialog title="Select a Entity" showHeader="true" height="40em" class="sapUiPopupWithPadding" placement="Bottom"> -->
+		<customHeader>
+			<Toolbar >
+				<Button icon="sap-icon://close-command-field" class="menuButton" type="Transparent" press="valueHelpCloseButtonForEntity"/>
+				<ToolbarSpacer/>
+				<Title text="Select a Entity"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>
+		<content>
+			<List growing="true" items="{/}" mode="SingleSelectMaster" selectionChange="onExistingDataSelected">
+				<items>
+					<StandardListItem class="popOverItem" adaptTitleSize="true" title="{name}" type="Inactive" press="valueHelpItemSelectionEntity"
+						intro="{EntityType}"/>
+				</items>
+			</List>
+		</content>
+	</Popover>
+</core:FragmentDefinition>

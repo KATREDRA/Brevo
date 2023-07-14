@@ -1,0 +1,35 @@
+<mvc:View controllerName="Brevo.Login.controller.View1" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns="sap.m">
+	<Shell id="shell" appWidthLimited="false">
+		<App id="app" backgroundImage="images/bg.jpeg">
+			<pages>
+				<Page id="page" showHeader="false" backgroundDesign="Transparent">
+					<content>
+						<VBox justifyContent="Center" alignItems="Center" height="80%">
+							<VBox justifyContent="Center" alignItems="Center" class="loginForm sapUiContentPadding" height="25rem">
+								<f:SimpleForm backgroundDesign="Translucent" id="SimpleFormChange354" editable="true" layout="ResponsiveGridLayout" labelSpanXL="3"
+									labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0"
+									columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" class="sapUiSmallMarginBottom ">
+									<f:content>
+										<Title text="Welcome to Data Rubicon!" level="H2" titleStyle="H2"/>
+										<Label text="Email" class="sapUiMediumMarginTop"/>
+										<Input id="email" placeholder="abc@domain.com" value="{SupplierName}"/>
+										<Label text="Password"/>
+										<Input placeholder="*******" value="{Street}" id="pass" type="Password" class="sapUiSmallMarginBottom"></Input>
+										<Button text="Login" type="Emphasized" press="onLogin"/>
+									</f:content>
+								</f:SimpleForm>
+								<VBox >
+									<MessageStrip text="Invalid Credentials" type="Error" showIcon="true" class="" id="errorStrip" visible="false"></MessageStrip>
+								</VBox>
+							</VBox>
+						</VBox>
+						<HBox justifyContent="End" alignItems="Center">
+							<Image src="images/Brevo_New_Logo.png" width="10rem"/>
+						</HBox>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Select a View" showHeader="true" contentHeight="60%" contentWidth="40%" class="sapUiPopupWithPadding sapContrastPlus">
+		<endButton>
+			<Button text="Close" press="valueHelpDataRecordsClose"/>
+		</endButton>
+		<content>
+			<!--<Link press="goToCockpit" text="To add a new Destination, go to your HCP Cockpit" class="sapUiSmallMargin"/>-->
+			<SearchField liveChange="onviewSearch"></SearchField>
+			<List growing="true" growingThreshold="100" items="{/}">
+				<items>
+					<!--<ObjectListItem title="/sap/opu/odata/sap/ZOVP_BUILDER_FINANCE_SRV" type="Active" press="onServiceUrlSelect"></ObjectListItem>-->
+					<ObjectListItem title="{FileName}" type="DetailAndActive" detailPress="handleExistingFileUpdate" press="onServiceUrlSelect"></ObjectListItem>
+				</items>
+			</List>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

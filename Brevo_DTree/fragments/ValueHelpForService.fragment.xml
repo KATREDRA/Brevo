@@ -1,0 +1,130 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:tnt="sap.tnt" xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified">
+	<Dialog title="Scenario Information" class="sapContrastPlus" contentWidth="80%" contentHeight="30rem" verticalScrolling="true"
+		showHeader="true">
+		<content>
+			<SegmentedButton select="onSelectSegment" width="100%">
+				<items>
+					<SegmentedButtonItem icon="sap-icon://create-form" text="Add New Scenario" key="new"/>
+					<SegmentedButtonItem icon="sap-icon://expense-report" text="Existing Scenarios" key="exists"/>
+				</items>
+			</SegmentedButton>
+			<IconTabBar expandable="false" select="addScenarioTabChange" visible="true">
+				<items>
+					<IconTabFilter icon="sap-icon://user-settings" design="Horizontal" text="General Configuration" key="general">
+						<f:SimpleForm editable="true" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1"
+							layout="ResponsiveGridLayout">
+							<f:content>
+								<Label text="Title" required="true" class="titleCustomStyle"/>
+								<Input liveChange="onTitlechange"/>
+								<Label text="Share"/>
+								<CheckBox/>
+							</f:content>
+						</f:SimpleForm>
+					</IconTabFilter>
+					<IconTabSeparator icon="sap-icon://open-command-field"/>
+					<IconTabFilter design="Horizontal" enabled="false" text="Data Configuration" icon="sap-icon://add-filter" key="data">
+						<HBox class="tableHBoxclass">
+							<VBox width="60%">
+								<f:SimpleForm editable="true" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1"
+									layout="ResponsiveGridLayout">
+									<f:content>
+										<Label text=" Upload Excel file" class="titleCustomStyle"/>
+										<u:FileUploader change="onFileUploaderOnSelectChanged"/>
+										<!-- <Input id="fileId" placeholder="Upload your excel file here" valueState="Error" value=""
+											valueHelpRequest="onValueHelpRequestForFiles" showValueHelp="true" valueHelpOnly="true"/> -->
+										<Label/>
+										<!-- <Text text="or" textAlign="Center"/> -->
+										<Button text="Upload" icon="sap-icon://upload" press="valueHelpUploadButton"/>
+										<Label text="View" required="true" class="titleCustomStyle"/>
+										<Input placeholder="Path to metadata of the odata service" valueState="Error" value="" valueHelpRequest="onValueHelpRequestForDataRecords"
+											showValueHelp="true"/>
+										<Label text="Target Measure" required="true" visible="true"/>
+										<Input valueHelpRequest="onValueHelpRequestForEntity" showValueHelp="true" valueHelpOnly="true" visible="true"/>
+									</f:content>
+								</f:SimpleForm>
+								<HBox class="listHboxclass">
+									<List headerText="Measures" mode="MultiSelect" selectionChange="handleMeasureSelections"></List>
+									<List class="sapUiMediumMarginBegin" headerText="Dimensions" mode="MultiSelect" selectionChange="handleDimensionSelections"></List>
+								</HBox>
+							</VBox>
+							<t:Table selectionMode="None" class="sapUiSmallMargin"></t:Table>
+						</HBox>
+					</IconTabFilter>
+					<IconTabSeparator icon="sap-icon://open-command-field"/>
+					<IconTabFilter design="Horizontal" enabled="true" text="Advanced Settings" icon="sap-icon://manager-insight" key="variance">
+						<!--<mvc:XMLView viewName="ibrevoVDT.view.varianceSettings" height="35rem"></mvc:XMLView>-->
+						<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="6" labelSpanL="6" labelSpanM="12" labelSpanS="12"
+							adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+							singleContainerFullSize="false" class="customMessageStripClass">
+							<f:content>
+								<core:Title text=""/>
+								<!--<HBox alignItems="End" class="sapUiSmallMarginTop" justifyContent="End">-->
+								<Label text="Date/Time Dimension" required="false" tooltip="The dimension based on which the analysis on target measure is to be done"/>
+								<!--<core:Icon class="sapUiTinyMarginBegin" src="sap-icon://sys-help"-->
+								<!--tooltip="A Date/Time dimension for which the analysis on target measure needs to be done"></core:Icon>-->
+								<!--</HBox>-->
+								<Select selectedKey="Time" change="handleSelectionChange" items="{/}">
+									<items>
+										<core:Item key="{Value}" text="{Value}"></core:Item>
+									</items>
+								</Select>
+								<!--<core:Icon src="sap-icon://sys-help-2"></core:Icon>-->
+								<!--<HBox alignItems="End" class="sapUiSmallMarginTop" justifyContent="End">-->
+								<Label text="Time Period" required="false" tooltip="The Time period for which the analysis is to be done"/>
+								<!--	<core:Icon class="sapUiTinyMarginBegin" src="sap-icon://sys-help" tooltip="A Time the period based on which the analysis is to be made"></core:Icon>-->
+								<!--</HBox>-->
+								<Select selectedKey="All" change="handleSelectionChange">
+									<items>
+										<core:Item key="All" text="All"></core:Item>
+										<core:Item key="1M" text="Past 1 month"></core:Item>
+										<core:Item key="3M" text="Past 3 months"></core:Item>
+										<core:Item key="6M" text="Past 6 months"></core:Item>
+										<core:Item key="1Y" text="Previous year"></core:Item>
+										<core:Item key="3Y" text="Previous 3 years"></core:Item>
+									</items>
+								</Select>
+								<!--<HBox alignItems="End" class="sapUiSmallMarginTop" justifyContent="End">-->
+								<Label text="Minimum Dimension Contribution" required="false"
+									tooltip="If Minimum Dimension contribution is set 1% on Dimension and if that Dimension contributes only 0.8% to overall result. i.e. the target measure is affected by +/- 0.8% only. Hence, that Dimension values will not be considered for further analysis."/>
+								<!--	<core:Icon class="sapUiTinyMarginBegin" src="sap-icon://sys-help"-->
+								<!--		tooltip="If Minimum contribution is set 1% on Dimension and if that Dimension contributes only 0.8% to overall result. i.e. the target measure is affected by +/- 0.8% only. Hence, that Dimension values will not be considered for further analysis."></core:Icon>-->
+								<!--</HBox>-->
+								<Slider class="sliderPadding" min="0.0" max="1.0" width="100%" change="handleSliderChange"></Slider>
+								<!--<HBox alignItems="End" class="sapUiSmallMarginTop" justifyContent="End">-->
+								<Label text="Minium Measure Contribution" required="false"
+									tooltip="If Minimum Measure contribution is set 1% on Measure and if that Measure contributes only 0.8% to overall result. i.e. the target measure is affected by +/- 0.8% only. Hence, that Measure values will not be considered for further analysis."/>
+								<!--	<core:Icon class="sapUiTinyMarginBegin" src="sap-icon://sys-help"-->
+								<!--		tooltip="If Minimum contribution is set 1% on Measure and if that Measure contributes only 0.8% to overall result. i.e. the target measure is affected by +/- 0.8% only. Hence, that Measure values will not be considered for further analysis."></core:Icon>-->
+								<!--</HBox>-->
+								<Slider class="sliderPadding" min="-10" max="10" width="100%" change="handleSliderChange"></Slider>
+								<core:Title text=""/>
+								<!--<MessageStrip text=" Date/Time dimension based on which the analysis on target measure is to be done" type="Information" showIcon="true"></MessageStrip>-->
+								<!--<MessageStrip text="The Time period for which the analysis is to be made" type="Information" showIcon="true"></MessageStrip>-->
+								<!--<MessageStrip-->
+								<!--	text="If Minimum contribution is set 1% on Dimension/Measure and if that Dimension/Measure contributes only 0.8% to overall result. i.e. the target measure is affected by +/- 0.8% only. Hence, that Dimension/Measure values will not be considered for further analysis."-->
+								<!--	type="Information" showIcon="true"></MessageStrip>-->
+							</f:content>
+						</f:SimpleForm>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+			<List visible="false" mode="SingleSelectMaster" select="onExistingScenarioPress" items="{/d/results/}">
+				<items>
+					<ObjectListItem title="{ScenName}">
+						<attributes>
+							<ObjectAttribute/>
+							<ObjectAttribute/>
+						</attributes>
+					</ObjectListItem>
+				</items>
+			</List>
+		</content>
+		<buttons>
+			<Button visible="false" text="Create" press="handleCreateScenario"/>
+			<Button visible="false" text="Update" press="handleCreateScenario"/>
+			<Button visible="true" text="Next" press="hanldeNextStep"/>
+			<Button visible="true" text="Cancel" press="handleServiceDialogClose"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

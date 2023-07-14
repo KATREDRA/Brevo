@@ -1,0 +1,200 @@
+{
+    "resources": [
+        {
+            "name": "view/rolesDetail.view.xml"
+        },
+        {
+            "name": "model/roles.json"
+        },
+        {
+            "name": "model/pages.json"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "util/formatter.js"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "js/avatar.js"
+        },
+        {
+            "name": "controller/usersMaster.controller.js"
+        },
+        {
+            "name": "controller/usersDetail.controller.js"
+        },
+        {
+            "name": "controller/rolesMaster.controller.js"
+        },
+        {
+            "name": "controller/rolesDetail.controller.js"
+        },
+        {
+            "name": "controller/login.controller.js"
+        },
+        {
+            "name": "controller/applicationList.controller.js"
+        },
+        {
+            "name": "controller/app.controller.js"
+        },
+        {
+            "name": "controller/adminMaster.controller.js"
+        },
+        {
+            "name": "model/sideContent.json"
+        },
+        {
+            "name": "controller/Home.controller.js"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "manifest-bundle.zip"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "util/formatter-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "model/models-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/avatar-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/usersMaster-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/usersDetail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/rolesMaster-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/rolesDetail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/login-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/applicationList-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/app-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/adminMaster-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/adminDetail-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Home-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "Component-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "../../sap-ui-version.json"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "di.code-validation.core_issues.json"
+        },
+        {
+            "name": "view/usersMaster.view.xml"
+        },
+        {
+            "name": "view/usersDetail.view.xml"
+        },
+        {
+            "name": "view/rolesMaster.view.xml"
+        },
+        {
+            "name": "controller/adminDetail.controller.js"
+        },
+        {
+            "name": "view/login.view.html"
+        },
+        {
+            "name": "view/applicationList.view.xml"
+        },
+        {
+            "name": "view/app.view.xml"
+        },
+        {
+            "name": "view/adminMaster.view.xml"
+        },
+        {
+            "name": "view/adminDetail.view.xml"
+        },
+        {
+            "name": "view/Home.view.xml"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "fragments/valueHelpForUserProfile.fragment.xml"
+        },
+        {
+            "name": "fragments/valueHelpForRoles.fragment.xml"
+        },
+        {
+            "name": "fragments/valueHelpForOrganization.fragment.xml"
+        },
+        {
+            "name": "fragments/valueHelpForNewUser.fragment.xml"
+        },
+        {
+            "name": "fragments/valueHelpForApplicationList.fragment.xml"
+        },
+        {
+            "name": "fragments/valueHelpForApplication.fragment.xml"
+        },
+        {
+            "name": "fragments/addPagesAccess.fragment.xml"
+        },
+        {
+            "name": "fragments/addModels.fragment.xml"
+        },
+        {
+            "name": "fragments/addModelAccess.fragment.xml"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "css/avatar.css"
+        },
+        {
+            "name": "index.html"
+        }
+    ]
+}

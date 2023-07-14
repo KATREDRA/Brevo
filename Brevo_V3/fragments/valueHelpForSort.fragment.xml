@@ -1,0 +1,36 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core" class="sortFragmentClass">
+	<Popover  showHeader="true" contentWidth="23em" contentHeight="38em" offsetX="8" offsetY="100" class="customPopOver sapUiPopupWithPadding" horizontalScrolling="false" placement="Right">
+		<customHeader>
+			<Toolbar>
+				<Button icon="sap-icon://close-command-field" class="menuButton" type="Transparent" press="handleSortClose"/>
+				<ToolbarSpacer/>
+				<Title text="Select a Property"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>
+		<content>
+			<!--<Panel><headerToolbar><Toolbar height="3rem"><Title text="Sorting Order"/></Toolbar></headerToolbar><content><RadioButtonGroup columns="1"  class="sapUiMediumMarginBottom"><buttons ><RadioButton id="asc" text="Ascending" selected="true"  /><RadioButton id="desc" text="Descending"   /></buttons></RadioButtonGroup></content></Panel><Panel><headerToolbar><Toolbar height="3rem"><Title text="Sorting Item"/></Toolbar></headerToolbar><content><RadioButtonGroup columns="1" selectedIndex="0" class="sapUiMediumMarginBottom whiteText"><buttons></buttons></RadioButtonGroup></content></Panel>-->
+			<List mode="SingleSelectLeft">
+				<items>
+					<StandardListItem title="Ascending" class="popOverItem" />
+					<StandardListItem title="Descending" class="popOverItem" />
+				</items>
+			</List>
+			<Toolbar height= "0rem"/>
+			<List  mode="SingleSelectLeft">
+				<items>
+			
+				</items>
+			</List>
+		</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button text="Ok" type="transparent" press="handleViewSettingsConfirm"/>
+				<Button text="Close" type="transparent" press="handleSortClose"/>
+			</Toolbar>
+		</footer>
+	</Popover>
+</core:FragmentDefinition>

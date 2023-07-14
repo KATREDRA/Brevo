@@ -1,0 +1,658 @@
+{
+    "resources": [
+        {
+            "name": "App/index.html"
+        },
+        {
+            "name": "App/integration/AllJourneys-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "App/integration/AllJourneys.js"
+        },
+        {
+            "name": "App/integration/NavigationJourney-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "App/integration/NavigationJourney.js"
+        },
+        {
+            "name": "App/integration/arrangements/Startup-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "App/integration/arrangements/Startup.js"
+        },
+        {
+            "name": "App/integration/opaTests.qunit-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "App/integration/opaTests.qunit.html"
+        },
+        {
+            "name": "App/integration/opaTests.qunit.js"
+        },
+        {
+            "name": "App/integration/pages/View1-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "App/integration/pages/View1.js"
+        },
+        {
+            "name": "App/testsuite.qunit-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "App/testsuite.qunit.js"
+        },
+        {
+            "name": "App/unit/AllTests-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "App/unit/AllTests.js"
+        },
+        {
+            "name": "App/unit/controller/View1-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "App/unit/controller/View1.controller.js"
+        },
+        {
+            "name": "App/unit/unitTests.qunit-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "App/unit/unitTests.qunit.html"
+        },
+        {
+            "name": "App/unit/unitTests.qunit.js"
+        },
+        {
+            "name": "Component-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "cards/AddCards-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "cards/AddCards.controller.js"
+        },
+        {
+            "name": "cards/AddCards.view.xml"
+        },
+        {
+            "name": "cards/CardDetails-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "cards/CardDetails.controller.js"
+        },
+        {
+            "name": "cards/CardDetails.view.xml"
+        },
+        {
+            "name": "cards/TemplateCards-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "cards/TemplateCards.controller.js"
+        },
+        {
+            "name": "cards/TemplateCards.view.xml"
+        },
+        {
+            "name": "cards/bullsEye-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "cards/bullsEye.controller.js"
+        },
+        {
+            "name": "cards/bullsEye.view.xml"
+        },
+        {
+            "name": "cards/controlType-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "cards/controlType.controller.js"
+        },
+        {
+            "name": "cards/controlType.view.xml"
+        },
+        {
+            "name": "cards/maps-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "cards/maps.controller.js"
+        },
+        {
+            "name": "cards/maps.view.xml"
+        },
+        {
+            "name": "cards/previewCardTemplate-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "cards/previewCardTemplate.controller.js"
+        },
+        {
+            "name": "cards/previewCardTemplate.view.xml"
+        },
+        {
+            "name": "controller/App-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "controller/BaseController-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/BaseController.js"
+        },
+        {
+            "name": "controller/Main-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/Main.controller.js"
+        },
+        {
+            "name": "controller/cardTemplate-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/cardTemplate.controller.js"
+        },
+        {
+            "name": "css/card-dbg.css",
+            "isDebug": true
+        },
+        {
+            "name": "css/card-light-dbg.css",
+            "isDebug": true
+        },
+        {
+            "name": "css/card-light.css"
+        },
+        {
+            "name": "css/card.css"
+        },
+        {
+            "name": "css/common-dbg.css",
+            "isDebug": true
+        },
+        {
+            "name": "css/common.css"
+        },
+        {
+            "name": "css/gridStack-dbg.css",
+            "isDebug": true
+        },
+        {
+            "name": "css/gridStack-light-dbg.css",
+            "isDebug": true
+        },
+        {
+            "name": "css/gridStack-light.css"
+        },
+        {
+            "name": "css/gridStack.css"
+        },
+        {
+            "name": "css/pivot-dbg.css",
+            "isDebug": true
+        },
+        {
+            "name": "css/pivot.css"
+        },
+        {
+            "name": "css/style-dbg.css",
+            "isDebug": true
+        },
+        {
+            "name": "css/style-light-dbg.css",
+            "isDebug": true
+        },
+        {
+            "name": "css/style-light.css"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "di.code-validation.core_issues.json"
+        },
+        {
+            "name": "fragments/CustomMeasureDialog.fragment.xml"
+        },
+        {
+            "name": "fragments/EditDialog.fragment.xml"
+        },
+        {
+            "name": "fragments/PopupForVariants.fragment.xml"
+        },
+        {
+            "name": "fragments/SaveAsDialog.fragment.xml"
+        },
+        {
+            "name": "fragments/ValueHelp.fragment.xml"
+        },
+        {
+            "name": "fragments/ValueHelpForAdvancedFilters.fragment.xml"
+        },
+        {
+            "name": "fragments/ValueHelpForDataRecords.fragment.xml"
+        },
+        {
+            "name": "fragments/ValueHelpForDataService.fragment.xml"
+        },
+        {
+            "name": "fragments/ValueHelpForDimensionsTypeSelection.fragment.xml"
+        },
+        {
+            "name": "fragments/ValueHelpForFields.fragment.xml"
+        },
+        {
+            "name": "fragments/ValueHelpForFiles.fragment.xml"
+        },
+        {
+            "name": "fragments/ValueHelpForFilterValues.fragment.xml"
+        },
+        {
+            "name": "fragments/ValueHelpForFilters.fragment.xml"
+        },
+        {
+            "name": "fragments/ValueHelpForMeasureChartTypeSelection.fragment.xml"
+        },
+        {
+            "name": "fragments/ValueHelpForNavigation.fragment.xml"
+        },
+        {
+            "name": "fragments/ValueHelpForPageFilters.fragment.xml"
+        },
+        {
+            "name": "fragments/ValueHelpForSelectingDate.fragment.xml"
+        },
+        {
+            "name": "fragments/ValueHelpForSelectingMonth.fragment.xml"
+        },
+        {
+            "name": "fragments/ValueHelpForSelectingYear.fragment.xml"
+        },
+        {
+            "name": "fragments/ValueHelpForServiceUrl.fragment.xml"
+        },
+        {
+            "name": "fragments/ValuehelpforMainFilter.fragment.xml"
+        },
+        {
+            "name": "fragments/cardsConfig.fragment.xml"
+        },
+        {
+            "name": "fragments/displayExcel.fragment.xml"
+        },
+        {
+            "name": "fragments/forPDF.fragment.xml"
+        },
+        {
+            "name": "fragments/geoTemplateCard.fragment.xml"
+        },
+        {
+            "name": "fragments/numericChart.fragment.xml"
+        },
+        {
+            "name": "fragments/reportTable.fragment.xml"
+        },
+        {
+            "name": "fragments/shareSettingsDialog.fragment.xml"
+        },
+        {
+            "name": "fragments/tableTemplate.fragment.xml"
+        },
+        {
+            "name": "fragments/templateCard.fragment.xml"
+        },
+        {
+            "name": "fragments/userDetails.fragment.xml"
+        },
+        {
+            "name": "fragments/userSettings.fragment.xml"
+        },
+        {
+            "name": "fragments/valueHelpForMeasureSettings.fragment.xml"
+        },
+        {
+            "name": "fragments/valueHelpForRestrictedMeasure.fragment.xml"
+        },
+        {
+            "name": "fragments/valueHelpForSort.fragment.xml"
+        },
+        {
+            "name": "fragments/valueHelpRequestForBot.fragment.xml"
+        },
+        {
+            "name": "fragments/vizChart.fragment.xml"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "images/BrevoDashboard.PNG"
+        },
+        {
+            "name": "images/Brevo_New_Logo.png"
+        },
+        {
+            "name": "images/Brevo_New_Logo_white.png"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "js/coolGrids-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/coolGrids.js"
+        },
+        {
+            "name": "js/dimple-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/dimple.js"
+        },
+        {
+            "name": "js/dimple1-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/dimple1.js"
+        },
+        {
+            "name": "js/gchart_renderers-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/gchart_renderers.js"
+        },
+        {
+            "name": "js/gridStack-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/gridStack.js"
+        },
+        {
+            "name": "js/gridstackjQuery-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/gridstackjQuery.js"
+        },
+        {
+            "name": "js/multifact-pivottable-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/multifact-pivottable.js"
+        },
+        {
+            "name": "js/newsInfo-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/newsInfo.js"
+        },
+        {
+            "name": "js/papaparse.min-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/papaparse.min.js"
+        },
+        {
+            "name": "js/pivot-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/pivot.js"
+        },
+        {
+            "name": "js/sheets-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/sheets.js"
+        },
+        {
+            "name": "js/textcomplete-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/textcomplete.js"
+        },
+        {
+            "name": "js/tooltip-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/tooltip.js"
+        },
+        {
+            "name": "js/topojson-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/topojson.js"
+        },
+        {
+            "name": "js/xlsx-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "js/xlsx.js"
+        },
+        {
+            "name": "manifest-bundle.zip"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "model/ExcelCategories.json"
+        },
+        {
+            "name": "model/MetadataService-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "model/MetadataService.js"
+        },
+        {
+            "name": "model/Roles.json"
+        },
+        {
+            "name": "model/Service-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "model/Service.js"
+        },
+        {
+            "name": "model/chartList.json"
+        },
+        {
+            "name": "model/dashboardTypes.json"
+        },
+        {
+            "name": "model/microChart.json"
+        },
+        {
+            "name": "model/models-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "model/pageAccessProperties.json"
+        },
+        {
+            "name": "model/sideContent.json"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "sap-ui-cachebuster-info.json"
+        },
+        {
+            "name": "util/CustomerFormatter-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/CustomerFormatter.js"
+        },
+        {
+            "name": "util/DataFormatter-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/DataFormatter.js"
+        },
+        {
+            "name": "util/DrawPivotTable-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/DrawPivotTable.js"
+        },
+        {
+            "name": "util/DrawTable-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/DrawTable.js"
+        },
+        {
+            "name": "util/DrawVizChart-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/DrawVizChart.js"
+        },
+        {
+            "name": "util/EasyScanLayout-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/EasyScanLayout.js"
+        },
+        {
+            "name": "util/EasyScanLayoutStandard-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/EasyScanLayoutStandard.js"
+        },
+        {
+            "name": "util/FilterProcessor-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/FilterProcessor.js"
+        },
+        {
+            "name": "util/Formatter-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/Formatter.js"
+        },
+        {
+            "name": "util/MiscUtils-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/MiscUtils.js"
+        },
+        {
+            "name": "util/messages-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/messages.js"
+        },
+        {
+            "name": "util/pdf/StackBlur-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/pdf/StackBlur.js"
+        },
+        {
+            "name": "util/pdf/canvg-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/pdf/canvg.js"
+        },
+        {
+            "name": "util/pdf/html2canvas-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/pdf/html2canvas.js"
+        },
+        {
+            "name": "util/pdf/jspdf-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/pdf/jspdf.js"
+        },
+        {
+            "name": "util/pdf/rgbcolor-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/pdf/rgbcolor.js"
+        },
+        {
+            "name": "util/vizCharts-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "util/vizCharts.js"
+        },
+        {
+            "name": "view/App.view.xml"
+        },
+        {
+            "name": "view/Main.view.xml"
+        },
+        {
+            "name": "view/cardTemplate_v2.view.xml"
+        }
+    ]
+}

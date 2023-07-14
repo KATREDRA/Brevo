@@ -1,0 +1,76 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table">
+	<Dialog id="excelDialog" title="File Properties" class="customDailg" stretch="true">
+		<content>
+			<Label visible="false" text="Category:" class="sapUiSmallMarginBegin"/>
+			<Select visible="false" items="{/industry}" change="handleSelectExcelCategoryChange" class="selectDailog sapUiSmallMarginBegin" width="20%">
+				<core:Item key="{key}" text="{text}"/>
+			</Select>
+			<!--<t:Table id="gridTable" class="sapUiTinyMarginTop excelTable sapUiSizeCompact" visibleRowCountMode="Interactive" rows="{/data}"-->
+			<!--	visibleRowCount="20" alternateRowColors="false">-->
+			<!--	<t:columns></t:columns>-->
+			<!--</t:Table>-->
+			<Table inset="true" items="{ path: '/COLUMN_DET' }">
+				<columns>
+					<Column>
+						<Text text="Column Name"/>
+					</Column>
+					<Column >
+						<Text text="Label"/>
+					</Column>
+					<Column >
+						<Text text="Data Type"/>
+					</Column>
+					<Column >
+						<Text text="Column Type"/>
+					</Column>
+					<Column >
+						<Text text="Aggregation Type"/>
+					</Column>
+					<Column >
+						<Text text="Format Pattern"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Input value="{COLUMN_NAME}" editable="false"></Input>
+							<Input value="{LABEL}"></Input>
+							<Select change="onTableColumnDataTypeChanged" selectedKey="{DATATYPE}">
+								<items>
+									<core:Item text="Int" key="Int"/>
+									<core:Item text="String" key="String"/>
+									<core:Item text="Float" key="Float"/>
+									<core:Item text="Date" key="Date"/>
+								</items>
+							</Select>
+							<Input value="{path: 'DATATYPE',formatter: 'Brevo.Brevo_V2.util.Formatter.columnTypeFormatter'}" editable="false"></Input>
+							<Select change="onTableColumnAggregationChanged" selectedKey="{AGGREGATIONTYPE}"
+								visible="{path:'DATATYPE',formatter:'Brevo.Brevo_V2.util.Formatter.aggregationColumnVisibility'}">
+								<items>
+									<core:Item text="Sum" key="SUM"/>
+									<core:Item text="Average" key="AVG"/>
+									<core:Item text="Min" key="MIN"/>
+									<core:Item text="Max" key="MAX"/>
+								</items>
+							</Select>
+							<Select selectedKey="{FORMAT}" change="handleScaleSelection" class="customMultiBoxStyle">
+								<core:Item key="None" text="None"/>
+								<core:Item key="Default" text="Default" enabled="{path:'DATATYPE',formatter:'Brevo.Brevo_V2.util.Formatter.aggregationColumnVisibility'}"/>
+								<core:Item key="Short" text="Short" enabled="{path:'DATATYPE',formatter:'Brevo.Brevo_V2.util.Formatter.aggregationColumnVisibility'}"/>
+								<core:Item key="Percentage" text="Percentage"
+									enabled="{path:'DATATYPE',formatter:'Brevo.Brevo_V2.util.Formatter.aggregationColumnVisibility'}"/>
+							</Select>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<beginButton>
+			<Button text="Close" type="transparent" press="valueHelpCloseButtonForExcelDisplay"/>
+		</beginButton>
+		<endButton>
+			<Button text="Update" type="Emphasized" press="handleFileUpdate"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
+<!--valueHelpUploadButton icon="sap-icon://upload"-->

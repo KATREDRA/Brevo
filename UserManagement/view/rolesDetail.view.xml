@@ -1,0 +1,134 @@
+<mvc:View controllerName="inhance.userManagementSecurity.controller.rolesDetail" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core" xmlns:semantic="sap.f.semantic" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" height="100%"
+	xmlns:suite="sap.suite.ui.commons">
+	<semantic:SemanticPage id="detailPage" showFooter="true" class="detailPageClass">
+		<semantic:titleHeading>
+			<Title text="Roles Details"/>
+		</semantic:titleHeading>
+		<semantic:headerContent>
+			<ObjectHeader class="objHedaerClass" title="{roleDetail>/type}" number="{roleDetail>/_id}">
+				<!--<statuses>
+					<ObjectStatus text="{License}" state="{path:'License',formatter:'.formatter.getUserStatus'}"/>
+				</statuses>-->
+				<attributes id="id24">
+					<!--<ObjectAttribute title="User Id" text="{UserId}"/>-->
+					<ObjectAttribute title="Description" text="{roleDetail>/description}"/>
+					<!--<ObjectAttribute title="Phone" text="{Phone}"/>-->
+				</attributes>
+			</ObjectHeader>
+		</semantic:headerContent>
+		<semantic:content>
+			<IconTabBar id="itb1" selectedKey="key3" upperCase="false" class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter text="General Info" icon="sap-icon://business-card" class="tabWidthClass">
+						<l:VerticalLayout id="containerLayout" width="100%">
+							<l:BlockLayout id="BlockLayout" background="Dashboard">
+								<l:BlockLayoutRow >
+									<l:BlockLayoutCell width="2" title="General">
+										<f:SimpleForm editable="false" layout="ResponsiveGridLayout" title="" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="4"
+											adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+											singleContainerFullSize="false" visible="true" class="removeTitle">
+											<f:content>
+												<core:Title text=""/>
+												<Label text="Name"/>
+												<!--<Text text="{CreatedBy}"></Text>-->
+												<Text text="{roleDetail>/type}"></Text>
+												<Label text="Role Id"/>
+												<Text text="{roleDetail>/_id}"/>
+												<Label text="Description"/>
+												<Text text="{roleDetail>/description}"></Text>
+												<core:Title text=""/>
+												<!--<Label text="Created By"/>
+												<Text text="Administrator"></Text>-->
+												<Label text="Created On"/>
+												<Text text="{path:'roleDetail>/createdate',formatter:'.formatter.handleDateValues'}"></Text>
+												<Label text="Last Changed On"/>
+												<Text text="{path:'roleDetail>/modifydate',formatter:'.formatter.handleDateValues'}"></Text>
+											</f:content>
+										</f:SimpleForm>
+									</l:BlockLayoutCell>
+								</l:BlockLayoutRow>
+							</l:BlockLayout>
+						</l:VerticalLayout>
+					</IconTabFilter>
+					<IconTabFilter text="Users" id="userIconTabFilter" icon="sap-icon://group">
+						<Table items="{roleDetail>/user}" id="PartiesTableId">
+							<headerToolbar>
+								<Toolbar>
+									<ToolbarSpacer/>
+									<Button type="Transparent" icon="sap-icon://add" press="handleAddUsersPress"/>
+								</Toolbar>
+							</headerToolbar>
+							<columns>
+								<Column>
+									<Text text="User Id"/>
+								</Column>
+								<Column >
+									<Text text="User Name"/>
+								</Column>
+								<Column >
+									<Text text="E-mail Id"/>
+								</Column>
+								<Column >
+									<Text text="Contact Number"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem id="cloumnListItemId" type="Inactive" press="handlePartiesInvolvedPress">
+									<cells>
+										<Text text="{roleDetail>_id}"/>
+										<Text text="{roleDetail>firstname} {roleDetail>lastname}"/>
+										<Text text="{roleDetail>user_emailid}"/>
+										<Link text="{roleDetail>contactnumber}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</IconTabFilter>
+					<IconTabFilter text="Assign Access" icon="sap-icon://history">
+						<f:SimpleForm editable="false" layout="ResponsiveGridLayout" title="" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="4"
+							adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+							singleContainerFullSize="false" visible="true" class="removeTitle">
+							<f:content>
+								<core:Title text=""/>
+								<Label text="License Type"/>
+								<Select selectedKey="{roleDetail>/License/0/license_type}" enabled="false">
+									<core:Item text="Trail License" key="Trail License"/>
+									<core:Item text="Permissive License" key="Permissive License"/>
+									<core:Item text="Full Access License" key="Full Access License"/>
+								</Select>
+								<Label text="License Period"/>
+								<DateRangeSelection editable="false" change="handleDateRange"
+									value="{path:'roleDetail>/License/0/startdate',formatter:'.formatter.handleDateValues'} - {path:'roleDetail>/License/0/enddate',formatter:'.formatter.handleDateValues'}"/>
+								<Label text="No Of Days"/>
+								<Input value="{parts:['roleDetail>/License/0/startdate','roleDetail>/License/0/enddate'],formatter:'.formatter.getNoOfDays'}"
+									editable="false"></Input>
+								<Label text="Authorize to Create No Of Dashboards"/>
+								<Input value="{roleDetail>/countofcreatepage}" editable="false"></Input>
+								<!--<Label text="Authorize to Create No Of Users"/>
+								<Input value="{Authorize_to_Create_No_Of_Users}" editable="false"></Input>-->
+							</f:content>
+						</f:SimpleForm>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</semantic:content>
+		<semantic:closeAction>
+			<semantic:CloseAction id="closeColumn" press="onCloseDetailPress"/>
+		</semantic:closeAction>
+		<semantic:fullScreenAction>
+			<semantic:FullScreenAction id="enterFullScreen"
+				visible="{= !${device>/system/phone} &amp;&amp; !${appView>/actionButtonsInfo/midColumn/fullScreen}}" press="toggleFullScreen"/>
+		</semantic:fullScreenAction>
+		<semantic:exitFullScreenAction>
+			<semantic:ExitFullScreenAction id="exitFullScreen"
+				visible="{= !${device>/system/phone} &amp;&amp; ${appView>/actionButtonsInfo/midColumn/fullScreen}}" press="toggleFullScreen"/>
+		</semantic:exitFullScreenAction>
+		<semantic:footerCustomActions>
+			<Button type="Transparent" text="Save" id="saveButtonId" visible="false" press="handleSaveUser"/>
+			<Button type="Transparent" text="Cancel" id="cancelButtonId" visible="false" press="handleCancelUser"/>
+			<Button type="Transparent" text="Edit" id="editButtonId" press="handleEditRolePress"/>
+			<Button type="Transparent" text="Delete" id="deleteButtonId" press="handleDeleteRolePress"/>
+		</semantic:footerCustomActions>
+	</semantic:SemanticPage>
+</mvc:View>

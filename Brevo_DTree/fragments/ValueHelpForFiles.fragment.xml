@@ -1,0 +1,40 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified">
+	<Dialog title="Upload Your Data File" contentWidth="60%" contentHeight="30rem" horizontalScrolling="false" showHeader="true"
+		class="sapUiPopupWithPadding sapContrastPlus">
+		<customHeader>
+			<Bar>
+				<contentMiddle>
+					<Title text="Upload Your Data File"/>
+				</contentMiddle>
+				<contentRight>
+					<Button text="Download Sample Excel" icon="sap-icon://download" type="Transparent" press="downloadSampleExcel"/>
+				</contentRight>
+			</Bar>
+		</customHeader>
+		<beginButton>
+			<Button text="Close" press="valueHelpFileCloseButton"/>
+		</beginButton>
+		<endButton>
+			<Button text="Upload" icon="sap-icon://upload" press="valueHelpUploadButton"/>
+		</endButton>
+		<content>
+			<VBox width="100%" height="10rem" class="fileuploader" justifyContent="Center" alignContent="Center" alignItems="Center">
+				<Text text="Drop a Spreadsheet File Here or Click to Browse"/>
+			</VBox>
+			<u:FileUploader class="hidden" change="onFileUploaderOnSelectChanged"/>
+			<Text text="or" textAlign="Center" class="sapUiSmallMargin" width="100%"/>
+			<List mode="SingleSelectMaster" selectionChange="onExistingFileSelected" headerText="Select an Exisiting File" items="{/results}"
+				delete="handleFileDelete">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="Select an Exisiting File"/>
+						<ToolbarSpacer/>
+						<Button type="Transparent" icon="sap-icon://edit" press="editModeExcelTable"/>
+					</Toolbar>
+				</headerToolbar>
+				<StandardListItem title="{FileName}"/>
+			</List>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,37 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:tnt="sap.tnt">
+	<!-- 	<SelectDialog noDataText="No data" title="Select a value" liveChange="handleFilterValueSearch" multiSelect="true"  confirm="handleFilterValueConfirm"
+    close="handleFilterValueClose">
+  </SelectDialog> -->
+	<Popover showHeader="true" contentWidth="23em" contentHeight="32.5rem" offsetX="8" offsetY="100" class="customPopOver sapUiPopupWithPadding"
+		horizontalScrolling="false" placement="Right">
+		<customHeader>
+			<Toolbar >
+				<Button icon="sap-icon://close-command-field" class="menuButton" type="Transparent" press="valueHelpCloseForFilterValues"/>
+				<ToolbarSpacer/>
+				<Title text="Select a value"/>
+				<ToolbarSpacer/>
+			</Toolbar>
+		</customHeader>
+		<content>
+			<List growing="true" mode="MultiSelect"></List>
+		</content>
+		<content>
+			<f:SimpleForm minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="4" labelSpanM="4"
+				emptySpanL="1" emptySpanM="1" columnsL="1" columnsM="1" visible="false">
+				<f:content>
+					<Label text="From" labelFor="fromDate"/>
+					<DateTimeInput type="Date" valueFormat="dd-MM-yyyy" class="sapUiSmallMarginBottom"/>
+					<Label text="To" labelFor="toDate"/>
+					<DateTimeInput type="Date" valueFormat="dd-MM-yyyy" class="sapUiSmallMarginBottom"/>
+				</f:content>
+			</f:SimpleForm>
+		</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button text="Cancel" type="Transparent" press="handleFilterValueClose"/>
+				<Button text="OK" type="Transparent" press="handleFilterValueConfirm"/>
+			</Toolbar>
+		</footer>
+	</Popover>
+</core:FragmentDefinition>

@@ -1,0 +1,67 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core" xmlns:t="sap.ui.table">
+	<Dialog title="File Properties" class="sapContrastPlus" contentWidth="80%" contentHeight="30rem" verticalScrolling="true">
+		<content>
+			<Table inset="true" items="{ path: '/COLUMN_DET' }">
+				<columns>
+					<Column>
+						<Text text="Column Name"/>
+					</Column>
+					<Column >
+						<Text text="Label"/>
+					</Column>
+					<Column >
+						<Text text="Data Type"/>
+					</Column>
+					<Column >
+						<Text text="Column Type"/>
+					</Column>
+					<Column >
+						<Text text="Aggregation Type"/>
+					</Column>
+					<Column >
+						<Text text="Format Pattern"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Input value="{COLUMN_NAME}" editable="false"></Input>
+							<Input value="{LABEL}"></Input>
+							<Select change="onTableColumnDataTypeChanged" selectedKey="{DATATYPE}">
+								<items>
+									<core:Item text="Int" key="Int"/>
+									<core:Item text="String" key="String"/>
+									<core:Item text="Float" key="Float"/>
+									<core:Item text="Date" key="Date"/>
+								</items>
+							</Select>
+							<Input value="{path: 'DATATYPE',formatter: 'Brevo.BrevoDtree.util.Formatter.columnTypeFormatter'}" editable="false"></Input>
+							<Select change="onTableColumnAggregationChanged" selectedKey="{AGGREGATIONTYPE}"
+								visible="{path:'DATATYPE',formatter:'Brevo.BrevoDtree.util.Formatter.aggregationColumnVisibility'}">
+								<items>
+									<core:Item text="Sum" key="SUM"/>
+									<core:Item text="Average" key="AVG"/>
+									<core:Item text="Min" key="MIN"/>
+									<core:Item text="Max" key="MAX"/>
+								</items>
+							</Select>
+							<Select selectedKey="{FORMAT}" change="handleScaleSelection" class="customMultiBoxStyle">
+								<core:Item key="None" text="None"/>
+								<core:Item key="Default" text="Default" enabled="{path:'DATATYPE',formatter:'Brevo.BrevoDtree.util.Formatter.aggregationColumnVisibility'}"/>
+								<core:Item key="Short" text="Short" enabled="{path:'DATATYPE',formatter:'Brevo.BrevoDtree.util.Formatter.aggregationColumnVisibility'}"/>
+								<core:Item key="Percentage" text="Percentage"
+									enabled="{path:'DATATYPE',formatter:'Brevo.BrevoDtree.util.Formatter.aggregationColumnVisibility'}"/>
+							</Select>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<beginButton>
+			<Button text="Cancel" type="transparent" press="valueHelpCloseButtonForExcelDisplay"/>
+		</beginButton>
+		<endButton>
+			<Button text="Update" type="Emphasized" press="handleFileUpdate"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

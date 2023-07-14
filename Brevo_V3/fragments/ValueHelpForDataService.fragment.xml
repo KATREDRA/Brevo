@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Select a Entity" showHeader="true" height="40em" class="sapUiPopupWithPadding" placement="Bottom">
+		<endButton>
+			<Button text="Close" type="transparent" press="valueHelpCloseButton"/>
+		</endButton>
+		<content>
+			<List growing="true" items="{/}">
+				<items>
+					<ObjectListItem title="{name}" type="Active" press="valueHelpItemSelectionEntity" intro="{EntityType}"></ObjectListItem>
+				</items>
+			</List>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

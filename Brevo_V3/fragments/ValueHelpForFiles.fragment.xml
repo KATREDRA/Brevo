@@ -1,0 +1,53 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified">
+	<Popover showHeader="true" contentWidth="23em" contentHeight="38em" offsetX="8" offsetY="100" class="customPopOver sapUiPopupWithPadding"
+		horizontalScrolling="false" placement="Right">
+		<!-- <Dialog title="Upload Your Data File" contentWidth="60%" contentHeight="30.3rem" horizontalScrolling="false" showHeader="true" 
+		class="sapUiPopupWithPadding customUploadBox" placement="Bottom">-->
+		<customHeader>
+			<Toolbar class="customUploadBoxToolbar">
+				<Button icon="sap-icon://close-command-field" class="menuButton" type="Transparent" press="valueHelpCloseButtonForExcel"/>
+				<ToolbarSpacer width=".01rem"/>
+				<Title text="Upload Your Data File"/>
+				<ToolbarSpacer/>
+				<Image visible="false" width="auto" class="sheetBtn" src="http://www.orrasis.com/img/google-for-work/sheets.png" height="4.5rem"
+					press="downloadSampleExcel"/>
+				<Button visible="false" icon="https://i1.wp.com/businesscloud.ca/wp-content/uploads/2016/03/logo_lockup_sheets_icon_vertical.jpg"
+					type="Transparent" press="downloadSampleExcel"/>
+			</Toolbar>
+		</customHeader>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button text="Upload" type="transparent" icon="sap-icon://upload" press="valueHelpUploadButton"/>
+			</Toolbar>
+		</footer>
+		<beginButton>
+			<Button text="Close" type="transparent" press="valueHelpCloseButtonForExcel"/>
+		</beginButton>
+		<content>
+			<VBox width="100%" height="10rem" class="fileuploader" justifyContent="Center" alignContent="Center" alignItems="Center">
+				<Text text="Drop a Spreadsheet File Here or Click to Browse" class="whiteText"/>
+			</VBox>
+			<u:FileUploader class="hidden" change="onFileUploaderOnSelectChanged"></u:FileUploader>
+			<Text text="or" textAlign="Center" class="sapUiSmallMargin whiteText" width="100%"/>
+			<VBox width="21rem">
+				<List mode="SingleSelectMaster" selectionChange="onExistingFileSelected" headerText="Select an Exisiting File" items="{/Tables}"
+					delete="handleFileDelete">
+					<headerToolbar>
+						<Toolbar>
+							<ToolbarSpacer width="0rem"/>
+							<ToolbarSpacer/>
+							<SearchField search="handleFileSearch" liveChange="handleFileSearch" width="60%" showIcon="false" id="fileSearch" visible="true"
+								class="onAISearch" placeholder="Search"/>
+							<Button type="Transparent" class="menuButton sapUiSizeCompact" visible="false" icon="sap-icon://search" press="onEnableFileSearch"/>
+							<Button type="Transparent" class="menuButton sapUiSizeCompact" icon="sap-icon://edit" press="editModeExcelTable"/>
+						</Toolbar>
+					</headerToolbar>
+					<StandardListItem class="popOverItem" title="{FileName}{FILENAME}{TABLE_NAME}" key="{FILENAME}{}{TABLE_NAME}"></StandardListItem>
+				</List>
+			</VBox>
+		</content>
+	</Popover>
+	<!--</Dialog> -->undefined
+</core:FragmentDefinition>

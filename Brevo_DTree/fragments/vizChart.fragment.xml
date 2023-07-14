@@ -1,0 +1,27 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:viz="sap.viz.ui5.controls"
+	xmlns:suiteCommons="sap.suite.ui.commons">
+	<VBox height="100%" class="sapMFlexBox sapContrastPlus sapMHBox sapOvpBaseCard sapOvpCardRightContent fragmentClass">
+		<VBox width="100%" alignItems="End" justifyContent="End"
+			class="sapUshellTileDeleeIconBox declineButtonClass">
+			<!-- <core:Icon src="sap-icon://decline" color="white"
+				backgroundColor="#007f98" class="sapUshellTileDeleteIconOuterClass"
+				press="onDeletePress" visible="false" />
+			<Text visible="false" /> -->
+		</VBox>
+		
+			<Text class="cardTitle"></Text>
+	 <suiteCommons:ChartContainer alignItems="Center"
+			class="customerChartContainer" showFullScreen="true"
+			showPersonalization="false" autoAdjustHeight="false" showLegendButton="false"
+			showLegend="false" showZoom="false" justifyContent="Center" visible="true">
+			<suiteCommons:content>
+				<suiteCommons:ChartContainerContent>
+					<suiteCommons:content>
+						<viz:VizFrame width="20rem" height="450px"></viz:VizFrame>
+					</suiteCommons:content>
+				</suiteCommons:ChartContainerContent>
+			</suiteCommons:content>
+		</suiteCommons:ChartContainer> 
+	</VBox>
+</core:FragmentDefinition>

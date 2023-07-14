@@ -1,0 +1,27 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:suiteCommons="sap.suite.ui.commons">
+	<VBox class="sapMFlexBox sapMHBox sapOvpBaseCard sapOvpCardRightContent">
+		<VBox width="100%" alignItems="End" justifyContent="End"
+			class="sapUshellTileDeleeIconBox">
+			<core:Icon src="sap-icon://decline" color="white"
+				backgroundColor="#007f98" class="sapUshellTileDeleteIconOuterClass"
+				press="onDeletePress" visible="false" />
+			<Text visible="false" />
+		</VBox>
+		<Toolbar class="sapUiSmallMargin sapOvpCardHeade cardToolbar">
+			<content>
+				<ObjectIdentifier ></ObjectIdentifier>
+				<ToolbarSpacer />
+				<Button  icon="sap-icon://full-screen" press="onFullScreenPress"
+					type="Transparent" />
+			</content>
+		</Toolbar>
+
+		<FlexBox alignItems="Center" justifyContent="Center" visible="true">
+		</FlexBox>
+
+
+
+	</VBox>
+</core:FragmentDefinition>

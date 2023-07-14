@@ -1,0 +1,149 @@
+{
+    "_version": "1.12.0",
+    "sap.app": {
+        "id": "Brevo.BrevoDtree",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "ui5template.basicSAPUI5ApplicationProject",
+            "version": "1.40.12"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "rootView": {
+            "viewName": "Brevo.BrevoDtree.view.App",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.30.0",
+            "libs": {
+                "sap.ui.layout": {},
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.unified": {
+                    "minVersion": ""
+                },
+                "sap.viz": {
+                    "minVersion": ""
+                },
+                "sap.ui.table": {
+                    "minVersion": ""
+                },
+                "sap.suite.ui.commons": {
+                    "minVersion": ""
+                },
+                "sap.suite.ui.microchart": {
+                    "minVersion": ""
+                },
+                "sap.ui.commons": {
+                    "minVersion": ""
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "Brevo.BrevoDtree.i18n.i18n"
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "Brevo.BrevoDtree.view",
+                "controlAggregation": "pages",
+                "controlId": "fioriContent"
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "treeView",
+                    "target": "treeView"
+                },
+                {
+                    "pattern": "scenario/{title}",
+                    "name": "analysisView",
+                    "target": "treeView"
+                },
+                {
+                    "pattern": "nodeSettings",
+                    "name": "nodeSettings",
+                    "target": "nodeSettings"
+                },
+                {
+                    "pattern": "Report",
+                    "name": "Report",
+                    "target": "Report"
+                },
+                {
+                    "pattern": "cardId={cardId}",
+                    "name": "homeView",
+                    "target": "homeView"
+                }
+            ],
+            "targets": {
+                "TargetApp": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "App"
+                },
+                "treeView": {
+                    "viewName": "View1",
+                    "viewLevel": 0
+                },
+                "homeView": {
+                    "viewName": "View1",
+                    "viewLevel": 0
+                },
+                "nodeSettings": {
+                    "viewName": "nodeSettings",
+                    "viewLevel": 1
+                },
+                "Report": {
+                    "viewName": "Report",
+                    "viewLevel": 1
+                }
+            }
+        }
+    },
+    "sap.platform.hcp": {
+        "uri": "webapp",
+        "_version": "1.1.0"
+    }
+}

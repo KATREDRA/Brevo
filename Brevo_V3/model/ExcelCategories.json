@@ -1,0 +1,55 @@
+{
+	"industry": [{
+			"key": "All",
+			"text": "All"
+ },
+		{
+			"key": "HealthCare",
+			"text": "HealthCare"
+ }, {
+			"key": "Marketing",
+			"text": "Marketing"
+ }, {
+			"key": "Finance",
+			"text": "Finance"
+ }, {
+			"key": "Manufacturing",
+			"text": "Manufacturing"
+ }, {
+			"key": "Retail/Ecommerce",
+			"text": "Retail/Ecommerce"
+ }, {
+			"key": "Government",
+			"text": "Government"
+ }, {
+			"key": "Travel and Hospitality",
+			"text": "Travel and Hospitality"
+ }, {
+			"key": "Enterprise",
+			"text": "Enterprise"
+ }, {
+			"key": "Customer Service",
+			"text": "Customer Service"
+ }, {
+			"key": "Digital Marketing",
+			"text": "Digital Marketing"
+ }, {
+			"key": "Human Resources",
+			"text": "Human Resources"
+ }, {
+			"key": "Sales",
+			"text": "Sales"
+ }, {
+			"key": "Supply Chain",
+			"text": "Supply Chain"
+ }, {
+			"key": "Executive",
+			"text": "Executive"
+ }, {
+			"key": "IT/OEM",
+			"text": "IT/OEM"
+ }, {
+			"key": "Software",
+			"text": "Software"
+ }]
+}

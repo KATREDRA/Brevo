@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvc:View controllerName="Brevo.BrevoDtree.controller.View1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout" xmlns:o="sap.uxap" xmlns:t="sap.ui.table" xmlns:f="sap.ui.layout.form" xmlns:floatAtion="sap.ushell.ui.shell"
+	displayBlock="true" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:suite="sap.suite.ui.commons" xmlns:m="sap.suite.ui.microchart"
+	xmlns:layout="sap.ui.layout" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:viz="sap.viz.ui5.controls" xmlns:fb="sap.ui.comp.filterbar">
+	<Page title="Value Driver Tree" showHeader="false" enableScrolling="false" class="pageBottomAlign">
+		<content>
+			<l:FixFlex id="flexid" class="flexContent">
+				<l:fixContent>
+					<VBox>
+						<Toolbar class="borderInvisibility sapUiSmallMarginTop sapUiSmallMarginBegin">
+							<HBox justifyContent="Center" alignItems="Center">
+								<Title class="customPageHeader" id="scenarioName" text="Select a Scenario"/>
+								<Button icon="sap-icon://arrow-down" type="Transparent" iconFirst="false" press="openReportList" class="btnAsHeader"/>
+							</HBox>
+						</Toolbar>
+						<Toolbar class="borderInvisibility sapUiTinyMarginBottom sapUiLargeMarginBegin">
+							<SegmentedButton id="variantItems" class="customSegmentedBtn" items="{/}">
+								<items>
+									<SegmentedButtonItem text="{VariantName}" key="{VariantId}" class="sapUiSmallMarginBegin" press="onSegmentButtonPress"/>
+								</items>
+							</SegmentedButton>
+							<Button icon="sap-icon://add" tooltip="Add new Variant for scenario" type="Transparent" press="onAddNewVariant"/>
+							<Button id="variantDelId" icon="sap-icon://decline" tooltip="Delete Variant" type="Transparent" press="onDeleteVariant"/>
+							<ToolbarSpacer/>
+							<Button id="reportid" tooltip="Report" icon="sap-icon://manager-insight" type="Transparent" press="OnreportViewPress"/>
+							<Button id="forecasting" tooltip="Forecast" icon="sap-icon://future" type="Transparent" press="onFuturePress"/>
+							<Button id="saveVariant" icon="sap-icon://save" tooltip="Save Variant" type="Transparent" press="onVariantSave"/>
+							<!-- <Button id="legend" icon="sap-icon://legend" tooltip="Legend" 
+								type="Transparent" press="onLegendPress"/> -->
+							<Button id="scenariocommentId" icon="sap-icon://comment" tooltip="Comments for Selected Scenario" type="Transparent"
+								press="onScenCommentsPress"/>
+							<Button id="treeStyle" icon="sap-icon://collapse" tooltip="Collapse second level child nodes" type="Transparent" press="handleTreeStyleData"/>
+							<!--<Button id="simulate" icon="sap-icon://media-play" tooltip="To 
+								highlight changes effected nodes" type="Transparent" press="onTreeSimulate"/> -->
+							<Button id="customFloatEditBtn2" icon="sap-icon://horizontal-grip" tooltip="Horizontal Representation" type="Default"
+								press="handleVisualization"/>
+							<Button id="dataStyle" icon="sap-icon://table-view" tooltip="Table Structure" type="Transparent" press="handleChangeData"/>
+							<Button icon="sap-icon://reset" tooltip="Reset Variant changes" class="sapUiSmallMarginEnd" type="Emphasized" press="onTreeReset"/>
+						</Toolbar>
+						<Button id="segments" class="sapUiLargeMarginBegin" icon="sap-icon://edit" text="Segments : All" type="Transparent" iconFirst="false"
+							press="onEditSegmentsPress"/>
+					</VBox>
+				</l:fixContent>
+				<l:flexContent>
+					<HBox>
+						<VBox id="vdt" width="100%">
+							<Text id="createtextId" class="textAlignClass" visible="false" text="Create New Scenario"/>
+							<VBox id="chartArea" class="d3LayoutVBox"/>
+							<!--<t:Table id="temptree" visible="false" selectionMode="None" class="treetableclass">-->
+							<!--	<t:toolbar>-->
+							<!--		<Toolbar>-->
+							<!--			<ToolbarSpacer/>-->
+							<!--			<Button icon="sap-icon://collapse" type="Transparent" press="ontablecollapse"/>-->
+							<!--			<SearchField liveChange="handleTableSearch" width="20%"/>-->
+							<!--		</Toolbar>-->
+							<!--	</t:toolbar>-->
+							<!--</t:Table>-->
+							<VBox justifyContent="Center" id="reportContainerParent" width="95%" class="reportContainerParent sapUiMediumMarginBegin" visible="false">
+								<!--<Toolbar width="100%">-->
+								<!--	<core:Icon src="sap-icon://warning" visible="{/moreRecords}"-->
+								<!--		tooltip="Number of records too large for reporting. Reduce your selection before continuing"/>-->
+								<!--	<ToolbarSpacer width="1rem"/>-->
+								<!--</Toolbar>-->
+								<MessageStrip text="Drag and Drop Properties as Rows or Columns to build your report!" showIcon="true" showCloseButton="true"
+									class="sapUiSmallMargin"></MessageStrip>
+								<core:HTML content='&lt;div id="reportContainer" class="reportContainer"&gt;&lt;/div&gt;'></core:HTML>
+							</VBox>
+						</VBox>
+						<VBox id="nodeSettings" visible="false" width="25%" class="settingsBackground">
+							<core:Icon src="sap-icon://decline" color="white" backgroundColor="#007f98" class="sapUshellTileDeleteIconOuterClass setIconRadius"
+								press="onDeletePress"/>
+							<FlexBox height="100px" width="250px" alignItems="Center" justifyContent="Center" alignContent="Center"
+								class="sapUiSmallMargin sapCustomMicroChart">
+								<m:ComparisonMicroChart id="nodePie" press="press" isResponsive="true">
+									<m:data>
+										<m:ComparisonMicroChartData title="Org_Value" value="10" color="Good"/>
+										<m:ComparisonMicroChartData title="Cur_Value" value="50" color="Good"/>
+										<m:ComparisonMicroChartData title="Difference" value="-20" color="Error"/>
+									</m:data>
+								</m:ComparisonMicroChart>
+							</FlexBox>
+							<ObjectHeader id="header" title="1003" class="preivewHeader sapUiTinyMarginTop">
+								<attributes>
+									<ObjectAttribute text="Org Value : {value}"/>
+									<ObjectAttribute id="nodeCurrentValue" text="Current Value : " class="sapUiTinyMarginBottom"/>
+								</attributes>
+								<statuses>
+									<ObjectStatus id="nodeDiffValue" text="Difference"/>
+								</statuses>
+							</ObjectHeader>
+							<ScrollContainer height="30rem" vertical="true">
+								<Panel expandable="true" expanded="false" headerText="Properties" width="auto">
+									<content>
+										<HBox justifyContent="SpaceBetween" class="sapUiTinyMarginBegin">
+											<Switch class="switchAlign switchTextOff" id="nodeHidden" state="false" customTextOn="Hide" customTextOff="Un-Hide"
+												change="handleHiddenNode"/>
+											<Switch class="switchAlign switchTextOff" id="nodeLocked" state="false" customTextOn="Lock" customTextOff="Un-Lock" change="handleLockNode"/>
+										</HBox>
+										<HBox justifyContent="Start" class="sapUiTinyMarginBegin">
+											<Label text="Data Source : " required="false"/>
+											<Text id="dataSource" text="Sales Forecast"/>
+										</HBox>
+										<HBox justifyContent="Start" class="sapUiTinyMarginBegin">
+											<Label text="Entity : " required="false"/>
+											<Text id="entity" text="Sales"/>
+										</HBox>
+									</content>
+								</Panel>
+								<Panel expandable="true" expanded="false" visible="true" headerText="Impact Measures Effect" width="auto">
+									<content>
+										<f:SimpleForm labelSpanL="1" labelSpanM="1" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" id="ImpactMeasures" editable="false"
+											layout="ResponsiveGridLayout">
+											<f:content>
+												<Label text="Unit Sold" required="false"/>
+												<ObjectStatus id="im1Status"/>
+												<Slider class="sliderImpact" id="im1Slider" width="90%" change="handleNodePercent1"/>
+												<Label text="COGS" required="false"/>
+												<ObjectStatus id="im2Status"/>
+												<Slider id="im2Slider" width="90%" change="handleNodePercent1"/>
+												<Label text="Manufacturing Price" required="false"/>
+												<ObjectStatus id="im3Status"/>
+												<Slider id="im3Slider" width="90%" change="handleNodePercent1"/>
+												<Label text="Sale Price" required="false"/>
+												<ObjectStatus id="im4Status"/>
+												<Slider id="im4Slider" width="90%" change="handleNodePercent1"/>
+												<Label text="Discounts" required="false"/>
+												<ObjectStatus id="im5Status"/>
+												<Slider id="im5Slider" width="90%" change="handleNodePercent1"/>
+											</f:content>
+										</f:SimpleForm>
+									</content>
+								</Panel>
+								<Panel visible="true" expandable="true" id="hideNode" expanded="false" headerText="Hidden Nodes" width="auto">
+									<content>
+										<List id="hiddenList" mode="Delete" delete="handleDeleteHiddenNode" class="hiddenItems" items="{/}">
+											<StandardListItem title="{title}" iconDensityAware="false" iconInset="false"/>
+										</List>
+									</content>
+								</Panel>
+								<Slider id="nodePercent" class="sapUiSmallMargin" width="90%" liveChange="handleNodePercent"/>
+								<Link class="sapUiSmallMargin" text="Advanced Settings" press="onSettingsPress" emphasized="true"/>
+								<HBox height="15rem"/>
+							</ScrollContainer>
+						</VBox>
+						<VBox id="comment" visible="false" width="25%" class="settingsBackgroundcomment">
+							<ScrollContainer vertical='true'>
+								<Toolbar class="commentToolbarClass">
+									<Title id="txtid" text="Discussion" class="classcomment"/>
+									<ToolbarSpacer/>
+									<Button id="delid" type="Transparent" icon="sap-icon://decline" press="onDeletePress" class="commentClose"/>
+								</Toolbar>
+								<suite:Timeline enableDoubleSided="true" growing="false" groupBy="dateTime" lazyLoading="true" content="{/d/results}" textHeight="automatic"
+									showHeaderBar="false" enableScroll="false" class="timeLineClass" sortOldestFirst="true">
+									<suite:TimelineItem
+										dateTime="{parts:[{path: 'template'},{path : 'CreatedDate'}], formatter: 'Brevo.BrevoDtree.util.Formatter.commentDateFormatter'}"
+										userName="{VariantName}" userPicture="images/user.png" title="{CreatedBy}" text="{=!${template} ? ${CommentDesc} : null}" class="textClass">
+										<suite:embeddedControl>
+											<VBox>
+												<Text text="{CommentDesc}" id="textId" visible="{=!${template}}" class="sapUiTinyMargin"/>
+												<!--<HBox justifyContent="SpaceBetween" alignItems="Center">-->
+												<TextArea id="quoteId" width="13rem" value="{CommentDesc}" growing="false" rows="2" visible="{template}" placeholder="Add Comments"
+													valueLiveUpdate="true"/>
+												<Button id="submitId" visible="{template}" tooltip="Post" icon="sap-icon://feeder-arrow" press="addReview"/>
+												<!--</HBox>-->
+											</VBox>
+										</suite:embeddedControl>
+									</suite:TimelineItem>
+								</suite:Timeline>
+							</ScrollContainer>
+						</VBox>
+						<VBox id="forecast" visible="false" width="25%" class="settingsBackground">
+							<core:Icon src="sap-icon://decline" color="white" backgroundColor="#007f98" class="sapUshellTileDeleteIconOuterClass setIconRadius"
+								press="onDeletePress"/>
+							<f:SimpleForm editable="true" labelSpanL="1" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1">
+								<f:content>
+									<Label text="Measure" class="titleCustomStyle"/>
+									<Select items="{/}" width="150px" id="forecastMeasureId1" change="onViewForcast">
+										<core:Item text="{name}" key="{name}"/>
+									</Select>
+								</f:content>
+							</f:SimpleForm>
+							<ScrollContainer height="100%" vertical="true">
+								<viz:VizFrame id="forcastevizId" class="vizLIneClass" vizType="timeseries_line" width="100%" uiConfig="{applicationSet:'fiori'}"
+									vizProperties="{ plotArea:{ window: { start: null, end: null } }, legend:{ visible: true }, title:{ visible: false }, valueAxis:{ title:{ visible: true } }, timeAxis:{ title:{ visible: true }, levels:[ 'month', 'day', 'year' ], interval:{ unit: '' } } }"/>
+							</ScrollContainer>
+						</VBox>
+					</HBox>
+				</l:flexContent>
+			</l:FixFlex>
+			<VBox id="floaterSettingsVisibility" class="floaterSettings sapUiSizeCompact" visible="false">
+				<HBox justifyContent="SpaceAround" alignItems="Center">
+					<!--<Label text="Years" class="footerLabel"/>-->
+					<HBox class="sapUiTinyMarginBegin">
+						<Label text="Positive" class="footerLabel"/>
+						<core:Icon src="sap-icon://color-fill" color="green" height="0.5rem" width="1rem"/>
+						<!-- <core:Icon src="sap-icon://color-fill" color="orange"
+							height="0.5rem" width="1rem" /> -->
+						<core:Icon src="sap-icon://color-fill" color="red" height="0.5rem" width="1rem"/>
+						<Label text="Critical" class="footerLabel"/>
+					</HBox>
+					<HBox>
+						<!--<Button icon="sap-icon://line-chart" tooltip="View Forcast" type="Transparent" class="forcastbutton" press="onViewForcast"/>-->
+					</HBox>
+				</HBox>
+				<HBox id="floatSliderVisibility" justifyContent="SpaceAround" alignItems="Center" class="sapUiTinyMarginTop">
+					<!--<SegmentedButton id="yearId" items="{/}" class="customSegmentedBtn">-->
+					<!--	<items>-->
+					<!--		<SegmentedButtonItem text="{year}" class="sapUiSmallMarginBegin" press="onyearPress"/>-->
+					<!--	</items>-->
+					<!--</SegmentedButton>-->
+					<Label text="Number of Months from the current Month : " class="footerLabelAlign"/>
+					<Slider id="floatSlider" min="0" max="18" step="3" enableTickmarks="true" width="12rem" change="handleFloatSliderChange"
+						class="sliderLables">
+						<ResponsiveScale tickmarksBetweenLabels="1"/>
+					</Slider>
+					<!-- <RangeSlider id="floatSlider" showAdvancedTooltip="true" min="0" step="3" max="12" range="3,3" enableTickmarks="true" class="sliderLables" width="12rem" change="handleFloatSliderChange">
+			<ResponsiveScale tickmarksBetweenLabels="1"/>
+		</RangeSlider> -->
+				</HBox>
+			</VBox>
+			<HBox id="vdtVisualise" class="floaterSettings sapUiSizeCompact" visible="false" justifyContent="Start" alignItems="Center"
+				alignContent="Center" width="20rem">
+				<VBox class="floaterSettings sapUiSizeCompact" visible="true">
+					<HBox justifyContent="SpaceBetween" alignContent="Start">
+						<HBox width="50%" class="sapUiTinyMarginBegin" justifyContent="Start" alignItems="Start" alignContent="Start">
+							<core:Icon src="sap-icon://color-fill" color="#67f967"/>
+							<Label text="High Positive" class="sapUiTinyMarginBegin"/>
+						</HBox>
+						<HBox width="50%" class="sapUiTinyMarginBegin" justifyContent="Start" alignItems="Start" alignContent="Start">
+							<core:Icon src="sap-icon://color-fill" color="#7ffa7f"/>
+							<Label text="Positive" class="sapUiTinyMarginBegin"/>
+						</HBox>
+						<HBox width="50%" class="sapUiTinyMarginBegin" justifyContent="Start" alignItems="Start" alignContent="Start">
+							<core:Icon src="sap-icon://color-fill" color="#98fb98"/>
+							<Label text="Average" class="sapUiTinyMarginBegin"/>
+						</HBox>
+					</HBox>
+					<HBox>
+						<HBox width="50%" class="sapUiTinyMarginBegin" justifyContent="Start" alignItems="Start" alignContent="Start">
+							<core:Icon src="sap-icon://color-fill" color="#b1fcb1"/>
+							<Label text="Negative" class="sapUiTinyMarginBegin"/>
+						</HBox>
+						<HBox width="50%" class="sapUiTinyMarginBegin" justifyContent="Start" alignItems="Start" alignContent="Start">
+							<core:Icon src="sap-icon://color-fill" color="#c9fdc9"/>
+							<Label text="Low Negative" class="sapUiTinyMarginBegin"/>
+						</HBox>
+						<HBox width="50%" class="sapUiTinyMarginBegin" justifyContent="Start" alignItems="Start" alignContent="Start">
+							<core:Icon src="sap-icon://color-fill" color="orange"/>
+							<Label text="Selected" class="sapUiTinyMarginBegin"/>
+						</HBox>
+					</HBox>
+					<HBox/>
+					<HBox/>
+					<HBox>
+						<Title class="savesegmentclass" text="Save Selected Segments"/>
+						<Button text="OK" type="Transparent" press="onSelectedSegments" class="sapUiTinyMarginBegin"/>
+						<Button text="Cancel" type="Transparent" press="onSelectedSegmentsCancel" class="sapUiTinyMarginBegin"/>
+					</HBox>
+				</VBox>
+			</HBox>
+		</content>
+	</Page>
+</mvc:View>

@@ -1,0 +1,203 @@
+<core:FragmentDefinition height="100%" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m"
+	xmlns:t="sap.ui.table">
+	<Page id="wizardReviewPage" showHeader="true" showNavButton="true" navButtonPress="handleSubmitCancel">
+		<content>
+			<form:SimpleForm title="1. General Configuration" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+				<form:content>
+					<Label text="Database"/>
+					<Text text="{}"/>
+					<Link press="editStepOne" text="Edit"/>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm title="2. Selected Tables/Views" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+				<form:content>
+					<Label text="Tables/Views"/>
+					<HBox class="hboxstyle2">
+						<List mode="None" id="selectedTables" items="{/selectedTables/}">
+							<items>
+								<StandardListItem title="{TABLE_NAME}" class="popOverItem listScroll"/>
+							</items>
+						</List>
+					</HBox>
+					<Link press="editStepTwo" text="Edit"/>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm title="3. Linking Properties" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+				<form:content>
+					<Label text="Linking Dimension"/>
+					<ScrollContainer height="100%" width="100%" horizontal="true" vertical="false" focusable="true">
+						<!--<HBox class="hboxstyle"></HBox>-->
+						<core:HTML content="&lt;div id=&quot;reviewLinkingProperties&quot;&gt;&lt;/div&gt;"></core:HTML>
+					</ScrollContainer>
+					<!--<Link press="editStepThree" text="Edit"/>-->
+					<!--<Label text="Type of Join" textAlign="Center"/>-->
+					<!--<Text text="{}"/>-->
+					<!--<Link press="editStepThree" text="Edit"/>-->
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm title="4. Output Columns" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+				<form:content>
+					<Label text="Output View"/>
+					<t:Table title="" rows="{/}" showColumnVisibilityMenu="true" enableCellFilter="true" enableCustomFilter="false"
+						enableColumnReordering="true" id="columnSelectionTableId" noDataText="No Data" visible="true" visibleRowCount="10" selectionMode="None">
+						<t:columns>
+							<t:Column width="11rem">
+								<Label text="Table Name"/>
+								<t:template>
+									<Text text="{tablename}"></Text>
+								</t:template>
+							</t:Column>
+							<t:Column width="11rem">
+								<Label text="Column Name"/>
+								<t:template>
+									<Text text="{label}"></Text>
+								</t:template>
+							</t:Column>
+							<t:Column width="11rem">
+								<Label text="Description"/>
+								<t:template>
+									<Text text="{descriptions}"></Text>
+								</t:template>
+							</t:Column>
+							<t:Column width="11rem">
+								<Label text="Data Type"/>
+								<t:template>
+									<Text text="{col_datatype}"></Text>
+								</t:template>
+							</t:Column>
+							<t:Column width="11rem">
+								<Label text="Column Type"/>
+								<t:template>
+									<Text text="{datatype}"></Text>
+								</t:template>
+							</t:Column>
+							<t:Column width="11rem">
+								<Label text="Aggregation Type"/>
+								<t:template>
+									<!--<Select change="onTableColumnAggregationChanged" selectedKey="{aggregationType}"-->
+									<!--	visible="{path:'datatype',formatter:'Brevo.QueryBuilder.util.Formatter.aggregationColumnVisibility'}">-->
+									<!--	<items>-->
+									<!--		<core:Item text="Sum" key="sum"/>-->
+									<!--		<core:Item text="Average" key="avg"/>-->
+									<!--		<core:Item text="Count" key="count"/>-->
+									<!--	</items>-->
+									<!--</Select>-->
+									<Text text="{aggregationType}"></Text>
+								</t:template>
+							</t:Column>
+							<!--<t:Column width="11rem">-->
+							<!--	<Label text="Hidden"/>-->
+							<!--	<t:template>-->
+							<!--		<Switch state="{hidden}"  enabled="false"/>-->
+							<!--	</t:template>-->
+							<!--</t:Column>-->
+							<t:Column width="11rem">
+								<Label text="Synonyms"/>
+								<t:template>
+									<Text text="{synonyms}"></Text>
+								</t:template>
+							</t:Column>
+							<t:Column width="11rem">
+								<Label text="Custom Label"/>
+								<t:template>
+									<Text text="{customLabel}"></Text>
+								</t:template>
+							</t:Column>
+							<t:Column width="11rem">
+								<Label text="Filter Operator"/>
+								<t:template>
+									<!--<Select selectedKey="{filterOperator}" change="handleFilterOperator"-->
+									<!--	visible="{path:'datatype',formatter:'Brevo.QueryBuilder.util.Formatter.filterColumnVisibility'}">-->
+									<!--	<core:Item key="eq" text="Equal to (=)"/>-->
+									<!--	<core:Item key="ne" text="Not Equal to (!=)"/>-->
+									<!--	<core:Item key="gt" text="Greater than (>)"/>-->
+									<!--	<core:Item key="ge" text="Greater than or Equal (>=)"/>-->
+									<!--	<core:Item key="lt" text="Less than (&lt;)"/>-->
+									<!--	<core:Item key="le" text="Less than or Equal (&lt;=)"/>-->
+									<!--	<core:Item key="bw" text="Between (&lt;>)"/>-->
+									<!--</Select>-->
+									<Text text="{filterOperator}"></Text>
+								</t:template>
+							</t:Column>
+							<t:Column width="11rem">
+								<Label text="Filters"/>
+								<t:template>
+									<VBox>
+										<!--<Input value="{filters}" visible="{path:'datatype',formatter:'Brevo.QueryBuilder.util.Formatter.getFilterVisibility'}" showValueHelp="true"-->
+										<!--	valueHelpRequest="handletableColumnFilters"></Input>-->
+										<!--<Input value="{filters1}"-->
+										<!--	visible="{parts :[{path:'datatype'},{path:'filterOperator'}],formatter:'Brevo.QueryBuilder.util.Formatter.getBTFilterVisibility'}"-->
+										<!--	showValueHelp="true" valueHelpRequest="handletableColumnFilters"></Input>-->
+										<!--<DatePicker value="{filters}" visible="{path:'datatype',formatter:'Brevo.QueryBuilder.util.Formatter.getDateFilterVisibility'}"-->
+										<!--	displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"></DatePicker>-->
+										<!--<DatePicker value="{filters1}"-->
+										<!--	visible="{parts :[{path:'datatype'},{path:'filterOperator'}],formatter:'Brevo.QueryBuilder.util.Formatter.getDateBTFilterVisibility'}"-->
+										<!--	displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"></DatePicker>-->
+										<Text text="{filters}" visible="{path:'datatype',formatter:'Brevo.QueryBuilder.util.Formatter.getFilterVisibility'}"></Text>
+										<Text text="{filters1}"
+											visible="{parts :[{path:'datatype'},{path:'filterOperator'}],formatter:'Brevo.QueryBuilder.util.Formatter.getBTFilterVisibility'}"></Text>
+										<Text text="{filters}" visible="{path:'datatype',formatter:'Brevo.QueryBuilder.util.Formatter.getDateFilterVisibility'}"></Text>
+										<Text text="{filters1}"
+											visible="{parts :[{path:'datatype'},{path:'filterOperator'}],formatter:'Brevo.QueryBuilder.util.Formatter.getDateBTFilterVisibility'}"></Text>
+									</VBox>
+								</t:template>
+							</t:Column>
+							<t:Column width="11rem">
+								<Label text="Format Pattern"/>
+								<t:template>
+									<!--<Select selectedKey="{formatpattern}" change="handleScaleSelection" class="customMultiBoxStyle">-->
+									<!--	<core:Item key="none" text="None"/>-->
+									<!--	<core:Item key="default" text="Default" enabled="{path:'datatype',formatter:'Brevo.QueryBuilder.util.Formatter.aggregationColumnVisibility'}"/>-->
+									<!--	<core:Item key="short" text="Short" enabled="{path:'datatype',formatter:'Brevo.QueryBuilder.util.Formatter.aggregationColumnVisibility'}"/>-->
+									<!--	<core:Item key="percentage" text="Percentage"-->
+									<!--		enabled="{path:'datatype',formatter:'Brevo.QueryBuilder.util.Formatter.aggregationColumnVisibility'}"/>-->
+									<!--</Select>-->
+									<Text text="{formatpattern}"></Text>
+								</t:template>
+							</t:Column>
+							<t:Column width="11rem">
+								<Label text="Currency Type"/>
+								<t:template>
+									<!--<Input value="{currencyType}"></Input>-->
+									<Text text="{currencyType}"></Text>
+								</t:template>
+							</t:Column>
+						</t:columns>
+					</t:Table>
+					<!--<Link press="editStepFour" text="Edit"/>-->
+					<!--	<Label text="Calculated Formulas"/>
+					<MultiComboBox editable="false" items="{/}" selectionChange="handleSelectionChange" selectionFinish="handleSelectionFinish"
+						id="comboBoxFormulaId">
+						<core:Item key="{Aliasname}" text="{Aliasname}"/>
+					</MultiComboBox>-->
+					<!--	<Toolbar>
+						<Title text="Calculated Formulas" id="formulaFormId" level="H1"/>
+						<ToolbarSpacer ></ToolbarSpacer>
+					</Toolbar>-->
+					<Label text="Calculated Formulas" id="formulaFormId"/>
+					<List items="{/}" id="comboBoxFormulaId" class="objListItemClass">
+						<items>
+							<ObjectListItem title="{Aliasname}" type="Active">
+								<attributes>
+									<!--	<ObjectAttribute text="{description}"/>-->
+									<!--<ObjectAttribute text="by D301234"/>-->
+								</attributes>
+							</ObjectListItem>
+						</items>
+					</List>
+					<Link press="editStepFour" text="Edit"/>
+				</form:content>
+			</form:SimpleForm>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button text="Preview data" press="onPreviewDataPress"></Button>
+					<Button text="Create View" visible="true" press="onCreateViewPress"/>
+					<Button text="Update View" press="onUpdateViewPress" visible="false"/>
+					<Button text="Cancel" press="handleSubmitCancel"></Button>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:FragmentDefinition>

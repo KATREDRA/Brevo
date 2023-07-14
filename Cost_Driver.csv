@@ -1,0 +1,10 @@
+﻿Services,Activity,Cost Driver,Driver Type,Customer1,Customer2
+Contract,Actitvity1,Contract Docs,Volume,100,200
+Contract,Actitvity1,Contract Approvals,Volume,200,300
+Contract,Actitvity1,Contract Mods,Volume,200,150
+Contract,Actitvity2,Contract Market Research,Contract Volume,5000000,10000000
+Contract,Actitvity2,Contract Requirements,Contract Volume,5000000,10000000
+Contract,Actitvity3,Contract - Admin,Volume,500,600
+Travel,Actitvity4,# of Travel Contracts,Volume,3000,5000
+Travel,Actitvity5,Advance Payments Processing,Volume,2000,2500
+Travel,Actitvity6,Collection Invoices,Amount Collected,500000,200000

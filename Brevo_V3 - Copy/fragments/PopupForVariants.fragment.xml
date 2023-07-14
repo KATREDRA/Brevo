@@ -1,0 +1,33 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified">
+	<Popover title="Select Your Page" contentWidth="300px" contentHeight="300px" horizontalScrolling="false" showHeader="true"
+		class="sapUICompVarMngmtPopover popForPages" placement="Bottom">
+		<subHeader>
+			<Toolbar>
+				<SearchField liveChange="onOvpPageSearch"/>
+			</Toolbar>
+		</subHeader>
+		<content>
+			<Table mode="SingleSelectMaster" selectionChange="onCategrorySelection" items="{/}" delete="handleFileDelete">
+				<columns>
+					<Column vAlign="Center"/>
+					<Column visible="false"/>
+					<Column hAlign="Right" visible="false"/>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{PageTitle}"></Text>
+							<Text text="{Page_Id}"></Text>
+							<!--{parts: [{path:'RoleFlag'},{path:'CreatedBy'}],formatter:'dynamicCards.util.Formatter.canUserEditPage'}-->
+							<HBox width="100%" alignItems="End" visible="false" justifyContent="End">
+								<Button icon="sap-icon://edit" type="Transparent" press="onOvpPageEdit"/>
+								<Button icon="sap-icon://delete" type="Transparent" press="onOvpPageDelete"/>
+							</HBox>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Popover>
+</core:FragmentDefinition>

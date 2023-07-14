@@ -1,0 +1,79 @@
+import pandas, json, dateparser
+import datetime
+import pymongo
+import io
+import sys
+import base64
+
+def addData(collection, data):
+	mongoClient = pymongo.MongoClient("mongodb://localhost:27017/")
+	db = mongoClient["fileuploader"]
+	col = db["_".join(collection.split(" "))]
+	col.insert_many(data)
+	
+def updateMetadata(collection, column_det):
+	mongoClient = pymongo.MongoClient("mongodb://localhost:27017/")
+	db = mongoClient["fileuploader"]
+	coll = db['CollectionDetails']
+	measure = []
+	dimension = []
+	for col in column_det:
+		if col['DATATYPE'] == "String":
+			dimension.append(col['COLUMN_NAME'].upper())
+		elif col['DATATYPE'] == "Int" or col['DATATYPE'] == "Float":
+			measure.append(col['COLUMN_NAME'].upper())
+			
+	data = {
+		"TABLENAME":"_".join(collection.split(" ")),
+		"FILENAME":collection,
+		"DIMENSIONS":dimension,
+		"COLUMN_DET": column_det,
+		"MEASURES":measure
+	}
+	coll.update_one({"TABLENAME":"_".join(collection.split(" "))},{'$set':data})
+	return data
+	
+def getData(collection):
+	mongoClient = pymongo.MongoClient("mongodb://localhost:27017/")
+	db = mongoClient["fileuploader"]
+	col = db["_".join(collection.split(" "))]
+	data = []
+	for row in col.find({}):
+		del row['_id']
+		data.append(row)
+	return data
+
+def updateData(data, column_det):
+	updatedData = []
+	for row in data:
+		for col in column_det:
+			if col['DATATYPE'] == "Int":
+				row[col['COLUMN_NAME']] = int(row[col['COLUMN_NAME']])
+			elif col['DATATYPE'] == "Float":
+				row[col['COLUMN_NAME']] = float(row[col['COLUMN_NAME']])
+			elif col['DATATYPE'] == "Date":
+				row[col['COLUMN_NAME']] = pandas.Timestamp(dateparser.parse('02.01.2020'))
+			else:
+				row[col['COLUMN_NAME']] = str(row[col['COLUMN_NAME']])
+		updatedData.append(row)
+	return updatedData	
+
+def emptyData(collection):
+	mongoClient = pymongo.MongoClient("mongodb://localhost:27017/")
+	db = mongoClient["fileuploader"]
+	col = db["_".join(collection.split(" "))]
+	col.delete_many({})
+	
+	
+def main():
+	params = json.loads(sys.argv[1])
+	column_det = params['coll_det']
+	fileName = params['fileName']
+	data = getData(fileName)
+	data = updateData(data,column_det)
+	emptyData(fileName)
+	addData(fileName, data)
+	updateMetadata(fileName, column_det)
+	print(json.dumps(column_det))
+if __name__ == '__main__':
+    main()

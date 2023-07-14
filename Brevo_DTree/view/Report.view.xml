@@ -1,0 +1,123 @@
+<mvc:View controllerName="Brevo.BrevoDtree.controller.Report" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form" xmlns="sap.m" xmlns:micro="sap.suite.ui.microchart" xmlns:viz="sap.viz.ui5.controls"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds" xmlns:viz.data="sap.viz.ui5.data" xmlns:c="sap.suite.ui.commons">
+	<Page title="Reports" showNavButton="true" navButtonPress="onNavBack" backgroundDesign="Solid">
+		<f:SimpleForm labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2" editable="true"
+			layout="ResponsiveGridLayout" class="groupAlign">
+			<f:content>
+				<Label text="Select two Variants"/>
+				<MultiComboBox items="{/}" width="40%" id="variantId" selectionChange="handlevariantsSelection">
+					<core:Item text="{VariantName}" key="{VariantId}"/>
+				</MultiComboBox>
+			</f:content>
+		</f:SimpleForm>
+		<f:SimpleForm id="forecaste" visible="false" labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2"
+			editable="true" layout="ResponsiveGridLayout" class="groupAlign">
+			<f:content>
+				<!--<Label text="Select Time Period"/>-->
+				<!--<Select id="years" items="{/}" width="30%" enabled="true" change="onyearPress">-->
+				<!--	<core:Item key="{year}" text="{year}"/>-->
+				<!--</Select>-->
+				<!--<core:Title text=""/>-->
+				<!--<Label text="Number of Months from the current Month : " class="footerLabelAlign"/>-->
+				<!--<Slider id="floatSlider" min="0" max="18" step="3" enableTickmarks="true" width="12rem" change="handleFloatSliderChange"-->
+				<!--	class="sliderLables">-->
+				<!--	<ResponsiveScale tickmarksBetweenLabels="1"/>-->
+				<!--</Slider>-->
+				<Label text="Number of Months from the current Month"/>
+				<Slider id="floatSlider" min="0" max="18" step="3" enableTickmarks="true" width="12rem" change="handlevariantsSelection"
+					class="reportSlider">
+					<ResponsiveScale tickmarksBetweenLabels="1"/>
+				</Slider>
+			</f:content>
+		</f:SimpleForm>
+		<IconTabBar id="idIconTabBarMulti" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
+			<items>
+				<IconTabFilter text="Overview" icon="sap-icon://hint">
+					<c:ChartContainer visible="false" id="chartContainer" contentChange="selectionChange" showFullScreen="true" showPersonalization="false"
+						showLegend="false">
+						<c:content>
+							<c:ChartContainerContent icon="sap-icon://line-chart">
+								<c:content>
+									<viz:VizFrame id="variantCompareChart"></viz:VizFrame>
+								</c:content>
+							</c:ChartContainerContent>
+							<c:ChartContainerContent icon="sap-icon://table-view" title="Table">
+								<c:content>
+									<Table id="variantTableId"></Table>
+								</c:content>
+							</c:ChartContainerContent>
+						</c:content>
+					</c:ChartContainer>
+					<VBox width="100%" height="100%">
+						<viz:VizFrame id="targetInfluencerId" width="100%" visible="true" uiConfig="{applicationSet:'fiori'}"
+							vizProperties="{ title: {text : 'Key influencers for Sales Quantity',visible : true},dataLabel: { visible: true }}" vizType='line'>
+							<viz:dataset>
+								<viz.data:FlattenedDataset data="{/}">
+									<viz.data:dimensions>
+										<viz.data:DimensionDefinition name="Name" value="{Name}"/>
+									</viz.data:dimensions>
+									<viz.data:measures>
+										<viz.data:MeasureDefinition name="Value" value="{Value}"/>
+									</viz.data:measures>
+								</viz.data:FlattenedDataset>
+							</viz:dataset>
+							<viz:feeds>
+								<viz.feeds:FeedItem id='valueAxisFeed3' uid="valueAxis" type="Measure" values="Value"/>
+								<viz.feeds:FeedItem id='categoryAxisFeed4' uid="categoryAxis" type="Dimension" values="Name"/>
+							</viz:feeds>
+						</viz:VizFrame>
+					</VBox>
+					<VBox >
+						<Title text="Key Influncers"></Title>
+						<core:HTML content='&lt;div id="cardContainer" class="sapiTinyMargin grid-stack"&gt;&lt;/div&gt;'></core:HTML>
+					</VBox>
+				</IconTabFilter>
+				<IconTabFilter icon="sap-icon://attachment" text="Drilldown">
+					<Title text="Key Influencers"/>
+					<HBox width="100%">
+						<VBox width="10%">
+							<Label text=""/>
+						</VBox>
+						<VBox width="20%">
+							<Label text="Select Dimensions:"/>
+							<Select items="{/}" width="200px" id="DimensionsId" change="handleMeasureDimensionSelection">
+								<core:Item text="{}" key="{}"/>
+							</Select>
+						</VBox>
+						<VBox width="50%">
+							<Label text="Select Measures:"/>
+							<MultiComboBox id="MeasuresId" items="{/}" selectionChange="handleMeasureDimensionSelection" width="300px">
+								<core:Item text="{}" key="{}"/>
+							</MultiComboBox>
+						</VBox>
+						<VBox width="25%">
+							<Label text="Select Chart Type:"/>
+							<Select id="SelectedTypeId" selectedKey="column" change="handleMeasureDimensionSelection" width="150px">
+								<core:Item text="Column Chart" key="column"/>
+								<core:Item text="Line Chart" key="line"/>
+								<core:Item text="Bar Chart" key="bar"/>
+							</Select>
+						</VBox>
+					</HBox>
+					<c:ChartContainer visible="false" id="InfluencerContainer" contentChange="selectionChange" showFullScreen="true" showPersonalization="false"
+						showLegend="true">
+						<c:content>
+							<c:ChartContainerContent icon="sap-icon://line-chart">
+								<c:content>
+									<viz:VizFrame id="keyInfluencerchartId" width="100%" uiConfig="{applicationSet:'fiori'}"
+										vizProperties="{ legend:{ visible: true }, title:{ visible: false }, valueAxis:{ title:{ visible: true } }, timeAxis:{ title:{ visible: true } } }"></viz:VizFrame>
+								</c:content>
+							</c:ChartContainerContent>
+							<c:ChartContainerContent icon="sap-icon://table-view" title="Table">
+								<c:content>
+									<Table id="keyInfluencertableId"></Table>
+								</c:content>
+							</c:ChartContainerContent>
+						</c:content>
+					</c:ChartContainer>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+	</Page>
+</mvc:View>

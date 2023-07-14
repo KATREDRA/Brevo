@@ -1,0 +1,10 @@
+from pyspark.sql import SparkSession
+
+my_spark = SparkSession \
+    .builder \
+    .appName("myApp") \
+    .config("spark.mongodb.input.uri", "mongodb://1.186.146.208/BrevoV3") \
+    .config("spark.mongodb.output.uri", "mongodb://1.186.146.208/BrevoV3") \
+    .getOrCreate()
+	
+print(my_spark)

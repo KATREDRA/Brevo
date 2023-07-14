@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:tnt="sap.tnt">
+  <SelectDialog noDataText="No data" title="Select a value" liveChange="handleFilterValueSearch" multiSelect="true"  confirm="handleFilterValueConfirm"
+    close="handleFilterValueClose" rememberSelections="true">
+    <!--<StandardListItem title="" description=""/>-->
+  </SelectDialog>
+</core:FragmentDefinition>
